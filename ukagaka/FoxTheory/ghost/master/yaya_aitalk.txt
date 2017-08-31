@@ -1,0 +1,721 @@
+//ランダムトーク後に実行
+/*
+RandomTalk_AfterDo{
+	ExTalkFlagInit
+}
+*/
+//******************************************************************************
+// ランダムトーク
+//******************************************************************************
+ランダムトーク通常	 : array
+{
+	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	// 注意！ここだけは <<' '>> (シングルクオート) で囲みます。
+	// ほかは <<" ">> (ダブルクオート) を使ってください。
+	// ランダムトークをたくさん書いてもスピードを落とさないための対策です。
+	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	_timearray = GETTIME()
+	if (Silence == 1){
+		TalkReading = 1
+		"\s[200]"
+
+		"\s[201]"
+
+		"\s[202]"
+	}
+	else{
+		/*
+		{//reading book
+			TalkReading = 1
+			"\s[200]"
+
+			"\s[201]"
+
+			"\s[202]"
+		}
+		*/
+		if (RSSTalk == 1){
+			PhysicsCheck
+		}
+
+		if (JapaneseTalk == 1){//日本語トーク
+
+			//時間限定トーク
+			/*
+			//深夜。
+			//これ→(0 <= _timearray[4] <= 4)はダメ！
+			//あくまで2項演算子なのでbool型と数値の比較になってしまう
+			//まだうまくいってない模様…
+			if ((0 <= _timearray[4]) && (_timearray <= 4)){
+				<<"
+				リサ０５：これくらいの時間だと、静かでいいよね
+				リサ０１：%(username)も夜の方が好き？
+				">>
+			}
+			*/
+
+
+
+			<<'
+			リサ１０５：I wonder if they\'d give you milk in there?
+			リサ１０５：Perhaps Looking-glass milk isn\'t good to drink ――
+			リサ１００：これは\"Through the Looking-Glass\"、つまり鏡の国のアリスに出てくる一節なんだけど、%(username)は鏡の世界のミルクはおいしいと思う？
+			本００：乳糖には光学異性体が存在し、α-ラクトースは甘い一方で、β-ラクトースは甘くない。
+			従って鏡の世界のミルクは甘くなく、Aliceの指摘は正しい。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：\"真空\"はLorentz不変だから慣性座標系にいる限りでは真空のままだけど、実は加速度系でみるとそれは真空じゃなくなってしまう。
+			リサ２００：つまり真空という概念は誰にでも共通なものではなく、観測者に依存する……
+			本００：これは\"Unruh effect\"と呼ばれる。
+			場の量子論において真空はエネルギーを持ち、また不変のものでもないことを示す例の一つ。
+			Black holeのHawking輻射は本質的にこれと同等の効果である。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ００：チェスのポーンはプロモーションでクイーンになれるよね？
+			リサ６７：ならポーンはみんな女の子なのかな？
+			本００：\"プロモーション(promotion)\"
+			チェスにおいて、最端列に進んだポーンはポーンとキング以外の駒に昇格する。
+			これをプロモーションと呼ぶ。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ５２：\"不思議の国のアリス\"のお茶会で三月ウサギが落ち着きのない言動をしていたのって、やっぱり……
+			リサ５３：\"Mad as a March hare\"だっけ……？
+			本００：\"Mad as a March hare\"
+			イギリスの慣用句。この季節は野ウサギの繁殖期の始まりである。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：自然科学は必ず実験に根拠を持つ原理を基盤とし、何らかの現象を予言できないといけない。
+			リサ２０１：これはすごく基本的なことだけど……たまに忘れている人もいる気がするよ。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０２：自然科学の理論を作るとき、時としてその理論の"美しさ"が重視されることがある。
+			リサ１０５：ここでいう美しさとは、少ない単純な原理から、豊かな法則や定理が導かれる、ということ。
+			リサ１０１：最小作用の原理と解析力学とか、だね。
+			本００：\"最小作用の原理\"
+			式で表すと\"δS = 0\"。この原理により古典物理学のあらゆる現象は全て記述される。
+			量子力学にこれを拡張したものが経路積分(path integral)である。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：この世界の根本原理が\"単純で美しいもの\"かどうかなんて、本当は保証なんてない。
+			リサ２０２：人間原理も、あるいは否定できないのかも……
+			本００：\"人間原理\"
+			\"Lagrangianに存在する各パラメータは実際はランダムに決定し、偶然現在の宇宙を構成するのが現在のパラメータだ\"とする主張。
+			この原理を採用すると、階層性問題などはそれを問う意味を成さなくなる。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ３０５：Rube Goldberg machineって知ってる？
+			リサ３００：これはちょっとしたことをするためだけなのに、非常に大掛かりな構造をした機械のこと。
+			リサ３０５：最近の理論物理で皮肉に使われることが多い……パラメータの大きさを決定するためだけに余剰次元を導入するとか、ね。
+			本００：\"Rube Goldberg Machine\"
+			Rube Goldberg(1883～1970)により風刺として描かれた、\"Something for Nothing\" という機械。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０５：公理論的場の量子論はいつになったら完成するんだろう……
+			本００：\"公理論的場の量子論\"
+			\"Wightmanの公理系\"を用いて、公理から場の量子論を構築する理論。
+			CPT定理や相関関数の因果律が成り立つことは示せたが、自由場しか定義できなかった。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ６７：AdS/CFT対応が見つかる前は、重力と素粒子の界隈はけっこう離れていた気がする。
+			リサ０１：こうした分野の垣根を越える発見は、既存の研究に新しい視点を与えるから面白いよね。
+			本００：\"AdS/CFT対応\"
+			Holography原理とも呼ばれる。d+1次元Anti-de-Sitter時空における古典重力作用による分配関数と、d次元Minkowski時空のCFT分配関数が一致するという予想。
+			\_a[https://arxiv.org/abs/hep-th/9711200]Juan Maldacenaによるこの論文\_aは理論物理における世界一位の引用数を誇る。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：Montgomery-Odlyzko予想によると、Random Matrixの固有値分布が、Riemann zeta関数の固有値間隔と一致する……
+			リサ２０２：……\0\s[201]どうにか物理的なモデルと対応できないかな？
+			本００：\"Random Matrix\"
+			行列の要素がガウス分布に従う直交かunitaryまたはsymplecticな行列のこと。
+			その固有値分布はWignerの半円則に従う。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０６：そういえば、Lorentz対称性を持つYang-Mills型のLagrangianからgauge原理を用いてgravitonの導出は不可能なことは知ってる？
+			リサ２０２：Weinberg-Witten theoremからの帰結なんだけど、この定理の証明はすごく初等的な事実しか使っていない、美しい証明だと思うよ。
+			本００：\"Weinberg-Witten theorem\"
+			主張は\"Lorentz covariantなカレントと電荷を持つspin 1/2以上のmassless粒子及び Lorentz covariantなエネルギー運動量テンソルを持つspin 1以上のmassless粒子は存在しない\"
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２００：Hawking radiationが発見されてから、量子論的なBlack Holeの研究も色々提案されてきてるよね。
+			リサ２０１：情報喪失問題とか、まだいろいろ問題はあるけど……
+			本００：\"情報喪失問題\"
+			Black holeはHawking輻射をするが、No hair theoremによりBlack holeのもととなった物質の情報は、そこから取り出せないとされる。
+			しかし量子的には時間発展はunitaryであり、これは可逆変換なので元の情報を再現できなくてはならないというパラドックス。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０２：Random MatrixのWignerの定理って、中心極大定理と関係あるんだっけ……？
+			本００：\"中心極大定理\"
+			等確率で起こる独立な現象ならば、その平均値と期待値のずれはGauss分布に収束するという定理。
+			熱平衡系の分布がGauss分布になるのはこれが理由である。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ１０１：リサージェンスって知ってる？
+			リサ１０２：これは摂動計算により発生した収束半径が0の級数、つまり漸近級数に意味を持たせることのできる方法だよ。
+			リサ１６５：ちなみにresurgenceは\"復活\"って意味。ちょっと洒落てるかも？
+			本００：\"リサージェンス\"
+			数学的にはBorel総和法と呼ばれる。1981年にEcalleによる\"Les fonctions resurgentes\"によって微分方程式の解法として定式化された。
+			物理においてはpath integralの非摂動論的定式化として応用されている。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０７：Navier-Stokes equationの一般解なんて本当に見つかるのかな……
+			本００：\"Navier-Stokes equation\"
+			流体方程式の一般形。非線形偏微分方程式で、これの解の存在性および正則性の証明がmillennium prize problemsとして知られている。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：Coleman-Weinberg potentialってCasimir energyとどう関係があるんだっけ？
+			リサ２００：どっちも真空のエネルギーだった気がするけど……
+			本００：\"Coleman-Weinberg potential\"
+			場の量子論における1-loopの量子補正を加えた有効作用のこと。これにより真空の対称性が量子的に破れることが知られている。
+			数学的には汎関数行列式の評価が問題となり、厳密に定義できない場合がある。これは真空エネルギーの発散の問題と関連している。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０５：Higgs機構がgauge場の質量項を説明するといっても、なぜHiggs場のポテンシャルがあの形なのかは謎のままだよね。
+			リサ００：通常のgauge原理からは出てこないし……
+			本００：\"Higgs場\"
+			Standard modelに存在する唯一のscalar場で、この場の真空がgauge対称性を破ることにより発生するNambu-Goldstone bosonを\"食べる\"ことによってgauge場は質量を獲得する。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：量子系では時間発展はunitaryなのに、どうして時間は非可逆になるんだろう？
+			リサ２０２：やっぱり確率過程が原因なのかな……
+			本００：\"unitary性\"
+			量子論におけるunitary性とは、その操作により状態ベクトルのノルムを変えないことを指す。
+			特に、unitary変換ならば必ず逆演算子が存在する。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０１：生成汎関数の時間を虚数にすると、統計力学の分配関数と等価になる……
+			リサ２００：これは時間とentropyの関係とどう関係があるのかな？
+			本００：量子系において時間を虚数時間, t=iτとし、適切な境界条件を課すことで虚時間を逆温度とする統計力学に移行することができる。
+			特に量子系の真空は熱統計系における平衡状態に対応する。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０１：path integralを最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
+			本００：P.A.M. Diracによる\"The Principles of Quantum Mechanics\", Chapter32 \"The action principle\"において、DiracはFeynmanより先に確率振幅がe^(iS)で与えられることを指摘している。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０３：\"Because of this kink, the bra can be infinite value\"……?
+			リサ２０４：確かに意味は分かるけど……これは……
+			本００：\"kink\"は物理において多価な解が発生する解のことであるが、"性的嗜好(性癖)"の意味もある。
+			\"bra\"はHilbert空間のベクトルのことであるが、一般には女性用の胸部下着のことを指す。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０３：\"Kinky exotic string\"……?
+			リサ２０４：もう……狙って書いてるよね、これ……
+			本００：\"kink\"は物理において多価な解が発生する解のことであるが、\"性的嗜好(性癖)\"の意味もある。
+			\"exotic string\"はstring理論において生じるbrane解の計量が多価となるものだが、\"風変わりな紐のような下着\"という意味もある。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０１：pseudo-differential operatorって知ってる？
+			リサ０２：1/2階微分とかも、Leibniz則を満たすように場合によっては作ることができるんだよ。
+			リサ６５：ちなみにxの1/2階微分は√(4x/π)。ちゃんと次数が1/2になってるね。
+			本００：\"pseudo-differential\"
+			分数階の場合はfractional-differentialとも呼ばれる。微分作用素のLaplace変換が冪になる性質を利用して定義される。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：Randall-Sundrum modelのもう一つの世界はどうなってるんだろう……
+			リサ２０２：エネルギースケールが異なるってことは、量子効果がもっと強い世界なのかな……
+			本００：\"Randall-Sundrum model\"
+			時空に5次元方向を導入し、我々の住んでいる世界とは異なるもう一つの4次元空間をbrane解として表した模型。
+			こうした余剰次元方向にもう一つの4次元世界があるというモデルはbrane-worldと呼ばれる。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０２：path-integralのlocalizationって物理的にはどういう状態なんだろう……
+			リサ２０２：量子揺らぎが全てキャンセルするってことなのかな……
+			本００：\"localization\"
+			path-integralが複数の古典配位(instanton)の足し上げになること。
+			Supersymmetryなどのnilpotentの性質を持つ対称性を使ってこの性質を与えることができる。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０５：リサージェンスのBorel singularityとinstanton解は本当に一対一対応しているのかな？
+			リサ０５：たしかに関数形は近いけど……
+			本００：\"Borel singularity\"
+			Borel tranformの際に生じる特異点のこと。この特異点の位置がinstanton解に対応するというのがリサージェンス理論の主張である。
+			両者は非摂動的な形をしており、いくつかの場合で一致することが示されている。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：fuzzy sphereみたいな系だと、粒子の位置ってどうやって指定すればいいんだろう……
+			本００：\"fuzzy sphere\"
+			非可換座標系における球面のこと。この場合座標は行列により表される。
+			非可換座標系に課したLie代数の構造とlarge N極限で生じる時空のmetricが対応することが知られている。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０１：2次元空間ではEinstein重力ではなく、dilaton重力じゃないと力が働かないって知ってる？
+			リサ０２：これはfundamental homotopy groupが2次元の時のみ特殊になるのと関係しているよ。
+			本００：\"homotopy\"
+			ループによって多様体を分類する時に使われる同値関係。
+			日常的に使われる\"トポロジー\"という言葉はこのhomotopyである場合が多い。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０１：Basel問題を解いたのはLeonhard Eulerだけど、当時の彼の解法は実はまだ厳密な証明ではなかったんだよ。
+			リサ０２：それでも既存の手法とは全く異なるうえに、直感的にも分かりやすい無限積の方法は当時の革命ともいえる手法だったみたいだね。
+			リサ０５：ちなみにもともとこの問題はBernoulli一家が取り組んでいた問題だったんだけど……
+			本００：\"Basel問題\"
+			\"Σ1/n^2の値を求めよ\"という問題。1644年に提唱され、1735年にLeonhard Eulerによって解かれた。
+			答えはπ^2/6。彼の証明は後年のWeierstrassによる無限積の定義が確立してから、ようやくwell-definedなものになる。
+			BaselはEulerとBernoulli一家の故郷でもある。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０１：素数定理とは、\"x以下の素数の数はx/logxに漸近する\"というもの。
+			リサ０１：たとえばx=10なら10/log10≒4.3で、10以下の素数の数は4だから確かに近似式になってるね。
+			本００：\"素数定理\"
+			素数分布に関する定理。漸近解が知られているが、厳密解は求まっていない。
+			Riemann ζ functionの自明でない零点分布を求めることと、この定理の完成は同値である。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ３６７：Schroedinger equationは線形なのに、どうして量子カオスが起きるんだろう？
+			リサ３０５：確率過程が関係しているのかな……
+			本００：\"量子カオス\"
+			量子論において状態ベクトルの時間発展は線形であるにも関わらず、系がカオスの振る舞いを示すことがある。
+			この起源は量子論のもつ確率過程が関係しているとされ、Langevin方程式などを応用した解析が行われている。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ００：Bourbakiって知ってる？
+			リサ３０５：公理論的に厳密な数学の教科書のシリーズを書いた人なんだけど……
+			リサ３６７：でも誰もその人に会ったことがなくて、顔も分からないみたい。一体誰なんだろう？
+			本００：\"Nicolas Bourbaki\"
+			\"数学原論(Elements de mathematique)\"の著者とされる人物。
+			その正体は複数の数学者によるペンネームであり、Bourbakiは架空の人物である。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ３０５：Anomalyの起源は何なんだろう……
+			リサ３０５：存在性を厳密に定義できるのかな……
+			本００：\"Anomaly\"
+			量子異常とも呼ばれる。古典論における対称性が量子論で破綻する現象を指す。
+			これが物理的に意味のあるものであるのか、理論の破綻が原因であるかの判定は難しい。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０５：どうして時空は4次元なんだろう……
+			リサ０５：10次元時空の方が自然なのに……
+			本００：\"Critical dimension\"
+			superstring theoryがLorentz対称性を維持したまま量子化されるには、時空の次元が10次元でなくてはならない。
+			従って理論を現象論的に定式化するには、余剰次元をコンパクト化する必要がある。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：SYK modelのgravity dualはdilation重力なのかな……
+			リサ２０２：ちゃんとAdS解を作ることはできるのかな？
+			本００：\"SYK model\"
+			Conformal対称性を持ち、AdS/CFT対応が成り立つとされる1次元場の量子論のモデル。
+			相互作用のRandom couplingのために、Green関数が厳密に定まるという性質を持つ。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０１：時間を逆行したいなら、光速を超えて運動できればいいんだけど……
+			リサ２０２：因果律と光速度が関連しているのって、言われてみると不思議だよね。
+			本００：\"光速度と因果律\"
+			光速を超えて動く系であれば、Lorentz変換を通して時間を逆行する系に移ることができる。
+			従って、そのような系では因果律が破綻する。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０５：量子論の解釈問題の解はCopenhagen解釈が主流だけど、まだ厳密には解決されていないんだよね……
+			リサ０５：Entanglement entropyと合わせて、何か実験的に検証できないのかな？
+			本００：\"解釈問題\"
+			量子論において、\"どうやって状態が決定するか\"に関する問題。
+			主流のCopenhagen解釈では、EPRパラドックスの問題がある。他の解釈には多世界解釈などがあるが、決着はついていない。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：CFTの積分測度によるLiouville actionとholography原理は関連しているのかな……
+			本００：\"Liouville action\"
+			LagrangianがWeyl対称性を持っていても、汎関数積分測度から余分な項が寄与する場合がある。
+			この項はあたかももとのLagrangianに重力項を加えた形になっており、この項をLiouville actionと呼ぶ。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ６７：四元数って使ったことある？
+			リサ００：あんまり応用例は見かけないよね……
+			やっぱり可換性がないからかな？
+			本００：\"四元数(quaternion)\"
+			複素数を拡張したもの。複素数は2次元平面の回転を表せるが、四元数は3次元空間の回転を表すことができる。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ５１：次元正則化って数学的には何をやってることに対応するんだろう……
+			リサ５１：普通の解析接続じゃないし……
+			本００：\"次元正則化(dimensional regularization)\"
+			場の量子論において発散積分を有限にするために、時空の次元を複素数にすること。
+			次元はもともと離散的に定義される値であるため、これは解析接続ではない。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２００：エルゴード仮説って、虚時間形式の場の理論と統計力学の関係から肯定的に証明できないのかな……
+			本００：\"エルゴード仮説\"
+			時間平均と統計平均が一致するという仮説。統計力学の原理である等重率の原理はこれを支持する原理である。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０１：Poincare予想の証明にはtopological invariantに関する定理ではなく、Ricci flowが使われたのは知ってる？
+			リサ０２：これは多様体の計量の極の位置を熱拡散方程式で表すというもので、\_a[https://arxiv.org/abs/math/0307245]証明\_aにもエントロピーや熱力学の法則が有効的に使われているよ。
+			本００：Poincare予想
+			1904年に提唱され、2006年にPerelmanによって証明された予想。
+			主張は\"3次元球面はコンパクトでhomotopy同値な3次元多様体と同相\"というもの。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：Lee-Yang zerosを使うと分配関数の零点と物理的な相転移点が対応付くけど……
+			リサ２００：Ising模型以外で零点分布はどうやったら見つかるのかな……
+			本００：\"Lee-Yang zeros\"
+			熱力学極限(large N極限)をとることで分配関数に生じる零点と熱力学関数の解析性に関する定理。
+			Ising模型については複素温度平面の単位円上に零点が分布することが知られている。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ１９９：Einstein方程式の定数項の問題か……
+			リサ１００：考えられる寄与は真空のエネルギーだけど、これは発散しちゃうし……
+			リサ１０５：宇宙の境界条件なんて検証できるのかな？
+			本００：\"Cosmological constant problem\"
+			現在の宇宙は加速膨張しているが、これを引き起こすにはEinstein方程式に定数項(Cosmological constant)が必要となる。
+			この起源は量子揺らぎによる真空のエネルギーとされるが、定式化はされていない。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０１：%(username)って楕円関数には詳しい？
+			リサ０５：一見無関係な整数論と解析学の話が関連付くのは、なんだか魔法みたいだよね……
+			本００：\"楕円関数\"
+			有理型の二重周期関数、つまりf(z+a)=f(z), f(z+b)=f(z)を満たす複素関数のこと。
+			Jaconiのθ関数を通して整数論に応用される。
+			\e%(TalkReading = 0)
+			'>>
+
+			}
+
+		if (EnglishTalk == 1){//English talking
+			<<'
+			リサ１０５：I wonder if they\'d give you milk in there?
+			リサ１０５：Perhaps Looking-glass milk isn\'t good to drink ――
+			リサ１００：You know, this phrase is quoted from \"Through the Looking-Glass\".
+			リサ１０１：%(username), do you think the milk of the mirror world is tasty?
+			=====
+			リサ０５：In fact, there is indeed an answer.
+			リサ００：What makes milk sweet is lactose, which has an optical isomer in its structure.
+			リサ００：α-lactose is sweet but β-lactose is not, even it\'s not easily digested.
+			リサ０２：Therefore, the answer is No. It seems Alice was right all along!
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：Vacuum state in QFT is Lorentz invariant. So the state can be changed under acceleration system.
+			リサ２００：It means vacuum is not universal object but depends on each observer.
+			リサ２０６：Isn\'t it interesting? In fact, massless particle can be emerged from the other vacuum.
+			本００：This phenomenon is called \"Unruh effect\".
+			It is an example to explain vacua in QFT have energy, even not invariant.
+			Hawking radiation of Black hole is essentially equivalent to the effect.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ００：Any pawn can be promoted to queen, right?
+			リサ６７：Then all pawns are girls...?
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ００：The reason why the March Hare had strange behavior in the tea party is from famous proverb,\"Mad as a March hare\".
+			リサ２５：March is beginning of the long breeding season of hare, so...well, you see what I mean?
+			リサ５２：I also get in the season……
+			リサ２５：……nothing. Never mind.
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：Natural science must be based on experiments and can be predictable certain phenomena.
+			リサ２０１：I wonder recent theorists, especially formal ones remember this philosophy?
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２００：I think recent theoretical science, especially physics is too abstractive to seize the essence.
+			リサ２０１：Such the lack of \"Anschaulichkeit\" ――vivid image, may cause fatal problems.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０２：People often emphasize the \"beautifullness\" when they make a theory of natural science.
+			リサ１０５：The \"beautifullness\" means, the theory need few simple assumptions but can predict plenty of law or theorems.
+			リサ１０１：For instance, analytical mechanics needs only the one prinsiple, principle of least action. It is a very beautiful theory, indeed.
+			====
+			リサ２０２：Though either the principles of the universe is simple or not, is not guaranteed at all.
+			リサ２０１：Therefore, modern physics are sometimes refered \"recreation of God\" as ironic.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ３０５：Do you know \"Rube Goldberg machine\"?
+			リサ３００：This machine has tremendous complex structure though intended to do trifles.
+			リサ３０５：Sometimes the machine is used a metaphor of recent theoretical physics...well, like to introduce extra dimensions just to determine parameters.
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ０５：Axiomatic quantum field theory still does not make a progress at all.
+			リサ０５：I\'m not sure when QFT is refurblished based on exact mathematics...
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２００：AdS/CFT correspondence is quite interesting...why black hole and QFT have such the relationship?
+			リサ２００：It\'s still a conjecture but this is a sort of revolution in physics. Not only nonperturbative calculation in both sides, it can be establish a new theory like non-equilibrium statistical mechanics.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０２：According to Montgomery-Odlyzko conjecture, the nontrivial zeros of the Riemann zeta function and the eigenvalues of Wigner matrices share the distribution.
+			リサ２０２：...\0\s[201]Can we apply the correspondance to any models in physics?
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０６：In fact, it\'s impossible to make a Lagrangian including graviton with Yang-Mills type gauge principle. Do you know it?
+			リサ２０２：Well, the proof is called Weinberg-Witten theorem. It\'s quite a simple proof but very strong, surprising fact.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ００：After the discovery of Hawking radiation, many scientists studying QFT also began a study of Black hole.
+			リサ０５：Like information loss problem, there\'re still a lot of problems though.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２０１：Time evolution is represented as an unitary operator in quantum mechanics but why the time is not reversal?
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０５：\"Chess is a foolish expedient for making idle people believe they are doing something very clever, when they are only wasting their time.\"
+			リサ０５：It is from George Bernard Shaw.
+			リサ０５：You could say that, \s[1]still I prefer playing chess though.
+			\e%(TalkReading = 0)
+			'>>
+
+
+		}
+	}
+}
+/*
+
+
+//SQ
+昔のお伽噺なんだけど…
+ある王国図書館の秘書長が
+
+DECUS ET TUTAMEN"って刻印が
+実は1ポンド硬貨の側面にも刻印されている。なかなかいいセンスだよね
+"STANDING ON THE SHOULDERS OF GIANTS"
+
+binky…は"ウサギが喜んで跳ねる"ことを意味する動詞。
+用法が限定的過ぎるような…
+
+
+\__qお菓子の名前\__qとして
+き、聞こえてたの？
+
+
+zulu timeはGMT
+
+If the theory doesn't provide
+
+
+ブルバキについて
+
+superstring theoryでは理論が無矛盾に成立するためには時空が10次元であることを要請する。
+これは時空の一部をコンパクト化することで解消されはするんだけど、その手続きには不自然なものが多い。
+物理学者の中には理論の美しさそのものを追求するあまり、我々の4次元の世界が存在することの方が間違っている、とまで言う人がいるよ
+
+
+
+fainting in coils
+painting in oils
+
+
+
+how things work
+
+*/
+
+
+/*
+	{//about studies
+		<<'
+		リサ５０：%(commuphysics_hard[RAND(ARRAYSIZE(commuphysics_hard))])に関する論文を読んでいるんだけど、ちょっと分からないところがあって。
+		リサ６７：%(username)はこの分野には詳しい？
+		'>>
+
+		<<'
+		リサ５０：昨日、変な夢を見たんだけど...
+		リサ５１：%(commusweets[RAND(ARRAYSIZE(commusweets))])と%(commuphysics_hard[RAND(ARRAYSIZE(commuphysics_hard))])の相関がどうとかだったかな。
+		リサ６７：......うーん。
+		'>>
+
+		<<'
+		\f[height,90%]研究の話\f[height,100%]\n
+		リサ００：同じものばかり研究していると、どうしても視野が狭くなってしまう。
+		リサ０２：だから、たまには普段と違うことをするのも大事だよ。
+		'>>
+
+		<<'
+		リサ５０：そういえば前に君、%(learnedmeishi[RAND(ARRAYSIZE(learnedmeishi))])がどうとかって言ってたよね。
+		リサ６７：結局どうなったの？
+		'>>
+	}
+
+	{//about this country
+			<<'
+			\0\s[02]この街の北にある古い城砦には行ってみた？
+			\0\s[02]あそこはBastilleって言って、今でもその一部が戦術拠点として使われているんだ。
+			本９９９９：\_q\f[name,font\Aramis Italic.ttf]\f[height,+3]\f[bold,1]Bastille\f[height,-3]\f[bold,0]
+			本９９９９待ち無し：\f[name,font\averia-serif-libre.italic.ttf]\f[height,+1]Although the citadel was constructed in the Middle Ages, parts of fortifications work even now.
+			本９９９９待ち無し：Especially, the ordinance department holds lots of artifacts which was not investigated yet therefore some researcher have paid attention to the fortress.\_q
+			'>>
+	}
+
+	{//routine
+		<<'
+		リサ０５：お腹すいた...
+		リサ０５：%(commusweets[RAND(ARRAYSIZE(commusweets))])食べたいな...
+		'>>
+
+		<<'
+		リサ０５：%(commufood[RAND(ARRAYSIZE(commufood))])が食べたい。
+		リサ０５：それも(大きな|ちょっと変わった)やつ。
+		'>>
+	}
+}
+*/
+
+/*
+//チェイントーク
+	<<'
+	リサ００：．．．
+	=====
+	リサ００：......
+	'>>
+*/
+
+/*ねた
+あらゆる自然科学の理論は、まず原理を決定することから始まる。
+原理とは、論理的な証明はできないが実験による検証が可能な仮定のことである。
+たとえば、解析力学は「最小作用の原理」という一つの原理からなる理論体系である。
+これにより投げたボールの軌道、惑星の運動といった古典的なあらゆる運動が記述される。
+また、数学において理論体系の根本となるものは公理であり、これは実験による検証を必要としない点で原理とは異なる。
+
+Any theories in Natural Science are based on "principle".
+A principle is a certain assumption which can be inspected by experiments but not in deduction.
+For example, Analytical Mechanics is constructed on only simple principle, called "principle of least action".
+cf.
+量子力学
+現在の量子論において不確定性原理は原理ではない。Bohrらが定式化した初期の量子論では原理であったが、後にDiracらにより完成した量子力学では、
+純粋なHilbert空間に作用するオペレータの非可換性から導くことのできる定理として扱われる。
+
+
+チェスについて
+チェスの起源はインドのチャトランガに由来する。
+これがシルクロードを通してペルシャからヨーロッパへ伝わったのがチェス、中国から日本に伝わったのが将棋である。
+その発展の歴史から、チェス用語には様々な言語に由来するものが存在する。
+たとえばCheckmateは英語、Zugzwangはドイツ語、en passantはフランス語、Giuoco Pianoはイタリア語に由来する。
+
+チェスにおいてf2,f7のマスは序盤の弱点である。故にここを急襲することで4手でチェックメイトにする手が存在する。
+1.e4 e5, 2.Bc4 Nc6, 3.Qf3 d6, 4.Qxf7#
+fool's mateと呼ばれる2手で終わる最短のメイト手順もここを狙ったものである：1.g4 e5, 2.f3 Qh4#
+
+チェスにおいて、序盤にポーンをあえて捨てて形勢を有利にする戦術をGambitと呼ぶ。
+たとえばKing's Gambit:1.e4 e5, 2.f4 exf4, 3.Nf3 Albin Counter Gambit: 1.d4 d5, 2.c4 e5, 3.dxe5 d4などが存在する。
+
+ピアノの調律は平均律が主に用いられるが、それ以外にもキリンベルガー律や純正律が存在する。
+
+場の量子論の枠組みにおいて、真空とは何もない空間を意味するものではなく、annihilation operatorを作用させて0となるFock spaceの状態ベクトルとして定義される。
+annihilation operatorは系のLagrangianにより定義される。このため、外場などにより系が変更を受けると真空も変化することになる。
+これは真空から粒子やエネルギーを取り出すことができることを意味する。これは実際に観測され、Hawking radiationやdynamical Casimir effectなどはこれに起因する効果である。
+
+Riemann予想とは、解析接続されたリーマンゼータ関数の自明でない零点の実部が1/2であるという予想である。
+ここで自明な零点とはΓ関数に由来する負の偶数のことである。
+場の量子論の枠組みでは、これは真空のエネルギーが0となる次元を求める問題と同値である。
+ほかにも超弦理論における自由エネルギーの臨界次元などとしてゼータ関数の零点は評価される。
+
+
+懐中時計
+
+オペラ
+
+%(usename)は旅をしたことはある？
+
+*/

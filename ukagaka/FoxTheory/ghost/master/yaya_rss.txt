@@ -1,0 +1,348 @@
+OnRSSRead
+{
+  "\![execute,rss-get,http://arxiv.org/rss/hep-th, --async=RSSdayo]"
+  //"\![execute,rss-get,http://arxiv.org/rss/hep-th]"
+}
+
+OnExecuteRSSComplete{
+  _RSSTitleold = IARRAY
+  RSSTitle = IARRAY
+  RSSURL = IARRAY
+  for _i = 0; _i<ARRAYSIZE(reference); _i++{
+    _sprss = SPLIT(reference[_i], CHR(1))
+    _RSSTitleold[_i] = RE_REPLACEEX(_sprss[0]," \(arXiv(.+)\)","")//まずarXivを除く
+    RSSTitle[_i] = RE_REPLACEEX(_RSSTitleold[_i],"\\","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
+    RSSURL[_i] = _sprss[1]
+  }
+  RSSarraymodifier
+  OnRSSView
+}
+
+OnExecuteRSSFailure{
+  <<"
+  リサ２０２：あれ……？
+  リサ２０１：おかしいな、エラーみたい。
+  ">>
+}
+RSSarraymodifier{
+  //SearchKeyword(配列)をふくむタイトルが上にくるようにする
+	_hitarray = IARRAY
+	_unhitarray = IARRAY
+  _hitarray_URL = IARRAY
+  _unhitarray_URL = IARRAY
+	_pick_num_hit = IARRAY
+	_pick_num_unhit = IARRAY
+
+	//正規表現の部分をorになるように文字列の結合ループさせる
+	//含むは^.*(%(_B[0])|%(_B[1])|%(_B[2])).*
+	//含まないは^(?!.*(%(_B[0])|%(_B[1])|%(_B[2]))).*$
+
+  //全部大文字、全部小文字、先頭のみ大文字も検索
+  /*_keyword = _argv[0]
+    _keyword_large = TOUPPER(_argv[0])
+    _keyword_small = TOLOWER(_argv[0])
+    _keyword_headlarge = TOUPPER(SUBSTR(_argv[0],0,1))+TOLOWER(SUBSTR(_argv[0],1,32))
+  */
+  //ここから正規表現+式中展開の文字列を作成(hit用)
+	_temp_hit = "^.*(%(SearchKeyword[0])|%(TOUPPER(SearchKeyword[0]))|%(TOLOWER(SearchKeyword[0]))|%(TOUPPER(SUBSTR(SearchKeyword[0],0,1))+TOLOWER(SUBSTR(SearchKeyword[0],1,32)))"
+	for _j = 1; _j < ARRAYSIZE(SearchKeyword); _j++{
+		_temp_hit = _temp_hit + "|%(SearchKeyword[_j])|%(TOUPPER(SearchKeyword[_j]))|%(TOLOWER(SearchKeyword[_j]))|%(TOUPPER(SUBSTR(SearchKeyword[_j],0,1))+TOLOWER(SUBSTR(SearchKeyword[_j],1,32)))"//正規表現＋式中展開
+	}
+	_temp_hit = _temp_hit + ").*"
+  //ここまで
+  //作成した文字列_temp_hitで検索して配列作成
+	_pick_num_hit = RE_ASEARCHEX(_temp_hit, RSSTitle)
+	for _i = 0; _i < ARRAYSIZE(_pick_num_hit); _i++{
+		_hitarray = (_hitarray, RSSTitle[_pick_num_hit[_i]])
+    _hitarray_URL = (_hitarray_URL, RSSURL[_pick_num_hit[_i]])
+	}
+
+  //ここから正規表現+式中展開の文字列を作成(unhit用)
+	_temp_unhit = "^(?!.*(%(SearchKeyword[0])|%(TOUPPER(SearchKeyword[0]))|%(TOLOWER(SearchKeyword[0]))|%(TOUPPER(SUBSTR(SearchKeyword[0],0,1))+TOLOWER(SUBSTR(SearchKeyword[0],1,32)))"
+	for _j = 1; _j < ARRAYSIZE(SearchKeyword); _j++{
+		_temp_unhit = _temp_unhit + "|%(SearchKeyword[_j])|%(TOUPPER(SearchKeyword[_j]))|%(TOLOWER(SearchKeyword[_j]))|%(TOUPPER(SUBSTR(SearchKeyword[_j],0,1))+TOLOWER(SUBSTR(SearchKeyword[_j],1,32)))"
+	}
+	_temp_unhit = _temp_unhit + ")).*$"
+  //ここまで
+  //作成した文字列_temp_unhitで検索して配列作成
+	_pick_num_unhit = RE_ASEARCHEX(_temp_unhit, RSSTitle)
+	for _i = 0; _i < ARRAYSIZE(_pick_num_unhit); _i++{
+		_unhitarray = (_unhitarray, RSSTitle[_pick_num_unhit[_i]])
+    _unhitarray_URL = (_unhitarray_URL, RSSURL[_pick_num_unhit[_i]])
+	}
+	RSSTitle = (_hitarray,_unhitarray)
+  RSSURL = (_hitarray_URL,_unhitarray_URL)
+}
+
+OnRSSView{
+  //ここを可変にしたい…→した
+  _RSSSize = ARRAYSIZE(RSSTitle)
+  PAGER.List = IARRAY
+  for _i = 0; _i < _RSSSize; _i++{
+    PAGER.List = (PAGER.List,"\__q[%(RSSURL[_i])]%(RSSTitle[_i])\__q")
+  }
+		//PAGER.Listに表示したいリストを入れる。
+		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[SearchPapersInput]Search\f[name,default]\f[bold,0]\__q\n'		//リストヘッダ
+		PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q\n'		//ページヘッダ
+		PAGER.Footer='\n\![*]\q[CLOSE,close]\f[bold,0]\_q'	//フッタ
+		PAGER.Marker='\![*]'					//項目マーカ
+		PAGER.Separator='|'						//項目名と選択肢名の区切り
+		PAGER.ShowNum=8			//リスト表示数
+		PAGER.PageNum=5							//ページ表示数（奇数で）
+		reference0=0							//初期表示時のおまじない
+		OnShowPage								//初期表示コール
+}
+
+PhysicsWords : array
+{
+  "Superstring"
+  "superstring"
+  "String"
+  "string"
+  "AdS/CFT"
+  "CFT"
+  "Conformal Field Theory"
+  "Conformal field theory"
+  "conformal field theory"
+  "zeta"
+  "Zeta"
+  "SYK"
+  "Random Matrix"
+  "Random matrix"
+  "random matrix"
+  "Random Matrices"
+  "Random matrices"
+  "random matrices"
+  "Matrix Model"
+  "Matrix model"
+  "matrix model"
+  "Vacuum Energy"
+  "Vacuum energy"
+  "vacuum energy"
+  "Casimir Energy"
+  "Casimir energy"
+  "casimir energy"
+  "Casimir Effect"
+  "Casimir effect"
+  "casimir effect"
+  "Casimir Force"
+  "Casimir force"
+  "casimir force"
+  "Entanglement"
+  "entanglement"
+  "Riemann Hypothesis"
+  "Riemann hypothesis"
+  "Quantum Field Theory"
+  "Quantum field theory"
+  "QFT"
+  "QCD"
+  "QED"
+  "Topological QFT"
+  "topological QFT"
+  "Resurgence"
+  "resurgence"
+  "Bootstrap"
+  "bootstrap"
+  "Lie Algebra"
+  "Lie algebra"
+  "Wilson Loop"
+  "Wilson loop"
+  "GUT"
+  "Grand Unified Theory"
+  "Renormalization"
+  "renormalization"
+  "Regularization"
+  "regularization"
+  "Yang-Mills Theory"
+  "Yang-Mills theory"
+  "Instanton"
+  "instanton"
+  "Black Hole"
+  "black hole"
+  "Quantum Gravity"
+  "Quantum gravity"
+  "quantum gravity"
+  "Fuzzy Sphere"
+  "Fuzzy sphere"
+  "fuzzy sphere"
+  "Supergravity"
+  "supergravity"
+  "Worm Hole"
+  "Worm hole"
+  "worm hole"
+}
+
+PhysicsCheck
+{
+  _hitrss = IARRAY
+  _hitrank = IARRAY
+  for _i = 0; _i < ARRAYSIZE(PhysicsWords); _i++{
+    for _j = 0; _j < ARRAYSIZE(RSSTitle); _j++{
+      if (RE_SEARCH(RSSTitle[_j],PhysicsWords[_i])){
+        _hitrss = (_hitrss,PhysicsWords[_i])
+        _hitrank = (_hitrank,_j)
+      }
+    }
+  }
+  _num = RAND(ARRAYSIZE(_hitrss))
+  TalkReading = 1
+  if (JapaneseTalk == 1){
+    if (_hitrss[_num] == "AdS/CFT"){
+      <<"
+      リサ２０１：\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]AdS/CFTの論文\_aか……
+      リサ２０１：原論文ってどれくらい引用されていたっけ……
+      ">>
+    }
+
+    /*
+    if ((_hitrss[_num] == "QFT") || (_hitrss[_num] == "Quantum Field Theory") || (_hitrss[_num] == "Quantum field theory") || (_hitrss[_num] == "quantum field theory")){
+    <<"
+    QFT
+    ">>
+    公理論的場の量子論
+    }
+    */
+    if ((_hitrss[_num] == "Random Matrix") || (_hitrss[_num] == "Random matrix") || (_hitrss[_num] == "random matrix") || (_hitrss[_num] == "Random Matrices") || (_hitrss[_num] == "Random matrices") || (_hitrss[_num] == "random matrices")){
+
+      <<"
+      リサ２００：ん、\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]Random Matrixの研究か\_a
+      リサ２０２：もともとRandom Matrixは複雑系の物性の計算で考案されていたものだけど、いまではString理論でもよく使われるようになったよね……
+      ">>
+    }
+
+    <<"
+    リサ２００：ん……\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])についての研究\_aか……
+    ">>
+
+    <<"
+    リサ２０１：「\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(RSSTitle[_hitrank[_num]])\_a」……？
+    リサ１００：%(username)って%(_hitrss[_num])には詳しい？
+    ">>
+
+    <<"
+    リサ２０１：これは……\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])\_aの研究かな……
+    リサ２０２：うーん……
+    ">>
+
+    <<"
+    リサ２００：\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])の論文\_a……？
+    リサ２０１：前に似たようなのを読んだような気がする……
+    ">>
+  }
+  if (EnglishTalk == 1){
+    if (_hitrss[_num] == "AdS/CFT"){
+      <<"
+      リサ２０１：\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]The one is about AdS/CFT\_a……
+      リサ２０１：How many the original paper is cited so far...?
+      ">>
+    }
+
+    /*
+    if ((_hitrss[_num] == "QFT") || (_hitrss[_num] == "Quantum Field Theory") || (_hitrss[_num] == "Quantum field theory") || (_hitrss[_num] == "quantum field theory")){
+    <<"
+    QFT
+    ">>
+    公理論的場の量子論
+    }
+    */
+    if ((_hitrss[_num] == "Random Matrix") || (_hitrss[_num] == "Random matrix") || (_hitrss[_num] == "random matrix") || (_hitrss[_num] == "Random Matrices") || (_hitrss[_num] == "Random matrices") || (_hitrss[_num] == "random matrices")){
+
+      <<"
+      リサ２００：This one is ...\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]about Random Matrix\_a
+      リサ２０２：Although the concept is from material science, it's getting used a lot in other areas like String theory nowadays.
+      ">>
+    }
+
+    <<"
+    リサ２００：Well, this paper is about \f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])\_a……
+    ">>
+
+    <<"
+    リサ２０１：「\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(RSSTitle[_hitrank[_num]])\_a」……？
+    リサ１００：%(username), are you familiar with %(_hitrss[_num])?
+    ">>
+
+    <<"
+    リサ２０１：Well, 「\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(RSSTitle[_hitrank[_num]])\_a」……？
+    リサ２０２：Let's me see...
+    ">>
+
+    <<"
+    リサ２００：Hmm, this study is related to \f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])\_a……
+    リサ２０１：Perhaps I've read similar one before?
+    ">>
+  }
+}
+//公理論的場の量子論
+
+
+//論文のキーワードを登録できるようにし、それで検索してストックするようにしておく
+
+ShowKeywordlist{
+  RSSarraymodifier//ここでRSSTitleの配列をソート
+  _show = "\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Keyword List\f[name,default]\f[bold,0]■　　\__q[DeleteALLKeyword][Alldelete]\__q\n"
+  for _i = 0; _i < ARRAYSIZE(SearchKeyword); _i++{
+    _show = _show + "\![*]%(SearchKeyword[_i])  \__q[OnDeleteKeyword, %(_i)][delete]\__q\n"
+  }
+  _show = _show + "\__q[AddKeyword][Add]\__q\n\n\n\__q[OnRSSView]戻る\__q\_q"
+  _show
+}
+AddKeyword{
+  "\![open,inputbox,OnAddKeyword,60000]"
+}
+OnAddKeyword{
+  _input = reference[0]
+  SearchKeyword = (SearchKeyword, _input)
+  ShowKeywordlist
+}
+OnDeleteKeyword{
+  _rank = reference[0]
+  _rank = TOINT(_rank)//これをしないと文字列だった
+  SearchKeyword[_rank] = IARRAY//これで要素削除
+  ShowKeywordlist
+}
+DeleteALLKeyword{
+  SearchKeyword = IARRAY
+  ShowKeywordlist
+}
+
+SearchPapersInput{
+  "\![open,inputbox,OnSearchPapers_Temp,60000]"
+}
+OnSearchPapers_Temp{
+  SearchPapers(reference[0])
+}
+SearchPapers{
+  _keyword = _argv[0]
+  _keyword_large = TOUPPER(_argv[0])
+  _keyword_small = TOLOWER(_argv[0])
+  _keyword_headlarge = TOUPPER(SUBSTR(_argv[0],0,1))+TOLOWER(SUBSTR(_argv[0],1,32))
+  SelectedPaper = IARRAY
+  SelectedPaperURL = IARRAY
+  for _i = 0; _i < ARRAYSIZE(RSSTitle); _i++{
+    //"^.*(%(_keyword)).*"
+    if (RE_SEARCH(RSSTitle[_i], _keyword+'|'+_keyword_small+'|'+_keyword_large+'|'+_keyword_headlarge)){
+      SelectedPaper = (RSSTitle[_i],SelectedPaper)
+      SelectedPaperURL = (RSSURL[_i],SelectedPaperURL)
+    }
+  }
+  if (ARRAYSIZE(SelectedPaper) == 0){
+    "\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Result\f[name,default]\f[bold,0]\n\_q"
+    --
+    "Not found\n\n\__q[OnRSSView]戻る\__q\_q"
+    --
+    SearchPapersInput
+  }
+  else{
+    _show = "\_q\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Result\f[name,default]\f[bold,0]\n"
+    for _i = 0; _i < ARRAYSIZE(SelectedPaper); _i++{
+      _show = _show + "\![*]\__q[%(SelectedPaperURL[_i])]%(SelectedPaper[_i])\__q\n"
+    }
+    _show = _show + "\__q[OnRSSView]戻る\__q\_q"
+    _show
+    --
+    FUNCTIONEX("SAORI\mciaudior.dll", "play")
+    --
+    SearchPapersInput
+  }
+}

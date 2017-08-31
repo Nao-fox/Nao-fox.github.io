@@ -1,0 +1,34 @@
+%windowsでTeXWorksでコンパイルするときはpLaTeX(ptex2pdf)を指定
+\documentclass[11pt]{report}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[top=20truemm, bottom=20truemm, left=20truemm, right=20truemm]{geometry}
+\usepackage{here}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{comment}
+
+
+\title{LaTeXてんぷら}
+\author{Sugoi Tempra}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{ちゃぷたー}
+チャプター開始。
+\section{せくしょん}
+普通の文章はこんな感じ。文中の数式は$A^2=B^2+C^2$こんなかんじ\\
+以下数式テスト
+
+\begin{equation}
+f(x)=x^2+b_n
+\end{equation}
+
+\begin{equation}
+\frac{\pi^2}{6}=\sum_{n=1}^{\infty}\frac{1}{n^2}
+\end{equation}
+
+
+\end{document}

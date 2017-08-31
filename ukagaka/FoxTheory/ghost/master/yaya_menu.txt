@@ -1,0 +1,403 @@
+//******************************************************************************
+// あやりりすEX　ゴーストテンプレート
+// メニュー処理辞書
+//******************************************************************************
+
+//REV.20121018-1：＠メニュー追加、＠設定に仕様変更
+
+//------------------------------------------------------------------------------
+//メインメニュー展開
+//------------------------------------------------------------------------------
+OpenMenu
+{
+	//メニュー：で実行する関数は引数を渡せない。(実質\qタグ)
+	if (EnglishMenu == 1){
+		if (PokeBust || TouchBust || Conversation_Sexual){
+			<<"
+			リサ３２４：……%(CHR(0xd,0xa))
+			">>
+
+			<<"
+			リサ３５３：……%(CHR(0xd,0xa))
+			">>
+		}
+		if (PokeCrotch || TouchCrotch || Conversation_Sexual){
+			<<"
+			リサ２４：……%(CHR(0xd,0xa))
+			">>
+
+			<<"
+			リサ５３：……%(CHR(0xd,0xa))
+			">>
+		}
+		--
+		<<"
+		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,default]\f[bold,0]
+		＠メニュー：Talk something｜Menu_AITALK
+		＠メニュー：Talk with her｜Conversation_Begin
+		＠メニュー：Pick up a recent paper(arXiv:hep-th)|PhysicsCheck
+		＠メニュー：Deep Learning(with Ghosts)|ShowLearnedWordsList
+		＠メニュー：Deep Learning(with wikipedia)|Word2Vec_begin_wiki
+		＠メニュー：Quiet please|ReadBookPlease
+		＠メニュー：Option|Option
+		＠改行多めメニュー：Cancel｜Menu_CANCEL
+		">>
+	}
+	else{
+		if (PokeBust || TouchBust || Conversation_Sexual){
+			<<"
+			リサ３２４：……%(CHR(0xd,0xa))
+			">>
+
+			<<"
+			リサ３５３：……%(CHR(0xd,0xa))
+			">>
+		}
+		if (PokeCrotch || TouchCrotch || Conversation_Sexual){
+			<<"
+			リサ２４：……%(CHR(0xd,0xa))
+			">>
+
+			<<"
+			リサ５３：……%(CHR(0xd,0xa))
+			">>
+		}
+		--
+		<<"
+		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,default]\f[bold,0]
+		＠半分メニュー：なにか話して｜Menu_AITALK
+		＠半分メニュー：会話する｜Conversation_Begin
+		＠メニュー：最近の研究pick up(arXiv:hep-th)|PhysicsCheck
+		＠メニュー：Deep Learning(with Ghosts)|ShowLearnedWordsList
+		＠メニュー：Deep Learning(with wikipedia)|Word2Vec_begin_wiki
+		＠メニュー：静かにしてて|ReadBookPlease
+		＠メニュー：Option|Option
+		＠改行多めメニュー：なんでもない｜Menu_CANCEL
+		">>
+	}
+	--
+	ExTalkFlagInit
+}
+Option{
+	if (EnglishMenu == 1){
+		<<"
+		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Option\f[name,font\cinecaption2.28.ttf]\f[bold,0]
+		＠メニュー：Change your name|TellName
+		＠メニュー：Talking frequency: %(TalkIntervalShow(aitalkinterval,Silence))|Menu_TALKINTERVAL
+		＠メニュー：Allow her to talk about papers(hep-th): %(FlagChecker_Show(RSSTalk))|OnRSSTalkCheck
+		＠メニュー：Enable to learn from other ghosts: %(FlagChecker_Show(GhostLearnCheck))|OtherGhostLearnCheck
+		＠メニュー：Allow her to talk in Japanese: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
+		＠メニュー：Allow her to talk in English: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
+		＠メニュー：Use English Menu: %(FlagChecker_Show(EnglishMenu))|OnEnglishMenuCheck
+		＠改行多めメニュー：Return|OpenMenu
+		">>
+	}
+	else{
+		<<"
+		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Option\f[name,font\cinecaption2.28.ttf]\f[bold,0]
+		＠メニュー：名前を覚えて|TellName
+		＠メニュー：ランダムトーク頻度変更: %(TalkIntervalShow(aitalkinterval,Silence))|Menu_TALKINTERVAL
+		＠メニュー：論文(hep-th)のトークを許可: %(FlagChecker_Show(RSSTalk))|OnRSSTalkCheck
+		＠メニュー：他のゴーストからの学習を許可: %(FlagChecker_Show(GhostLearnCheck))|OtherGhostLearnCheck
+		＠メニュー：日本語のトークを許可: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
+		＠メニュー：Allow her to talk in English: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
+		＠メニュー：Use English Menu: %(FlagChecker_Show(EnglishMenu))|OnEnglishMenuCheck
+		＠改行多めメニュー：戻る|OpenMenu
+		">>
+	}
+
+}
+TellName{
+	if (EnglishMenu == 1){
+		<<"
+		……？
+		(Please write your name)
+		">>
+	}
+	else{
+		<<"
+		……？
+		(名前を入力してください)
+		">>
+	}
+
+	--
+	<<"
+	\![open,inputbox,OnTellName,0]
+	">>
+}
+OnTellName{
+	username = reference[0]
+	if (EnglishMenu == 1){
+		<<"
+		(Your name has been changed: %(username))
+		">>
+	}
+	else{
+		<<"
+		(名前を変更しました: %(username))
+		">>
+	}
+}
+Developtest{
+	<<"
+	＠メニュー：形態素解析テスト｜TestJuman
+	＠メニュー：あにめ|Animetest
+	＠メニュー：フラグチェッカ|Flagchecker
+	＠メニュー：学習+マルコフ連鎖|Markov_Test
+	＠メニュー：ディープラーニング(wikipedia)テスト|Word2Vec_begin_wiki
+	＠メニュー：ディープラーニング(from text)テスト|Word2Vec_begin_text
+	＠メニュー：分かち書き|Wakati_Mecab
+	＠メニュー：おん|おん
+	＠メニュー：おふ|おふ
+	＠メニュー：初回起動だったはず|初回起動だったはず
+	＠改行多めメニュー：戻る|OpenMenu
+	">>
+	//＠メニュー：つつきコマンド変更|PokeChange
+}
+おん{
+	"Onにするよ\![set,otherghosttalk,true]"
+}
+おふ{
+	"Offにするよ\![set,otherghosttalk,false]"
+}
+
+
+
+RendouTest{
+	<<"
+	リ００：てすと%(CHR(0xd,0xa))
+	">>
+	--
+	OpenMenu
+}
+
+Flagchecker{
+	<<"
+	＠メニュー：フラグ表示(一部)|ShowFlag
+	＠メニュー：つつきコマンド変更|PokeChange
+	＠メニュー：本読んでて|ReadBookPlease
+	＠改行多めメニュー：戻る|OpenMenu
+	">>
+}
+ReadBookPlease{
+	Silence = 1
+	TalkReading = 1
+	if (TouchBust||PokeBust||TouchCrotch||PokeCrotch){
+		<<"
+		リサ２０９：……本を読んでる間に変なところ触らないでよ？
+		">>
+
+		<<"
+		リサ２０４：……変なところ触らないでよ？
+		">>
+
+		<<"
+		リサ２０９：……変なことしないでね？
+		">>
+	}
+	else{
+		<<"
+		\0\s[200]
+		">>
+
+		<<"
+		\0\s[201]
+		">>
+
+		<<"
+		\0\s[202]
+		">>
+	}
+}
+
+Animetest{
+	<<"
+	あ\f[height,20]あ\c[char,1]\f[height,16]あ\c[char,1]\f[height,12]あ\c[char,1]\f[height,8]あ
+	">>
+}
+
+//------------------------------------------------------------------------------
+//メニュー選択タイムアウト
+//------------------------------------------------------------------------------
+/*
+OnChoiceTimeout
+{
+	<<"
+	リサ００：......？
+	">>
+}
+*/
+//******************************************************************************
+//各項目の処理内容
+//******************************************************************************
+
+//---- 何か話して
+Menu_AITALK
+{
+	//---- 明示的にAIトーク開始を指示
+	Silence = 0
+	aitalkinterval = 300
+	"\![raise,OnAITalk]"
+}
+
+//---- さっきの話は
+Menu_LASTTALK
+{
+	//前のトークになにかある(＝文字列の長さが0ではない）時はそれを喋る
+	if ( STRLEN(SHIORI3FW.LastAITalk) > 0 ) {
+		SHIORI3FW.LastAITalk
+	}
+	else {
+		<<"
+		リサ０３：……さっきって？
+		">>
+	}
+}
+
+//---- トーク頻度の調整
+Menu_TALKINTERVAL
+{
+	if (EnglishMenu == 1){
+		<<"
+		リサ００：...？
+		＠メニュー：Frequently｜Menu_TALKFREQUENT
+		＠メニュー：Normal｜Menu_TALKNORMAL
+		＠メニュー：Little｜Menu_TALKPOOR
+		＠メニュー：Silent｜Menu_TALKNONE
+		＠改行多めメニュー：Return｜Option
+		">>
+	}
+	else{
+		<<"
+		リサ００：...？
+		＠メニュー：多め｜Menu_TALKFREQUENT
+		＠メニュー：ふつう｜Menu_TALKNORMAL
+		＠メニュー：少なめ｜Menu_TALKPOOR
+		＠メニュー：集中したい｜Menu_TALKNONE
+		＠改行多めメニュー：戻る｜Option
+		">>
+	}
+}
+
+
+/*
+//---- 名前覚えて
+Menu_TELLNAME
+{
+	名前入力起動('メニュー')
+}
+
+//「メニュー」の部分を変えれば、他の反応にできます。
+//たとえば初回起動時に名前を聞きたい場合は、初回起動反応に「名前入力起動('初回')」と書いてみるとか。
+
+名前入力開くメニュー
+{
+	\![set,choicetimeout,10000000]
+	<<"
+	名前を入力してください。
+	">>
+}
+
+名前入力空欄メニュー
+{
+	if 名前入力空欄カウント <= 1 {
+		<<"
+		リサ０４：名前変える気じゃなかったっけ？
+		">>
+	}
+	else {
+		<<"
+		リサ０４：……まだ？
+		">>
+	}
+}
+
+名前入力敬称メニュー
+{
+	<<"
+	リサ０４：敬称はなしでって言ったはずなんだけどな？
+	">>
+}
+
+名前入力終了メニュー
+{
+	<<"
+	リサ１５：わかった。（ユーザー）ね。
+	">>
+}
+*/
+
+//---- 他のゴーストと話す
+Menu_GHOSTCOMSTART
+{
+	他に話しかける
+}
+
+//---- キャンセルされた
+Menu_CANCEL
+{
+
+}
+
+//フラグを使ったトーク頻度管理
+
+//トーク頻度
+Menu_TALKFREQUENT
+{
+	Silence = 0
+	//---- 頻繁に話す(30秒間隔)
+	aitalkinterval = 30
+	--
+	Option
+}
+
+Menu_TALKNORMAL
+{
+	Silence = 0
+	//---- ふつうに話す(3分間隔)
+	aitalkinterval = 180
+	--
+	Option
+}
+
+Menu_TALKPOOR
+{
+	Silence = 0
+	//---- 静かに話す(5分間隔)
+	aitalkinterval = 300
+	--
+	Option
+}
+
+Menu_TALKNONE
+{
+	//---- 話さない
+	//aitalkinterval = 0
+	Silence = 1
+	--
+	Option
+}
+
+TalkIntervalShow{
+	_interval = _argv[0]
+	_silence = _argv[1]
+
+	if (_silence == 1){
+		"silent"
+	}
+	else{
+		if (_interval == 30){
+			"frequently"
+		}
+		elseif (_interval == 180){
+			"normal"
+		}
+		elseif (_interval == 300){
+			"little"
+		}
+		else{
+			"？"
+		}
+	}
+}

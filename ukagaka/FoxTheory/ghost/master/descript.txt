@@ -1,0 +1,15 @@
+charset,Shift_JIS
+
+craftmanw,Nao
+
+name,FoxTheory
+type,ghost
+
+sakura.name,ƒŠƒT
+kero.name,book
+
+sstp.allowunspecifiedsend,1
+
+icon,icon.ico
+
+shiori,yaya.dll

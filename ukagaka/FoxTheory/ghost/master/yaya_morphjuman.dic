@@ -1,0 +1,102 @@
+//カテゴリ: +これで使う
+Morph_Juman_Category : array
+{
+  "人工物-食べ物"
+  "人工物-衣類"
+  "人工物-乗り物"
+  "人工物-金銭"
+  "人工物-その他"
+  "人"
+  "組織・団体"
+  "動物-部位"//手、足…
+  "植物-部位"//葉、根…
+  "動物"
+  "植物"
+  "自然物"//石、岩…
+  "場所-施設部位"//天井、床…
+  "場所-施設"//ビル、公園…
+  "場所-自然"//山、海…
+  "場所-機能"//上、下…
+  "場所-その他"
+  "抽象物"
+  "形・模様"
+  "色"
+  "数量"
+  "時間"
+}
+
+Morph_Juman_Domain : array
+{
+  "文化・芸術"//映画、音楽
+  "レクリエーション"//観光、花火、カジノ
+  "スポーツ"
+  "健康・医学"
+  "家庭・暮らし"
+  "料理・食事"
+  "交通"//駅、道路、アクセル…
+  "教育・学習"
+  "科学・技術"
+  "ビジネス"
+  "メディア"
+  "政治"
+}
+Morph_Juman_Wikipedia : array
+{
+  "Wikipediaリダイレクト:"
+  "Wikipedia上位語:"
+}
+Morph_Juman_Other : array
+{
+  "地名:国"
+  "人名:外国"
+  "人名:日本"
+}
+
+//解析したい文を渡して(_argv[0])形態素、基本形、品詞、意味の配列を返す
+Morph_Juman3{
+  _result = FUNCTIONEX("SAORI\proxy.dll","openpipe.exe","juman\\juman.exe",_argv[0])
+  //これは改行文字\nで区切られている。まずこれでsplitして配列にする
+  _result_rank = SPLIT(_result,"\n")
+  _result_rank_number = ARRAYSIZE(_result_rank)
+
+  _output = ""
+  for _k = 0; _k < _result_rank_number; _k++{
+    _input = _result_rank[_k]
+    if (_input[0," "] != "@"){
+      _output = _output + _input[0," "]+";"+_input[1," "]+";"+_input[2," "]+";"+_input[3," "]+";"+_input[5," "]+";"
+      for _i = 0; _i < ARRAYSIZE(Morph_Juman_Category); _i++{
+        if (RE_SEARCH(_input, "カテゴリ:"+Morph_Juman_Category[_i]+"( |.$)")){
+          _output = _output + Morph_Juman_Category[_i]+","
+        }
+      }
+      for _i = 0; _i < ARRAYSIZE(Morph_Juman_Domain); _i++{
+        if (RE_SEARCH(_input, "ドメイン:"+Morph_Juman_Domain[_i])){
+          _output = _output + Morph_Juman_Domain[_i]+","
+        }
+      }
+      for _i = 0; _i < ARRAYSIZE(Morph_Juman_Other); _i++{
+        if (RE_SEARCH(_input, Morph_Juman_Other[_i])){
+          _output = _output + Morph_Juman_Other[_i]+","
+        }
+      }
+      for _i = 0; _i < ARRAYSIZE(Morph_Juman_Wikipedia); _i++{
+        if (RE_SEARCH(_input, Morph_Juman_Wikipedia[_i])){
+          _output = _output + "Wikiリダイレクト:"+ERASE(_input[1,"Wikipediaリダイレクト:"],-1,1)+"Wiki上位語:"+ERASE(_input[1,"Wikipedia上位語:"],-1,1)
+        }
+      }
+      _output = _output + "\n"
+    }
+  }
+  _output
+}
+
+
+Morph_Juman_Original{
+  FUNCTIONEX("SAORI\proxy.dll","openpipe.exe","juman\\juman.exe",_argv[0])
+}
+OnMorph_Juman_test{
+  Morph_Juman_Original(reference0)
+}
+TestJuman{
+    '\![open,inputbox,OnMorph_Juman_test,option = noclose]'
+}

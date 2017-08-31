@@ -1,0 +1,10 @@
+//引数の文字列からさくらスクリプトを除いて返す関数
+EraseSakuraScript{
+  _input = _argv[0]
+  /*
+  大抵のさくらスクリプトは\半角文字で]a,n,qで終わる?
+  */
+  RE_REPLACEEX(_input, "\\([\x20-\x7E]+)(\]|[0-9]|a|n|q)$","")
+}
+//SHIORI3FW.RemoveAllTagsで既に作られてた
+//さくらスクリプト除去()でもOK

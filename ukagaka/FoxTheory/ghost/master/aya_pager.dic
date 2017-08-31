@@ -1,0 +1,92 @@
+//*****************************************************************************
+//	OnShowPage
+//	ページャ用独自イベント
+//	ref.0	表示するリストの先頭のインデックス
+//	PAGER. で始まる変数に設定を入れて呼ぶ
+//	ページングされると再度OnShowPageを呼ぶ
+//*****************************************************************************
+OnShowPage{
+	//音声再生。音を出すかはフラグ管理しておく
+	//今はここで書いておくけど初期化ってどこですればいいのやら
+	//追記：aya_lilith.dicで初期化処理
+
+	_list =PAGER.List
+	_start=TOINT(reference0)
+	_end  =_start+PAGER.ShowNum
+	_max  =ARRAYSIZE(_list)
+
+	//リスト作成
+	_showlist=''
+	for _i=_start ; _i<_end ; _i++ {
+		if  _i > _max - 1 {
+			break
+		}
+		_key=_list[_i][0,PAGER.Separator]
+		_val=_list[_i][1,PAGER.Separator]
+		//_showlist+="%(PAGER.Marker)\q[%(_key),%(_val)]\n"
+		//SSP2.00.15以降なら以下のようにすればマーカーも押せる
+		_showlist+="\__q[%(_val)]%(PAGER.Marker)%(_key)\__q\n"
+	}
+
+	//nowpageは０はじまり
+	//maxpageはページ個数でなくインデックス
+	_nowpage  =TOINT(_start / PAGER.ShowNum)
+	_startpage=_nowpage-TOINT(PAGER.PageNum/2)
+	_maxpage  =CEIL(_max/PAGER.ShowNum) - 1	//インデックスなので-1
+
+	_prevstr=''
+	_nextstr=''
+
+	//さらに前のページはあるか？
+	if _startpage < 0 {
+		_startpage=0
+		_prevstr='< '
+	}else{
+		_prevpage=_nowpage-PAGER.PageNum
+		if _prevpage < 0 {
+			_prevpage=0
+		}
+		_prevstart=_prevpage * PAGER.ShowNum
+		_prevstr="\f[bold,true]\q[<,OnShowPage,%(_prevstart)]\f[bold,false] "
+	}
+
+
+	//さらに後のページはあるか？
+	_endpage=_startpage+PAGER.PageNum-1	//インデックスなので-1
+	if _endpage >= _maxpage {
+		_endpage=_maxpage
+		_nextstr='> '
+	}else{
+		_nextpage=_nowpage+PAGER.PageNum
+		if _nextpage >= _maxpage {
+			_nextpage=_maxpage
+		}
+		_nextstart=_nextpage * PAGER.ShowNum
+		_nextstr="\f[bold,true]\q[>,OnShowPage,%(_nextstart)]\f[bold,false] "
+	}
+
+
+	//ページリスト作成
+	_pagelist=''
+	for _i=_startpage ; _i<=_endpage ; _i++ {
+		//インデックスなので <=
+		_pagestr=''
+		if _i < 10 {
+			_pagestr='0'+TOSTR(_i+1)	//0はじまり->1はじまり
+		}else{
+			_pagestr=TOSTR(_i+1)	//0はじまり->1はじまり
+		}
+
+		if _i == _nowpage {
+			_pagelist+=_pagestr+' '
+		}else{
+			_pagestart=_i*PAGER.ShowNum
+			_pagelist+="\f[bold,true]\q[%(_pagestr),OnShowPage,%(_pagestart)]\f[bold,false] "
+		}
+	}
+
+	//最終出力
+	"%(PAGER.ShowHeader)%(_showlist)%(PAGER.PageHeader)%(_prevstr)%(_pagelist)%(_nextstr)%(PAGER.Footer)"
+	--
+	FUNCTIONEX("SAORI\mciaudior.dll", "play")
+}

@@ -1,0 +1,347 @@
+//形態素解析結果のファイルを受け取って、１個ずつずれたprefix_numの数だけの配列を作る
+Morph_List_Create_Mecab{
+  _filename = _argv[0]//形態素解析が格納されたファイル
+  _prefixnum = _argv[1]//prefix(とsuffix)の数。3を想定。だけど動かない
+  _outputfilename = _argv[2]//出力ファイル名。相対パスなのでwords\test.txtとか
+  //いちいちこれを読み込むのもあれなのでグローバル配列も作っておくか…
+  //_prefixnum = 2
+  FCHARSET("Shift-JIS")//単語ファイルの文字コードを指定。UTF-8ならここを変える
+  _flag = FOPEN(_filename, "r")
+
+  _morphlist = IARRAY
+
+  _spword = IARRAY
+  while 1 {
+    _word = FREAD(_filename)
+    if (_word == -1){
+      break
+    }
+    _spword = SPLIT(_word, CHR(9))
+    _morphlist = (_morphlist, _spword[0]+"::"+_spword[3])//これで品詞::品詞情報。jumanなら意味も載せれる
+  }
+  FCLOSE(_filename)
+
+  //グローバル配列も作っておく
+  MorphListMecab = IARRAY
+  FCHARSET("Shift-JIS")
+  _flag2 = FOPEN(_outputfilename, "w")
+  for _i = 0; _i < ARRAYSIZE(_morphlist); _i++{
+    /*
+    for _j = 0; _j < _prefixnum-1; _j++{
+      _plus = _plus + _morphlist[_i+_j]+";;"
+    }
+    _plus = _plus + _morphlist[_i+_prefixnum-1]
+    MorphListMecab = (MorphListMecab, _plus)
+    */
+    _morphlistresult = _morphlist[_i]+";;"+_morphlist[_i+1]+";;"+_morphlist[_i+2]
+    /*
+    if (RE_SEARCH(_morphlistresult, 'EOS') == 0){
+      MorphListMecab = (MorphListMecab, _morphlistresult)
+      FWRITE(_outputfilename,_morphlist[_i]+";;"+_morphlist[_i+1]+";;"+_morphlist[_i+2])
+    }
+    */
+    MorphListMecab = (MorphListMecab, _morphlistresult)
+    FWRITE(_outputfilename,_morphlist[_i]+";;"+_morphlist[_i+1]+";;"+_morphlist[_i+2])
+    //ここでnのループを入れてN-1回_plus = _plus+_morphlist[_i+n]+";;"
+    //でループ後に_plus = _plus + _morphlist[_i+N]でいけるはず
+    //FWRITE("words\testmorph.txt",_morphlist[_i]+_morphlist[_i+1]+_morphlist[_i+2])
+  }
+  FCLOSE(_outputfilename)
+}
+
+Morph_Mecab{
+  <<"
+  リサ００：何か聞きたいことでもある？
+  ">>
+  --
+  '\![open,inputbox,OnMorph_Mecab,-1]'
+}
+
+//これはOn...で会話後にreferenceの文字列を渡して引数のファイルに追加書き込みして出力
+OnMorph_Mecab{
+  _outputfilename = _argv[0]//書き込み先。相対パスを想定
+  _Rank = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'parse',reference[0])
+  FCHARSET("Shift_JIS")
+  _FLAG = FOPEN(_outputfilename, "a")
+  for _i = 0; _i < _Rank; _i++{
+    /*
+    if (RE_SEARCH(valueex[_i], 'EOS') == 0){
+    */
+    FWRITE(_outputfilename, valueex[_i])
+    //EOSありでやってたけど、チャットだと頻繁に登場しすぎて文章が短くなっちゃう
+    //追記、最後にEOSがきたときにbreakでって……これ最初に書いてたような
+  }
+  FCLOSE(_outputfilename)
+}
+//これはファイルを渡して出力
+OnMorph_Mecab2{
+  _filename = _argv[0]//novel.txtを受け取ることを想定
+  _outputfilename = _argv[1]//"words\mecabmorph.txt"などを想定
+
+  FCHARSET("Shift-JIS")//単語ファイルの文字コードを指定。UTF-8ならここを変える
+  _flag = FOPEN(_filename, "r")//novelを開く
+  _FLAG = FOPEN(_outputfilename, "w")//書き込み用のファイルを開く。aで追加書き込み
+  _noveltext = ""
+  while 1 {
+    _noveltext = FREAD(_filename)
+    if (_noveltext == -1){
+      break
+    }
+    _Rank = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'parse',_noveltext)
+    FCHARSET("Shift_JIS")
+    for _i = 0; _i < _Rank; _i++{
+      FWRITE(_outputfilename, valueex[_i])//EOSとかは除く
+    }
+  }
+  FCLOSE(_filename)
+  FCLOSE(_outputfilename)
+}
+
+//用意したテキストデータから読み込みテスト
+MorphReadTest{
+  OnMorph_Mecab2("words\mine.txt","words\mecabmorph.txt")//mecabmorphに書き込まれる
+  Morph_List_Create_Mecab("words\mecabmorph.txt",3,"words\testmorph.txt")
+  //第二引数、いけるとおもったんだけど…今は意味ない
+  //第3引数が出力
+}
+
+MakeMarkovChain{
+  _ChainArray = IARRAY
+  _resulttext = ""
+  //_argv[0]は受け取るファイル
+  //_argv[1]がテキスト(0)か配列(1)か指定。配列の場合は_argv[0]は使ってない(globalなので)
+  if (_argv[1] == 0){
+    _filename = _argv[0]//形態素が3つ並んだファイルを想定
+    FCHARSET("Shift-JIS")//単語ファイルの文字コードを指定。UTF-8ならここを変える
+    _flag = FOPEN(_filename, "r")
+
+    while 1 {
+      _word = FREAD(_filename)//いま_wordは3つならんだやつ
+      if (_word == -1){
+        break
+      }
+      _ChainArray = (_ChainArray, _word)
+    }
+    FCLOSE(_filename)
+    //これで_chainfirstからランダムに選べば良い
+    //_chainfirst[RAND(ARRAYSIZE(_chainfirst))]
+    //これの最後の奴から出発
+    //連鎖を考えるときは品詞情報を残したやつでやった方が精度が上がるはず。つまりこれ
+  }
+  //以下配列を受け取った…というか第二引数が1のとき
+  else{
+    _ChainArray = (_ChainArray, MorphListMecab)//これが使う配列
+  }
+  _chainfirst = IARRAY
+  //開始形態素の決定
+  _spword = ""
+
+  for _i = 0; _i < ARRAYSIZE(_ChainArray); _i++{
+    _spword = _ChainArray[_i]
+    if (RE_SEARCH(_spword[0,";;"][1,"::"],'助詞|助動詞|記号|動詞-非自立') != 1){
+    /*
+    _spword = SPLIT(_ChainArray[_i], ";;")//_ChainArray[_i][0,";;"]
+    if (RE_SEARCH(_spword[0], 'EOS|::助詞|::助動詞|::記号|::動詞-非自立') == 0){
+        //助詞、助動詞、記号は除く
+    if (RE_SEARCH(_ChainArray[_i][0,";;"][1,"::"],'　|EOS|動詞|助詞|助動詞|記号|動詞-非自立') == 0){
+    */
+      _chainfirst = (_chainfirst, _ChainArray[_i])
+    }
+  }
+  //これで_chainfirstからランダムに選べば良い
+  //_chainfirst[RAND(ARRAYSIZE(_chainfirst))]
+  //これの最後の奴から出発
+  //連鎖を考えるときは品詞情報を残したやつでやった方が精度が上がるはず。つまりこれ
+
+  _candidate = IARRAY
+  _chainfirstrand = _chainfirst[RAND(ARRAYSIZE(_chainfirst))]
+  _resulttext = MorphCombine(_chainfirstrand,1)
+  /*
+  if (RE_SEARCH(_chainfirstrand, 'EOS|。|!|！|\?|？|…')){
+    //終わり文字があるとき
+    for _A = 0; _A < 3; _A++{//prefixnum変えれたらここもかえる
+      if (_chainfirstrand[_A,";;"][0,"::"] == "EOS"){
+        for _B = 0; _B < _A; _B++{
+          _resulttext = _resulttext + _chainfirstrand[_B,";;"][0,"::"]
+        }
+        break
+      }
+      elseif (RE_SEARCH(_chainfirstrand[_A,";;"][0,"::"], '。|!|！|\?|？|…')){
+        for _B = 0; _B <= _A; _B++{
+          _resulttext = _resulttext + _chainfirstrand[_B,";;"][0,"::"]
+        }
+        break
+      }
+    }
+    _resulttext//chainせずに終わる場合
+  }
+
+  else{
+  */
+  _counter = 0//長すぎにならないようにカウンターをセット
+  while 1 {
+    //candidate連鎖処理
+    for _i = 0; _i < ARRAYSIZE(_ChainArray); _i++{
+      if (MorphShowOrder(_chainfirstrand, 2) == MorphShowOrder(_ChainArray[_i], 0)){
+        _candidate = (_candidate, _ChainArray[_i+1])//こうしないと文字がダブる
+      }
+    }
+    _candidaterand = _candidate[RAND(ARRAYSIZE(_candidate))]//候補決定
+    //chainのend処理
+    if (_counter > 10){//長すぎの時
+      break;
+    }
+    elseif (RE_SEARCH(_candidaterand[2,";;"][0,"::"],'EOS|。|!|！|\?|？|…') || ""){
+      _resulttext = _resulttext + MorphCombine(_candidaterand,1)
+      break;
+    }
+    else{
+      _resulttext = _resulttext + MorphCombine(_candidaterand,1)
+      _chainfirstrand = _candidaterand
+      _counter = _counter + 1
+    }
+  }
+  _resulttext
+}
+
+      /*
+      elseif (RE_SEARCH(_candidaterand, 'EOS|。|!|！|\?|？|…')){
+        //終わり文字があるとき
+        for _A = 0; _A < 3; _A++{//prefixnum変えれたらここもかえる
+          if (_candidaterand[_A,";;"][0,"::"] == "EOS"){
+            for _B = 0; _B < _A; _B++{
+              _resulttext = _resulttext + _candidaterand[_B,";;"][0,"::"]
+            }
+            break
+          }
+          elseif (RE_SEARCH(_candidaterand[_A,";;"][0,"::"], '。|!|！|\?|？|…')){
+            for _B = 0; _B < _A; _B++{
+              _resulttext = _resulttext + _candidaterand[_B+1,";;"][0,"::"]
+            }
+            break
+          }
+        }
+        break;
+      }
+      else{
+        _resulttext = _resulttext + MorphCombine(_candidaterand,0)
+        _chainfirstrand = _candidaterand
+        _counter = _counter + 1
+      }
+    }
+    */
+
+
+//以下は品詞::品詞情報;;品詞2::品詞情報...を品詞の結合にするやつ
+MorphCombine{
+  _input = _argv[0]
+  _EOSflag = _argv[1]//EOSを除いて結合するかどうか
+  _result = ""
+  _RANK = RE_GREP(_argv[0],";;") + 1
+  if (_EOSflag == 1){
+    for _i = 0; _i < _RANK; _i++{
+      if (_input[_i,";;"][0,"::"] != "EOS"){
+        _result = _result + _input[_i,";;"][0,"::"]
+      }
+    }
+  }
+  else{
+    for _i = 0; _i < _RANK; _i++{
+      _result = _result + _input[_i,";;"][0,"::"]
+    }
+  }
+  _result
+}
+
+MorphShowOrder{
+  _input = _argv[0]
+  _where = _argv[1]
+
+  _outputword1 = IARRAY//まず各形態素(3つ)を切る
+  //_outputword = RE_SPLIT(_chainfirstword, ";(.+),")
+  _outputword1 = SPLIT(_input, ";;")
+  _outputword1[_where]
+}
+
+/*
+まとめ
+
+OnMorph_Mecab2("words\mine.txt","words\output.txt")//outputに書き込まれる
+Morph_List_Create_Mecab("words\mecabmorph.txt",3,"outputlist.txt")
+の実行でMakeMarkovChain用のテキストファイルが作られる
+
+MakeMarkovChainは3行prefixのテキストを受け取って(第二引数を1にするとMorphListMecab)連鎖する
+MakeMarkovChain("words\outputlist.txt")
+*/
+//対話型学習を作ってみる
+OnMorph_Talk_Learn{
+  if (reference[0] != ""){
+    OnMorph_Mecab("words\fortalk.txt")
+    Morph_List_Create_Mecab("words\fortalk.txt",3,"words\fortalkoutputlist.txt")
+    MakeMarkovChain("words\fortalkoutputlist.txt")
+  }
+}
+
+Markov_Test{
+  '\![open,inputbox,OnMorph_Talk_Learn,60000,--option=noclose]'
+}
+
+
+
+//これはファイルを渡して出力
+//Pythonとの連携用。文字コードに注意
+Morph_Mecab_3{
+  _filename = _argv[0]//novel.txtを受け取ることを想定
+  _outputfilename = _argv[1]//"words\mecabmorph.txt"などを想定
+
+  FCHARSET(1)//単語ファイルの文字コードを指定。0はShift-JIS、1はUTF-8
+  //追記：FOPENの時にしか文字コードは指定できないっぽい
+  //FWRITEとFOPENで別にはできないのかー
+  _flag = FOPEN(_filename, "r")//novelを開く
+  _FLAG = FOPEN(_outputfilename, "w")//書き込み用のファイルを開く。aで追加書き込み
+  _noveltext = ""
+  while 1 {
+    _noveltext = FREAD(_filename)
+    if (_noveltext == -1){
+      break
+    }
+    _Rank = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'parse',_noveltext)
+    for _i = 0; _i < _Rank; _i++{
+      if (RE_SEARCH(valueex[_i][3,CHR(9)],"形容詞-自立|名詞-(一般|固有名詞|サ変接続|形容詞語幹|形容動詞語幹|自立)") && valueex[_i][0,CHR(9)] != "EOS" && (RE_SEARCH(valueex[_i][2,CHR(9)],"する|いる|なる|ない|何|[!-/:-@[-`{-~]|［＃「|＃") != 1) && (RE_SEARCH(valueex[_i][3,CHR(9)],"非自立|代名詞") != 1) ){
+        //するとかこれとかを取り除いたほうが良いが、文脈が崩れる恐れがあるのでpython側で除く？
+        //動詞を消すというのも一つの手ではある　　動詞-自立|
+        FWRITE2(_outputfilename, valueex[_i][2,CHR(9)]+" ")
+        //自動で改行が入るので改行を半角スペースにする->FWRITE2
+        //文章の終わりは改行で。
+        //。か改行コード(EOS単体だった場合。つまりサイズ1)は改行コードに
+      }
+      elseif (valueex[_i][0,CHR(9)] == "。" || valueex[0][0,CHR(9)] == "EOS"){
+        FWRITE2(_outputfilename, CHR(0x0a))//改行の出力になる
+      }
+    }
+  }
+  FCLOSE(_filename)
+  FCLOSE(_outputfilename)
+}
+//これは引数に直接テキストデータを渡して学習
+Morph_Mecab_4{
+  _input = _argv[0]//文字列を受け取ることを想定
+  _outputfilename = _argv[1]//"words\mecabmorph.txt"などを想定
+
+  FCHARSET(1)//単語ファイルの文字コードを指定。0はShift-JIS、1はUTF-8
+  //追記：FOPENの時にしか文字コードは指定できないっぽい
+  //FWRITEとFOPENで別にはできないのかー
+  _FLAG = FOPEN(_outputfilename, "a")//書き込み用のファイルを開く。aで追加書き込み
+  _Rank = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'parse',_input)
+  for _i = 0; _i < _Rank; _i++{
+    if (RE_SEARCH(valueex[_i][3,CHR(9)],"形容詞-自立|名詞-(一般|固有名詞|サ変接続|形容詞語幹|形容動詞語幹|自立)") && valueex[_i][0,CHR(9)] != "EOS" && (RE_SEARCH(valueex[_i][2,CHR(9)],"する|いる|なる|ない|何|[!-/:-@[-`{-~]|［＃「|＃|ー") != 1) && (RE_SEARCH(valueex[_i][3,CHR(9)],"非自立|代名詞") != 1) ){
+      //するとかこれとかを取り除いたほうが良いが、文脈が崩れる恐れがあるのでpython側で除く？
+      //動詞を消すというのも一つの手ではある　　動詞-自立|
+      FWRITE2(_outputfilename, valueex[_i][2,CHR(9)]+" ")//EOSとかは除く
+      //自動で改行が入るので改行を半角スペースにする->FWRITE2なら改行入らない
+      //文章の終わりは改行で表す
+
+    }
+  }
+  FCLOSE(_outputfilename)
+}

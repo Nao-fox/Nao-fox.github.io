@@ -1,0 +1,636 @@
+charset,Shift_JIS
+
+descript
+{
+	version,1
+}
+
+////////////////////////////////////////////////////
+// ベース指定
+////////////////////////////////////////////////////
+
+// 正面・通常
+surface0-9,20-29,31-37,50-53,61-71,99
+{
+	element0,base,surface1000.png,0,0
+}
+
+// 正面・本読み
+surface100-109,120-129,131-137,150-153,161-171,199
+{
+	element0,base,surface1001.png,0,0
+}
+
+// 正面・胸抑え
+surface300-309,320-329,331-337,350-353,361-371,399
+{
+	element0,base,surface1002.png,0,0
+}
+
+
+// 横・本読み
+surface200-209
+{
+	element0,base,surface2000.png,0,0
+}
+
+
+////////////////////////////////////////////////////
+// 当たり判定
+////////////////////////////////////////////////////
+
+// 正面・共通
+surface.append0-9,20-29,31-37,50-53,61-71,99,100-109,120-129,131-137,150-153,161-171,199,300-309,320-329,331-337,350-353,361-371,399
+{
+	collisionex1,Ear,polygon,97,81,118,81,133,59,100,15
+	collisionex2,Ear,polygon,152,58,165,81,190,81,180,15
+	collisionex3,Head,polygon,97,81,118,81,133,59,152,58,165,81,190,81,190,108,97,108
+	collisionex4,Hair,polygon,169,108,169,142,156,152,164,159,162,170,164,175,183,168,211,161,191,108
+	collisionex5,Hair,polygon,118,108,118,140,134,153,121,159,125,179,115,175,105,167,78,165,97,108
+	collision6,118,130,133,141,Cheek
+	collision7,153,130,169,141,Cheek
+	collision8,135,142,152,152,Mouth
+	collisionex9,Neck,polygon,133,152,144,157,155,152,155,160,143,166,133,160
+	collision10,130,315,160,337,Crotch
+	collisionex11,Leg,polygon,188,375,180,413,186,425,154,425,154,375,
+	collisionex12,Leg,polygon,137,376,131,425,100,425,100,372,107,376
+	collisionex13,Skirt,polygon,100,372,107,376,189,376,211,361,204,352,197,337,86,337,79,363
+	collisionex14,Tail,polygon,154,376,154,391,144,376
+	collisionex15,Tail,polygon,182,408,189,376,210,361,258,324,275,324,263,419,193,419
+}
+
+// 正面・通常
+surface.append0-9,20-29,31-37,50-53,61-71,99
+{
+	collisionex16,Bust,polygon,119,206,106,200,106,190,179,190,179,237,125,237
+	collisionex17,Hand,polygon,94,234,104,223,107,228,98,240,123,229,127,248,123,256,116,262,95,262,90,252
+	collisionex18,Hand,polygon,196,322,216,316,219,342,204,352,195,330
+	collisionex19,Belly,polygon,127,248,133,272,122,279,102,266,96,291,189,291,182,250
+	collisionex20,Book,polygon,119,206,79,183,68,189,78,231,94,234,104,223,107,228,98,240,123,229
+	collisionex21,Book,polygon,127,248,123,256,116,262,95,262,122,279,133,272
+}
+
+// 正面・本読み
+surface.append100-109,120-129,131-137,150-153,161-171,199
+{
+	collisionex16,Hand,polygon,161,258,148,261,137,255,129,245,133,229,142,236,154,237,150,229,149,220,167,235,168,254
+	collisionex17,Hand,polygon,134,225,148,220,159,211,161,198,139,189,131,194,126,207,128,221
+	collisionex18,Belly,polygon,161,258,148,261,137,255,98,255,92,291,195,291,184,255
+	collisionex19,Book,polygon,156,194,174,185,183,185,187,229,164,231,148,219,160,212,161,197
+	collisionex20,Book,polygon,131,194,111,185,101,185,101,224,125,209
+	collisionex21,Book,polygon,134,254,112,247,130,234,129,245
+	collisionex22,Book,polygon,133,229,142,236,154,237,150,229,149,220
+}
+
+// 正面・胸抑え
+surface.append300-309,320-329,331-337,350-353,361-371,399
+{
+	collisionex16,Hand,polygon,145,203,132,193,115,193,111,201,117,220,141,224,145,213
+	collisionex17,Hand,polygon,145,203,155,194,164,200,168,217
+	collisionex18,Belly,polygon,116,251,122,269,168,250,185,261,191,292,96,292,104,255
+	collisionex19,Book,polygon,145,203,132,193,115,193,111,201,117,220,106,226,96,191,147,173,155,194
+	collisionex20,Book,polygon,116,251,122,269,168,250,145,234
+}
+
+// 横・本読み
+surface.append200-209
+{
+	collisionex1,Ear,polygon,130,61,121,67,104,87,99,29,106,20
+	collisionex2,Ear,polygon,195,87,154,87,146,56,146,16,159,16
+	collisionex3,Head,polygon,130,61,121,67,104,87,94,87,94,109,195,109,195,87,154,87,146,56
+	collisionex4,Hair,polygon,157,109,157,158,153,176,168,167,216,160,195,109
+	collisionex5,Hair,polygon,131,151,114,142,110,109,95,109,94,162,114,172,122,155
+	collision6,114,132,122,142,Cheek
+	collision7,140,132,154,142,Cheek
+	collision8,128,142,141,150,Mouth
+	collisionex9,Neck,polygon,141,154,147,161,156,156,156,146
+	collisionex10,Hand,polygon,141,154,147,161,130,183,120,181,113,173,121,154,137,149
+	collisionex11,Hand,polygon,97,240,94,231,101,222,117,236,120,236,115,226,115,221,131,239,133,257,113,254
+	collisionex12,Belly,polygon,99,292,201,292,194,255,183,259,133,261,132,258,105,252
+	collision13,132,315,162,337,Crotch
+	collisionex14,Tail,polygon,200,372,188,377,188,388,213,424,269,424,269,352,214,350,213,359
+	collisionex15,Leg,polygon,157,380,188,377,186,412,194,424,104,424,108,374,138,380
+	collisionex16,Skirt,polygon,200,372,188,377,157,380,139,380,108,374,76,374,76,336,215,336,213,360
+	collisionex17,Book,polygon,97,240,94,231,101,222,117,236,120,236,115,226,115,221,128,236,173,235,162,191,150,189,111,197,84,180,68,179,79,231
+}
+
+////////////////////////////////////////////////////
+// アニメーション
+////////////////////////////////////////////////////
+
+// まばたき
+
+// 正面-素
+surface.append0-3,6,63-64,67,100-103,106,163-164,167,300-303,306,342,363-364,367
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1501,0-800,110,90
+	animation0.pattern1,overlay,1500,50,110,90
+	animation0.pattern2,overlay,1501,50,110,90
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 正面-素半
+surface.append4,51,61,65,99,104,151,161,165,199,304,351,361,365,399
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1500,0-800,110,90
+	animation0.pattern1,overlay,-1,100,0,0
+}
+
+// 正面-逸
+surface.append50,150,350
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1504,0-800,110,90
+	animation0.pattern1,overlay,1500,50,110,90
+	animation0.pattern2,overlay,1504,50,110,90
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 正面-照
+surface.append20-23,26,33-34,37,120-123,126,133-134,137,320-323,326,333-334,337
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1503,0-800,110,90
+	animation0.pattern1,overlay,1502,50,110,90
+	animation0.pattern2,overlay,1503,50,110,90
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 正面-照半
+surface.append24,31,35,53,124,131,135,153,324,331,335,353
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1502,0-800,110,90
+	animation0.pattern1,overlay,-1,100,0,0
+}
+
+// 正面-照逸
+surface.append52,152,352
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1505,0-800,110,90
+	animation0.pattern1,overlay,1502,50,110,90
+	animation0.pattern2,overlay,1505,50,110,90
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 横-素
+surface.append200
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,2501,0-800,105,95
+	animation0.pattern1,overlay,2500,50,105,95
+	animation0.pattern2,overlay,2501,50,105,95
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 横-目線こちら
+surface.append206
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,2504,0-800,105,95
+	animation0.pattern1,overlay,2500,50,105,95
+	animation0.pattern2,overlay,2504,50,105,95
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 横-素半
+surface.append201,207
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,2500,0-800,105,95
+	animation0.pattern1,overlay,-1,100,0,0
+}
+
+// 横-照
+surface.append203
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,2503,0-800,105,95
+	animation0.pattern1,overlay,2502,50,105,95
+	animation0.pattern2,overlay,2503,50,105,95
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 横-照目線こちら
+surface.append208
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,2505,0-800,105,95
+	animation0.pattern1,overlay,2502,50,105,95
+	animation0.pattern2,overlay,2505,50,105,95
+	animation0.pattern3,overlay,-1,50,0,0
+}
+
+// 横-照半
+surface.append204,209
+{
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,2502,0-800,105,95
+	animation0.pattern1,overlay,-1,100,0,0
+}
+
+////////////////////////////////////////////////////
+// 差分指定
+////////////////////////////////////////////////////
+
+surface.append0,100,300
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1300.png,110,90
+}
+
+surface.append1,101,301
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1301.png,110,90
+}
+
+surface.append2,102,302
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1302.png,110,90
+}
+
+surface.append3,103,303
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1201.png,110,90
+	element3,overlay,surface1303.png,110,90
+}
+
+surface.append4,104,304
+{
+	element1,overlay,surface1102.png,110,90
+	element2,overlay,surface1202.png,110,90
+	element3,overlay,surface1304.png,110,90
+}
+
+surface.append5,105,305
+{
+	element1,overlay,surface1103.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1300.png,110,90
+}
+
+surface.append6,106,306
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1201.png,110,90
+	element3,overlay,surface1305.png,110,90
+}
+
+surface.append7,107,307
+{
+	element1,overlay,surface1104.png,110,90
+	element2,overlay,surface1201.png,110,90
+	element3,overlay,surface1306.png,110,90
+}
+
+surface.append8,108,308
+{
+	element1,overlay,surface1105.png,110,90
+	element2,overlay,surface1201.png,110,90
+	element3,overlay,surface1304.png,110,90
+}
+
+surface.append9,109,309
+{
+	element1,overlay,surface1106.png,110,90
+	element2,overlay,surface1203.png,110,90
+	element3,overlay,surface1307.png,110,90
+}
+
+surface.append20,120,320
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1300.png,110,90
+}
+
+surface.append21,121,321
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1301.png,110,90
+}
+
+surface.append22,122,322
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1302.png,110,90
+}
+
+surface.append23,123,323
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1201.png,110,90
+	element4,overlay,surface1303.png,110,90
+}
+
+surface.append24,124,324
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1102.png,110,90
+	element3,overlay,surface1202.png,110,90
+	element4,overlay,surface1304.png,110,90
+}
+
+surface.append25,125,325
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1103.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1300.png,110,90
+}
+
+surface.append26,126,326
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1201.png,110,90
+	element4,overlay,surface1305.png,110,90
+}
+
+surface.append27,127,327
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1104.png,110,90
+	element3,overlay,surface1201.png,110,90
+	element4,overlay,surface1306.png,110,90
+}
+
+surface.append28,128,328
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1105.png,110,90
+	element3,overlay,surface1201.png,110,90
+	element4,overlay,surface1304.png,110,90
+}
+
+surface.append29,129,329
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1106.png,110,90
+	element3,overlay,surface1203.png,110,90
+	element4,overlay,surface1307.png,110,90
+}
+
+surface.append31,131,331
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1102.png,110,90
+	element3,overlay,surface1202.png,110,90
+	element4,overlay,surface1305.png,110,90
+}
+
+surface.append32,132,332
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1106.png,110,90
+	element3,overlay,surface1203.png,110,90
+	element4,overlay,surface1304.png,110,90
+}
+
+surface.append33,133,333
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1202.png,110,90
+	element4,overlay,surface1301.png,110,90
+}
+
+surface.append34,134,334
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1202.png,110,90
+	element4,overlay,surface1302.png,110,90
+}
+
+surface.append35,135,335
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1102.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1301.png,110,90
+}
+
+surface.append36,136,336
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1106.png,110,90
+	element3,overlay,surface1201.png,110,90
+	element4,overlay,surface1305.png,110,90
+}
+
+surface.append37,137,337
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1100.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1308.png,110,90
+}
+
+surface.append50,150,350
+{
+	element2,overlay,surface1107.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1300.png,110,90
+}
+
+surface.append51,151,351
+{
+	element2,overlay,surface1108.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1300.png,110,90
+}
+
+surface.append52,152,352
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1107.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1300.png,110,90
+}
+
+surface.append53,153,353
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1108.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1300.png,110,90
+}
+
+surface.append61,161,361
+{
+	element1,overlay,surface1102.png,110,90
+	element2,overlay,surface1202.png,110,90
+	element3,overlay,surface1305.png,110,90
+}
+
+surface.append62,162,362
+{
+	element1,overlay,surface1106.png,110,90
+	element2,overlay,surface1203.png,110,90
+	element3,overlay,surface1304.png,110,90
+}
+
+surface.append63,163,363
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1202.png,110,90
+	element3,overlay,surface1301.png,110,90
+}
+
+surface.append64,164,364
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1202.png,110,90
+	element3,overlay,surface1302.png,110,90
+}
+
+surface.append65,165,365
+{
+	element1,overlay,surface1102.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1301.png,110,90
+}
+
+surface.append66,166,366
+{
+	element1,overlay,surface1106.png,110,90
+	element2,overlay,surface1201.png,110,90
+	element3,overlay,surface1305.png,110,90
+}
+
+surface.append67,167,367
+{
+	element1,overlay,surface1100.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1308.png,110,90
+}
+
+surface.append68,168,368
+{
+	element1,overlay,surface1109.png,110,90
+	element2,overlay,surface1204.png,110,90
+	element3,overlay,surface1304.png,110,90
+}
+
+surface.append69,169,369
+{
+	element1,overlay,surface1109.png,110,90
+	element2,overlay,surface1204.png,110,90
+	element3,overlay,surface1305.png,110,90
+}
+
+surface.append70,170,370
+{
+	element1,overlay,surface1110.png,110,90
+	element2,overlay,surface1204.png,110,90
+	element3,overlay,surface1304.png,110,90
+}
+
+surface.append71,171,371
+{
+	element1,overlay,surface1110.png,110,90
+	element2,overlay,surface1204.png,110,90
+	element3,overlay,surface1305.png,110,90
+}
+
+surface.append99,199,399
+{
+	element1,overlay,surface1101.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1300.png,110,90
+}
+
+surface.append200
+{
+	element1,overlay,surface2100.png,105,95
+	element2,overlay,surface2200.png,105,95
+	element3,overlay,surface2300.png,105,95
+}
+
+surface.append201
+{
+	element1,overlay,surface2101.png,105,95
+	element2,overlay,surface2200.png,105,95
+	element3,overlay,surface2300.png,105,95
+}
+
+surface.append202
+{
+	element1,overlay,surface2102.png,105,95
+	element2,overlay,surface2200.png,105,95
+	element3,overlay,surface2300.png,105,95
+}
+
+surface.append203
+{
+	element1,overlay,surface2400.png,105,95
+	element2,overlay,surface2100.png,105,95
+	element3,overlay,surface2200.png,105,95
+	element4,overlay,surface2300.png,105,95
+}
+
+surface.append204
+{
+	element1,overlay,surface2400.png,105,95
+	element2,overlay,surface2101.png,105,95
+	element3,overlay,surface2200.png,105,95
+	element4,overlay,surface2300.png,105,95
+}
+
+surface.append205
+{
+	element1,overlay,surface2400.png,105,95
+	element2,overlay,surface2102.png,105,95
+	element3,overlay,surface2200.png,105,95
+	element4,overlay,surface2300.png,105,95
+}
+
+surface.append206
+{
+	element1,overlay,surface2103.png,105,95
+	element2,overlay,surface2200.png,105,95
+	element3,overlay,surface2300.png,105,95
+}
+
+surface.append207
+{
+	element1,overlay,surface2104.png,105,95
+	element2,overlay,surface2201.png,105,95
+	element3,overlay,surface2300.png,105,95
+}
+
+surface.append208
+{
+	element1,overlay,surface2400.png,105,95
+	element2,overlay,surface2103.png,105,95
+	element3,overlay,surface2200.png,105,95
+	element4,overlay,surface2300.png,105,95
+}
+
+surface.append209
+{
+	element1,overlay,surface2400.png,105,95
+	element2,overlay,surface2104.png,105,95
+	element3,overlay,surface2201.png,105,95
+	element4,overlay,surface2300.png,105,95
+}
+surface9999
+{
+	element0,base,surface10.png,0,0
+}

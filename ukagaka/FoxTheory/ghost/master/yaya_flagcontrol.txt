@@ -1,0 +1,242 @@
+//フラグ(グローバル変数)の初期化を行う関数
+
+//起動時に実行される関数(OnSystemLoad.なんちゃらは全て起動時に実行される)
+OnSystemLoad.FlagInit{
+  /*
+  JapaneseTalk = 1
+  EnglishTalk = 1
+  EnglishMenu = 0
+  */
+  TouchFlagInit
+  PokeFlagInit
+  ExTalkFlagInit
+  Violence = 0
+  FUNCTIONEX("SAORI\mciaudior.dll", "load", "..\bgm\page10.mp3")
+  UsedCommunicate  =IARRAY
+}
+
+FlagChecker_Show{
+	_flag = _argv[0]
+	if (_flag == 0){
+		"×"
+	}
+	else{
+		"〇"
+	}
+}
+
+OnRSSTalkCheck{
+  if (RSSTalk == 0){
+    RSSTalk = 1
+  }
+  else{
+    RSSTalk = 0
+  }
+  --
+  Option
+}
+
+OnEnglishTalkCheck{
+  if (EnglishTalk == 0){
+    EnglishTalk = 1
+  }
+  else{
+    EnglishTalk = 0
+  }
+  --
+  Option
+}
+
+OnJapaneseTalkCheck{
+  if (JapaneseTalk == 0){
+    JapaneseTalk = 1
+  }
+  else{
+    JapaneseTalk = 0
+  }
+  --
+  Option
+}
+
+OnEnglishMenuCheck{
+  if (EnglishMenu == 0){
+    EnglishMenu = 1
+  }
+  else{
+    EnglishMenu = 0
+  }
+  --
+  Option
+}
+
+//ゴースト学習用フラグ
+//最後に出力確定子+Optionとすると上手く動作しない
+//あやりりすが悪さしてるっぽい？→%(CHR(0xd,0xa))入れたら動く
+OtherGhostLearnCheck{
+	if (GhostLearnCheck == 0){
+		GhostLearnCheck = 1
+    <<"
+    \![set,otherghosttalk,true]%(CHR(0xd,0xa))
+    ">>
+	}
+	else{
+		GhostLearnCheck = 0
+    <<"
+    \![set,otherghosttalk,false]%(CHR(0xd,0xa))
+    ">>
+	}
+  --
+  Option
+}
+
+//触り(撫で)反応用
+TouchFlagInit{
+  TouchHead = 0
+  TouchHair = 0
+  TouchEar = 0
+  TouchCheek = 0
+  TouchMouth = 0
+  TouchNeck = 0
+  TouchBust = 0
+  TouchHand = 0
+  TouchBelly = 0
+  TouchCrotch = 0
+  TouchTail = 0
+  TouchLeg = 0
+  TouchSkirt = 0
+  TouchBook = 0
+}
+
+//つつき反応
+PokeFlagInit{
+  PokeHead = 0
+  PokeHair = 0
+  PokeEar = 0
+  PokeCheek = 0
+  PokeMouth = 0
+  PokeNeck = 0
+  PokeBust = 0
+  PokeHand = 0
+  PokeBelly = 0
+  PokeCrotch = 0
+  PokeTail = 0
+  PokeLeg = 0
+  PokeSkirt = 0
+  PokeBook = 0
+}
+
+PokeChange{
+  if (Violence == 0){
+    PokeFlagInit
+    TouchFlagInit
+    Violence = 1
+  }
+  else{
+    Violence = 0
+  }
+  <<"
+  Violenceフラグ:%(Violence)
+  ">>
+}
+
+AllTouchFlagCount{
+  AllTouchHead = AllTouchHead + TouchHead
+  AllTouchHair = AllTouchHair + TouchHair
+  AllTouchEar = AllTouchEar + TouchEar
+  AllTouchCheek = AllTouchCheek + TouchCheek
+  AllTouchMouth = AllTouchMouth + TouchMouth
+  AllTouchNeck = AllTouchNeck + TouchNeck
+  AllTouchBust = AllTouchBust + TouchBust
+  AllTouchHand = AllTouchHand + TouchHand
+  AllTouchBelly = AllTouchBelly + TouchBelly
+  AllTouchCrotch = AllTouchCrotc + TouchCrotch
+  AllTouchTail = AllTouchTail + TouchTail
+  AllTouchLeg = AllTouchLeg + TouchLeg
+  AllTouchSkirt = AllTouchSkirt + TouchSkirt
+  AllTouchBook = AllTouchBook + TouchBook
+}
+
+AllPokeFlagCount{
+  AllPokeHead = AllPokeHead + PokeHead
+  AllPokeHair = AllPokeHair + PokeHair
+  AllPokeEar = AllPokeEar + PokeEar
+  AllPokeCheek = AllPokeCheek + PokeCheek
+  AllPokeMouth = AllPokeMouth + PokeMouth
+  AllPokeNeck = AllPokeNeck + PokeNeck
+  AllPokeBust = AllPokeBust + PokeBust
+  AllPokeHand = AllPokeHand + PokeHand
+  AllPokeBelly = AllPokeBelly + PokeBelly
+  AllPokeCrotch = AllPokeCrotc + PokeCrotch
+  AllPokeTail = AllPokeTail + PokeTail
+  AllPokeLeg = AllPokeLeg + PokeLeg
+  AllPokeSkirt = AllPokeSkirt + PokeSkirt
+  AllPokeBook = AllPokeBook + PokeBook
+}
+
+
+
+//マウス反応のPokeやTouchFlagを時間でコントロールする用の関数
+//AllPoke系に格納してからinitする
+//\![timerraise,60000,1,OnAllTPFlagCountAndReset]として使う(1分後)
+OnAllTPFlagCountAndReset : void
+{
+  AllTouchFlagCount
+  AllPokeFlagCount
+  TouchFlagInit
+  PokeFlagInit
+}
+ShowFlag{
+  <<"
+  TouchHead:%(TouchHead)
+  TouchHair:%(TouchHair)
+  PokeBust:%(TouchBust)
+  AllTouchHead:%(AllTouchHead)
+  AllTouchHair:%(AllTouchHair)
+  AllPokeBust:%(AllTouchBust)
+  TalkReading:%(TalkReading)
+  RSSTalk:%(RSSTalk)
+  WhetherEnglishTalk:%(WhetherEnglishTalk)
+  Violence:%(Violence)
+  ">>
+}
+
+//あるトーク中にアクションすると特別な反応を……を作る
+
+ExTalkFlagInit
+{
+  TalkReading = 0
+  //RSSTalk = 1
+  //WhetherEnglishTalk = 1
+}
+
+//会話で特定の内容を話した時のフラグ
+OnConversation_FlagInit{
+  Conversation_Bust = 0
+  Conversation_Ear = 0
+  Conversation_Tail = 0
+  Conversation_Body = 0
+  Conversation_Sexual = 0
+}
+
+TaskInit{
+  TaskTitle = ("","","","","","","","","","","","","","","","","","","","","","","","","","","","","","")
+  TaskLevel = (,,,,,,,,,,,,,,,,,,,,,,,,,,,,,)
+  TaskClearFlag = (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+}
+
+CoinInit{
+  Coin = 0
+}
+
+
+
+
+//トーク設定系のやつ
+/*
+OptionFunction{
+  <<"
+  論文(hep-th)のランダムトーク中を有効にする
+  英語のトークを有効にする
+  ">>
+}
+*/
