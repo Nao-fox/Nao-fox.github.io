@@ -40,6 +40,7 @@ OpenMenu
 		＠メニュー：Deep Learning(with wikipedia)|Word2Vec_begin_wiki
 		＠メニュー：Quiet please|ReadBookPlease
 		＠メニュー：Option|Option
+		＠メニュー：Option2|Option
 		＠改行多めメニュー：Cancel｜Menu_CANCEL
 		">>
 	}
