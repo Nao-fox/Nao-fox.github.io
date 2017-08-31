@@ -17,7 +17,7 @@ On_username
 //------------------------------------------------------------------------------
 On_homeurl
 {
-	"https://nao-fox.github.io/ukagaka/FoxTheory/ghost/master/"
+	"https://nao-fox.github.io/ukagaka/FoxTheory/"
 }
 
 //------------------------------------------------------------------------------
