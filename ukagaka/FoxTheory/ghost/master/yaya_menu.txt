@@ -32,7 +32,7 @@ OpenMenu
 		}
 		--
 		<<"
-		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,default]\f[bold,0]
+		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]
 		＠メニュー：Talk something｜Menu_AITALK
 		＠メニュー：Talk with her｜Conversation_Begin
 		＠メニュー：Pick up a recent paper(arXiv:hep-th)|PhysicsCheck
@@ -64,7 +64,7 @@ OpenMenu
 		}
 		--
 		<<"
-		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,default]\f[bold,0]
+		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]
 		＠半分メニュー：なにか話して｜Menu_AITALK
 		＠半分メニュー：会話する｜Conversation_Begin
 		＠メニュー：最近の研究pick up(arXiv:hep-th)|PhysicsCheck
