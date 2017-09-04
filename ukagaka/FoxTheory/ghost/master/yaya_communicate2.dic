@@ -295,10 +295,17 @@ Conversation_old:nonoverlap{
       ƒŠƒT‚O‚QF‚ ‚è‚ª‚Æ‚¤B‚Ü‚¾•×‹­’†‚¾‚¯‚Ç‚ËB
       ">>
     }
+    elseif (RE_SEARCH(reference[0], '‚ ‚è‚ª‚Æ‚¤|‚â‚³‚µ‚¢‚Ë')){
+      <<"
+      ƒŠƒT‚O‚PF‚Ç‚¤‚¢‚½‚µ‚Ü‚µ‚ÄB
+      ">>
+    }
+    /*
 		else{
 			<<"
 			ƒŠƒT‚O‚TF‚ñ...H
 			">>
 		}
+    */
 	}
 }

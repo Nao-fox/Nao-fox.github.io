@@ -170,7 +170,7 @@ OnConversation{
         ">>
         Conversation_Sexual = 1
       }
-      if (((_morpharray[_i][5,";"] == "胸") || (_morpharray[_i][5,";"] == "おっぱい")) && RE_ASEARCH("触る|揉む|舐める|咥える|捲る|小さい|平坦だ|平らだ",Morph_Juman_Original(reference0))){
+      if (((_morpharray[_i][2,";"] == "胸") || (_morpharray[_i][2,";"] == "おっぱい")) && RE_ASEARCH("触る|揉む|舐める|咥える|捲る|小さい|平坦だ|平らだ",Morph_Juman_Original(reference0))){
         <<"
         リサ２４：……
         ">>
@@ -211,6 +211,16 @@ OnConversation{
       <<"
       リサ０１：動物は私も結構好きだよ。
       ">>
+
+      <<"
+      リサ０１：%(_morpharray[_i][2,";"])か、動物って観察してみると意外な発見があったりするよね。
+      ">>
+      /*
+      if (RE_SEARCH(_morpharray[_i][5,";"], "狐|きつね|キツネ"){
+        <<"
+        リサ０１：一応、私も"
+      }
+      */
     }
     if (RE_SEARCH(_morpharray[_i][5,";"], "植物,")){
       <<"
@@ -241,6 +251,10 @@ OnConversation{
       //山、川……
       <<"
       リサ０１：%(_morpharray[_i][2,";"])か、私もどこかに出かけようかな……
+      ">>
+
+      <<"
+      リサ０１：たまには外に出てみるのもいいかもね。
       ">>
     }
     if (RE_SEARCH(_morpharray[_i][5,";"], "場所-機能,")){
@@ -286,6 +300,10 @@ OnConversation{
 
       <<"
       リサ０５：%(usename)の%(_morpharray[_i][2,";"])の予定は？
+      ">>
+
+      <<"
+      リサ０５：%(_morpharray[_i][2,";"])の予定はどうしようかな……
       ">>
 
     }
@@ -469,8 +487,6 @@ OnConversation{
       }
 
     }
-
-
   }
   //ここから具体的な配列で判定系…のつもりだったが旧式モジュールでとりあえずやっておく
   Conversation_old(reference0)//旧式の会話モジュール。一応入れておく
