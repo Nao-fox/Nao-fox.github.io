@@ -148,18 +148,17 @@ Developtest{
 	＠メニュー：ディープラーニング(wikipedia)テスト|Word2Vec_begin_wiki
 	＠メニュー：ディープラーニング(from text)テスト|Word2Vec_begin_text
 	＠メニュー：分かち書き|Wakati_Mecab
-	＠メニュー：おん|おん
-	＠メニュー：おふ|おふ
+	＠メニュー：はいれつー|hairetu
 	＠メニュー：初回起動だったはず|初回起動だったはず
 	＠改行多めメニュー：戻る|OpenMenu
 	">>
 	//＠メニュー：つつきコマンド変更|PokeChange
 }
-おん{
-	"Onにするよ\![set,otherghosttalk,true]"
-}
-おふ{
-	"Offにするよ\![set,otherghosttalk,false]"
+hairetu{
+	_test = IARRAY
+	_word = "aaa"
+	_test = (_test, _word)
+	ARRAYSIZE(_test)
 }
 
 

@@ -16,6 +16,10 @@
 	EnglishTalk = 0
 	EnglishMenu = 0
 	JapaneseTalk = 1
+	RSSTalk = 0
+	GhostLearnCheck = 0
+	SearchKeyword = IARRAY
+
 	//---- ‚Ù‚ñ‚Æ‚¤‚É‰‚ß‚Ä‚Ì‹N“®
 	First1
 }
