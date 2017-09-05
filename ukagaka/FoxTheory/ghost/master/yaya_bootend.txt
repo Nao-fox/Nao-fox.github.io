@@ -107,6 +107,8 @@ VanishŒã‰‰ñ‹N“®
 	ƒŠƒT‚P‚X‚XFcc
 	ƒŠƒT‚P‚O‚XF‚ A%(username)B
 	">>
+	--
+	OtherGhostLearnCheck_First
 
 }
 

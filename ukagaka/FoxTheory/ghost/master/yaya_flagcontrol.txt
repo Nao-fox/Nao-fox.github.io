@@ -12,7 +12,8 @@ OnSystemLoad.FlagInit{
   ExTalkFlagInit
   Violence = 0
   FUNCTIONEX("SAORI\mciaudior.dll", "load", "..\bgm\page10.mp3")
-  UsedCommunicate  =IARRAY
+  UsedCommunicate = IARRAY
+  //OtherGhostLearnCheck_First さくらスクリプトのみの実行は機能しない？
 }
 
 FlagChecker_Show{
@@ -88,7 +89,14 @@ OtherGhostLearnCheck{
   --
   Option
 }
-
+OtherGhostLearnCheck_First{
+  if (GhostLearnCheck == 0){
+    "\![set,otherghosttalk,false]"
+  }
+  else{
+    "\![set,otherghosttalk,true]"
+  }
+}
 //触り(撫で)反応用
 TouchFlagInit{
   TouchHead = 0
