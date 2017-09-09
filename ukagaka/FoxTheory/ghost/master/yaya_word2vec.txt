@@ -182,7 +182,21 @@ OnWord2Vec_wiki{
 /*テキストドロップで元のデータと分かち書きのデータを保存*/
 OnFileDrop2{
   //.txtのみ！あとUTF-8
+  _input = reference0
+  _inputsep =  SPLIT(_input, CHR(0x5c))
+  _inputfilename = _inputsep[ARRAYSIZE(_inputsep)-1][0,".txt"]
   if (RE_SEARCH(reference0, "\.txt")){
+    //ファイル名によっては反応するようにする
+    //とりあえず今はこれで
+    <<"
+    リサ６７：えーっと、%(_inputfilename)……？
+    リサ０１：ありがとう、読んでみるね。
+    ">>
+
+    <<"
+    リサ０２：新しい本？ありがとう！
+    リサ０１：タイトルは……%(_inputfilename)か、読んでみるね。
+    ">>
     TextParsedataMake(reference0)
   }
   else{
@@ -207,18 +221,6 @@ TextParsedataMake{
   //複数の本から学習する用
   Morph_Mecab_3add(_input,"words\\Books_all.txt")
 
-  //ファイル名によっては反応するようにする
-  //とりあえず今はこれで
-
-  <<"
-  リサ０５：えーっと、%(_inputfilename)……？
-  ">>
-
-  <<"
-  リサ０２：新しい本？ありがとう！
-  リサ０１：タイトルは……%(_inputfilename)か、読んでみるね。
-  ">>
-
 }
 
 
@@ -240,7 +242,7 @@ ShowBooksList{
     _flag = RE_SEARCH(_ltitle,Learned_Book)
     _show = _show + "\![*]\q[%(_stitle),OnSelectLearnedBooks,%(_ltitle)]"+"%(FlagChecker_Show(_flag))"+"\n"
   }
-  _show = _show + "\n\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8にしてください)をドロップ\n2.その後この画面を開くとファイルが表示されるので、使いたいデータを選択し、Executeを実行\n(ファイルサイズによってはドロップ後処理に時間がかかります)\_q"
+  _show = _show + "\n\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8)をドロップ(サイズによっては処理に時間がかかります)\n2.その後この画面で使いたいデータを選択し、Executeを実行\_q"
   _show
 }
 OnSelectBooks_all{
