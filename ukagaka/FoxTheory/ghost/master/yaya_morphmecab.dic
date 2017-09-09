@@ -345,3 +345,39 @@ Morph_Mecab_4{
   }
   FCLOSE(_outputfilename)
 }
+
+
+//Morph_Mecab_3を上書きではなく追加書き込みにしたもの
+Morph_Mecab_3add{
+  _filename = _argv[0]//novel.txtを受け取ることを想定
+  _outputfilename = _argv[1]//"words\mecabmorph.txt"などを想定
+
+  FCHARSET(1)//単語ファイルの文字コードを指定。0はShift-JIS、1はUTF-8
+  //追記：FOPENの時にしか文字コードは指定できないっぽい
+  //FWRITEとFOPENで別にはできないのかー
+  _flag = FOPEN(_filename, "r")//novelを開く
+  _FLAG = FOPEN(_outputfilename, "a")//書き込み用のファイルを開く。aで追加書き込み
+  _noveltext = ""
+  while 1 {
+    _noveltext = FREAD(_filename)
+    if (_noveltext == -1){
+      break
+    }
+    _Rank = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'parse',_noveltext)
+    for _i = 0; _i < _Rank; _i++{
+      if (RE_SEARCH(valueex[_i][3,CHR(9)],"形容詞-自立|名詞-(一般|固有名詞|サ変接続|形容詞語幹|形容動詞語幹|自立)") && valueex[_i][0,CHR(9)] != "EOS" && (RE_SEARCH(valueex[_i][2,CHR(9)],"する|いる|なる|ない|何|[!-/:-@[-`{-~]|［＃「|＃") != 1) && (RE_SEARCH(valueex[_i][3,CHR(9)],"非自立|代名詞") != 1) ){
+        //するとかこれとかを取り除いたほうが良いが、文脈が崩れる恐れがあるのでpython側で除く？
+        //動詞を消すというのも一つの手ではある　　動詞-自立|
+        FWRITE2(_outputfilename, valueex[_i][2,CHR(9)]+" ")
+        //自動で改行が入るので改行を半角スペースにする->FWRITE2
+        //文章の終わりは改行で。
+        //。か改行コード(EOS単体だった場合。つまりサイズ1)は改行コードに
+      }
+      elseif (valueex[_i][0,CHR(9)] == "。" || valueex[0][0,CHR(9)] == "EOS"){
+        FWRITE2(_outputfilename, CHR(0x0a))//改行の出力になる
+      }
+    }
+  }
+  FCLOSE(_filename)
+  FCLOSE(_outputfilename)
+}

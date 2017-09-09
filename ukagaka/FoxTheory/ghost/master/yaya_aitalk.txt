@@ -456,6 +456,50 @@ RandomTalk_AfterDo{
 			\e%(TalkReading = 0)
 			'>>
 
+			<<"
+			リサ２０１：ゼータ関数正則化はよく発散量を定義するときに使われるけど、他の正則化と一致する理由やその物理的な意味はよくわかっていないんだよね……
+			リサ２００：一応スケール変換で不変な理論ならある程度妥当性は示せるんだけど。
+			本００：\"ゼータ関数正則化(zeta function regularization)\"
+			解析接続されたspectral zeta functionを用いて、発散する和をζ(-1)、積をexp(-ζ\'(0))で定義する方法。
+			string理論などのCFTにおいては、この値が物理的に妥当だと示されている。
+			\e%(TalkReading = 1)
+			">>
+
+			<<"
+			リサ２００：Virasoro代数のcentral chargeと量子論のAnomalyがどうして関連してるんだろう……
+			リサ２０１：でもAnomalyは2次元以外でも存在するし、完全に対応している訳ではないのかな？
+			本００：\"Virasoro代数\"
+			Witt代数を中心拡大した代数。特に、2次元においてはその次元が無限になることが知られている。
+			物理的には、スケール不変な理論のgauge対称性(Conformal変換)のgeneratorに対応する。
+			\e%(TalkReading = 1)
+			">>
+
+			<<"
+			リサ０５：No hair theoremはあくまで古典的に示された定理だから、量子論的にはBlackholeの持つ構造はもっと複雑なものになってるのかな……
+			本００：\"No hair theorem\"
+			Blackholeの持つ自由度は質量、電荷、角運動量のみであるという定理。
+			Hawking radiationの観点からは、これは多自由度系であっても熱平衡系では近似的にマクロな自由度のみで表されることに対応する。
+			\e%(TalkReading = 0)
+			">>
+
+			<<"
+			リサ２０２：量子的にEntangleしている状態で、系の因果関係を切るともう片方の系では熱放射が現れる……
+			リサ２００：なら、因果関係からエネルギーを取り出すこともできるのかな？
+			本００：\"Entanglement\"
+			ある量子的な多体系の状態ベクトルが、独立な二つのHilbert空間のtensor積で表されているとき\"Separable\", そうでない時を\"Entangle\"と呼ぶ。
+			Entangleした状態は古典力学では説明できない状態である。
+			\e%(TalkReading = 1)
+			">>
+
+			<<"
+			リサ２００：Hofstadter Butterflyか……
+			リサ２０２：こうした視覚的な美しさとその性質の持つ美しさが両立するのは、まるで魔法かのような魅力があるよね。
+			本００：\"Hofstadter Butterfly\"
+			\_a[http://zimp.zju.edu.cn/~xinwan/qm2/note/PhysRevB_Hofstadter76_HofstadterButterfly.pdf]Hofstadterにより発見された\_a2次元格子系の磁場との応答に対するHamiltonianの固有値分布が示す、蝶のようなフラクタル図形。
+			Calabi-Yau多様体の持つMirror対称性と深く関連していることが示されている。
+			\e%(TalkReading = 1)
+			">>
+
 			}
 
 		if (EnglishTalk == 1){//English talking

@@ -69,6 +69,7 @@ OpenMenu
 		＠半分メニュー：会話する｜Conversation_Begin
 		＠メニュー：最近の研究pick up(arXiv:hep-th)|PhysicsCheck
 		＠メニュー：Deep Learning(with Ghosts)|ShowLearnedWordsList
+		＠メニュー：Deep Learning(with Books)|ShowBooksList
 		＠メニュー：Deep Learning(with wikipedia)|Word2Vec_begin_wiki
 		＠メニュー：静かにしてて|ReadBookPlease
 		＠メニュー：Option|Option
@@ -148,19 +149,17 @@ Developtest{
 	＠メニュー：ディープラーニング(wikipedia)テスト|Word2Vec_begin_wiki
 	＠メニュー：ディープラーニング(from text)テスト|Word2Vec_begin_text
 	＠メニュー：分かち書き|Wakati_Mecab
-	＠メニュー：はいれつー|hairetu
+	＠メニュー：Sep|Sep
 	＠メニュー：初回起動だったはず|初回起動だったはず
 	＠改行多めメニュー：戻る|OpenMenu
 	">>
 	//＠メニュー：つつきコマンド変更|PokeChange
 }
-hairetu{
-	_test = IARRAY
-	_word = "aaa"
-	_test = (_test, _word)
-	ARRAYSIZE(_test)
+Sep{
+	_input = "yaya.txt"
+	_output = "words"
+	FCOPY(_input,_output)
 }
-
 
 
 RendouTest{

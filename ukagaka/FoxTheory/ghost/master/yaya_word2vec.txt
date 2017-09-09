@@ -18,6 +18,11 @@ Reference5バイト値1区切りの他ゴーストに渡されたReference。
 
 //OnTranslateのreference3をみればどこを触ったかが分かるかも
 //自分の方しか取得できない…
+//表のやつ、ファイル名を入力して登録
+//名前の横にボタンをおいて、それを押すとそのファイルに書き込みをするように
+//上の方にボタンを置いて、それでword2vec実行
+//word2vec実行時、複数のファイルも指定できるようにする？
+
 OnOtherGhostTalk{
   //nameとtittlenameに半角スペースがあるとうまく動作しないので全角に変更
   //スラッシュとかもこわいけど基本的に全角ならOKのはず…
@@ -81,35 +86,60 @@ OnSelectLearnedData{
   //文字コードではなく、半角スペースが問題だった
   ShowLearnedWordsList
 }
-Wakati_Mecab{
-	Morph_Mecab_3("words\jekyll.txt", "words\jekyllwakati.txt")
-	//OnMorph_Mecab2("words\test.txt", "words\testtt.txt")
-	/*
-	_filename = _argv[0]//novel.txtを受け取ることを想定
-	_outputfilename = _argv[1]//"words\mecabmorph.txt"などを想定
-	*/
-}
-//表のやつ、ファイル名を入力して登録
-//名前の横にボタンをおいて、それを押すとそのファイルに書き込みをするように
-//上の方にボタンを置いて、それでword2vec実行
-//word2vec実行時、複数のファイルも指定できるようにする？
-Word2Vec_begin_wiki{
-  "\_q\0\s[0]Wikipediaから学習したデータを用いて、意味の類推を行います\n例: +東京-日本+ドイツ\_q"
-	--
-	'\![open,inputbox,OnWord2Vec_wiki,-1,--option=noclose]'
-}
-Word2Vec_begin_text{
-	<<"
-	リサ０１：連想ゲーム？
-	">>
-	--
-	'\![open,inputbox,OnWord2Vec_text,-1,--option=noclose]'
-}
 
 OnWord2Vec_begin_ghost{
   "\_q\0\s[0]Tips:\n学習量が少ないとうまく動作しない(最低でも10kb程度を推奨。データはmaster\\words\\ghostlearnedに保存されている)。またトークに存在しなかった単語の意味は取得できない。\n入力例: +人間-言葉\_q"
   --
 	'\![open,inputbox,OnWord2Vec_ghost,-1,--option=noclose]'
+}
+OnWord2Vec_ghost{
+	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
+	//引数は(input_string, wikipediaデータ(0)か外部テキスト(1), model_path, sg,size,min_count,window,LineSentence(1)かText8Corpus(0))
+	//sg以降の引数は外部テキスト(1)でないと使えない(0だと無視される)sg=0はCBOW, sg=1はskip-gram
+
+  //なぜか動かない…→スコープが原因だった
+  _filename = ""
+  if (flag_Learned_all == 1){
+    _filename = "..\\words\\Learned_all.txt"
+  }
+  else{
+    _filename = "..\\words\\ghostlearned\\"+Learned_Ghost+".txt"
+  }
+
+    //_filename = "..\\words\\ghostlearned\\"+Learned_Ghost+".txt"
+	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,1,_filename,1,1000,2,10,1)
+	_result_rank = SPLIT(_result,"\n")
+	_result_rank_number = ARRAYSIZE(_result_rank)
+	if (_result){
+    if (Learned_Ghost[1,"__"]){
+      <<"
+      リサ０５：%(Learned_Ghost[1,'__'])さんによると……%(_result_rank[0][0," "])とか？
+      リサ０１：あとは……%(_result_rank[1][0," "])とか？
+      \1\b[2]\_q%(_result)\_q
+      ">>
+    }
+    else{
+      <<"
+      リサ０５：えーっと……%(_result_rank[0][0," "])とか？
+      リサ０１：あとは……%(_result_rank[1][0," "])とか？
+      \1\b[2]\_q%(_result)\_q
+      ">>
+    }
+	}
+	else{
+		<<"
+		リサ０５：うーん……よくわからない……
+		">>
+	}
+}
+
+//ここまでGhostLearn用
+
+//ここからWiki用
+Word2Vec_begin_wiki{
+  "\_q\0\s[0]Wikipediaから学習したデータを用いて、意味の類推を行います。+, -で意味の足し引きを表します。\n例:+東京-日本+ドイツ\_q"
+	--
+	'\![open,inputbox,OnWord2Vec_wiki,-1,--option=noclose]'
 }
 
 OnWord2Vec_wiki{
@@ -144,47 +174,109 @@ OnWord2Vec_wiki{
 		">>
 
 	}
+}
 
+//ここからテキスト用
+
+
+/*テキストドロップで元のデータと分かち書きのデータを保存*/
+OnFileDrop2{
+  //.txtのみ！あとUTF-8
+  if (RE_SEARCH(reference0, "\.txt")){
+    TextParsedataMake(reference0)
+  }
+  else{
+    <<"
+    リサ６７：あれ？これは本には見えないけど……
+    ">>
+  }
+}
+TextParsedataMake{
+  //ファイルの置いてあるディレクトリのパスと出力先のパスを指定してそこにコピーする関数
+  //FCOPY()
+  //OnFileDrop2で渡す。テキストファイルのみにするように。
+  _input = _argv[0]
+  //_input = "word\tete\tt.txt"
+  _inputsep =  SPLIT(_input, CHR(0x5c))
+  _inputfilename = _inputsep[ARRAYSIZE(_inputsep)-1][0,".txt"]
+  //_inputfilenameが拡張子抜き
+  _outputparse = "words\\bookslearned\\"+_inputfilename+"__parse.txt"
+  //Morph_Mecab_3は(元のやつ,出力先)
+  _f = FCOPY(_input, "words\\bookshelf")
+  Morph_Mecab_3(_input, _outputparse)
+  //複数の本から学習する用
+  Morph_Mecab_3add(_input,"words\\Books_all.txt")
+
+  //ファイル名によっては反応するようにする
+  //とりあえず今はこれで
+
+  <<"
+  リサ０５：えーっと、%(_inputfilename)……？
+  ">>
+
+  <<"
+  リサ０２：新しい本？ありがとう！
+  リサ０１：タイトルは……%(_inputfilename)か、読んでみるね。
+  ">>
 
 }
 
-OnWord2Vec_text{
-	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
-	//引数は(input_string, wikipediaデータ(0)か外部テキスト(1), model_path, sg,size,min_count,window,LineSentence(1)かText8Corpus(0))
-	//sg以降の引数は外部テキスト(1)でないと使えない(0だと無視される)sg=0はCBOW, sg=1はskip-gram
-  //_filename = "..\\words\\"+"ジキルwakati.txt"
-  _filename = "..\\words\\jekyllwakati.txt"
-	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,1,_filename,1,1000,2,5,1)
-	_result_rank = SPLIT(_result,"\n")
-	_result_rank_number = ARRAYSIZE(_result_rank)
-	if (_result){
-		<<"
-		リサ０５：えーっと……%(_result_rank[0][0," "])とか？
-		リサ０１：あとは……%(_result_rank[1][0," "])とか？
-		\1\b[2]\_q%(_result)\_q
-		">>
-	}
-	else{
-		<<"
-		リサ０５：うーん……ごめん、思いつかないな……
-		">>
 
-	}
+ShowBooksList{
+  _result = FUNCTIONEX("SAORI\proxy.dll", "getfilenames.exe", "..\\words\\bookslearned")
+  //なぜか改行区切り最初の2つはディレクトリ名2回表示されるのでそれをカット
+  //改行文字はCHR(0x0a)
+  //グローバル変数を作っておき、それでどのファイルで評価するか判定
+  _title = IARRAY
+  _title = SPLIT(_result, "\n")//CHR(0x0a)だと動かなかった…
+  _show = "\0\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Bookshelf\f[name,default]\f[bold,0]■　　\__q[OnWord2Vec_begin_book]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Execute\__q\f[name,default]\f[bold,0]\n"
+  //Learned_allだけ特殊処理
+  //上手い方法があるだろうけどもうこれで
+  _show_Learned_all = "\![*]\q[Books_all,OnSelectBooks_all]"+"%(FlagChecker_Show(flag_books_all))"+"\n"
+  _show = _show + _show_Learned_all
+  for _i = 2; _i < ARRAYSIZE(_title)-1; _i++{//改行の関係で-1
+    _stitle = _title[_i][1,'..\\words\\bookslearned'][0,'.txt'][0,'__']
+    _ltitle = _title[_i][1,'..\\words\\bookslearned'][0,'.txt']
+    _flag = RE_SEARCH(_ltitle,Learned_Book)
+    _show = _show + "\![*]\q[%(_stitle),OnSelectLearnedBooks,%(_ltitle)]"+"%(FlagChecker_Show(_flag))"+"\n"
+  }
+  _show = _show + "\n\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8にしてください)をドロップ\n2.その後この画面を開くとファイルが表示されるので、使いたいデータを選択し、Executeを実行\n(ファイルサイズによってはドロップ後処理に時間がかかります)\_q"
+  _show
+}
+OnSelectBooks_all{
+  Learned_Book = 0
+  flag_books_all = 1
+  ShowBooksList
+}
+
+OnSelectLearnedBooks{
+  Learned_Book = reference0
+  flag_books_all = 0
+  //本体名__ゴースト名
+  //文字コードの関係でうまく動作しないっぽいので外部ファイルに書き出してからUTF-8にする
+  //文字コードではなく、半角スペースが問題だった
+  ShowBooksList
 }
 
 
-OnWord2Vec_ghost{
+OnWord2Vec_begin_book{
+  "\_q\0\s[0]ゴーストが読んだ\'本\'の文章を用いて意味の類推を行います。+, -で意味の足し引きを表します。\n例:+人間-愛\_q"
+	--
+	'\![open,inputbox,OnWord2Vec_book,-1,--option=noclose]'
+}
+
+OnWord2Vec_book{
 	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
 	//引数は(input_string, wikipediaデータ(0)か外部テキスト(1), model_path, sg,size,min_count,window,LineSentence(1)かText8Corpus(0))
 	//sg以降の引数は外部テキスト(1)でないと使えない(0だと無視される)sg=0はCBOW, sg=1はskip-gram
 
   //なぜか動かない…→スコープが原因だった
   _filename = ""
-  if (flag_Learned_all == 1){
-    _filename = "..\\words\\Learned_all.txt"
+  if (flag_books_all == 1){
+    _filename = "..\\words\\Books_all.txt"
   }
   else{
-    _filename = "..\\words\\ghostlearned\\"+Learned_Ghost+".txt"
+    _filename = "..\\words\\bookslearned\\"+Learned_Book+".txt"
   }
 
     //_filename = "..\\words\\ghostlearned\\"+Learned_Ghost+".txt"
@@ -192,9 +284,9 @@ OnWord2Vec_ghost{
 	_result_rank = SPLIT(_result,"\n")
 	_result_rank_number = ARRAYSIZE(_result_rank)
 	if (_result){
-    if (Learned_Ghost[1,"__"]){
+    if (Learned_Book[1,"__"]){
       <<"
-      リサ０５：%(Learned_Ghost[1,'__'])さんによると……%(_result_rank[0][0," "])とか？
+      リサ０５：%(Learned_Book[0,'__'])によると……%(_result_rank[0][0," "])とか？
       リサ０１：あとは……%(_result_rank[1][0," "])とか？
       \1\b[2]\_q%(_result)\_q
       ">>
