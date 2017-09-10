@@ -23,6 +23,12 @@
   src: url('Pixel-Noir.ttf') format('truetype');
 }
 
+
+
+
+
+
+
 /*以下画面大きい(641px以上)とき*/
 @media screen and (min-width:641px){
   .Misaki {
@@ -100,11 +106,24 @@
   }
 
   body {
-    /*font-family: 'misaki_gothic'*/
-    background-color: black;
-    color: white;
-  }
+    width:100%;
+    margin:0;
+    padding:0;
+    color:#666;
+    font-family:Arial, sans-serif;
+    line-height: 18px;
+    background: #rgb(221, 164, 96) url(../picture/menu_background.png) no-repeat right top;
 }
+
+
+
+
+
+
+
+
+
+
 /*以下画面小さいとき*/
 @media screen and (max-width:640px){
   .Misaki {
@@ -130,11 +149,11 @@
   .Noir{
     font-family: 'Noir'
   }
-
+  /*
   .image{
     float: left;
   }
-
+  */
   a:link{
     color: #6295b8;
   }
@@ -183,9 +202,18 @@
     vertical-align: top;
   }
 
+  .pleft{
+    float: left;
+  }
+  .pcenter{
+    float: center;
+  }
+  .pright{
+    float: right;
+  }
   body {
     /*font-family: 'misaki_gothic'*/
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
   }
 }
