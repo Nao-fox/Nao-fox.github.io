@@ -72,7 +72,7 @@ OnConversation{
     //人工物-食べ物開始
     //飲み物も含まれるのでなんとかしたいところ
     if (RE_SEARCH(_morpharray[_i][5,";"], "人工物-食べ物,") && RE_SEARCH(_morpharray[_i][5,";"], "料理・食事," )){
-      if (RE_SEARCH(morpharray[_i],"食事|食べる") == 0){
+      if (RE_SEARCH(_morpharray[_i],"食事|食べる") == 0){
         <<"
         リサ０１：それが好きなの？
         リサ６５：確かに、%(_morpharray[_i][2,";"])って結構おいしいよね。

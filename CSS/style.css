@@ -35,60 +35,8 @@
     font-family: 'Misaki';
   }
 
-  .DQ {
-    font-family: 'DQFont';
-    font-size: 200%;
-  }
-
-  .DQInt{
-    font-family: 'DQFontInt'
-  }
-
-  .PressStart{
-    font-family: 'PressStart'
-  }
-
-  .Noir{
-    font-family: 'Noir'
-  }
-
-  .image{
-    display: inline-block;
-    vertical-align: top;
-  }
-
   a:link{
     color: #6295b8;
-  }
-
-  /*メッセージ用の枠*/
-  .DQmessage{
-    /*borderプロパティは太さ、スタイル、色*/
-    font-family: 'DQFont';
-    font-size: 130%;
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border:3px solid white;
-    border-radius: 3px;
-    //margin: auto;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .PSmessage{
-    font-family: 'PressStart';
-    font-size: 70%;
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border:3px solid white;
-    border-radius: 3px;
-    //margin: auto;
-    display: inline-block;
-    vertical-align: top;
   }
 
   .Misakimessage{
@@ -104,15 +52,28 @@
     display: inline-block;
     vertical-align: top;
   }
-
-  body {
-    width:100%;
+  .pleft{
+    float: left;
+  }
+  .pcenter{
+    float: center;
+  }
+  .pright{
+    float: right;
+  }
+  .Shelf{
+    color: #000000;
+    background-color: #f8dce0;
+    background-image: url("../images/menu_foreground.png") no-repeat right top;
+  }
+  body{
+    width:100%;
     margin:0;
     padding:0;
     color:#666;
     font-family:Arial, sans-serif;
     line-height: 18px;
-    background: #rgb(221, 164, 96) url(../picture/menu_background.png) no-repeat right top;
+  }
 }
 
 
@@ -130,62 +91,8 @@
     font-family: 'Misaki';
     font-size: 80%;
   }
-
-  .DQ {
-    font-family: 'DQFont';
-    font-size: 100%;
-  }
-
-  .DQInt{
-    font-family: 'DQFontInt';
-    font-size: 70%;
-  }
-
-  .PressStart{
-    font-family: 'PressStart';
-    font-size: 50%;
-  }
-
-  .Noir{
-    font-family: 'Noir'
-  }
-  /*
-  .image{
-    float: left;
-  }
-  */
   a:link{
     color: #6295b8;
-  }
-
-  /*メッセージ用の枠*/
-  .DQmessage{
-    /*borderプロパティは太さ、スタイル、色*/
-    font-family: 'DQFont';
-    font-size: 130%;
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border:3px solid white;
-    border-radius: 3px;
-    //margin: auto;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .PSmessage{
-    font-family: 'PressStart';
-    font-size: 70%;
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border:3px solid white;
-    border-radius: 3px;
-    //margin: auto;
-    display: inline-block;
-    vertical-align: top;
   }
 
   .Misakimessage{
@@ -211,9 +118,17 @@
   .pright{
     float: right;
   }
-  body {
-    /*font-family: 'misaki_gothic'*/
-    background-color: white;
-    color: black;
+  .Shelf{
+    color: #000000;
+    background-color: #f8dce0;
+    background-image: url("../images/menu_foreground.png") no-repeat right top;
+  }
+  body{
+    width:100%;
+    margin:0;
+    padding:0;
+    color:#666;
+    font-family:Arial, sans-serif;
+    line-height: 18px;
   }
 }

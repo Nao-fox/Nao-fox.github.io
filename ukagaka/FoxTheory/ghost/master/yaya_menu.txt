@@ -156,9 +156,8 @@ Developtest{
 	//＠メニュー：つつきコマンド変更|PokeChange
 }
 Sep{
-	_input = "yaya.txt"
-	_output = "words"
-	FCOPY(_input,_output)
+	_input ="OnAAA"
+	RE_SEARCH(_input, "OnInstall|OnURL|OnFile|OnUpdate|OnSecond")
 }
 
 

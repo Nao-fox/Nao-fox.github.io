@@ -31,24 +31,28 @@ OnOtherGhostTalk{
   _name = RE_REPLACEEX(reference0,"[ \\\.\!\?\*\+\-\~\^\/]","　")
   _titlename = RE_REPLACEEX(reference1,"[ \\\.\!\?\*\+\-\~\^\/]","　")
   _eventid = reference3
+  //OnInstallBeginとOnInstallCompleteあたりで落ちるとの報告。
+  //これを除いておく
 
   _talk = さくらスクリプト除去(reference4)//あやりりす使ってる場合は…
 
-  Morph_Mecab_4(_talk, "words\Learned_all.txt")
-  Morph_Mecab_4(_talk, "words\ghostlearned\%(_name)__%(_titlename).txt")
+  if (RE_SEARCH(_eventid,"OnBoot|OnClose|OnGhostChang|OnChoice|OnAnchor|OnMouse|OnSecond|OnGhostCalled|OnAITalk|OnTeach|OnCommunicate|OnUserInput")){
+    Morph_Mecab_4(_talk, "words\Learned_all.txt")
+    Morph_Mecab_4(_talk, "words\ghostlearned\%(_name)__%(_titlename).txt")
 
-  //文章の終わりと分かるように改行を挿入する
-  //全トーク
-  FCHARSET(1)//単語ファイルの文字コードを指定。0はShift-JIS、1はUTF-8
-  _FLAG = FOPEN("words\Learned_all.txt", "a")//書き込み用のファイルを開く。aで追加書き込み
-  FWRITE2("words\Learned_all.txt", CHR(0x0a)+CHR(0x0a))//EOSとかは除く
-  FCLOSE("words\Learned_all.txt")
+    //文章の終わりと分かるように改行を挿入する
+    //全トーク
+    FCHARSET(1)//単語ファイルの文字コードを指定。0はShift-JIS、1はUTF-8
+    _FLAG = FOPEN("words\Learned_all.txt", "a")//書き込み用のファイルを開く。aで追加書き込み
+    FWRITE2("words\Learned_all.txt", CHR(0x0a)+CHR(0x0a))//EOSとかは除く
+    FCLOSE("words\Learned_all.txt")
 
-  //個別
-  FCHARSET(1)
-  _FLAG = FOPEN("words\ghostlearned\%(_name)__%(_titlename).txt", "a")//書き込み用のファイルを開く。aで追加書き込み
-  FWRITE2("words\ghostlearned\%(_name)__%(_titlename).txt", CHR(0x0a)+CHR(0x0a))//EOSとかは除く
-  FCLOSE("words\ghostlearned\%(_name)__%(_titlename).txt")
+    //個別
+    FCHARSET(1)
+    _FLAG = FOPEN("words\ghostlearned\%(_name)__%(_titlename).txt", "a")//書き込み用のファイルを開く。aで追加書き込み
+    FWRITE2("words\ghostlearned\%(_name)__%(_titlename).txt", CHR(0x0a)+CHR(0x0a))//EOSとかは除く
+    FCLOSE("words\ghostlearned\%(_name)__%(_titlename).txt")
+  }
 
 }
 ShowLearnedWordsList{

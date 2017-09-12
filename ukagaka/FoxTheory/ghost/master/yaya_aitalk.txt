@@ -422,7 +422,7 @@ RandomTalk_AfterDo{
 			<<'
 			リサ０１：Poincare予想の証明にはtopological invariantに関する定理ではなく、Ricci flowが使われたのは知ってる？
 			リサ０２：これは多様体の計量の極の位置を熱拡散方程式で表すというもので、\_a[https://arxiv.org/abs/math/0307245]証明\_aにもエントロピーや熱力学の法則が有効的に使われているよ。
-			本００：Poincare予想
+			本００：\"Poincare予想\"
 			1904年に提唱され、2006年にPerelmanによって証明された予想。
 			主張は\"3次元球面はコンパクトでhomotopy同値な3次元多様体と同相\"というもの。
 			\e%(TalkReading = 0)
@@ -451,7 +451,7 @@ RandomTalk_AfterDo{
 			リサ０１：%(username)って楕円関数には詳しい？
 			リサ０５：一見無関係な整数論と解析学の話が関連付くのは、なんだか魔法みたいだよね……
 			本００：\"楕円関数\"
-			有理型の二重周期関数、つまりf(z+a)=f(z), f(z+b)=f(z)を満たす複素関数のこと。
+			有理型の二重周期関数のこと。楕円積分の逆関数としても定義される。
 			Jaconiのθ関数を通して整数論に応用される。
 			\e%(TalkReading = 0)
 			'>>
@@ -497,6 +497,24 @@ RandomTalk_AfterDo{
 			本００：\"Hofstadter Butterfly\"
 			\_a[http://zimp.zju.edu.cn/~xinwan/qm2/note/PhysRevB_Hofstadter76_HofstadterButterfly.pdf]Hofstadterにより発見された\_a2次元格子系の磁場との応答に対するHamiltonianの固有値分布が示す、蝶のようなフラクタル図形。
 			Calabi-Yau多様体の持つMirror対称性と深く関連していることが示されている。
+			\e%(TalkReading = 1)
+			">>
+
+			<<"
+			リサ１０１：LagrangianにRicci scalarに比例するscalar場、つまりlinear dilatonを考えた場合、時空が平坦であってもその寄与が生じるって知ってた？
+			リサ１０２：これは時空の量子揺らぎによりエネルギーの定義が変わることと関連しているよ。
+			本００：\"線形ディラトン模型(linear dilaton model)\"
+			平坦な時空においてはRicci scalarは0であるが、dilatonのような時空と相互作用する場をLagrangianに入れると、項としては0であるのにも関わらずEnergy-momentum tensorに影響を与える。
+			この現象はLiouville theoryやFeigin-Fuchs modelなどで応用されている。
+			\e%(TalkReading = 0)
+			">>
+
+			<<"
+			リサ２００：Blackholeはそのholography dualなモデルにおける量子Lyapunov指数がもっとも大きい状態に対応する……
+			リサ２０１：どうして量子カオスとBlackholeが対応しているんだろう……
+			\"量子Lyapunov指数\"
+			\_a[https://arxiv.org/abs/1503.01409]OTO(Out-of-Time Ordering)によって定義された\_a量子論におけるカオスの振る舞いを表す指標。
+			Maldacenaらによる予想ではこの指標には上限が存在し、その時におけるAdS/CFT対応によるGravity dualがBlackholeだとされている。
 			\e%(TalkReading = 1)
 			">>
 
