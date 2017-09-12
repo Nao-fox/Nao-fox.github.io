@@ -4,71 +4,12 @@ RandomTalk_AfterDo{
 	ExTalkFlagInit
 }
 */
-
+/*9割くらいこれになってしまい、意図した動作じゃない気がする
 新規追加ランダムトーク : array
 {
-	<<"
-	リサ２０１：ゼータ関数正則化はよく発散量を定義するときに使われるけど、他の正則化と一致する理由やその物理的な意味はよくわかっていないんだよね……
-	リサ２００：一応スケール変換で不変な理論ならある程度妥当性は示せるんだけど。
-	本００：\"ゼータ関数正則化(zeta function regularization)\"
-	解析接続されたspectral zeta functionを用いて、発散する和をζ(-1)、積をexp(-ζ\'(0))で定義する方法。
-	string理論などのCFTにおいては、この値が物理的に妥当だと示されている。
-	\e%(TalkReading = 1)
-	">>
 
-	<<"
-	リサ２００：Virasoro代数のcentral chargeと量子論のAnomalyがどうして関連してるんだろう……
-	リサ２０１：でもAnomalyは2次元以外でも存在するし、完全に対応している訳ではないのかな？
-	本００：\"Virasoro代数\"
-	Witt代数を中心拡大した代数。特に、2次元においてはその次元が無限になることが知られている。
-	物理的には、スケール不変な理論のgauge対称性(Conformal変換)のgeneratorに対応する。
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ０５：No hair theoremはあくまで古典的に示された定理だから、量子論的にはBlackholeの持つ構造はもっと複雑なものになってるのかな……
-	本００：\"No hair theorem\"
-	Blackholeの持つ自由度は質量、電荷、角運動量のみであるという定理。
-	Hawking radiationの観点からは、これは多自由度系であっても熱平衡系では近似的にマクロな自由度のみで表されることに対応する。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２０２：量子的にEntangleしている状態で、系の因果関係を切るともう片方の系では熱放射が現れる……
-	リサ２００：なら、因果関係からエネルギーを取り出すこともできるのかな？
-	本００：\"Entanglement\"
-	ある量子的な多体系の状態ベクトルが、独立な二つのHilbert空間のtensor積で表されているとき\"Separable\", そうでない時を\"Entangle\"と呼ぶ。
-	Entangleした状態は古典力学では説明できない状態である。
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ２００：Hofstadter Butterflyか……
-	リサ２０２：こうした視覚的な美しさとその性質の持つ美しさが両立するのは、まるで魔法かのような魅力があるよね。
-	本００：\"Hofstadter Butterfly\"
-	\_a[http://zimp.zju.edu.cn/~xinwan/qm2/note/PhysRevB_Hofstadter76_HofstadterButterfly.pdf]Hofstadterにより発見された\_a2次元格子系の磁場との応答に対するHamiltonianの固有値分布が示す、蝶のようなフラクタル図形。
-	Calabi-Yau多様体の持つMirror対称性と深く関連していることが示されている。
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ１０１：LagrangianにRicci scalarに比例するscalar場、つまりlinear dilatonを考えた場合、時空が平坦であってもその寄与が生じるって知ってた？
-	リサ１０２：これは時空の量子揺らぎによりエネルギーの定義が変わることと関連しているよ。
-	本００：\"線形ディラトン模型(linear dilaton model)\"
-	平坦な時空においてはRicci scalarは0であるが、dilatonのような時空と相互作用する場をLagrangianに入れると、項としては0であるのにも関わらずEnergy-momentum tensorに影響を与える。
-	この現象はLiouville theoryやFeigin-Fuchs modelなどで応用されている。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２００：Blackholeはそのholography dualなモデルにおける量子Lyapunov指数がもっとも大きい状態に対応する……
-	リサ２０１：どうして量子カオスとBlackholeが対応しているんだろう……
-	本００：\"量子Lyapunov指数\"
-	\_a[https://arxiv.org/abs/1503.01409]OTO(Out-of-Time Ordering)によって定義された\_a量子論におけるカオスの振る舞いを表す指標。
-	Maldacenaらによる予想ではこの指標には上限が存在し、その時におけるAdS/CFT対応によるGravity dualがBlackholeだとされている。
-	\e%(TalkReading = 1)
-	">>
 }
+*/
 //******************************************************************************
 // ランダムトーク
 //******************************************************************************
@@ -519,6 +460,66 @@ RandomTalk_AfterDo{
 			有理型の二重周期関数のこと。楕円積分の逆関数としても定義される。
 			Jaconiのθ関数を通して整数論に応用される。
 			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０１：ゼータ関数正則化はよく発散量を定義するときに使われるけど、他の正則化と一致する理由やその物理的な意味はよくわかっていないんだよね……
+			リサ２００：一応スケール変換で不変な理論ならある程度妥当性は示せるんだけど。
+			本００：\"ゼータ関数正則化(zeta function regularization)\"
+			解析接続されたspectral zeta functionを用いて、発散する和をζ(-1)、積をexp(-ζ\'(0))で定義する方法。
+			string理論などのCFTにおいては、この値が物理的に妥当だと示されている。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２００：Virasoro代数のcentral chargeと量子論のAnomalyがどうして関連してるんだろう……
+			リサ２０１：でもAnomalyは2次元以外でも存在するし、完全に対応している訳ではないのかな？
+			本００：\"Virasoro代数\"
+			Witt代数を中心拡大した代数。特に、2次元においてはその次元が無限になることが知られている。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ０５：No hair theoremはあくまで古典的に示された定理だから、量子論的にはBlackholeの持つ構造はもっと複雑なものになってるのかな……
+			本００：\"No hair theorem\"
+			Blackholeの持つ自由度は質量、電荷、角運動量のみであるという定理。
+			Hawking radiationの観点からは、これは多自由度系であっても熱平衡系では近似的にマクロな自由度のみで表されることに対応する。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２０２：量子的にEntangleしている状態で、系の因果関係を切るともう片方の系では熱放射が現れる……
+			リサ２００：なら、因果関係からエネルギーを取り出すこともできるのかな？
+			本００：\"Entanglement\"
+			ある量子的な多体系の状態ベクトルが、独立な二つのHilbert空間のtensor積で表されているとき\"Separable\", そうでない時を\"Entangle\"と呼ぶ。
+			Entangleした状態は古典力学では説明できない状態である。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ２００：Hofstadter Butterflyか……
+			リサ２０２：こうした視覚的な美しさとその性質の持つ美しさが両立するのは、まるで魔法かのような魅力があるよね。
+			本００：\"Hofstadter Butterfly\"
+			\_a[http://zimp.zju.edu.cn/~xinwan/qm2/note/PhysRevB_Hofstadter76_HofstadterButterfly.pdf]Hofstadterにより発見された\_a2次元格子系の磁場との応答に対するHamiltonianの固有値分布が示す、蝶のようなフラクタル図形。
+			Calabi-Yau多様体の持つMirror対称性と深く関連していることが示されている。
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			リサ１０１：LagrangianにRicci scalarに比例するscalar場、つまりlinear dilatonを考えた場合、時空が平坦であってもその寄与が生じるって知ってた？
+			リサ１０２：これは時空の量子揺らぎによりエネルギーの定義が変わることと関連しているよ。
+			本００：\"線形ディラトン模型(linear dilaton model)\"
+			平坦な時空においてはRicci scalarは0であるが、dilatonのような時空と相互作用する場をLagrangianに入れると、項としては0であるのにも関わらずEnergy-momentum tensorに影響を与える。
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			リサ２００：Blackholeはそのholography dualなモデルにおける量子Lyapunov指数がもっとも大きい状態に対応する……
+			リサ２０１：どうして量子カオスとBlackholeが対応しているんだろう……
+			本００：\"量子Lyapunov指数\"
+			\_a[https://arxiv.org/abs/1503.01409]OTO(Out-of-Time Ordering)によって定義された\_a量子論におけるカオスの振る舞いを表す指標。
+			Maldacenaらによる予想ではこの指標には上限が存在し、その時におけるAdS/CFT対応によるGravity dualがBlackholeだとされている。
+			\e%(TalkReading = 1)
 			'>>
 		}
 
