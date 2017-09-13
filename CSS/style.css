@@ -25,6 +25,9 @@ body {
 a:link{
   color: #9e9276;
 }
+a:visited{
+  color: #9e9276;
+}
 .Parent{
   width: 600px;
 }
