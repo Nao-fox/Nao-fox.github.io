@@ -34,8 +34,8 @@ On_portalrootbutton.caption
 ポータルサイト
 {
 	<<"
-	SSP BUGTRAQ      | http://ssp.shillest.net/         |
-	整備班           | http://ms.shillest.net/          |
+	FoxTheory配布元  |https://nao-fox.github.io/index.html |
+	SSP開発元        | http://ssp.shillest.net/         |
 	">>
 }
 
