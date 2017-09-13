@@ -1,7 +1,7 @@
 charset,Shift_JIS
 
 craftmanw,Nao
-
+craftmanurl,https://nao-fox.github.io/index.html
 name,FoxTheory
 type,ghost
 

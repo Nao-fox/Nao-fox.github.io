@@ -47,7 +47,8 @@ On_portalrootbutton.caption
 {
 
 	<<"
-	SSP BUGTRAQ |http://ssp.shillest.net/ |
+	FoxTheory”z•zŒ³ |https://nao-fox.github.io/index.html |
+	SSPŠJ”­Œ³ |http://ssp.shillest.net/ |
 	YAYA wiki |http://emily.shillest.net/ayaya/index.php?FrontPage |
 	">>
 }

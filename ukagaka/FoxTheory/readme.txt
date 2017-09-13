@@ -19,10 +19,10 @@
 　どちらも大文字、小文字等の表記ゆれに対応しています。(e.g. Quantumならquantum, QUANTUM, Quantumの3つにマッチします)
 　hep-th以外のカテゴリーにもアップデートで対応する予定です。
 　
+　※軽量版にはDeepLearning機能はついていません。メニューには表示されますが実行は不可能です。
 　2. DeepLearning(Word2Vec)
 　Distributed Representations of Words and Phrases and their Compositionality[arXiv:1310.4546v1]及びEfficient Estimationof Word Representations in Vector Space[arXiv:1301.3781v3]で提唱されたアルゴリズムを用いて、文章から単語の意味の足し引きを推測する機能を実装しています。
-　現状ではWikipedia日本語記事の学習済みデータを用いた解析と、同時に起動していたゴーストが話していた内容から学習する機能を実装しています。
-　アップデートで任意のテキストデータを渡して学習する機能を実装する予定です。
+　現状ではWikipedia日本語記事の学習済みデータを用いた解析と、同時に起動していたゴーストが話していた内容から学習する機能及び任意のテキストファイル(文字コードはUTF-8)をゴーストに直接渡して学習する機能を実装しています。
 　
 　3. 会話機能
 　形態素解析(Juman, Mecab)と正規表現を利用した簡単な構文解析による会話モジュールを実装しています。
