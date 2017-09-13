@@ -1,134 +1,47 @@
-@font-face {
-  font-family: 'Misaki';
-  src: url('misaki_gothic.ttf') format('truetype');
-}
-
-@font-face{
-  font-family: 'DQFont';
-  src: url('DragonQuestFC.ttf') format('truetype');
-}
-
-@font-face{
-  font-family: 'DQFontInt';
-  src: url('DragonQuestFCIntact.ttf') format('truetype');
-}
-
-@font-face{
-  font-family: 'PressStart';
-  src: url('PressStart2P.ttf') format('truetype');
-}
-
-@font-face{
-  font-family: 'Noir';
-  src: url('Pixel-Noir.ttf') format('truetype');
-}
-
-
-
-
-
-
-
 /*以下画面大きい(641px以上)とき*/
-@media screen and (min-width:641px){
-  .Misaki {
-    font-family: 'Misaki';
-  }
-
-  a:link{
-    color: #6295b8;
-  }
-
-  .Misakimessage{
-    font-family: 'Misaki';
-    font-size: 70%;
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border:3px solid white;
-    border-radius: 3px;
-    //margin: auto;
-    display: inline-block;
-    vertical-align: top;
-  }
-  .pleft{
-    float: left;
-  }
-  .pcenter{
-    float: center;
-  }
-  .pright{
-    float: right;
-  }
-  .Shelf{
-    color: #000000;
-    background-color: #f8dce0;
-    background-image: url("../images/menu_foreground.png") no-repeat right top;
-  }
-  body{
-    width:100%;
-    margin:0;
-    padding:0;
-    color:#666;
-    font-family:Arial, sans-serif;
-    line-height: 18px;
-  }
+body {
+  background-color: #6c5a48
 }
 
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
 
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
 
-
-
-
-
-
-
-
-/*以下画面小さいとき*/
-@media screen and (max-width:640px){
-  .Misaki {
-    font-family: 'Misaki';
-    font-size: 80%;
-  }
-  a:link{
-    color: #6295b8;
-  }
-
-  .Misakimessage{
-    font-family: 'Misaki';
-    font-size: 70%;
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border:3px solid white;
-    border-radius: 3px;
-    //margin: auto;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .pleft{
-    float: left;
-  }
-  .pcenter{
-    float: center;
-  }
-  .pright{
-    float: right;
-  }
-  .Shelf{
-    color: #000000;
-    background-color: #f8dce0;
-    background-image: url("../images/menu_foreground.png") no-repeat right top;
-  }
-  body{
-    width:100%;
-    margin:0;
-    padding:0;
-    color:#666;
-    font-family:Arial, sans-serif;
-    line-height: 18px;
-  }
+@font-face {
+  font-family: 'cinecap';
+  src: url('cinecaption2.28.ttf') format('truetype');
+}
+.cinecap {
+  font-family: 'cinecap';
+  font-size: 200%;
+  color: #a09e9b
+}
+a:link{
+  color: #9e9276;
+}
+.Parent{
+  width: 600px;
+}
+.Fox_picture{
+  margin-right: auto;
+  animation: fadeIn 2s ease 0s 1 normal;
+  -webkit-animation: fadeIn 2s ease 0s 1 normal;
+  height:630px;
+  background-image: url(../images/menu_foreground.png);
+  background-repeat: no-repeat;
+  width: 270px;
+  float: left;
+}
+.Explanation{
+  font-family: 'cinecap';
+  font-size: 100%;
+  color: #a09e9b;
+  width: 300px;
+  float: right;
 }
