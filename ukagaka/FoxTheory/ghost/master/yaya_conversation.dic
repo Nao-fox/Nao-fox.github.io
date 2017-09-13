@@ -501,14 +501,10 @@ OnConversation{
   for _i = 0; _i < _morpharray_size; _i++{
     _meaning = _meaning + _morpharray[_i][5,";"]+"\n"
   }
-  if (TOINT(_meaning)){
-    //ここから具体的な配列で判定系…のつもりだったが旧式モジュールでとりあえずやっておく
-    //とりあえずJumanで意味を取得できなかったらこれを実行に。
-    //応急処置なので後々更新する
-  }
-  else{
-    Conversation_old(reference0)//旧式の会話モジュール。一応入れておく
-  }
+  //ここから具体的な配列で判定系…のつもりだったが旧式モジュールでとりあえずやっておく
+  //とりあえずJumanで意味を取得できなかったらこれを実行に->変更。とりあえずパターンマッチを減らした
+  //応急処置なので後々更新する
+  Conversation_old(reference0)//旧式の会話モジュール。一応入れておく
   --
   <<"
   \1%(_meaning)

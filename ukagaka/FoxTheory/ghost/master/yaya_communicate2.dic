@@ -249,6 +249,7 @@ Conversation_old:nonoverlap{
 
 	//以下配列にヒットしなかった場合
 	else{
+    /*
 		if (RE_SEARCH(reference[0], '((なに|何)(？|\?)?)$')){
 			<<"
 			リサ５０：なんか昔聞いたことがあるような...
@@ -280,7 +281,8 @@ Conversation_old:nonoverlap{
 			リサ０７：よく分からない…ごめん。
 			">>
 		}
-		elseif (RE_SEARCH(reference[0], 'こんに?ち[はわ]|今日[はわ]|コンニチ[ハワ]')){
+    */
+		if (RE_SEARCH(reference[0], 'こんに?ち[はわ]|今日[はわ]|コンニチ[ハワ]')){
 			<<"
 			リサ０２：こんにちは、%(username)。
 			">>
