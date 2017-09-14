@@ -251,7 +251,7 @@ RandomTalk_AfterDo{
 			リサ２０３：\"Kinky exotic string\"……?
 			リサ２０４：もう……狙って書いてるよね、これ……
 			本００：\"kink\"は物理において多価な解が発生する解のことであるが、\"性的嗜好(性癖)\"の意味もある。
-			\"exotic string\"はstring理論において生じるbrane解の計量が多価となるものだが、\"風変わりな紐のような下着\"という意味もある。
+			\"exotic string\"はstring理論においてD-braneの計量が多価となるものだが、\"風変わりな紐のような下着\"という意味もある。
 			\e%(TalkReading = 1)
 			'>>
 
@@ -458,7 +458,7 @@ RandomTalk_AfterDo{
 			リサ０５：一見無関係な整数論と解析学の話が関連付くのは、なんだか魔法みたいだよね……
 			本００：\"楕円関数\"
 			有理型の二重周期関数のこと。楕円積分の逆関数としても定義される。
-			Jaconiのθ関数を通して整数論に応用される。
+			Jacobiのθ関数を通して整数論に応用される。
 			\e%(TalkReading = 0)
 			'>>
 
@@ -480,9 +480,9 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ０５：No hair theoremはあくまで古典的に示された定理だから、量子論的にはBlackholeの持つ構造はもっと複雑なものになってるのかな……
+			リサ０５：No hair theoremはあくまで古典的に示された定理だから、量子論的にはBlack holeの持つ構造はもっと複雑なものになってるのかな……
 			本００：\"No hair theorem\"
-			Blackholeの持つ自由度は質量、電荷、角運動量のみであるという定理。
+			Black holeの持つ自由度は質量、電荷、角運動量のみであるという定理。
 			Hawking radiationの観点からは、これは多自由度系であっても熱平衡系では近似的にマクロな自由度のみで表されることに対応する。
 			\e%(TalkReading = 0)
 			'>>
@@ -514,11 +514,11 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ２００：Blackholeはそのholography dualなモデルにおける量子Lyapunov指数がもっとも大きい状態に対応する……
-			リサ２０１：どうして量子カオスとBlackholeが対応しているんだろう……
+			リサ２００：Black holeはそのholography dualなモデルにおける量子Lyapunov指数がもっとも大きい状態に対応する……
+			リサ２０１：どうして量子カオスとBlack holeが対応しているんだろう……
 			本００：\"量子Lyapunov指数\"
 			\_a[https://arxiv.org/abs/1503.01409]OTO(Out-of-Time Ordering)によって定義された\_a量子論におけるカオスの振る舞いを表す指標。
-			Maldacenaらによる予想ではこの指標には上限が存在し、その時におけるAdS/CFT対応によるGravity dualがBlackholeだとされている。
+			Maldacenaらによる予想ではこの指標には上限が存在し、その時におけるAdS/CFT対応によるGravity dualがBlack holeだとされている。
 			\e%(TalkReading = 1)
 			'>>
 		}
@@ -597,7 +597,7 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ２００：AdS/CFT correspondence is quite interesting...why black hole and QFT have such the relationship?
+			リサ２００：AdS/CFT correspondence is quite interesting...why Black hole and QFT have such the relationship?
 			リサ２００：It\'s still a conjecture but this is a sort of revolution in physics. Not only nonperturbative calculation in both sides, it can be establish a new theory like non-equilibrium statistical mechanics.
 			\e%(TalkReading = 1)
 			'>>

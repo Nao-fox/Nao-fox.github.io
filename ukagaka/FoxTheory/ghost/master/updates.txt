@@ -31,7 +31,7 @@ file,ghost/master/words/bookshelf/ジーキル博士とハイド氏.txtd1dd93a5f4ad275ef66
 file,ghost/master/words/bookslearned/ジーキル博士とハイド氏__parse.txt537ba0bc452f12694e3aa92106a22d73size=61685
 file,ghost/master/yaya.dll06bbde179db279484f3457e78ca4ebb1size=346624
 file,ghost/master/yaya.txtd819c3cf9f5593d92054b5bf2e44f7b2size=1875
-file,ghost/master/yaya_aitalk.txt97e7f53e17023f1ca4a3744b23a33996size=33556
+file,ghost/master/yaya_aitalk.txtd06b29673eb29b7149b388a337c36503size=33555
 file,ghost/master/yaya_bootend.txt263db007e53d6f64e09ed5bf1642b123size=3728
 file,ghost/master/yaya_change.txtf7aff7ecafa515323d9c3d486c7a691asize=1569
 file,ghost/master/yaya_communicate2.dicccfbb8cbc3a2a65e0daaa16d0ddc8ccesize=9810
@@ -56,6 +56,7 @@ file,shell/master/menu_foreground.png92cdb8260671a7f7d04251621bfb1a87size=1629
 file,shell/master/menu_sidebar.png528e6b990801f301ad399be7a199f984size=4873
 file,shell/master/readme.txt9010aa741a061684289f9741892ba032size=88
 file,shell/master/surface0.apngeaf57b90efd20a96761a4dcf6edb2bdbsize=79015
+file,shell/master/surface0.pngeaf57b90efd20a96761a4dcf6edb2bdbsize=79015
 file,shell/master/surface10.pngfb7019c408e18ed08f8f1804ef68dab6size=1179
 file,shell/master/surface1000.pngf2f6a8ef9b742e58d7c1417672130971size=77831
 file,shell/master/surface1001.png8383581294685e3b01c1822f31c1bc9asize=72440
