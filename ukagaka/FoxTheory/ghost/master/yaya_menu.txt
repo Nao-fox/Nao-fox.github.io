@@ -156,8 +156,8 @@ Developtest{
 	//＠メニュー：つつきコマンド変更|PokeChange
 }
 Sep{
-	_input ="OnAAA"
-	RE_SEARCH(_input, "OnInstall|OnURL|OnFile|OnUpdate|OnSecond")
+	_test = ("aa","b","cc")
+	_test[1,65535]
 }
 
 
@@ -234,7 +234,6 @@ Menu_AITALK
 {
 	//---- 明示的にAIトーク開始を指示
 	Silence = 0
-	aitalkinterval = 300
 	"\![raise,OnAITalk]"
 }
 

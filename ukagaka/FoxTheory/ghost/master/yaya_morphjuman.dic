@@ -54,7 +54,7 @@ Morph_Juman_Other : array
 
 //解析したい文を渡して(_argv[0])形態素、基本形、品詞、意味の配列を返す
 Morph_Juman3{
-  _result = FUNCTIONEX("SAORI\proxy.dll","openpipe.exe","juman\\juman.exe",_argv[0])
+  _result = FUNCTIONEX("SAORI\proxy.dll","openpipe_juman.exe","juman2\\juman.exe",_argv[0])
   //これは改行文字\nで区切られている。まずこれでsplitして配列にする
   _result_rank = SPLIT(_result,"\n")
   _result_rank_number = ARRAYSIZE(_result_rank)
@@ -92,7 +92,7 @@ Morph_Juman3{
 
 
 Morph_Juman_Original{
-  FUNCTIONEX("SAORI\proxy.dll","openpipe.exe","juman\\juman.exe",_argv[0])
+  FUNCTIONEX("SAORI\proxy.dll","openpipe_juman.exe","juman2\\juman.exe","ファインマンって知ってる？")
 }
 OnMorph_Juman_test{
   Morph_Juman_Original(reference0)

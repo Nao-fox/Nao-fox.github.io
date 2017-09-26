@@ -38,7 +38,7 @@
 　Nao
 
 ◆動作確認環境
-　SSP/2.3.97
+　SSP/2.3.97, OS:windows(64bit)
 　(DeepLearningモジュールを実行の際はメモリを500MBは確保して下さい)
 
 ◆連絡先
