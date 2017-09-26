@@ -135,7 +135,7 @@ Conversation_old:nonoverlap{
 		}
 		elseif (_A1 == ASEARCH(commuphysics_easy, commuwords)){
 			<<"
-			リサ６５：物理の話か、いいね、色々教えてよ。
+			リサ６５：物理の話か、いいね、色々教えてくれない？
 			">>
 
 			<<"
