@@ -156,8 +156,10 @@ Developtest{
 	//＠メニュー：つつきコマンド変更|PokeChange
 }
 Sep{
-	_test = ("aa","b","cc")
-	_test[1,65535]
+	_input = "+人間+日本-青"
+	if (RE_SEARCH(_input, "^\+.+") != 1){
+		_input = '+'+_input
+	}
 }
 
 

@@ -92,12 +92,15 @@ OnSelectLearnedData{
 }
 
 OnWord2Vec_begin_ghost{
-  "\_q\0\s[0]Tips:\n学習量が少ないとうまく動作しない(最低でも10kb程度を推奨。データはmaster\\words\\ghostlearnedに保存されている)。またトークに存在しなかった単語の意味は取得できない。\n入力例: +人間-言葉\_q"
+  "\_q\0\s[0]Tips:\n学習量が少ないとうまく動作しない(最低でも10kb程度を推奨。データはmaster\\words\\ghostlearnedに保存されている)。またトークに存在しなかった単語の意味は取得できない。\n入力例: 人間-言葉\_q"
   --
 	'\![open,inputbox,OnWord2Vec_ghost,-1,--option=noclose]'
 }
 OnWord2Vec_ghost{
 	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
+  if (RE_SEARCH(_input, "^\+.+") != 1){
+    _input = '+'+_input
+  }
 	//引数は(input_string, wikipediaデータ(0)か外部テキスト(1), model_path, sg,size,min_count,window,LineSentence(1)かText8Corpus(0))
 	//sg以降の引数は外部テキスト(1)でないと使えない(0だと無視される)sg=0はCBOW, sg=1はskip-gram
 
@@ -141,13 +144,16 @@ OnWord2Vec_ghost{
 
 //ここからWiki用
 Word2Vec_begin_wiki{
-  "\_q\0\s[0]Wikipediaから学習したデータを用いて、意味の類推を行います。+, -で意味の足し引きを表します。\n例:+東京-日本+ドイツ\_q"
+  "\_q\0\s[0]Wikipediaから学習したデータを用いて、意味の類推を行います。+, -で意味の足し引きを表します。\n例:東京-日本+ドイツ\_q"
 	--
 	'\![open,inputbox,OnWord2Vec_wiki,-1,--option=noclose]'
 }
 
 OnWord2Vec_wiki{
 	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
+  if (RE_SEARCH(_input, "^\+.+") != 1){
+    _input = '+'+_input
+  }
 	//引数は(input_string, wikipediaデータ(0)か外部テキスト(1), model_path, sg,size,min_count,window,LineSentence(1)かText8Corpus(0))
 	//sg以降の引数は外部テキスト(1)でないと使えないとする
 	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,0,"word2vec\\word2vec-gensim-model\\word2vec.gensim.model")
@@ -266,13 +272,16 @@ OnSelectLearnedBooks{
 
 
 OnWord2Vec_begin_book{
-  "\_q\0\s[0]ゴーストが読んだ\'本\'の文章を用いて意味の類推を行います。+, -で意味の足し引きを表します。\n例:+人間-愛\_q"
+  "\_q\0\s[0]ゴーストが読んだ\'本\'の文章を用いて意味の類推を行います。+, -で意味の足し引きを表します。\n例:人間-愛\_q"
 	--
 	'\![open,inputbox,OnWord2Vec_book,-1,--option=noclose]'
 }
 
 OnWord2Vec_book{
 	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
+  if (RE_SEARCH(_input, "^\+.+") != 1){
+    _input = '+'+_input
+  }
 	//引数は(input_string, wikipediaデータ(0)か外部テキスト(1), model_path, sg,size,min_count,window,LineSentence(1)かText8Corpus(0))
 	//sg以降の引数は外部テキスト(1)でないと使えない(0だと無視される)sg=0はCBOW, sg=1はskip-gram
 

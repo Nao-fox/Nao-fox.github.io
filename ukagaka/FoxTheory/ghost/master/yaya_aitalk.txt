@@ -521,6 +521,25 @@ RandomTalk_AfterDo{
 			Maldacena‚ç‚É‚æ‚é—\‘z‚Å‚Í‚±‚ÌŽw•W‚É‚ÍãŒÀ‚ª‘¶Ý‚µA‚»‚ÌŽž‚É‚¨‚¯‚éAdS/CFT‘Î‰ž‚É‚æ‚éGravity dual‚ªBlack hole‚¾‚Æ‚³‚ê‚Ä‚¢‚éB
 			\e%(TalkReading = 1)
 			'>>
+
+			<<'
+			ƒŠƒT‚O‚PFHiggs‹@\‚ÍA‚à‚Æ‚à‚Æ•¨«‚Ì•ª–ì‚Ål‚¦‚ç‚ê‚½Ginzburg-Landau model‚ªƒAƒCƒfƒA‚”‚Á‚Ä’m‚Á‚Ä‚½H
+			ƒŠƒT‚O‚QF‚±‚Ìê‡AŽ©”­“I‘ÎÌ«‚Ì”j‚ê‚É‚æ‚éŽ¿—Ê‚ÌŠl“¾‚ÍA•¨«‚É‚¨‚¯‚éŽ©”­Ž¥‰»‚Ì”­¶‚Æ“™‰¿‚ÈŒ»Û‚É‚È‚é‚æB
+			–{‚O‚OF\"Ginzburg-Landau theory\"
+			”÷Ž‹“I‚ÈHamiltonian‚Å‚Í‚È‚­A‹Ž‹“I‚ÈŽ©—RƒGƒlƒ‹ƒM[‚É’–Ú‚µ‚Ä‘Š“]ˆÚ‚Ì‰ðÍ‚ðs‚¤—˜_B
+			‚±‚ÌŽžl‚¦‚ç‚ê‚½ƒ‚ƒfƒ‹‚É‚æ‚èAŽ©—RƒGƒlƒ‹ƒM[‚ÌŽ‚Â‘ÎÌ«‚ÆŽ©”­Ž¥‰»‚ÌŠÖŒW‚ªŽ¦‚³‚ê‚½B
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚PFBosonic‚Èstring—˜_‚Í26ŽŸŒ³Asuperstring‚Í10ŽŸŒ³‚Å‚µ‚©Poincare‘ÎÌ«‚ð•Û‚Ä‚È‚¢‚¯‚Çcc
+			ƒŠƒT‚Q‚O‚QF‚Ç‚¤‚µ‚Änaive‚É‰ðÍÚ‘±‚µ‚½zeta function‚Ì’l‚Å‚±‚ê‚ª•]‰¿‚Å‚«‚é‚ñ‚¾‚ë‚¤cc
+			–{‚O‚OFstring theory‚ª’è‹`‚³‚ê‚éŽž‹ó‚ÌŽŸŒ³‚ÍA‘ÎÌ«‚©‚ç“Á’è‚ÌŽŸŒ³‚É§ŒÀ‚³‚ê‚éB
+			‚±‚ÌŽžVirasoro‘ã”‚ÆPoincare‘ã”‚ª•Â‚¶‚é‚Æ‚¢‚¤—v¿‚Æzeta function‚Å•]‰¿‚·‚éƒGƒlƒ‹ƒM[‚ÌAnomaly‚ª0‚Æ‚È‚é‚¢‚¤—v¿‚ªˆê’v‚·‚éB
+			\e%(TalkReading = 1)
+			'>>
+
+			
 		}
 
 		if (EnglishTalk == 1){//English talking
@@ -529,11 +548,9 @@ RandomTalk_AfterDo{
 			ƒŠƒT‚P‚O‚TFPerhaps Looking-glass milk isn\'t good to drink \\
 			ƒŠƒT‚P‚O‚OFYou know, this phrase is quoted from \"Through the Looking-Glass\".
 			ƒŠƒT‚P‚O‚PF%(username), do you think the milk of the mirror world is tasty?
-			=====
-			ƒŠƒT‚O‚TFIn fact, there is indeed an answer.
-			ƒŠƒT‚O‚OFWhat makes milk sweet is lactose, which has an optical isomer in its structure.
-			ƒŠƒT‚O‚OFƒ¿-lactose is sweet but ƒÀ-lactose is not, even it\'s not easily digested.
-			ƒŠƒT‚O‚QFTherefore, the answer is No. It seems Alice was right all along!
+			–{‚O‚OFWhat makes milk sweet is lactose, which has an optical isomer in its structure.
+			ƒ¿-lactose is sweet but ƒÀ-lactose is not, even it\'s not easily digested.
+			Therefore, the answer is No. It seems Alice was right all along.
 			\e%(TalkReading = 0)
 			'>>
 
@@ -576,52 +593,77 @@ RandomTalk_AfterDo{
 			<<'
 			ƒŠƒT‚Q‚O‚QFPeople often emphasize the \"beautifullness\" when they make a theory of natural science.
 			ƒŠƒT‚P‚O‚TFThe \"beautifullness\" means, the theory need few simple assumptions but can predict plenty of law or theorems.
-			ƒŠƒT‚P‚O‚PFFor instance, analytical mechanics needs only the one prinsiple, principle of least action. It is a very beautiful theory, indeed.
-			====
+			ƒŠƒT‚P‚O‚PFFor instance, analytical mechanics needs only the one prinsiple, the principle of least action. It is a very beautiful theory, indeed.
+			–{‚O‚OF\"The principles of least action\"
+			The principle is written as \"ƒÂS=0\". Any classical mechanical dynamics can be described by this principle.
+			Path integral in quantum mechanics is based on the idea but also considering all trajectries.
+			'>>
+
+			<<'
 			ƒŠƒT‚Q‚O‚QFThough either the principles of the universe is simple or not, is not guaranteed at all.
-			ƒŠƒT‚Q‚O‚PFTherefore, modern physics are sometimes refered \"recreation of God\" as ironic.
+			ƒŠƒT‚Q‚O‚PFMaybe we can\'t deny the anthropic principle after all...
+			–{‚O‚OF\"The anthropic principle\"
+			The principles means parameters which Lagrangian contains are essentially determined randomly and the reason of the values is just it gives the universe we live.
+			If we choose the principle, hierarchy problem becomes meaningless.
 			\e%(TalkReading = 1)
 			'>>
 
 			<<'
 			ƒŠƒT‚R‚O‚TFDo you know \"Rube Goldberg machine\"?
-			ƒŠƒT‚R‚O‚OFThis machine has tremendous complex structure though intended to do trifles.
+			ƒŠƒT‚R‚O‚OFThis machine has a tremendous complex structure though intended to do trifles.
 			ƒŠƒT‚R‚O‚TFSometimes the machine is used a metaphor of recent theoretical physics...well, like to introduce extra dimensions just to determine parameters.
+			–{‚O‚OF\"Rube Goldberg machine\"
+			The machine is described by Rube Goldberg(1883`1970): \"Professor Butts and the Self-Operating Napkin\" or \"Something for Nothing\"
 			\e%(TalkReading = 0)
 			'>>
 
 			<<'
 			ƒŠƒT‚O‚TFAxiomatic quantum field theory still does not make a progress at all.
 			ƒŠƒT‚O‚TFI\'m not sure when QFT is refurblished based on exact mathematics...
+			–{‚O‚OF\"Axiomatic quantum field theory\"
+			An attempt to construct quantum field theory via Wightman\'s axioms.
+			It can prove CPT theorem and causality of correlation function but still only valid for free theory.
 			\e%(TalkReading = 0)
 			'>>
 
 			<<'
 			ƒŠƒT‚Q‚O‚OFAdS/CFT correspondence is quite interesting...why Black hole and QFT have such the relationship?
 			ƒŠƒT‚Q‚O‚OFIt\'s still a conjecture but this is a sort of revolution in physics. Not only nonperturbative calculation in both sides, it can be establish a new theory like non-equilibrium statistical mechanics.
+			–{‚O‚OF\"AdS/CFT correspondence\"
+			Also called as Holography principle. This is a conjecture which implies a partition function of classical gravity in d+1 dim AdS spacetime is equivalent to CFT partition function in dim Minkowski spacetime.
+			\_a[https://arxiv.org/abs/hep-th/9711200]This paper written by Juan Maldacena\_a has the highest citations in hep-th.
 			\e%(TalkReading = 1)
 			'>>
 
 			<<'
 			ƒŠƒT‚Q‚O‚QFAccording to Montgomery-Odlyzko conjecture, the nontrivial zeros of the Riemann zeta function and the eigenvalues of Wigner matrices share the distribution.
-			ƒŠƒT‚Q‚O‚QF...\0\s[201]Can we apply the correspondance to any models in physics?
+			ƒŠƒT‚Q‚O‚QF...\0\s[201]Can we apply the correspondence to any models in physics?
+			–{‚O‚OF\"Montgomery-Odlyzko conjecture\"
+			A conjecture of spectral analysis in random matrix and Riemann zeta function.
 			\e%(TalkReading = 1)
 			'>>
 
 			<<'
 			ƒŠƒT‚Q‚O‚UFIn fact, it\'s impossible to make a Lagrangian including graviton with Yang-Mills type gauge principle. Do you know it?
-			ƒŠƒT‚Q‚O‚QFWell, the proof is called Weinberg-Witten theorem. It\'s quite a simple proof but very strong, surprising fact.
+			ƒŠƒT‚Q‚O‚QFWell, the statement is based on Weinberg-Witten theorem. It\'s quite a simple proof but very strong, surprising fact.
+			–{‚O‚OF\"Weinberg-Witten theorem\"
+			The statement is \"massless particles with spin j > 1/2 cannot carry a Lorentz-covariant current, while massless particles with spin j > 1 cannot carry a Lorentz-covariant stress-energy\"
 			\e%(TalkReading = 1)
 			'>>
 
 			<<'
 			ƒŠƒT‚O‚OFAfter the discovery of Hawking radiation, many scientists studying QFT also began a study of Black hole.
 			ƒŠƒT‚O‚TFLike information loss problem, there\'re still a lot of problems though.
+			–{‚O‚OF\"information loss problem\"
+			A paradox of No hair theorem of Black holes may violate unitarity of time evolution in quantum theory.
 			\e%(TalkReading = 1)
 			'>>
 
 			<<'
 			ƒŠƒT‚Q‚O‚PFTime evolution is represented as an unitary operator in quantum mechanics but why the time is not reversal?
+			\"Unitarity\"
+			In quantum mechanics, unitarity means a property to conserve a norm of vector in Hilbert space.
+			Especially, time evolution is unitary transformation.
 			\e%(TalkReading = 1)
 			'>>
 
@@ -632,7 +674,99 @@ RandomTalk_AfterDo{
 			\e%(TalkReading = 0)
 			'>>
 
+			<<'
+			ƒŠƒT‚Q‚O‚PFGenerating functional of QFT in imaginary-time is actually equivalent to partition function in statistical mechanics...
+			ƒŠƒT‚Q‚O‚OFCan we construct some relationship between entropy and time using its statement?
+			–{‚O‚OF\"imaginary-time formalism\"
+			In quantum mechanics, if we set the time is imaginary; t=iƒÑ and impose a proper boundary condition, the theory turns out a statistical mechanics under the inverse temperature is the imaginary-time.
+			\e%(TalkReading = 1)
+			'>>
 
+			<<'
+			ƒŠƒT‚O‚PFDo you know the person who formulated a path integral method is Feynman, however the idea itself was from Dirac\'s idea?
+			–{‚O‚OFIn P.A.M. Dirac, \"The Principles of Quantum Mechanics\", Chapter32 \"The action principle\", Dirac indicated probability amplitude can be expressed as e^(iS) before Feynman.
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚RF\"Because of this kink, the bra can be infinite value\"...?
+			ƒŠƒT‚Q‚O‚SFIndeed it makes sense though...whatever...
+			–{‚O‚OFIn physics, \"kink\" means a solution which can be multi-valued.
+			Also \"bra\" means a vector in Hilbert space.
+			Thefore the sentense is not weird at all in physics.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚RF\"Kinky exotic string\"...?
+			ƒŠƒT‚Q‚O‚SF...and D-string, whatsoever...
+			–{‚O‚OFIn physics, \"kink\" means a solution which can be multi-valued.
+			Also \"exotic string\" means a string theory whose metric of D-brane in the theory becomes multi-valued.
+			Thefore the sentense is quite normal in physics.
+			\e%(TalkReading = 1)
+			'>>
+			<<'
+			ƒŠƒT‚O‚PF%(username), do you know \"pseudo-differential operator\"?
+			ƒŠƒT‚O‚QFActually we can define 1/2 times differential under satisfying Leibniz rule in a certain case.
+			ƒŠƒT‚U‚TF1/2 times differential of x is ã(4x/ƒÎ). Indeed the power is 1/2.
+			–{‚O‚OF\"pseudo-differential\"
+			Also called fractional-differential. This operator is defined by Laplace transform of ordinal differential operator.
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚QFHmm, How does the other world of Randall-Sundrum model look like...
+			ƒŠƒT‚Q‚O‚QFThe energy scale of the world is different from our one, so maybe the quantum effect can be much stronger...?
+			–{‚O‚OF\"Randall-Sundrum model\"
+			Introducing the extra dimension into spacetime, this model represents the other 4-dim world as a brane solution.
+			This model is constructed to solve hierarchy problem.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚QFA localization method in path integral is indeed useful but what the state itself looks like?
+			ƒŠƒT‚Q‚O‚QFThe quantum fluctuations are all cancelled, well...
+			–{‚O‚OF\"localization\"
+			localization means the value of path-integral can be expressed a sum of classical solutions up to 1-loop.
+			This method is achieved by using a nilpotent symmetry like Supersymmetry.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			ƒŠƒT‚O‚TFBorel singularities of resurgence method is really equivalent to instanton solutions?
+			ƒŠƒT‚O‚TFIndeed their behavior are similar though...
+			–{‚O‚OF\"Borel singularity\"
+			A singularity emerged when Borel tranform is applied. Resurgence method claims the places of these singularities are equivalent to instanton solutions.
+			Both factor are nonperturbative and also verified in some cases.
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚PFHow do we measure the \"place\" in noncommutative geometry, like fuzzy sphere?
+			–{‚O‚OF\"fuzzy sphere\"
+			It means a sphere in noncommutative coordinate. The coordinate is espressed as matrix.
+			The structure of the Lie algebra on the geometry is relevant to space-time metric under large N limit.
+			\e%(TalkReading = 1)
+			'>>
+
+			<<'
+			ƒŠƒT‚O‚PFDo you know, in 2 dimension, we have to add dilaton not only Ricci scalar into Action?
+			ƒŠƒT‚O‚QFThis fact is related to the speciality of fundamental homotopy group.
+			–{‚O‚OF\"homotopy\"
+			The equivalence relation which classifies manifolds using loops.
+			A term \"topology\", often used in conversations is actually homotopy in many cases.
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚O‚PFThe man who solved Basel problem is Leonhard Euler but his method was not well-defined in the age.
+			ƒŠƒT‚O‚QFStill his method was completely different from the old one and people could understand the meaning easily, His achivement was called a revolution.
+			–{‚O‚OF\"Basel problem\"
+			The Basel problem asks for the value of \"ƒ°1/n^2\". It was first posed by Pietro Mengoli in 1644 and solved by Leonhard Euler in 1734.
+			The answer is ƒÎ^2/6BHis proof was verified by Weierstrass\'formulation of infinite product.
+			Basel, hometown of Euler is as well as of the Bernoulli family who unsuccessfully attacked the problem.
+			\e%(TalkReading = 0)
+			'>>
 		}
 	}
 }
