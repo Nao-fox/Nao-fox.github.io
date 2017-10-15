@@ -3,10 +3,63 @@
 RandomTalk_AfterDo{
 	ExTalkFlagInit
 }
-*/
-/*9割くらいこれになってしまい、意図した動作じゃない気がする
+
+/*9割くらいこれになってしまい、意図した動作じゃない気がする*/
+/*
 新規追加ランダムトーク : array
 {
+	<<'
+	リサ０１：2次元空間ではEinstein-Hilbert Actionではなく、dilatonも含めたActionでないと重力を定義できないって知ってる？
+	リサ０２：これはfundamental homotopy groupが2次元の時のみ特殊になるのと関係しているよ。
+	本００：\"Gauss-Bonnet theorem\"
+	2次元でコンパクトなRiemann多様体においては、RをRicci scalar, χをEuler numberとすると\"∫RdS = 4πχ\"が成立する。
+	これはmetricの変分が多様体のhomotopyを変えないのであれば、Einstein-Hilbert Actionは常に定数であることを意味する。
+	\e%(TalkReading = 0)
+	'>>
+
+	<<'
+	リサ０５：homotopyが同じなら多様体は同相だけど、homotopyが同じであっても同相であるとは限らないんだよね……
+	リサ００：多様体を分類するのに、より強力な位相不変量は見つかるのかな？
+	本００：\"homotopy\"
+	ループによって多様体を分類する時に使われる同値関係。
+	日常的に使われる\"トポロジー\"という言葉はこのhomotopyである場合が多い。
+	\e%(TalkReading = 0)
+	'>>
+
+	<<'
+	リサ２００：\"驚異の定理\"か……
+	リサ２０２：宇宙の形や曲率を外部から見なくても、宇宙内部での観測のみから分かるのは確かに不思議だよね……
+	本００：\"驚異の定理(Theorema Egresium)\"
+	Karl Friedrich Gaussにより1827年に証明された、\"Gauss曲率は第一基本形式(線素)の情報から求められる\"という定理。
+	これは自分がいる平面のhomotopyや曲率を、外から見なくてもその平面上の人は知ることができることを意味する。
+	\e%(TalkReading = 1)
+	'>>
+
+	<<'
+	リサ０１：Higgs機構は、もともと物性の分野で考えられたGinzburg-Landau modelがアイデアって知ってた？
+	リサ０２：この場合、自発的対称性の破れによる質量の獲得は、物性における自発磁化の発生と等価な現象になるよ。
+	本００：\"Ginzburg-Landau theory\"
+	微視的なHamiltonianではなく、巨視的な自由エネルギーに注目して相転移の解析を行う理論。
+	この時考えられたモデルにより、自由エネルギーの持つ対称性と自発磁化の関係が示された。
+	\e%(TalkReading = 0)
+	'>>
+
+	<<'
+	リサ２０１：Bosonicなstring理論は26次元、superstringは10次元でしかPoincare対称性を保てないけど……
+	リサ２０２：どうしてnaiveに解析接続したzeta functionの値でこれが評価できるんだろう……
+	本００：string theoryが定義される時空の次元は、対称性から特定の次元に制限される。
+	この時Virasoro代数とPoincare代数が閉じるという要請とzeta functionで評価するエネルギーのAnomalyが0となるいう要請が一致する。
+	\e%(TalkReading = 1)
+	'>>
+
+	<<'
+	リサ２００：Standard modelにおけるペンギンのCP violationの話か……
+	リサ２０４：……鏡の国のペンギンは少ないのかな？
+	本００："Penguin diagram"
+	クォークがWボソンを介してフレーバーを変える過程を記述するFeynman diagramの一つ。
+	この名前は1977年にJohn EllisがMelissa Franklinとゲームで負けたら"Penguin"という単語を次の論文に登場させるという賭けを行い、負けたことに由来する。
+	\e%(TalkReading = 1)
+	'>>
 
 }
 */
@@ -310,7 +363,7 @@ RandomTalk_AfterDo{
 
 			<<'
 			リサ０５：homotopyが同じなら多様体は同相だけど、homotopyが同じであっても同相であるとは限らないんだよね……
-			リサ００：homotopyよりも強力な位相不変量は見つかるのかな？
+			リサ００：多様体を分類するのに、より強力な位相不変量は見つかるのかな？
 			本００：\"homotopy\"
 			ループによって多様体を分類する時に使われる同値関係。
 			日常的に使われる\"トポロジー\"という言葉はこのhomotopyである場合が多い。
@@ -541,7 +594,7 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ０１：Higgs機構は、もともと物性の分野で考えられたGinzburg-Landau modelがアイデアｔって知ってた？
+			リサ０１：Higgs機構は、もともと物性の分野で考えられたGinzburg-Landau modelがアイデアって知ってた？
 			リサ０２：この場合、自発的対称性の破れによる質量の獲得は、物性における自発磁化の発生と等価な現象になるよ。
 			本００：\"Ginzburg-Landau theory\"
 			微視的なHamiltonianではなく、巨視的な自由エネルギーに注目して相転移の解析を行う理論。
@@ -687,7 +740,7 @@ RandomTalk_AfterDo{
 
 			<<'
 			リサ２０１：Time evolution is represented as an unitary operator in quantum mechanics but why the time is not reversal?
-			\"Unitarity\"
+			本００：\"Unitarity\"
 			In quantum mechanics, unitarity means a property to conserve a norm of vector in Hilbert space.
 			Especially, time evolution is unitary transformation.
 			\e%(TalkReading = 1)
