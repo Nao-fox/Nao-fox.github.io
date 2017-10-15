@@ -68,9 +68,9 @@ OpenMenu
 		＠半分メニュー：なにか話して｜Menu_AITALK
 		＠半分メニュー：会話する｜Conversation_Begin
 		＠メニュー：最近の研究pick up(arXiv:hep-th)|PhysicsCheck
-		＠メニュー：Deep Learning(with Ghosts)|ShowLearnedWordsList
-		＠メニュー：Deep Learning(with Books)|ShowBooksList
-		＠メニュー：Deep Learning(with wikipedia)|Word2Vec_begin_wiki
+		＠メニュー：Word2Vec(with wikipedia)|Word2Vec_begin_wiki
+		＠メニュー：Word2Vec(with Ghosts)|ShowLearnedWordsList
+		＠メニュー：Word2Vec(with text)|ShowBooksList
 		＠メニュー：静かにしてて|ReadBookPlease
 		＠メニュー：Option|Option
 		＠改行多めメニュー：なんでもない｜Menu_CANCEL
@@ -79,6 +79,7 @@ OpenMenu
 	--
 	ExTalkFlagInit
 }
+
 Option{
 	if (EnglishMenu == 1){
 		<<"
@@ -87,8 +88,8 @@ Option{
 		＠メニュー：Talking frequency: %(TalkIntervalShow(aitalkinterval,Silence))|Menu_TALKINTERVAL
 		＠メニュー：Allow her to talk about papers(hep-th): %(FlagChecker_Show(RSSTalk))|OnRSSTalkCheck
 		＠メニュー：Enable to learn from other ghosts: %(FlagChecker_Show(GhostLearnCheck))|OtherGhostLearnCheck
-		＠メニュー：Allow her to talk in Japanese: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
-		＠メニュー：Allow her to talk in English: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
+		＠メニュー：Allow Japanese talk: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
+		＠メニュー：Allow English talk: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
 		＠メニュー：Use English Menu: %(FlagChecker_Show(EnglishMenu))|OnEnglishMenuCheck
 		＠改行多めメニュー：Return|OpenMenu
 		">>
@@ -101,7 +102,7 @@ Option{
 		＠メニュー：論文(hep-th)のトークを許可: %(FlagChecker_Show(RSSTalk))|OnRSSTalkCheck
 		＠メニュー：他のゴーストからの学習を許可: %(FlagChecker_Show(GhostLearnCheck))|OtherGhostLearnCheck
 		＠メニュー：日本語のトークを許可: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
-		＠メニュー：Allow her to talk in English: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
+		＠メニュー：Allow English talk: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
 		＠メニュー：Use English Menu: %(FlagChecker_Show(EnglishMenu))|OnEnglishMenuCheck
 		＠改行多めメニュー：戻る|OpenMenu
 		">>
@@ -156,21 +157,12 @@ Developtest{
 	//＠メニュー：つつきコマンド変更|PokeChange
 }
 Sep{
-	_input = "+人間+日本-青"
-	if (RE_SEARCH(_input, "^\+.+") != 1){
-		_input = '+'+_input
-	}
+	"\![open,sliderinput,OnSlidertest,30000,10,0,20]"
+	//初期値、最小、最大
 }
-
-
-RendouTest{
-	<<"
-	リ００：てすと%(CHR(0xd,0xa))
-	">>
-	--
-	OpenMenu
+OnSlidertest{
+	"%(reference0)だよ"
 }
-
 Flagchecker{
 	<<"
 	＠メニュー：フラグ表示(一部)|ShowFlag
@@ -259,20 +251,20 @@ Menu_TALKINTERVAL
 	if (EnglishMenu == 1){
 		<<"
 		リサ００：...？
-		＠メニュー：Frequently｜Menu_TALKFREQUENT
-		＠メニュー：Normal｜Menu_TALKNORMAL
-		＠メニュー：Little｜Menu_TALKPOOR
+		＠メニュー：Frequently(30 sec)｜Menu_TALKFREQUENT
+		＠メニュー：Normal(3 min)｜Menu_TALKNORMAL
+		＠メニュー：Little(5 min)｜Menu_TALKPOOR
 		＠メニュー：Silent｜Menu_TALKNONE
 		＠改行多めメニュー：Return｜Option
 		">>
 	}
 	else{
 		<<"
-		リサ００：...？
-		＠メニュー：多め｜Menu_TALKFREQUENT
-		＠メニュー：ふつう｜Menu_TALKNORMAL
-		＠メニュー：少なめ｜Menu_TALKPOOR
-		＠メニュー：集中したい｜Menu_TALKNONE
+		リサ００：……？
+		＠メニュー：多め(30秒間隔)｜Menu_TALKFREQUENT
+		＠メニュー：ふつう(3分間隔)｜Menu_TALKNORMAL
+		＠メニュー：少なめ(5分間隔)｜Menu_TALKPOOR
+		＠メニュー：黙る｜Menu_TALKNONE
 		＠改行多めメニュー：戻る｜Option
 		">>
 	}

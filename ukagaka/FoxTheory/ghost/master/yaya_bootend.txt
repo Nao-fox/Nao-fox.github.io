@@ -75,6 +75,8 @@ OnTellNameFirst{
 		リサ０１：これからよろしくね、%(username)さん。
 		">>
 	}
+	--
+	SakuraBootFunc
 }
 
 
@@ -89,6 +91,9 @@ Vanish後初回起動
 	リサ０９：あ……
 	リサ０１：……久しぶりだね。
 	">>
+	--
+	SakuraBootFunc
+
 }
 
 
@@ -107,8 +112,10 @@ Vanish後初回起動
 	リサ１９９：……
 	リサ１０９：あ、%(username)。
 	">>
+
+
 	--
-	OtherGhostLearnCheck_First
+	SakuraBootFunc
 
 }
 
@@ -121,6 +128,73 @@ Vanish後初回起動
 	リサ０２：じゃあね、%(username)。
 	">>
 
+}
+
+//日々の起動トーク。
+
+朝に起動
+{
+	if (JapaneseTalk == 1){
+		<<"
+		リサ０１：おはよう、%(username)。
+		">>
+
+	}
+	if (EnglishTalk == 1){
+		<<"
+		リサ０２：Good morning, %(username).
+		">>
+	}
+	--
+	SakuraBootFunc
+}
+
+昼食時に起動
+{
+	if (JapaneseTalk == 1){
+		<<"
+		リサ０２：こんにちは、%(username)。
+		">>
+	}
+	if (EnglishTalk == 1){
+		<<"
+		リサ０２：Hello, %(username)
+		">>
+	}
+	--
+	SakuraBootFunc
+}
+
+夜に起動
+{
+	if (JapaneseTalk == 1){
+		<<"
+		リサ０１：こんばんは、%(username)。
+		">>
+
+	}
+	if (EnglishTalk == 1){
+		<<"
+		リサ０２：Hi, %(username).
+		">>
+	}
+	--
+	SakuraBootFunc
+}
+
+深夜に起動
+{
+	<<"
+	リサ２０１：……
+	リサ２０６：あれ、%(username)……？
+	">>
+
+	<<"
+	リサ１９９：……
+	リサ１０９：あ、%(username)。
+	">>
+	--
+	SakuraBootFunc
 }
 /*
 //特定条件での起動トーク。
@@ -159,31 +233,11 @@ Vanish後初回起動
 {
 
 }
-
-//日々の起動トーク。
-朝に起動
-{
-
-}
-
-昼食時に起動
-{
-
-}
-
-夜に起動
-{
-
-}
-
-深夜に起動
-{
-
-}
+*/
 //******************************************************************************
 //終了 OnClose
 //******************************************************************************
-
+/*
 //こちらも該当がない時は「終了」
 
 朝に終了

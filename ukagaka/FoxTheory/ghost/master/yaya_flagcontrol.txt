@@ -1,7 +1,7 @@
 //フラグ(グローバル変数)の初期化を行う関数
 
 //起動時に実行される関数(OnSystemLoad.なんちゃらは全て起動時に実行される)
-OnSystemLoad.FlagInit{
+OnGhostLoad.FlagInit{
   /*
   JapaneseTalk = 1
   EnglishTalk = 1
@@ -13,9 +13,20 @@ OnSystemLoad.FlagInit{
   Violence = 0
   FUNCTIONEX("SAORI\mciaudior.dll", "load", "..\bgm\page10.mp3")
   UsedCommunicate = IARRAY
-  //OtherGhostLearnCheck_First さくらスクリプトのみの実行は機能しない？
+  //OtherGhostLearnCheck_First //さくらスクリプトのみの実行は機能しない？
 }
-
+SakuraBootFunc{
+  OtherGhostLearnCheck_First
+  --
+  "\![set,sticky-window,1,0]"
+}
+//これでさくらスクリプト実行するとOnBootのあやりりすが機能しない
+/*
+起動共通スクリプト{
+  //OtherGhostLearnCheck_First
+  "\![set,sticky-window,1,0]"
+}
+*/
 FlagChecker_Show{
 	_flag = _argv[0]
 	if (_flag == 0){

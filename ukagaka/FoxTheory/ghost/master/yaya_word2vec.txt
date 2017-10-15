@@ -73,7 +73,7 @@ ShowLearnedWordsList{
     _flag = RE_SEARCH(_ltitle,Learned_Ghost)
     _show = _show + "\![*]\q[%(_stitle),OnSelectLearnedData,%(_ltitle)]"+"%(FlagChecker_Show(_flag))"+"\n"
   }
-  _show = _show + "\n\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.Optionで'他のゴーストからの学習を許可'をOn\n2.他のゴーストを同時に起動させると自動で話した内容を学習する(他のことをしていてもOK)\n3. 使いたいデータを選んでExecuteを実行\n(Learned_allは学習した全ゴーストのデータを使用)\_q"
+  _show = _show + "\n\__q[OpenMenu]\![*]戻る\__q\_q"+"\1\_q使い方\n1.Optionで'他のゴーストからの学習を許可'をOn\n2.他のゴーストを同時に起動させると自動で話した内容を学習する(他のことをしていてもOK)\n3. 使いたいデータを選んでExecuteを実行\n(Learned_allは学習した全ゴーストのデータを使用)\_q"
   _show
 }
 OnSelectLearned_all{
@@ -92,10 +92,24 @@ OnSelectLearnedData{
 }
 
 OnWord2Vec_begin_ghost{
-  "\_q\0\s[0]Tips:\n学習量が少ないとうまく動作しない(最低でも10kb程度を推奨。データはmaster\\words\\ghostlearnedに保存されている)。またトークに存在しなかった単語の意味は取得できない。\n入力例: 人間-言葉\_q"
+  OnWord2Vec_begin_ghost_text
   --
 	'\![open,inputbox,OnWord2Vec_ghost,-1,--option=noclose]'
 }
+OnWord2Vec_begin_ghost_text{
+  "\_q\0\s[0]学習データはmaster\\words\\ghostlearnedに保存。またトークに存在しなかった単語の意味は取得できない。\n入力例: 人間-言葉\n\n/
+  Windowを変更することで単語間の相関距離の変更ができます。\n/
+  \![*]\__q[WindowChange_ghost]Window変更\__q　現在: %(word2vec_ghost_window)\n\n/
+  \![*]\__q[ShowLearnedWordsList]戻る\__q\_q"
+}
+WindowChange_ghost{
+  "\![open,sliderinput,OnWindowChange_ghost_slider,30000,10,0,20]"
+}
+OnWindowChange_ghost_slider{
+  word2vec_ghost_window = TOINT(reference0)
+  OnWord2Vec_begin_ghost_text
+}
+
 OnWord2Vec_ghost{
 	_input = reference0//全角のプラス、マイナスも扱えるようにしておく？
   if (RE_SEARCH(_input, "^\+.+") != 1){
@@ -114,7 +128,7 @@ OnWord2Vec_ghost{
   }
 
     //_filename = "..\\words\\ghostlearned\\"+Learned_Ghost+".txt"
-	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,1,_filename,1,1000,2,10,1)
+	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,1,_filename,1,1000,2,word2vec_ghost_window,1)
 	_result_rank = SPLIT(_result,"\n")
 	_result_rank_number = ARRAYSIZE(_result_rank)
 	if (_result){
@@ -252,9 +266,10 @@ ShowBooksList{
     _flag = RE_SEARCH(_ltitle,Learned_Book)
     _show = _show + "\![*]\q[%(_stitle),OnSelectLearnedBooks,%(_ltitle)]"+"%(FlagChecker_Show(_flag))"+"\n"
   }
-  _show = _show + "\n\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8)をドロップ(サイズによっては処理に時間がかかります)\n2.その後この画面で使いたいデータを選択し、Executeを実行\_q"
+  _show = _show + "\n\__q[OpenMenu]戻る\__q　　\__q[Config_books]設定\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8)をドロップ(サイズによっては処理に時間がかかります)\n2.その後この画面で使いたいデータを選択し、Executeを実行\_q"
   _show
 }
+
 OnSelectBooks_all{
   Learned_Book = 0
   flag_books_all = 1
@@ -272,9 +287,23 @@ OnSelectLearnedBooks{
 
 
 OnWord2Vec_begin_book{
-  "\_q\0\s[0]ゴーストが読んだ\'本\'の文章を用いて意味の類推を行います。+, -で意味の足し引きを表します。\n例:人間-愛\_q"
+  OnWord2Vec_begin_book_text
 	--
 	'\![open,inputbox,OnWord2Vec_book,-1,--option=noclose]'
+}
+OnWord2Vec_begin_book_text{
+  "\_q\0\s[0]ゴーストが読んだ\'本\'の文章を用いて意味の類推を行います。+, -で意味の足し引きを表します。\n例:人間-愛\n\n/
+  Windowを変更することで単語間の相関距離の変更ができます。\n/
+  \![*]\__q[WindowChange_book]Window変更\__q: %(word2vec_book_window)\n\n/
+  \![*]\__q[ShowBooksList]戻る\__q\_q"
+}
+
+WindowChange_book{
+  "\![open,sliderinput,OnWindowChange_book_slider,30000,10,0,20]"
+}
+OnWindowChange_book_slider{
+  word2vec_book_window = TOINT(reference0)
+  OnWord2Vec_begin_book_text
 }
 
 OnWord2Vec_book{
@@ -295,7 +324,7 @@ OnWord2Vec_book{
   }
 
     //_filename = "..\\words\\ghostlearned\\"+Learned_Ghost+".txt"
-	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,1,_filename,1,1000,2,10,1)
+	_result = FUNCTIONEX("SAORI\proxy.dll","word2vec\\word2vec_saori\\word2vec_saori.exe",_input,1,_filename,1,1000,2,word2vec_book_window,1)
 	_result_rank = SPLIT(_result,"\n")
 	_result_rank_number = ARRAYSIZE(_result_rank)
 	if (_result){

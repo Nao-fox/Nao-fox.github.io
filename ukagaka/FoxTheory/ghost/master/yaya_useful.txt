@@ -8,3 +8,8 @@ EraseSakuraScript{
 }
 //SHIORI3FW.RemoveAllTagsで既に作られてた
 //さくらスクリプト除去()でもOK
+
+//スライダー作成
+UI_Slider{
+
+}

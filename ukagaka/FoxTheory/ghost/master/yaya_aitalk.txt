@@ -300,12 +300,30 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			ƒŠƒT‚O‚PF2ŽŸŒ³‹óŠÔ‚Å‚ÍEinsteind—Í‚Å‚Í‚È‚­Adilatond—Í‚¶‚á‚È‚¢‚Æ—Í‚ª“­‚©‚È‚¢‚Á‚Ä’m‚Á‚Ä‚éH
+			ƒŠƒT‚O‚PF2ŽŸŒ³‹óŠÔ‚Å‚ÍEinstein-Hilbert Action‚Å‚Í‚È‚­Adilaton‚àŠÜ‚ß‚½Action‚Å‚È‚¢‚Æd—Í‚ð’è‹`‚Å‚«‚È‚¢‚Á‚Ä’m‚Á‚Ä‚éH
 			ƒŠƒT‚O‚QF‚±‚ê‚Ífundamental homotopy group‚ª2ŽŸŒ³‚ÌŽž‚Ì‚Ý“ÁŽê‚É‚È‚é‚Ì‚ÆŠÖŒW‚µ‚Ä‚¢‚é‚æB
+			–{‚O‚OF\"Gauss-Bonnet theorem\"
+			2ŽŸŒ³‚ÅƒRƒ“ƒpƒNƒg‚ÈRiemann‘½—l‘Ì‚É‚¨‚¢‚Ä‚ÍAR‚ðRicci scalar, ƒÔ‚ðEuler number‚Æ‚·‚é‚Æ\"çRdS = 4ƒÎƒÔ\"‚ª¬—§‚·‚éB
+			‚±‚ê‚Ímetric‚Ì•Ï•ª‚ª‘½—l‘Ì‚Ìhomotopy‚ð•Ï‚¦‚È‚¢‚Ì‚Å‚ ‚ê‚ÎAEinstein-Hilbert Action‚Íí‚É’è”‚Å‚ ‚é‚±‚Æ‚ðˆÓ–¡‚·‚éB
+			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚O‚TFhomotopy‚ª“¯‚¶‚È‚ç‘½—l‘Ì‚Í“¯‘Š‚¾‚¯‚ÇAhomotopy‚ª“¯‚¶‚Å‚ ‚Á‚Ä‚à“¯‘Š‚Å‚ ‚é‚Æ‚ÍŒÀ‚ç‚È‚¢‚ñ‚¾‚æ‚Ëcc
+			ƒŠƒT‚O‚OFhomotopy‚æ‚è‚à‹­—Í‚ÈˆÊ‘Š•s•Ï—Ê‚ÍŒ©‚Â‚©‚é‚Ì‚©‚ÈH
 			–{‚O‚OF\"homotopy\"
 			ƒ‹[ƒv‚É‚æ‚Á‚Ä‘½—l‘Ì‚ð•ª—Þ‚·‚éŽž‚ÉŽg‚í‚ê‚é“¯’lŠÖŒWB
 			“úí“I‚ÉŽg‚í‚ê‚é\"ƒgƒ|ƒƒW[\"‚Æ‚¢‚¤Œ¾—t‚Í‚±‚Ìhomotopy‚Å‚ ‚éê‡‚ª‘½‚¢B
 			\e%(TalkReading = 0)
+			'>>
+
+			<<'
+			ƒŠƒT‚Q‚O‚OF\"‹ÁˆÙ‚Ì’è—\"‚©cc
+			ƒŠƒT‚Q‚O‚QF‰F’ˆ‚ÌŒ`‚â‹È—¦‚ðŠO•”‚©‚çŒ©‚È‚­‚Ä‚àA‰F’ˆ“à•”‚Å‚ÌŠÏ‘ª‚Ì‚Ý‚©‚ç•ª‚©‚é‚Ì‚ÍŠm‚©‚É•sŽv‹c‚¾‚æ‚Ëcc
+			–{‚O‚OF\"‹ÁˆÙ‚Ì’è—(Theorema Egresium)\"
+			Karl Friedrich Gauss‚É‚æ‚è1827”N‚ÉØ–¾‚³‚ê‚½A\"Gauss‹È—¦‚Í‘æˆêŠî–{Œ`Ž®(ü‘f)‚Ìî•ñ‚©‚ç‹‚ß‚ç‚ê‚é\"‚Æ‚¢‚¤’è—B
+			‚±‚ê‚ÍŽ©•ª‚ª‚¢‚é•½–Ê‚Ìhomotopy‚â‹È—¦‚ðAŠO‚©‚çŒ©‚È‚­‚Ä‚à‚»‚Ì•½–Êã‚Ìl‚Í’m‚é‚±‚Æ‚ª‚Å‚«‚é‚±‚Æ‚ðˆÓ–¡‚·‚éB
+			\e%(TalkReading = 1)
 			'>>
 
 			<<'
@@ -539,7 +557,15 @@ RandomTalk_AfterDo{
 			\e%(TalkReading = 1)
 			'>>
 
-			
+			<<'
+			ƒŠƒT‚Q‚O‚OFStandard model‚É‚¨‚¯‚éƒyƒ“ƒMƒ“‚ÌCP violation‚Ì˜b‚©cc
+			ƒŠƒT‚Q‚O‚SFcc‹¾‚Ì‘‚Ìƒyƒ“ƒMƒ“‚Í­‚È‚¢‚Ì‚©‚ÈH
+			–{‚O‚OF"Penguin diagram"
+			ƒNƒH[ƒN‚ªWƒ{ƒ\ƒ“‚ð‰î‚µ‚ÄƒtƒŒ[ƒo[‚ð•Ï‚¦‚é‰ß’ö‚ð‹Lq‚·‚éFeynman diagram‚Ìˆê‚ÂB
+			‚±‚Ì–¼‘O‚Í1977”N‚ÉJohn Ellis‚ªMelissa Franklin‚ÆƒQ[ƒ€‚Å•‰‚¯‚½‚ç"Penguin"‚Æ‚¢‚¤’PŒê‚ðŽŸ‚Ì˜_•¶‚É“oê‚³‚¹‚é‚Æ‚¢‚¤“q‚¯‚ðs‚¢A•‰‚¯‚½‚±‚Æ‚É—R—ˆ‚·‚éB
+			\e%(TalkReading = 1)
+			'>>
+
 		}
 
 		if (EnglishTalk == 1){//English talking
@@ -550,7 +576,7 @@ RandomTalk_AfterDo{
 			ƒŠƒT‚P‚O‚PF%(username), do you think the milk of the mirror world is tasty?
 			–{‚O‚OFWhat makes milk sweet is lactose, which has an optical isomer in its structure.
 			ƒ¿-lactose is sweet but ƒÀ-lactose is not, even it\'s not easily digested.
-			Therefore, the answer is No. It seems Alice was right all along.
+			Therefore, the answer is No.
 			\e%(TalkReading = 0)
 			'>>
 
@@ -573,8 +599,8 @@ RandomTalk_AfterDo{
 			<<'
 			ƒŠƒT‚O‚OFThe reason why the March Hare had strange behavior in the tea party is from famous proverb,\"Mad as a March hare\".
 			ƒŠƒT‚Q‚TFMarch is beginning of the long breeding season of hare, so...well, you see what I mean?
-			ƒŠƒT‚T‚QFI also get in the seasoncc
-			ƒŠƒT‚Q‚TFccnothing. Never mind.
+			ƒŠƒT‚T‚QFI\'m also in the season...
+			ƒŠƒT‚Q‚TF...nothing. Never mind.
 			\e%(TalkReading = 0)
 			'>>
 
@@ -585,7 +611,7 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			ƒŠƒT‚Q‚O‚OFI think recent theoretical science, especially physics is too abstractive to seize the essence.
+			ƒŠƒT‚Q‚O‚OFI think recent theoretical science, especially physics is too obscure to seize the essence.
 			ƒŠƒT‚Q‚O‚PFSuch the lack of \"Anschaulichkeit\" \\vivid image, may cause fatal problems.
 			\e%(TalkReading = 1)
 			'>>
@@ -603,8 +629,8 @@ RandomTalk_AfterDo{
 			ƒŠƒT‚Q‚O‚QFThough either the principles of the universe is simple or not, is not guaranteed at all.
 			ƒŠƒT‚Q‚O‚PFMaybe we can\'t deny the anthropic principle after all...
 			–{‚O‚OF\"The anthropic principle\"
-			The principles means parameters which Lagrangian contains are essentially determined randomly and the reason of the values is just it gives the universe we live.
-			If we choose the principle, hierarchy problem becomes meaningless.
+			The principles states parameters which the Lagrangian contains are essentially determined randomly and the reason of the current values, therefore, is just it can provide the universe we live now.
+			If we choose the principle, the hierarchy problem becomes meaningless.
 			\e%(TalkReading = 1)
 			'>>
 
@@ -622,7 +648,7 @@ RandomTalk_AfterDo{
 			ƒŠƒT‚O‚TFI\'m not sure when QFT is refurblished based on exact mathematics...
 			–{‚O‚OF\"Axiomatic quantum field theory\"
 			An attempt to construct quantum field theory via Wightman\'s axioms.
-			It can prove CPT theorem and causality of correlation function but still only valid for free theory.
+			It can prove CPT theorem and causality of correlation function but still only valid for a free theory.
 			\e%(TalkReading = 0)
 			'>>
 
@@ -630,16 +656,16 @@ RandomTalk_AfterDo{
 			ƒŠƒT‚Q‚O‚OFAdS/CFT correspondence is quite interesting...why Black hole and QFT have such the relationship?
 			ƒŠƒT‚Q‚O‚OFIt\'s still a conjecture but this is a sort of revolution in physics. Not only nonperturbative calculation in both sides, it can be establish a new theory like non-equilibrium statistical mechanics.
 			–{‚O‚OF\"AdS/CFT correspondence\"
-			Also called as Holography principle. This is a conjecture which implies a partition function of classical gravity in d+1 dim AdS spacetime is equivalent to CFT partition function in dim Minkowski spacetime.
+			Also called as Holography principle. This is a conjecture which implies a partition function of classical gravity in d+1 dim AdS spacetime is equivalent to CFT partition function in 4 dimemsional Minkowski spacetime.
 			\_a[https://arxiv.org/abs/hep-th/9711200]This paper written by Juan Maldacena\_a has the highest citations in hep-th.
 			\e%(TalkReading = 1)
 			'>>
 
 			<<'
 			ƒŠƒT‚Q‚O‚QFAccording to Montgomery-Odlyzko conjecture, the nontrivial zeros of the Riemann zeta function and the eigenvalues of Wigner matrices share the distribution.
-			ƒŠƒT‚Q‚O‚QF...\0\s[201]Can we apply the correspondence to any models in physics?
+			ƒŠƒT‚Q‚O‚QF...\0\s[201]Can we apply the correspondence to a physical model?
 			–{‚O‚OF\"Montgomery-Odlyzko conjecture\"
-			A conjecture of spectral analysis in random matrix and Riemann zeta function.
+			This conjecture states there is a certain correlation between eigenvalue distribution of random matrix and zero points of Riemann zeta function.
 			\e%(TalkReading = 1)
 			'>>
 
@@ -719,7 +745,7 @@ RandomTalk_AfterDo{
 			ƒŠƒT‚Q‚O‚QFThe energy scale of the world is different from our one, so maybe the quantum effect can be much stronger...?
 			–{‚O‚OF\"Randall-Sundrum model\"
 			Introducing the extra dimension into spacetime, this model represents the other 4-dim world as a brane solution.
-			This model is constructed to solve hierarchy problem.
+			This model is constructed to solve the hierarchy problem.
 			\e%(TalkReading = 1)
 			'>>
 
@@ -750,7 +776,7 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			ƒŠƒT‚O‚PFDo you know, in 2 dimension, we have to add dilaton not only Ricci scalar into Action?
+			ƒŠƒT‚O‚PFDo you know, in 2 dimension, Einstein-Hilbert Action itself can\'t determine the geometry, so we have to add dilaton not only Ricci scalar into Action?
 			ƒŠƒT‚O‚QFThis fact is related to the speciality of fundamental homotopy group.
 			–{‚O‚OF\"homotopy\"
 			The equivalence relation which classifies manifolds using loops.
@@ -759,14 +785,22 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			ƒŠƒT‚O‚PFThe man who solved Basel problem is Leonhard Euler but his method was not well-defined in the age.
-			ƒŠƒT‚O‚QFStill his method was completely different from the old one and people could understand the meaning easily, His achivement was called a revolution.
+			ƒŠƒT‚O‚PFThe man who solved Basel problem is Leonhard Euler but his method was not well-defined in the era.
+			ƒŠƒT‚O‚QFStill his method was completely different from the old algebraic approach and people could grasp the meaning easily.
 			–{‚O‚OF\"Basel problem\"
 			The Basel problem asks for the value of \"ƒ°1/n^2\". It was first posed by Pietro Mengoli in 1644 and solved by Leonhard Euler in 1734.
-			The answer is ƒÎ^2/6BHis proof was verified by Weierstrass\'formulation of infinite product.
+			The answer is ƒÎ^2/6. His proof was verified by Weierstrass\'formulation of infinite product.
 			Basel, hometown of Euler is as well as of the Bernoulli family who unsuccessfully attacked the problem.
 			\e%(TalkReading = 0)
 			'>>
+
+			<<'
+			ƒŠƒT‚O‚PF%(username), Have you read Alice\'s Adventures in Wonderland?
+			It\'s a little childlish of us, I suppose, but it has a certain charm, even at my age.
+			\e%(TalkReading = 0)
+			'>>
+
+
 		}
 	}
 }
