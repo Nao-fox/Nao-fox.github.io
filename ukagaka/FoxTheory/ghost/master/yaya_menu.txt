@@ -79,7 +79,25 @@ OpenMenu
 	--
 	ExTalkFlagInit
 }
-
+ALK : array{
+	_A=0
+	/*
+	"test"
+	if (_A == 1){
+		"ichi"
+		"2w"
+		"3w"
+	}
+	if (_A == 0){
+		"1r"
+		"2r"
+		"3r"
+	}
+	*/
+	"1r"
+	"2r"
+	"3r"
+}
 Option{
 	if (EnglishMenu == 1){
 		<<"

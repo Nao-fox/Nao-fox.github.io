@@ -73,7 +73,7 @@ ShowLearnedWordsList{
     _flag = RE_SEARCH(_ltitle,Learned_Ghost)
     _show = _show + "\![*]\q[%(_stitle),OnSelectLearnedData,%(_ltitle)]"+"%(FlagChecker_Show(_flag))"+"\n"
   }
-  _show = _show + "\n\__q[OpenMenu]\![*]戻る\__q\_q"+"\1\_q使い方\n1.Optionで'他のゴーストからの学習を許可'をOn\n2.他のゴーストを同時に起動させると自動で話した内容を学習する(他のことをしていてもOK)\n3. 使いたいデータを選んでExecuteを実行\n(Learned_allは学習した全ゴーストのデータを使用)\_q"
+  _show = _show + "\n\![*]\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.Optionで'他のゴーストからの学習を許可'をOn\n2.他のゴーストを同時に起動させると自動で話した内容を学習する(他のことをしていてもOK)\n3. 使いたいデータを選んでExecuteを実行\n(Learned_allは学習した全ゴーストのデータを使用)\_q"
   _show
 }
 OnSelectLearned_all{
@@ -136,14 +136,12 @@ OnWord2Vec_ghost{
       <<"
       リサ０５：%(Learned_Ghost[1,'__'])さんによると……%(_result_rank[0][0," "])とか？
       リサ０１：あとは……%(_result_rank[1][0," "])とか？
-      \1\b[2]\_q%(_result)\_q
       ">>
     }
     else{
       <<"
       リサ０５：えーっと……%(_result_rank[0][0," "])とか？
       リサ０１：あとは……%(_result_rank[1][0," "])とか？
-      \1\b[2]\_q%(_result)\_q
       ">>
     }
 	}
@@ -152,6 +150,11 @@ OnWord2Vec_ghost{
 		リサ０５：うーん……よくわからない……
 		">>
 	}
+  --
+  "\n\n\n\n\_q\![*]\__q[WindowChange_ghost]Window変更\__q　現在: %(word2vec_ghost_window)\n\n/
+  \![*]\__q[ShowLearnedWordsList]戻る\__q\_q"
+  --
+  "\1\b[2]\_q%(_result)\_q"
 }
 
 //ここまでGhostLearn用
@@ -266,7 +269,7 @@ ShowBooksList{
     _flag = RE_SEARCH(_ltitle,Learned_Book)
     _show = _show + "\![*]\q[%(_stitle),OnSelectLearnedBooks,%(_ltitle)]"+"%(FlagChecker_Show(_flag))"+"\n"
   }
-  _show = _show + "\n\__q[OpenMenu]戻る\__q　　\__q[Config_books]設定\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8)をドロップ(サイズによっては処理に時間がかかります)\n2.その後この画面で使いたいデータを選択し、Executeを実行\_q"
+  _show = _show + "\n\__q[OpenMenu]戻る\__q\_q"+"\1\_q使い方\n1.ゴーストにテキストファイル(文字コードはUTF-8)をドロップ(サイズによっては処理に時間がかかります)\n2.その後この画面で使いたいデータを選択し、Executeを実行\_q"
   _show
 }
 
@@ -332,14 +335,12 @@ OnWord2Vec_book{
       <<"
       リサ０５：%(Learned_Book[0,'__'])によると……%(_result_rank[0][0," "])とか？
       リサ０１：あとは……%(_result_rank[1][0," "])とか？
-      \1\b[2]\_q%(_result)\_q
       ">>
     }
     else{
       <<"
       リサ０５：えーっと……%(_result_rank[0][0," "])とか？
       リサ０１：あとは……%(_result_rank[1][0," "])とか？
-      \1\b[2]\_q%(_result)\_q
       ">>
     }
 	}
@@ -348,4 +349,9 @@ OnWord2Vec_book{
 		リサ０５：うーん……よくわからない……
 		">>
 	}
+  --
+  "\n\n\n\n\_q\![*]\__q[WindowChange_book]Window変更\__q　現在: %(word2vec_book_window)\n\n/
+  \![*]\__q[ShowBooksList]戻る\__q\_q"
+  --
+  "\1\b[2]\_q%(_result)\_q"
 }
