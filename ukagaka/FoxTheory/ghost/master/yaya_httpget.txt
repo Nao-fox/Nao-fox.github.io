@@ -1,0 +1,18 @@
+//http://export.arxiv.org/api/query?search_query=all:electron+AND+all:proton
+OnHTTPRead
+{
+
+  //"\![execute,http-get,http://export.arxiv.org/api/, query?search_query=all:electron+AND+all:proton]"
+  "\![execute,http-get,http://arxiv.org/rss/hep-th]"
+  //"\![execute,rss-get,http://arxiv.org/rss/hep-th]"
+}
+
+OnExecuteHTTPComplete{
+  reference
+}
+OnExecuteHTTPFailure{
+  reference
+}
+OnExecuteHTTPSSLInfo{
+  reference
+}

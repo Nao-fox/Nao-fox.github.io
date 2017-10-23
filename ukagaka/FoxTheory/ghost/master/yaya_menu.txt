@@ -4,126 +4,139 @@
 //******************************************************************************
 
 //REV.20121018-1：＠メニュー追加、＠設定に仕様変更
-
+//あやりりすだとヒアドキュメント中のさくらスクリプトに自動ウェイトが入ってしまう
+//
 //------------------------------------------------------------------------------
 //メインメニュー展開
 //------------------------------------------------------------------------------
 OpenMenu
 {
+	"\![set,autoscroll,disable]"
+	--
 	//メニュー：で実行する関数は引数を渡せない。(実質\qタグ)
 	if (EnglishMenu == 1){
 		if (PokeBust || TouchBust || Conversation_Sexual){
-			<<"
-			リサ３２４：……%(CHR(0xd,0xa))
-			">>
-
-			<<"
-			リサ３５３：……%(CHR(0xd,0xa))
-			">>
+			"\s[324]……\n"
+			"\s[353]……\n"
 		}
 		if (PokeCrotch || TouchCrotch || Conversation_Sexual){
-			<<"
-			リサ２４：……%(CHR(0xd,0xa))
-			">>
-
-			<<"
-			リサ５３：……%(CHR(0xd,0xa))
-			">>
+			"\s[24]……\n"
+			"\s[53]……\n"
 		}
 		--
-		<<"
-		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]
-		＠メニュー：Talk something｜Menu_AITALK
-		＠メニュー：Talk with her｜Conversation_Begin
-		＠メニュー：Pick up a recent paper(arXiv:hep-th)|PhysicsCheck
-		＠メニュー：Deep Learning(with Ghosts)|ShowLearnedWordsList
-		＠メニュー：Deep Learning(with wikipedia)|Word2Vec_begin_wiki
-		＠メニュー：Quiet please|ReadBookPlease
-		＠メニュー：Option|Option
-		＠改行多めメニュー：Cancel｜Menu_CANCEL
-		">>
+		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+		\![*]\__q[Menu_AITALK]Tell me something\__q\n/
+		\![*]\__q[Conversation_Begin]Conversation\__q\n/
+		\![*]\__q[PhysicsCheck]Pick up a recent paper\__q\n/
+		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
+		\![*]\__q[ReadBookPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
+		\n/
+		\![*]\__q[Menu_CANCEL]Cancel\__q\_q"
 	}
 	else{
 		if (PokeBust || TouchBust || Conversation_Sexual){
-			<<"
-			リサ３２４：……%(CHR(0xd,0xa))
-			">>
-
-			<<"
-			リサ３５３：……%(CHR(0xd,0xa))
-			">>
+			"\s[324]……\n"
+			"\s[353]……\n"
 		}
 		if (PokeCrotch || TouchCrotch || Conversation_Sexual){
-			<<"
-			リサ２４：……%(CHR(0xd,0xa))
-			">>
-
-			<<"
-			リサ５３：……%(CHR(0xd,0xa))
-			">>
+			"\s[24]……\n"
+			"\s[53]……\n"
 		}
 		--
-		<<"
-		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]
-		＠半分メニュー：なにか話して｜Menu_AITALK
-		＠半分メニュー：会話する｜Conversation_Begin
-		＠メニュー：最近の研究pick up(arXiv:hep-th)|PhysicsCheck
-		＠メニュー：Word2Vec(with wikipedia)|Word2Vec_begin_wiki
-		＠メニュー：Word2Vec(with Ghosts)|ShowLearnedWordsList
-		＠メニュー：Word2Vec(with text)|ShowBooksList
-		＠メニュー：静かにしてて|ReadBookPlease
-		＠メニュー：Option|Option
-		＠改行多めメニュー：なんでもない｜Menu_CANCEL
-		">>
+		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+		\![*]\__q[Menu_AITALK]なにか話して\__q　　\![*]\__q[Conversation_Begin]会話する\__q\n/
+		\![*]\__q[PhysicsCheck]最近の研究pick up(arXiv:hep-th)\n/
+		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
+		\![*]\__q[ReadBookPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
+		\n/
+		\![*]\__q[Menu_CANCEL]なんでもない\__q\_q"
 	}
 	--
 	ExTalkFlagInit
 }
-ALK : array{
-	_A=0
-	/*
-	"test"
-	if (_A == 1){
-		"ichi"
-		"2w"
-		"3w"
-	}
-	if (_A == 0){
-		"1r"
-		"2r"
-		"3r"
-	}
-	*/
-	"1r"
-	"2r"
-	"3r"
-}
-Option{
+
+OpenMenu_2
+{
+	"\![set,autoscroll,disable]"
+	--
+	//メニュー：で実行する関数は引数を渡せない。(実質\qタグ)
 	if (EnglishMenu == 1){
-		<<"
-		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Option\f[name,font\cinecaption2.28.ttf]\f[bold,0]
-		＠メニュー：Change your name|TellName
-		＠メニュー：Talking frequency: %(TalkIntervalShow(aitalkinterval,Silence))|Menu_TALKINTERVAL
-		＠メニュー：Allow her to talk about papers(hep-th): %(FlagChecker_Show(RSSTalk))|OnRSSTalkCheck
-		＠メニュー：Enable to learn from other ghosts: %(FlagChecker_Show(GhostLearnCheck))|OtherGhostLearnCheck
-		＠メニュー：Allow Japanese talk: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
-		＠メニュー：Allow English talk: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
-		＠メニュー：Use English Menu: %(FlagChecker_Show(EnglishMenu))|OnEnglishMenuCheck
-		＠改行多めメニュー：Return|OpenMenu
-		">>
+		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+		\![*]\__q[Menu_AITALK]Tell me something\__q\n/
+		\![*]\__q[Conversation_Begin]Conversation\__q\n/
+		\![*]\__q[PhysicsCheck]Pick up a recent paper\__q\n/
+		\__q[OpenMenu]\[-\]Word2Vec\__q\n/
+		\![*]\__q[ShowBooksList]with text\__q　　\![*]\__q[ShowLearnedWordsList]with Ghosts\__q\n/
+		\![*]\__q[Word2Vec_begin_wiki]with wikipedia\__q\n/
+		\n/
+		\![*]\__q[ReadBookPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
+		\n/
+		\![*]\__q[Menu_CANCEL]Cancel\__q\_q"
 	}
 	else{
-		<<"
-		リサ：\f[name,font\Aramis Italic.ttf]\f[bold,1]Option\f[name,font\cinecaption2.28.ttf]\f[bold,0]
-		＠メニュー：名前を覚えて|TellName
-		＠メニュー：ランダムトーク頻度変更: %(TalkIntervalShow(aitalkinterval,Silence))|Menu_TALKINTERVAL
-		＠メニュー：論文(hep-th)のトークを許可: %(FlagChecker_Show(RSSTalk))|OnRSSTalkCheck
-		＠メニュー：他のゴーストからの学習を許可: %(FlagChecker_Show(GhostLearnCheck))|OtherGhostLearnCheck
-		＠メニュー：日本語のトークを許可: %(FlagChecker_Show(JapaneseTalk))|OnJapaneseTalkCheck
-		＠メニュー：Allow English talk: %(FlagChecker_Show(EnglishTalk))|OnEnglishTalkCheck
-		＠メニュー：Use English Menu: %(FlagChecker_Show(EnglishMenu))|OnEnglishMenuCheck
-		＠改行多めメニュー：戻る|OpenMenu
-		">>
+		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+		\![*]\__q[Menu_AITALK]なにか話して\__q　　\![*]\__q[Conversation_Begin]会話する\__q\n/
+		\![*]\__q[PhysicsCheck]最近の研究pick up(arXiv:hep-th)\__q\n/
+		\__q[OpenMenu]\[-\]Word2Vec\__q\n/
+		\![*]\__q[ShowBooksList]テキストで解析\__q　　\![*]\__q[ShowLearnedWordsList]ゴーストで解析\__q\n/
+		\![*]\__q[Word2Vec_begin_wiki]Wikipediaで解析\__q\n/
+		\n/
+		\![*]\__q[ReadBookPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
+		\n/
+		\![*]\__q[Menu_CANCEL]なんでもない\_q"
+	}
+}
+
+Arraytest{
+	_arraysize = _argc
+}
+
+kokoko:array{
+	_A = 10
+	<<'
+	リサ００：あああ
+	'>>
+
+	if (_A == 10){
+		<<'
+		リサ０１：10
+		'>>
+	}
+	if (_A == 100){
+		<<'
+		リサ０１：１００
+		'>>
+	}
+	<<'
+	リサ０１：ｋｋｋ
+	'>>
+}
+Option{
+	"\![set,autoscroll,disable]"
+	--
+	if (EnglishMenu == 1){
+		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Option\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+		\![*]\__q[TellName]Change your name\__q\n/
+		\![*]\__q[Menu_TALKINTERVAL]Talking frequency\__q: %(TalkIntervalShow(aitalkinterval,Silence))\n/
+		\![*]\__q[OnRSSTalkCheck]Allow her to talk about papers(hep-th)\__q: %(FlagChecker_Show(RSSTalk))\n/
+		\![*]\__q[OtherGhostLearnCheck]Enable to learn from other ghosts\__q: %(FlagChecker_Show(GhostLearnCheck))\n/
+		\![*]\__q[OnJapaneseTalkCheck]Allow Japanese talk\__q: %(FlagChecker_Show(JapaneseTalk))\n/
+		\![*]\__q[OnEnglishTalkCheck]Allow English talk\__q: %(FlagChecker_Show(EnglishTalk))\n/
+		\![*]\__q[OnEnglishMenuCheck]Use English Menu\__q: %(FlagChecker_Show(EnglishMenu))\n/
+		\n/
+		\![*]\__q[OpenMenu]Return\__q\_q"
+	}
+	else{
+		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Option\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+		\![*]\__q[TellName]名前を覚えて\__q\n/
+		\![*]\__q[Menu_TALKINTERVAL]ランダムトーク頻度変更\__q: %(TalkIntervalShow(aitalkinterval,Silence))\n/
+		\![*]\__q[OnRSSTalkCheck]論文(hep-th)のトークを許可\__q: %(FlagChecker_Show(RSSTalk))\n/
+		\![*]\__q[OtherGhostLearnCheck]他のゴーストからの学習を許可\__q: %(FlagChecker_Show(GhostLearnCheck))\n/
+		\![*]\__q[OnJapaneseTalkCheck]日本語のトークを許可\__q: %(FlagChecker_Show(JapaneseTalk))\n/
+		\![*]\__q[OnEnglishTalkCheck]Allow English talk\__q: %(FlagChecker_Show(EnglishTalk))\n/
+		\![*]\__q[OnEnglishMenuCheck]Use English Menu\__q: %(FlagChecker_Show(EnglishMenu))\n/
+		\n/
+		\![*]\__q[OpenMenu]戻る\__q\_q"
 	}
 
 }

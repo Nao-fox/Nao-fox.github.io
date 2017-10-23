@@ -14,6 +14,8 @@ OnShowPage{
 	_start=TOINT(reference0)
 	_end  =_start+PAGER.ShowNum
 	_max  =ARRAYSIZE(_list)
+	//追加
+	PAGE_INDEX = TOINT(reference1)
 
 	//リスト作成
 	_showlist=''
@@ -81,12 +83,12 @@ OnShowPage{
 			_pagelist+=_pagestr+' '
 		}else{
 			_pagestart=_i*PAGER.ShowNum
-			_pagelist+="\f[bold,true]\q[%(_pagestr),OnShowPage,%(_pagestart)]\f[bold,false] "
+			_pagelist+="\f[bold,true]\q[%(_pagestr),OnShowPage,%(_pagestart),%(_i)]\f[bold,false] "
 		}
 	}
 
 	//最終出力
-	"%(PAGER.ShowHeader)%(_showlist)%(PAGER.PageHeader)%(_prevstr)%(_pagelist)%(_nextstr)%(PAGER.Footer)"
+	"\![set,balloontimeout,600000]%(PAGER.ShowHeader)%(_showlist)%(PAGER.PageHeader)%(_prevstr)%(_pagelist)%(_nextstr)%(PAGER.Footer)"
 	--
 	FUNCTIONEX("SAORI\mciaudior.dll", "play")
 }

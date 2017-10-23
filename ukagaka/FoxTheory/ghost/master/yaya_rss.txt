@@ -8,13 +8,17 @@ OnExecuteRSSComplete{
   _RSSTitleold = IARRAY
   RSSTitle = IARRAY
   RSSURL = IARRAY
+  RSSAuther = IARRAY
+  RSSSummary = IARRAY
   for _i = 0; _i<ARRAYSIZE(reference); _i++{
     _sprss = SPLIT(reference[_i], CHR(1))
     _RSSTitleold[_i] = RE_REPLACEEX(_sprss[0]," \(arXiv(.+)\)","")//まずarXivを除く
-    RSSTitle[_i] = RE_REPLACEEX(_RSSTitleold[_i],"\\","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
+    RSSTitle[_i] = RE_REPLACEEX(_RSSTitleold[_i],"(\\|$|\^)","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
     RSSURL[_i] = _sprss[1]
+    RSSAuther[_i] = _sprss[3]
+    RSSSummary[_i] = RE_REPLACEEX(_sprss[4],"\\","")
   }
-  RSSarraymodifier
+  RSSarraymodifier//キーワードでソート
   OnRSSView
 }
 
@@ -30,6 +34,8 @@ RSSarraymodifier{
 	_unhitarray = IARRAY
   _hitarray_URL = IARRAY
   _unhitarray_URL = IARRAY
+  _hitarray_Abst = IARRAY
+  _unhitarray_Abst = IARRAY
 	_pick_num_hit = IARRAY
 	_pick_num_unhit = IARRAY
 
@@ -55,6 +61,7 @@ RSSarraymodifier{
 	for _i = 0; _i < ARRAYSIZE(_pick_num_hit); _i++{
 		_hitarray = (_hitarray, RSSTitle[_pick_num_hit[_i]])
     _hitarray_URL = (_hitarray_URL, RSSURL[_pick_num_hit[_i]])
+    _hitarray_Abst = (_hitarray_Abst, RSSSummary[_pick_num_hit[_i]])
 	}
 
   //ここから正規表現+式中展開の文字列を作成(unhit用)
@@ -69,9 +76,11 @@ RSSarraymodifier{
 	for _i = 0; _i < ARRAYSIZE(_pick_num_unhit); _i++{
 		_unhitarray = (_unhitarray, RSSTitle[_pick_num_unhit[_i]])
     _unhitarray_URL = (_unhitarray_URL, RSSURL[_pick_num_unhit[_i]])
+    _unhitarray_Abst = (_unhitarray_Abst, RSSSummary[_pick_num_unhit[_i]])
 	}
 	RSSTitle = (_hitarray,_unhitarray)
   RSSURL = (_hitarray_URL,_unhitarray_URL)
+  RSSSummary = (_hitarray_Abst,_unhitarray_Abst)
 }
 
 OnRSSView{
@@ -79,20 +88,29 @@ OnRSSView{
   _RSSSize = ARRAYSIZE(RSSTitle)
   PAGER.List = IARRAY
   for _i = 0; _i < _RSSSize; _i++{
-    PAGER.List = (PAGER.List,"\__q[%(RSSURL[_i])]%(RSSTitle[_i])\__q")
+    PAGER.List = (PAGER.List,"\__q[OnRSSSummaryShow,%(_i)]%(RSSTitle[_i])\__q")
   }
 		//PAGER.Listに表示したいリストを入れる。
 		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[SearchPapersInput]Search\f[name,default]\f[bold,0]\__q\n'		//リストヘッダ
 		PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q\n'		//ページヘッダ
-		PAGER.Footer='\n\![*]\q[CLOSE,close]\f[bold,0]\_q'	//フッタ
+		PAGER.Footer='\n\![*]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\q[CLOSE,close]\f[bold,0]\_q'	//フッタ
 		PAGER.Marker='\![*]'					//項目マーカ
 		PAGER.Separator='|'						//項目名と選択肢名の区切り
 		PAGER.ShowNum=8			//リスト表示数
 		PAGER.PageNum=5							//ページ表示数（奇数で）
 		reference0=0							//初期表示時のおまじない
 		OnShowPage								//初期表示コール
+    PAGE_INDEX = 0//初期表示用
 }
-
+OnRSSSummaryShow{
+  _label = TOINT(reference0)
+  //OnShowPageはindex*shownumで
+  FUNCTIONEX("SAORI\mciaudior.dll", "play")
+  --
+  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■　　　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(RSSURL[_label])]Read this paper\__q\f[name,default]\f[bold,0]\n/
+  %(RSSSummary[_label])\![set,balloontimeout,600000]\n/
+  \![*]\__q[OnShowPage, %(PAGE_INDEX*PAGER.ShowNum)]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\f[name,default]\f[bold,0]\__q\_q"
+}
 PhysicsWords : array
 {
   "Superstring"
@@ -172,6 +190,17 @@ PhysicsWords : array
   "worm hole"
 }
 
+//大文字小文字の表記ゆれをチェックする関数
+Word_Capital_small_Check{
+  _keyword = _argv[0]
+  _input = _argv[1]
+  _keyword_large = TOUPPER(_argv[0])
+  _keyword_small = TOLOWER(_argv[0])
+  _keyword_headlarge = TOUPPER(SUBSTR(_argv[0],0,1))+TOLOWER(SUBSTR(_argv[0],1,32))
+  if (RE_SEARCH(_input, _keyword+'|'+_keyword_small+'|'+_keyword_large+'|'+_keyword_headlarge)){
+
+  }
+}
 PhysicsCheck
 {
   _hitrss = IARRAY
@@ -184,32 +213,220 @@ PhysicsCheck
       }
     }
   }
+//以下登録キーワードのサーチ
+  for _i = 0; _i < ARRAYSIZE(SearchKeyword); _i++{
+    for _j = 0; _j < ARRAYSIZE(RSSTitle); _j++{
+      _keyword = SearchKeyword[_i]
+      _keyword_large = TOUPPER(SearchKeyword[_i])
+      _keyword_small = TOLOWER(SearchKeyword[_i])
+      _keyword_headlarge = TOUPPER(SUBSTR(SearchKeyword[_i],0,1))+TOLOWER(SUBSTR(SearchKeyword[_i],1,32))
+      if (RE_SEARCH(_input, _keyword+'|'+_keyword_small+'|'+_keyword_large+'|'+_keyword_headlarge)){
+        _keyhitrss = (_keyhitrss,_keyword)
+        _keyhitrank = (_keyhitrank,_j)
+      }
+    }
+  }
+  /*普通に正規表現で話題作ってやった方が楽な気がするのでそうする*/
   _num = RAND(ARRAYSIZE(_hitrss))
-  TalkReading = 1
   if (JapaneseTalk == 1){
-    if (_hitrss[_num] == "AdS/CFT"){
-      <<"
-      リサ２０１：\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]AdS/CFTの論文\_aか……
-      リサ２０１：原論文ってどれくらい引用されていたっけ……
-      ">>
-    }
+    for _k = 0; _k < ARRAYSIZE(RSSSummary); _k++{
+      if (RE_SEARCH(RSSSummary[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSSummary[_k], "AdS") == 0)){
+        <<"
+        リサ１９９：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]んー……\_a[%(RSSURL[_k])]CFTの論文\_aか……
+        リサ１０５：Lagrangianが分かっていなくても、理論の性質がほとんど固定されるのは不思議だよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
 
+        <<"
+        リサ０２：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)、これはもう読んだ？\_a[%(RSSURL[_k])]CFTの論文\_aだけど……
+        リサ０１：2次元系のCFTは面白いよね、Virasoro代数の次元が無限次元になって色々非自明な構造が出てくるし……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+
+      if (RE_SEARCH(RSSSummary[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
+        <<"
+        リサ２０１：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]\_a[%(RSSURL[_k])]AdS/CFTの論文\_aか……
+        リサ２０２：統計力学の話がBlack holeを使って表現できるのは、やっぱり不思議だよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２００：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]これは……\_a[%(RSSURL[_k])]AdS/CFTの研究\_aか……
+        リサ２０２：Black holeのエントロピーの解釈として、Holography dualなCFTの状態数を対応させてみたり、いろいろ応用があるよね。
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２０６：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)、\_a[%(RSSURL[_k])]この論文\_aは読んだ？
+        リサ２０２：\'tHooft limitをとるときは考えるゲージ群の次元が大きくなっちゃうけど、ちゃんとAdS/CFTで現象論的に一致するモデルは作れるのかな？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "(R|r)andom (M|m)atrix")){
+        <<"
+        リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]ん、\_a[%(RSSURL[_k])]Random Matrixの研究か\_a
+        リサ２０２：もともとRandom Matrixは複雑系の物性の計算で考案されていたものだけど、いまではString理論でもよく使われるようになったよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "SYK")){
+        <<"
+        リサ１０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)、\_a[%(RSSURL[_k])]これ\_aは読んだ？SYK modelに関する話みたいだね。
+        リサ１０５：どうして量子Lyapunov指数の上限は2π/βなんだろう？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
+        <<"
+        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]Casimir effectの研究\_aか……
+        リサ２０１：どうして解析接続したζ関数の値で評価できるんだろう？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]んー……\_a[%(RSSURL[_k])]Casimir effectの研究\_aか……
+        リサ２００：改めて考えると、真空なのに力が働くって不思議だよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "GUT")){
+        <<"
+        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]これは……\_a[%(RSSURL[_k])]大統一理論の研究\_aだね。
+        リサ２０２：たしかに複数の場を同じLie群の表現に出来るのは魅力的だけど……現象論的に有効な模型は今どのくらいあるのかな？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]GUTの研究\_aか……
+        リサ２０２：Renormalization groupを考えると、複数の結合定数がたしかにあるスケールで一致するけど……
+        リサ２０２：実験で検証できる日は来るのかな……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "(B|b)lack (H|h)ole")){
+        <<"
+        リサ１９９：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]この論文は……Black holeの研究\_aだね。
+        リサ１０５：dualityの観点で少し理解が進んできたけど、まだ古典重力の範囲でさえ謎が多い対象だよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+
+        <<"
+        リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]Black holeの研究\_aか……
+        リサ２０６：Einstein方程式の解としてなら理解できるけど、量子情報のunitary性とかを考えるとまだ未知な性質が多いよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "M-(T|t)heory")){
+        <<"
+        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]この研究\_aは……M理論の話かな。
+        リサ２０１：Mother, Membrane, Matrix、だっけ？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]M理論の研究\_aか……
+        リサ２０１：Dimentional reductionでtype ⅡB superstringのSUGRA解になるんだっけ……？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "(E|e)ntangle")){
+        <<"
+        リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)はEntanglement entropyの計算をしたことはある？
+        リサ２００：\_a[%(RSSURL[_k])]この論文\_a……気になるんだけど、ちょっと分からないところがあって。
+        リサ１２１：もし詳しいなら、教えてくれないかな？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+      if (RE_SEARCH(RSSSummary[_k], "(S|s)uperstring")){
+        <<"
+        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstringか……
+        リサ２０６：\_a[%(RSSURL[_k])]この研究\_a、%(username)は詳しい？
+        リサ２０２：確かPolchinskiのString theoryに書いてあったと思うんだけど……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)、\_a[%(RSSURL[_k])]この研究\_aには詳しい？
+        リサ２０２：超弦理論のT-dualやS-dualの性質は、数学的にはθ関数やη関数の性質に帰着するけど、これによって異なるゲージ群が対応付くのは不思議だよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+    }
+    //hitなしの場合
     /*
-    if ((_hitrss[_num] == "QFT") || (_hitrss[_num] == "Quantum Field Theory") || (_hitrss[_num] == "Quantum field theory") || (_hitrss[_num] == "quantum field theory")){
-    <<"
-    QFT
-    ">>
-    公理論的場の量子論
-    }
-    */
-    if ((_hitrss[_num] == "Random Matrix") || (_hitrss[_num] == "Random matrix") || (_hitrss[_num] == "random matrix") || (_hitrss[_num] == "Random Matrices") || (_hitrss[_num] == "Random matrices") || (_hitrss[_num] == "random matrices")){
-
-      <<"
-      リサ２００：ん、\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]Random Matrixの研究か\_a
-      リサ２０２：もともとRandom Matrixは複雑系の物性の計算で考案されていたものだけど、いまではString理論でもよく使われるようになったよね……
-      ">>
-    }
-
     <<"
     リサ２００：ん……\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])についての研究\_aか……
     ">>
@@ -228,6 +445,7 @@ PhysicsCheck
     リサ２００：\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])の論文\_a……？
     リサ２０１：前に似たようなのを読んだような気がする……
     ">>
+    */
   }
   if (EnglishTalk == 1){
     if (_hitrss[_num] == "AdS/CFT"){

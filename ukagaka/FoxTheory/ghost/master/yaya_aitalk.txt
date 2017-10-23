@@ -60,7 +60,6 @@ RandomTalk_AfterDo{
 	この名前は1977年にJohn EllisがMelissa Franklinとゲームで負けたら"Penguin"という単語を次の論文に登場させるという賭けを行い、負けたことに由来する。
 	\e%(TalkReading = 1)
 	'>>
-
 }
 */
 //******************************************************************************
@@ -105,7 +104,7 @@ RandomTalk_AfterDo{
 			//これ→(0 <= _timearray[4] <= 4)はダメ！
 			//あくまで2項演算子なのでbool型と数値の比較になってしまう
 			//まだうまくいってない模様…
-			if ((0 <= _timearray[4]) && (_timearray <= 4)){
+			if ((0 <= _timearray[4]) && (_timearray[4] <= 4)){
 				<<"
 				リサ０５：これくらいの時間だと、静かでいいよね
 				リサ０１：%(username)も夜の方が好き？
@@ -169,7 +168,7 @@ RandomTalk_AfterDo{
 			<<'
 			リサ２０１：この世界の根本原理が\"単純で美しいもの\"かどうかなんて、本当は保証なんてない。
 			リサ２０２：人間原理も、あるいは否定できないのかも……
-			本００：\"人間原理\"
+			本００：\"人間原理(anthropic principle)\"
 			\"Lagrangianに存在する各パラメータは実際はランダムに決定し、偶然現在の宇宙を構成するのが現在のパラメータだ\"とする主張。
 			この原理を採用すると、階層性問題などはそれを問う意味を成さなくなる。
 			\e%(TalkReading = 1)
@@ -281,7 +280,8 @@ RandomTalk_AfterDo{
 			<<'
 			リサ２０１：生成汎関数の時間を虚数にすると、統計力学の分配関数と等価になる……
 			リサ２００：これは時間とentropyの関係とどう関係があるのかな？
-			本００：量子系において時間を虚数時間, t=iτとし、適切な境界条件を課すことで虚時間を逆温度とする統計力学に移行することができる。
+			本００：\"虚時間形式(imaginary-time formalism)\"
+			量子系において時間を虚数時間, t=iτとし、適切な境界条件を課すことで虚時間を逆温度とする統計力学に移行することができる。
 			特に量子系の真空は熱統計系における平衡状態に対応する。
 			\e%(TalkReading = 1)
 			'>>
@@ -318,7 +318,7 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ２０２：Randall-Sundrum modelのもう一つの世界はどうなってるんだろう……
+			リサ２０２：\_a[https://arxiv.org/pdf/hep-ph/9905221.pdf]Randall-Sundrum model\_aのもう一つの世界はどうなってるんだろう……
 			リサ２０２：エネルギースケールが異なるってことは、量子効果がもっと強い世界なのかな……
 			本００：\"Randall-Sundrum model\"
 			時空に5次元方向を導入し、我々の住んでいる世界とは異なるもう一つの4次元空間をbrane解として表した模型。
@@ -437,8 +437,8 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ２０１：SYK modelのgravity dualはdilation重力なのかな……
-			リサ２０２：ちゃんとAdS解を作ることはできるのかな？
+			リサ２０１：\_a[https://arxiv.org/pdf/1601.06768.pdf]SYK model\_aのgravity dualは2次元重力のはず……
+			リサ２０２：その中でAdS解を作るには……dilaton重力だけど、Almheiri-Polchinski modelとかかな……
 			本００：\"SYK model\"
 			Conformal対称性を持ち、AdS/CFT対応が成り立つとされる1次元場の量子論のモデル。
 			相互作用のRandom couplingのために、Green関数が厳密に定まるという性質を持つ。
@@ -468,6 +468,7 @@ RandomTalk_AfterDo{
 			本００：\"Liouville action\"
 			LagrangianがWeyl対称性を持っていても、汎関数積分測度から余分な項が寄与する場合がある。
 			この項はあたかももとのLagrangianに重力項を加えた形になっており、この項をLiouville actionと呼ぶ。
+			\_a[https://arxiv.org/pdf/1706.07056.pdf]これの古典解とAdS/CFTに関連があることが示唆されている。\_a
 			\e%(TalkReading = 1)
 			'>>
 
@@ -506,11 +507,12 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ２０１：Lee-Yang zerosを使うと分配関数の零点と物理的な相転移点が対応付くけど……
-			リサ２００：Ising模型以外で零点分布はどうやったら見つかるのかな……
+			リサ２０１：Lee-Yang zeroとFisher zerosを使うと分配関数の零点と物理的な相転移点が対応付くけど……
+			リサ２００：解析学の問題、例えばRiemann予想とかに応用できないかな……
 			本００：\"Lee-Yang zeros\"
-			熱力学極限(large N極限)をとることで分配関数に生じる零点と熱力学関数の解析性に関する定理。
-			Ising模型については複素温度平面の単位円上に零点が分布することが知られている。
+			自由エネルギーの特異点、すなわち相転移点は分配関数の零点分布と対応する。
+			外場応答に対する零点をLee-Yang zero, 複素温度に対する零点をFisher zeroと呼ぶ。
+			\_a[https://arxiv.org/pdf/1303.4770.pdf]Ising模型についてはLee-Yang zeroは単位円上に分布すること\_aが知られている。
 			\e%(TalkReading = 1)
 			'>>
 
@@ -543,8 +545,8 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ２００：Virasoro代数のcentral chargeと量子論のAnomalyがどうして関連してるんだろう……
-			リサ２０１：でもAnomalyは2次元以外でも存在するし、完全に対応している訳ではないのかな？
+			リサ２００：Virasoro代数のcentral chargeと量子論のtrace anomalyがどうして関連してるんだろう……
+			リサ２０１：でもtrace anomalyは2次元以外でも存在するし、完全に対応している訳ではないのかな？
 			本００：\"Virasoro代数\"
 			Witt代数を中心拡大した代数。特に、2次元においてはその次元が無限になることが知られている。
 			\e%(TalkReading = 1)
@@ -571,8 +573,8 @@ RandomTalk_AfterDo{
 			リサ２００：Hofstadter Butterflyか……
 			リサ２０２：こうした視覚的な美しさとその性質の持つ美しさが両立するのは、まるで魔法かのような魅力があるよね。
 			本００：\"Hofstadter Butterfly\"
-			\_a[http://zimp.zju.edu.cn/~xinwan/qm2/note/PhysRevB_Hofstadter76_HofstadterButterfly.pdf]Hofstadterにより発見された\_a2次元格子系の磁場との応答に対するHamiltonianの固有値分布が示す、蝶のようなフラクタル図形。
-			Calabi-Yau多様体の持つMirror対称性と深く関連していることが示されている。
+			Hofstadterにより発見された2次元格子系の磁場との応答に対するHamiltonianの固有値分布が示す、蝶のようなフラクタル図形。
+			\_a[https://arxiv.org/pdf/1606.01894.pdf]Calabi-Yau多様体の持つMirror対称性と深く関連していること\_aが示されている。
 			\e%(TalkReading = 1)
 			'>>
 
@@ -812,8 +814,8 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ０５：Borel singularities of resurgence method is really equivalent to instanton solutions?
-			リサ０５：Indeed their behavior are similar though...
+			リサ０５：Borel singularities of resurgence method are really equivalent to instanton solutions?
+			リサ０５：Then what is the meaning of complex ones...
 			本００：\"Borel singularity\"
 			A singularity emerged when Borel tranform is applied. Resurgence method claims the places of these singularities are equivalent to instanton solutions.
 			Both factor are nonperturbative and also verified in some cases.
@@ -829,7 +831,7 @@ RandomTalk_AfterDo{
 			'>>
 
 			<<'
-			リサ０１：Do you know, in 2 dimension, Einstein-Hilbert Action itself can\'t determine the geometry, so we have to add dilaton not only Ricci scalar into Action?
+			リサ０１：Do you know, in 2 dimension, the Einstein-Hilbert Action itself can\'t determine the geometry? Actually we have to add dilaton into the Action so that makes the gravity.
 			リサ０２：This fact is related to the speciality of fundamental homotopy group.
 			本００：\"homotopy\"
 			The equivalence relation which classifies manifolds using loops.

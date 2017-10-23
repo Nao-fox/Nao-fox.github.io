@@ -763,6 +763,9 @@
 			ƒŠƒT‚R‚PFPersistent!
 			">>
 
+			<<"
+			ƒŠƒT‚R‚PFMy eyes are up here!
+			">>
 		}
 		else{
 			<<"
@@ -800,6 +803,10 @@
 
 			<<"
 			ƒŠƒT‚R‚PFPersistent!
+			">>
+
+			<<"
+			ƒŠƒT‚R‚PFMy eyes are up here!
 			">>
 		}
 	}
@@ -1279,6 +1286,9 @@
 				ƒŠƒT‚U‚PF‰½‚â‚Á‚Ä‚é‚ÌH%(username)cc
 				">>
 
+				<<"
+				ƒŠƒT‚R‚PFMy eyes are up here!
+				">>
 			}
 		}
 	}
