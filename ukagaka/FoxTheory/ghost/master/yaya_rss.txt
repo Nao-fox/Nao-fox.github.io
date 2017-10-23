@@ -229,8 +229,8 @@ PhysicsCheck
   /*普通に正規表現で話題作ってやった方が楽な気がするのでそうする*/
   _num = RAND(ARRAYSIZE(_hitrss))
   if (JapaneseTalk == 1){
-    for _k = 0; _k < ARRAYSIZE(RSSSummary); _k++{
-      if (RE_SEARCH(RSSSummary[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSSummary[_k], "AdS") == 0)){
+    for _k = 0; _k < ARRAYSIZE(RSSTitle); _k++{
+      if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSTitle[_k], "AdS") == 0)){
         <<"
         リサ１９９：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]んー……\_a[%(RSSURL[_k])]CFTの論文\_aか……
         リサ１０５：Lagrangianが分かっていなくても、理論の性質がほとんど固定されるのは不思議だよね……
@@ -252,7 +252,7 @@ PhysicsCheck
         ">>
       }
 
-      if (RE_SEARCH(RSSSummary[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
+      if (RE_SEARCH(RSSTitle[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
         <<"
         リサ２０１：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]\_a[%(RSSURL[_k])]AdS/CFTの論文\_aか……
         リサ２０２：統計力学の話がBlack holeを使って表現できるのは、やっぱり不思議だよね……
@@ -283,7 +283,7 @@ PhysicsCheck
         \e%(TalkReading = 1)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "(R|r)andom (M|m)atrix")){
+      if (RE_SEARCH(RSSTitle[_k], "(R|r)andom (M|m)atrix")){
         <<"
         リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]ん、\_a[%(RSSURL[_k])]Random Matrixの研究か\_a
         リサ２０２：もともとRandom Matrixは複雑系の物性の計算で考案されていたものだけど、いまではString理論でもよく使われるようになったよね……
@@ -294,7 +294,7 @@ PhysicsCheck
         \e%(TalkReading = 1)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "SYK")){
+      if (RE_SEARCH(RSSTitle[_k], "SYK")){
         <<"
         リサ１０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)、\_a[%(RSSURL[_k])]これ\_aは読んだ？SYK modelに関する話みたいだね。
         リサ１０５：どうして量子Lyapunov指数の上限は2π/βなんだろう？
@@ -305,7 +305,7 @@ PhysicsCheck
         \e%(TalkReading = 0)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
+      if (RE_SEARCH(RSSTitle[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
         <<"
         リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]Casimir effectの研究\_aか……
         リサ２０１：どうして解析接続したζ関数の値で評価できるんだろう？
@@ -326,7 +326,7 @@ PhysicsCheck
         \e%(TalkReading = 1)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "GUT")){
+      if (RE_SEARCH(RSSTitle[_k], "GUT")){
         <<"
         リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]これは……\_a[%(RSSURL[_k])]大統一理論の研究\_aだね。
         リサ２０２：たしかに複数の場を同じLie群の表現に出来るのは魅力的だけど……現象論的に有効な模型は今どのくらいあるのかな？
@@ -348,7 +348,7 @@ PhysicsCheck
         \e%(TalkReading = 1)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "(B|b)lack (H|h)ole")){
+      if (RE_SEARCH(RSSTitle[_k], "(B|b)lack (H|h)ole")){
         <<"
         リサ１９９：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]この論文は……Black holeの研究\_aだね。
         リサ１０５：dualityの観点で少し理解が進んできたけど、まだ古典重力の範囲でさえ謎が多い対象だよね……
@@ -369,7 +369,7 @@ PhysicsCheck
         \e%(TalkReading = 0)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "M-(T|t)heory")){
+      if (RE_SEARCH(RSSTitle[_k], "M-(T|t)heory")){
         <<"
         リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]この研究\_aは……M理論の話かな。
         リサ２０１：Mother, Membrane, Matrix、だっけ？
@@ -390,7 +390,7 @@ PhysicsCheck
         \e%(TalkReading = 1)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "(E|e)ntangle")){
+      if (RE_SEARCH(RSSTitle[_k], "(E|e)ntangle")){
         <<"
         リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)はEntanglement entropyの計算をしたことはある？
         リサ２００：\_a[%(RSSURL[_k])]この論文\_a……気になるんだけど、ちょっと分からないところがあって。
@@ -402,7 +402,7 @@ PhysicsCheck
         \e%(TalkReading = 0)
         ">>
       }
-      if (RE_SEARCH(RSSSummary[_k], "(S|s)uperstring")){
+      if (RE_SEARCH(RSSTitle[_k], "(S|s)uperstring")){
         <<"
         リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstringか……
         リサ２０６：\_a[%(RSSURL[_k])]この研究\_a、%(username)は詳しい？
@@ -416,7 +416,29 @@ PhysicsCheck
 
         <<"
         リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)、\_a[%(RSSURL[_k])]この研究\_aには詳しい？
-        リサ２０２：超弦理論のT-dualやS-dualの性質は、数学的にはθ関数やη関数の性質に帰着するけど、これによって異なるゲージ群が対応付くのは不思議だよね……
+        リサ２０２：Superstringのamplitudeの計算を非摂動的な定義は、どうやったらできるんだろう？
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal|SCFT")){
+        <<"
+        リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]SCFTについての研究\_a……？
+        リサ２０２：超重力理論を定義するときに最近よく使われてきているよね……
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        %(RSSTitle[_k])
+        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)、\_a[%(RSSURL[_k])]SCFTの話か\_a……
+        リサ２０２：時空対称性としては、もっとも対称性が高い理論だよね……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         %(RSSTitle[_k])
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
