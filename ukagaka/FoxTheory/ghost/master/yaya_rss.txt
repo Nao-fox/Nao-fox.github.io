@@ -232,20 +232,20 @@ PhysicsCheck
     for _k = 0; _k < ARRAYSIZE(RSSTitle); _k++{
       if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSTitle[_k], "AdS") == 0)){
         <<"
-        ƒŠƒT‚P‚X‚XF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]‚ñ[cc\_a[%(RSSURL[_k])]CFT‚Ì˜_•¶\_a‚©cc
+        ƒŠƒT‚P‚X‚XF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]CFT‚©cc
         ƒŠƒT‚P‚O‚TFLagrangian‚ª•ª‚©‚Á‚Ä‚¢‚È‚­‚Ä‚àA—˜_‚Ì«Ž¿‚ª‚Ù‚Æ‚ñ‚ÇŒÅ’è‚³‚ê‚é‚Ì‚Í•sŽv‹c‚¾‚æ‚Ëcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 0)
         ">>
 
         <<"
-        ƒŠƒT‚O‚QF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)A‚±‚ê‚Í‚à‚¤“Ç‚ñ‚¾H\_a[%(RSSURL[_k])]CFT‚Ì˜_•¶\_a‚¾‚¯‚Çcc
+        ƒŠƒT‚O‚QF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)‚Í‹¤Œ`ê—˜_‚É‚ÍÚ‚µ‚¢H
         ƒŠƒT‚O‚PF2ŽŸŒ³Œn‚ÌCFT‚Í–Ê”’‚¢‚æ‚ËAVirasoro‘ã”‚ÌŽŸŒ³‚ª–³ŒÀŽŸŒ³‚É‚È‚Á‚ÄFX”ñŽ©–¾‚È\‘¢‚ªo‚Ä‚­‚é‚µcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 0)
@@ -254,30 +254,29 @@ PhysicsCheck
 
       if (RE_SEARCH(RSSTitle[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
         <<"
-        ƒŠƒT‚Q‚O‚PF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]\_a[%(RSSURL[_k])]AdS/CFT‚Ì˜_•¶\_a‚©cc
+        ƒŠƒT‚Q‚O‚PF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFT‚©cc
         ƒŠƒT‚Q‚O‚QF“Œv—ÍŠw‚Ì˜b‚ªBlack hole‚ðŽg‚Á‚Ä•\Œ»‚Å‚«‚é‚Ì‚ÍA‚â‚Á‚Ï‚è•sŽv‹c‚¾‚æ‚Ëcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚OF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]‚±‚ê‚Ícc\_a[%(RSSURL[_k])]AdS/CFT‚ÌŒ¤‹†\_a‚©cc
+        ƒŠƒT‚Q‚O‚OF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFT‚Ì˜b‚©‚Ècc
         ƒŠƒT‚Q‚O‚QFBlack hole‚ÌƒGƒ“ƒgƒƒs[‚Ì‰ðŽß‚Æ‚µ‚ÄAHolography dual‚ÈCFT‚Ìó‘Ô”‚ð‘Î‰ž‚³‚¹‚Ä‚Ý‚½‚èA‚¢‚ë‚¢‚ë‰ž—p‚ª‚ ‚é‚æ‚ËB
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚UF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)A\_a[%(RSSURL[_k])]‚±‚Ì˜_•¶\_a‚Í“Ç‚ñ‚¾H
-        ƒŠƒT‚Q‚O‚QF\'tHooft limit‚ð‚Æ‚é‚Æ‚«‚Íl‚¦‚éƒQ[ƒWŒQ‚ÌŽŸŒ³‚ª‘å‚«‚­‚È‚Á‚¿‚á‚¤‚¯‚ÇA‚¿‚á‚ñ‚ÆAdS/CFT‚ÅŒ»Û˜_“I‚Éˆê’v‚·‚éƒ‚ƒfƒ‹‚Íì‚ê‚é‚Ì‚©‚ÈH
+        ƒŠƒT‚Q‚O‚QF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]\'tHooft limit‚ð‚Æ‚é‚Æ‚«‚Íl‚¦‚éƒQ[ƒWŒQ‚ÌŽŸŒ³‚ª‘å‚«‚­‚È‚é‚¯‚ÇA‚¿‚á‚ñ‚ÆAdS/CFT‚ÅŒ»Û˜_“I‚Éˆê’v‚·‚éƒ‚ƒfƒ‹‚Íì‚ê‚é‚Ì‚©‚ÈH
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
@@ -285,10 +284,9 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(R|r)andom (M|m)atrix")){
         <<"
-        ƒŠƒT‚Q‚O‚OF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]‚ñA\_a[%(RSSURL[_k])]Random Matrix‚ÌŒ¤‹†‚©\_a
-        ƒŠƒT‚Q‚O‚QF‚à‚Æ‚à‚ÆRandom Matrix‚Í•¡ŽGŒn‚Ì•¨«‚ÌŒvŽZ‚ÅlˆÄ‚³‚ê‚Ä‚¢‚½‚à‚Ì‚¾‚¯‚ÇA‚¢‚Ü‚Å‚ÍString—˜_‚Å‚à‚æ‚­Žg‚í‚ê‚é‚æ‚¤‚É‚È‚Á‚½‚æ‚Ëcc
+        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]‚à‚Æ‚à‚ÆRandom Matrix‚Í•¡ŽGŒn‚Ì•¨«‚ÌŒvŽZ‚ÅlˆÄ‚³‚ê‚Ä‚¢‚½‚à‚Ì‚¾‚¯‚ÇA‚¢‚Ü‚Å‚ÍString—˜_‚Å‚à‚æ‚­Žg‚í‚ê‚é‚æ‚¤‚É‚È‚Á‚½‚æ‚Ëcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
@@ -296,10 +294,9 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "SYK")){
         <<"
-        ƒŠƒT‚P‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)A\_a[%(RSSURL[_k])]‚±‚ê\_a‚Í“Ç‚ñ‚¾HSYK model‚ÉŠÖ‚·‚é˜b‚Ý‚½‚¢‚¾‚ËB
-        ƒŠƒT‚P‚O‚TF‚Ç‚¤‚µ‚Ä—ÊŽqLyapunovŽw”‚ÌãŒÀ‚Í2ƒÎ/ƒÀ‚È‚ñ‚¾‚ë‚¤H
+        ƒŠƒT‚P‚O‚TF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]SYK‚Æ‚¢‚¦‚ÎA‚Ç‚¤‚µ‚Ä—ÊŽqLyapunovŽw”‚ÌãŒÀ‚Í2ƒÎ/ƒÀ‚È‚ñ‚¾‚ë‚¤H
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 0)
@@ -307,20 +304,18 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
         <<"
-        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]Casimir effect‚ÌŒ¤‹†\_a‚©cc
-        ƒŠƒT‚Q‚O‚PF‚Ç‚¤‚µ‚Ä‰ðÍÚ‘±‚µ‚½ƒÄŠÖ”‚Ì’l‚Å•]‰¿‚Å‚«‚é‚ñ‚¾‚ë‚¤H
+        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Casimir energy‚Ì’l‚ÍA‚Ç‚¤‚µ‚Ä‰ðÍÚ‘±‚µ‚½ƒÄŠÖ”‚Ì’l‚Å•]‰¿‚Å‚«‚é‚ñ‚¾‚ë‚¤H
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]‚ñ[cc\_a[%(RSSURL[_k])]Casimir effect‚ÌŒ¤‹†\_a‚©cc
-        ƒŠƒT‚Q‚O‚OF‰ü‚ß‚Äl‚¦‚é‚ÆA^‹ó‚È‚Ì‚É—Í‚ª“­‚­‚Á‚Ä•sŽv‹c‚¾‚æ‚Ëcc
+        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Casimir effectcc‰ü‚ß‚Äl‚¦‚é‚ÆA^‹ó‚È‚Ì‚É—Í‚ª“­‚­‚Á‚Ä•sŽv‹c‚¾‚æ‚Ëcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
@@ -328,21 +323,20 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "GUT")){
         <<"
-        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]‚±‚ê‚Ícc\_a[%(RSSURL[_k])]‘å“ˆê—˜_‚ÌŒ¤‹†\_a‚¾‚ËB
+        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]‘å“ˆê—˜_‚©cc
         ƒŠƒT‚Q‚O‚QF‚½‚µ‚©‚É•¡”‚Ìê‚ð“¯‚¶LieŒQ‚Ì•\Œ»‚Éo—ˆ‚é‚Ì‚Í–£—Í“I‚¾‚¯‚ÇccŒ»Û˜_“I‚É—LŒø‚È–ÍŒ^‚Í¡‚Ç‚Ì‚­‚ç‚¢‚ ‚é‚Ì‚©‚ÈH
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]GUT‚ÌŒ¤‹†\_a‚©cc
-        ƒŠƒT‚Q‚O‚QFRenormalization group‚ðl‚¦‚é‚ÆA•¡”‚ÌŒ‹‡’è”‚ª‚½‚µ‚©‚É‚ ‚éƒXƒP[ƒ‹‚Åˆê’v‚·‚é‚¯‚Çcc
+        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]GUT‚ÅRenormalization group‚ðl‚¦‚é‚ÆA•¡”‚ÌŒ‹‡’è”‚ª‚½‚µ‚©‚É‚ ‚éƒXƒP[ƒ‹‚Åˆê’v‚·‚é‚¯‚Çcc
         ƒŠƒT‚Q‚O‚QFŽÀŒ±‚ÅŒŸØ‚Å‚«‚é“ú‚Í—ˆ‚é‚Ì‚©‚Ècc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
@@ -350,20 +344,19 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(B|b)lack (H|h)ole")){
         <<"
-        ƒŠƒT‚P‚X‚XF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]‚±‚Ì˜_•¶‚ÍccBlack hole‚ÌŒ¤‹†\_a‚¾‚ËB
-        ƒŠƒT‚P‚O‚TFduality‚ÌŠÏ“_‚Å­‚µ—‰ð‚ªi‚ñ‚Å‚«‚½‚¯‚ÇA‚Ü‚¾ŒÃ“Td—Í‚Ì”ÍˆÍ‚Å‚³‚¦“ä‚ª‘½‚¢‘ÎÛ‚¾‚æ‚Ëcc
+        ƒŠƒT‚P‚X‚XF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Black hole‚Ì‰ðÍcc
+        ƒŠƒT‚P‚O‚TFduality‚ÌŠÏ“_‚Å­‚µ—‰ð‚ªi‚ñ‚Å‚«‚½‚¯‚ÇA‚Ü‚¾ŒÃ“Td—Í‚Ì”ÍˆÍ‚Å‚³‚¦“ä‚ª‘½‚¢‘ÎÛ‚¾‚æ‚ËB
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 0)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚OF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]Black hole‚ÌŒ¤‹†\_a‚©cc
-        ƒŠƒT‚Q‚O‚UFEinstein•û’öŽ®‚Ì‰ð‚Æ‚µ‚Ä‚È‚ç—‰ð‚Å‚«‚é‚¯‚ÇA—ÊŽqî•ñ‚Ìunitary«‚Æ‚©‚ðl‚¦‚é‚Æ‚Ü‚¾–¢’m‚È«Ž¿‚ª‘½‚¢‚æ‚Ëcc
+        ƒŠƒT‚Q‚O‚UF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Einstein•û’öŽ®‚Ì‰ð‚Æ‚µ‚Ä‚È‚ç—‰ð‚Å‚«‚é‚¯‚ÇA—ÊŽqî•ñ‚Ìunitary«‚Æ‚©‚ðl‚¦‚é‚Æ‚Ü‚¾–¢’m‚È«Ž¿‚ª‘½‚¢‚æ‚Ëcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 0)
@@ -371,20 +364,20 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "M-(T|t)heory")){
         <<"
-        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]‚±‚ÌŒ¤‹†\_a‚ÍccM—˜_‚Ì˜b‚©‚ÈB
+        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]‚±‚ê‚Ícc
         ƒŠƒT‚Q‚O‚PFMother, Membrane, MatrixA‚¾‚Á‚¯H
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]M—˜_‚ÌŒ¤‹†\_a‚©cc
+        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]M—˜_‚ÌŒ¤‹†‚©cc
         ƒŠƒT‚Q‚O‚PFDimentional reduction‚Åtype ‡UB superstring‚ÌSUGRA‰ð‚É‚È‚é‚ñ‚¾‚Á‚¯ccH
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
@@ -393,10 +386,9 @@ PhysicsCheck
       if (RE_SEARCH(RSSTitle[_k], "(E|e)ntangle")){
         <<"
         ƒŠƒT‚Q‚O‚UF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)‚ÍEntanglement entropy‚ÌŒvŽZ‚ð‚µ‚½‚±‚Æ‚Í‚ ‚éH
-        ƒŠƒT‚Q‚O‚OF\_a[%(RSSURL[_k])]‚±‚Ì˜_•¶\_acc‹C‚É‚È‚é‚ñ‚¾‚¯‚ÇA‚¿‚å‚Á‚Æ•ª‚©‚ç‚È‚¢‚Æ‚±‚ë‚ª‚ ‚Á‚ÄB
-        ƒŠƒT‚P‚Q‚PF‚à‚µÚ‚µ‚¢‚È‚çA‹³‚¦‚Ä‚­‚ê‚È‚¢‚©‚ÈH
+        ƒŠƒT‚P‚O‚QFHŠw“I‚È‰ž—p‚àÅ‹ßi‚ñ‚Å‚«‚Ä‚é‚æ‚ËB
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 0)
@@ -404,21 +396,19 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(S|s)uperstring")){
         <<"
-        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstring‚©cc
-        ƒŠƒT‚Q‚O‚UF\_a[%(RSSURL[_k])]‚±‚ÌŒ¤‹†\_aA%(username)‚ÍÚ‚µ‚¢H
-        ƒŠƒT‚Q‚O‚QFŠm‚©Polchinski‚ÌString theory‚É‘‚¢‚Ä‚ ‚Á‚½‚ÆŽv‚¤‚ñ‚¾‚¯‚Çcc
+        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstring‚©cc\s[206]%(username)‚ÍÚ‚µ‚¢H
+        ƒŠƒT‚Q‚O‚QF‚±‚Ì“à—e‚ÍPolchinski‚ÌString theory‚É‘‚¢‚Ä‚ ‚Á‚½‚ÆŽv‚¤‚ñ‚¾‚¯‚Çcc
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚UF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)A\_a[%(RSSURL[_k])]‚±‚ÌŒ¤‹†\_a‚É‚ÍÚ‚µ‚¢H
-        ƒŠƒT‚Q‚O‚QFSuperstring‚Ìamplitude‚ÌŒvŽZ‚ð”ñÛ“®“I‚È’è‹`‚ÍA‚Ç‚¤‚â‚Á‚½‚ç‚Å‚«‚é‚ñ‚¾‚ë‚¤H
+        ƒŠƒT‚Q‚O‚QF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstring‚Ìamplitude‚ÌŒvŽZ‚ð”ñÛ“®“I‚È’è‹`‚ÍA‚Ç‚¤‚â‚Á‚½‚ç‚Å‚«‚é‚ñ‚¾‚ë‚¤H
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
@@ -427,20 +417,19 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal|SCFT")){
         <<"
-        ƒŠƒT‚Q‚O‚OF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_k])]SCFT‚É‚Â‚¢‚Ä‚ÌŒ¤‹†\_accH
-        ƒŠƒT‚Q‚O‚QF’´d—Í—˜_‚ð’è‹`‚·‚é‚Æ‚«‚ÉÅ‹ß‚æ‚­Žg‚í‚ê‚Ä‚«‚Ä‚¢‚é‚æ‚Ëcc
+        ƒŠƒT‚Q‚O‚OF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Super Conformal algebracc
+        ƒŠƒT‚Q‚O‚QF’´d—Í—˜_‚ð’è‹`‚·‚é‚Æ‚«‚ÉÅ‹ß‚æ‚­Žg‚í‚ê‚Ä‚«‚Ä‚¢‚é‚æ‚ËB
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        ƒŠƒT‚Q‚O‚PF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)A\_a[%(RSSURL[_k])]SCFT‚Ì˜b‚©\_acc
-        ƒŠƒT‚Q‚O‚QFŽž‹ó‘ÎÌ«‚Æ‚µ‚Ä‚ÍA‚à‚Á‚Æ‚à‘ÎÌ«‚ª‚‚¢—˜_‚¾‚æ‚Ëcc
+        ƒŠƒT‚Q‚O‚OF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]SCFT‚Á‚ÄAŽž‹ó‘ÎÌ«‚Æ‚µ‚Ä‚Í‚à‚Á‚Æ‚à‘ÎÌ«‚ª‚‚¢—˜_‚È‚ñ‚¾‚Á‚¯H
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]¡
-        %(RSSTitle[_k])
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ¡\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]¡
         %(RSSSummary[_k])
         \e%(TalkReading = 1)
