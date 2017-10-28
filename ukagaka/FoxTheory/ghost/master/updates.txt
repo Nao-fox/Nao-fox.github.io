@@ -55,6 +55,8 @@ file,ghost/master/system/yaya_compatible.dic7a88aa6adc1fc3cc60cf82cb0c368296si
 file,ghost/master/system/yaya_optional.dic2763c2e708ebc48d7283ef56b2d8c48bsize=9653
 file,ghost/master/system/yaya_shiori3.dic8288573fc2f56e53e030ef573076b166size=44216
 file,ghost/master/system_config.txtd261dc982dabe8ada33496d23a3f4841size=802
+file,ghost/master/words/bookshelf/ジーキル博士とハイド氏.txtd1dd93a5f4ad275ef6688b8c166907fbsize=227115
+file,ghost/master/words/bookslearned/ジーキル博士とハイド氏__parse.txt537ba0bc452f12694e3aa92106a22d73size=61685
 file,ghost/master/yaya.dll06bbde179db279484f3457e78ca4ebb1size=346624
 file,ghost/master/yaya.txtbfb1c7dde5475ab739db663de0cbee9asize=1898
 file,ghost/master/yaya_aitalk.txt7ceabb191c49e1c535a68c4216b13a70size=46100
