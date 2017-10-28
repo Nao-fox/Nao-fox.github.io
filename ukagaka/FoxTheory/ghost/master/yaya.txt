@@ -33,7 +33,6 @@ dic, yaya_flagcontrol.txt //フラグ管理
 dic, yaya_rss.txt
 dic, yaya_useful.txt
 dic, yaya_conversation.dic
-dic, yaya_httpget.txt
 
 //以下は特殊系
 dic, aya_pager.dic //ページャ関数
