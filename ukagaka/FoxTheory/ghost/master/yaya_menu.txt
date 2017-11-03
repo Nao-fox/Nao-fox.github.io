@@ -87,30 +87,38 @@ OpenMenu_2
 	}
 }
 
-Arraytest{
-	_arraysize = _argc
+HAtest{
+	/*
+	%(username), Trick or Treat!
+	ふふ、何をくれるのかな？
+
+	選択肢
+	Treat
+	いたずらしてほしい
+	Trick xor Treat?
+
+	え……
+	リサ３５：Wanna be tricked? %(username).
+
+	今日一日、
+
+Trick or Treat...?
+目とじ……ああ、今日はHalloweenだっけ？
+ごめん、%(username)。何も用意していなかったんだけど……
+
+選択肢
+Trickを行う
+何もしない
+
+ごめんね、来年はちゃんと用意しておくよ。
+……そうだ、かわりに
+
+
+
+*/
 }
 
-kokoko:array{
-	_A = 10
-	<<'
-	リサ００：あああ
-	'>>
 
-	if (_A == 10){
-		<<'
-		リサ０１：10
-		'>>
-	}
-	if (_A == 100){
-		<<'
-		リサ０１：１００
-		'>>
-	}
-	<<'
-	リサ０１：ｋｋｋ
-	'>>
-}
 Option{
 	"\![set,autoscroll,disable]"
 	--

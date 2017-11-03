@@ -22,6 +22,11 @@ body {
   font-size: 200%;
   color: #a09e9b
 }
+.cinecap_normal {
+  font-family: 'cinecap';
+  font-size: 100%;
+  color: #a09e9b
+}
 a:link{
   color: #9e9276;
 }
