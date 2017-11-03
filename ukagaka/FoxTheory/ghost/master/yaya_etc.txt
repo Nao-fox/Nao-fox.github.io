@@ -410,7 +410,7 @@ OnUpdateComplete
     2.「最近の研究」を聞いたとき、コメントとAbstを表示するように変更\n/
     3.反応を少し追加\n/
     4.UI修正\n/
-		\_a['https://nao-fox.github.io/HTML/UpdateHistory.md.html']Update History\_a"
+		\_a[https://nao-fox.github.io/HTML/UpdateHistory.md.html]Update History\_a"
 	/*
     "\0\s[1]うまくいったみたい。\w9\n/
     \1\b[2]\_q更新箇所(2017/10/15)\n/
