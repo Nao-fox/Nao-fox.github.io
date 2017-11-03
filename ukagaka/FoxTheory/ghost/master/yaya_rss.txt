@@ -91,7 +91,7 @@ OnRSSView{
     PAGER.List = (PAGER.List,"\__q[OnRSSSummaryShow,%(_i)]%(RSSTitle[_i])\__q")
   }
 		//PAGER.Listに表示したいリストを入れる。
-		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[SearchPapersInput]Search\f[name,default]\f[bold,0]\__q\n'		//リストヘッダ
+		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[SearchPapersInput]Search\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\__q\n'		//リストヘッダ
 		PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q\n'		//ページヘッダ
 		PAGER.Footer='\n\![*]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\q[CLOSE,close]\f[bold,0]\_q'	//フッタ
 		PAGER.Marker='\![*]'					//項目マーカ
@@ -107,7 +107,7 @@ OnRSSSummaryShow{
   //OnShowPageはindex*shownumで
   FUNCTIONEX("SAORI\mciaudior.dll", "play")
   --
-  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■　　　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(RSSURL[_label])]Read this paper\__q\f[name,default]\f[bold,0]\n/
+  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■　　　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(RSSURL[_label])]Read this paper\__q\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\n/
   %(RSSSummary[_label])\![set,balloontimeout,600000]\n/
   \![*]\__q[OnShowPage, %(PAGE_INDEX*PAGER.ShowNum)]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\f[name,default]\f[bold,0]\__q\_q"
 }
