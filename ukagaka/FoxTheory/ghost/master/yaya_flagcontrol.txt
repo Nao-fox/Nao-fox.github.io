@@ -18,7 +18,7 @@ OnGhostLoad.FlagInit{
 SakuraBootFunc{
   OtherGhostLearnCheck_First
   --
-  "\1\![set,alignmenttodesktop,free]\![move,0,0,0,0,left.top,left.top]\![set,sticky-window,1,0]"
+  "\1\![set,alignmenttodesktop,free]\![move,0,0,0,0,left.top,left.top]\![set,sticky-window,1,0]\f[name,font\cinecaption2.28.ttf]"
 }
 //これでさくらスクリプト実行するとOnBootのあやりりすが機能しない
 /*

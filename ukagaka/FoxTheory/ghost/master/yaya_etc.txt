@@ -405,10 +405,17 @@ OnUpdateComplete
 	{
 		//---- 実際に更新が完了した
 		"\0\s[1]うまくいったみたい。\w9\n/
+			\1\b[2]\_q更新箇所(2017/11/06)\n/
+			1.論文のBookmark機能を追加\n/
+			2.UI修正\n/
+			\_a[https://nao-fox.github.io/HTML/UpdateHistory.md.html]Update History\_a\_q"
+		/*
+		"\0\s[1]うまくいったみたい。\w9\n/
 			\1\b[2]\_q更新箇所(2017/11/04)\n/
 			1.論文表示時のフォントを変更\n/
 			2.バグ修正\n/
 			\_a[https://nao-fox.github.io/HTML/UpdateHistory.md.html]Update History\_a"
+		*/
 		/*
 	"\0\s[1]うまくいったみたい。\w9\n/
     \1\b[2]\_q更新箇所(2017/10/24)\n/

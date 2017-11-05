@@ -5,18 +5,37 @@ OnRSSRead
 }
 
 OnExecuteRSSComplete{
-  _RSSTitleold = IARRAY
   RSSTitle = IARRAY
   RSSURL = IARRAY
   RSSAuther = IARRAY
   RSSSummary = IARRAY
   for _i = 0; _i<ARRAYSIZE(reference); _i++{
     _sprss = SPLIT(reference[_i], CHR(1))
-    _RSSTitleold[_i] = RE_REPLACEEX(_sprss[0]," \(arXiv(.+)\)","")//まずarXivを除く
-    RSSTitle[_i] = RE_REPLACEEX(_RSSTitleold[_i],"(\\|$|\^)","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
+    _RSSTitletemp = RE_REPLACEEX(_sprss[0]," \(arXiv(.+)\)","")//まずarXivを除く
+    _RSSTitletemp2 = RE_REPLACEEX(_RSSTitletemp,"(\\|$|\^)","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
+    //ウムラウトが"で表現されるのでこれをなんとかする
+
+    _RSSTitletemp3 = RE_REPLACEEX(_RSSTitletemp2,CHR(34)+"A","AE")
+    _RSSTitletemp4 = RE_REPLACEEX(_RSSTitletemp3,CHR(34)+"U","UE")
+    _RSSTitletemp5 = RE_REPLACEEX(_RSSTitletemp4,CHR(34)+"O","OE")
+    _RSSTitletemp6 = RE_REPLACEEX(_RSSTitletemp5,CHR(34)+"a","ae")
+    _RSSTitletemp7 = RE_REPLACEEX(_RSSTitletemp6,CHR(34)+"u","ue")
+    _RSSTitletemp8 = RE_REPLACEEX(_RSSTitletemp7,CHR(34)+"o","oe")
+    //RSSTitle[_i] = RE_REPLACEEX(_RSSTitletemp8,CHR(34),"")//ダブルクオート単体もまずいので->とりあえず今はOK
+    RSSTitle[_i] = _RSSTitletemp8
     RSSURL[_i] = _sprss[1]
     RSSAuther[_i] = _sprss[3]
-    RSSSummary[_i] = RE_REPLACEEX(_sprss[4],"\\","")
+    _Summarytemp = RE_REPLACEEX(_sprss[4],"\\","")
+    _Summarytemp2 = RE_REPLACEEX(_Summarytemp,"(\\|$|\^)","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
+    //ウムラウトが"で表現されるのでこれをなんとかする
+    _Summarytemp3 = RE_REPLACEEX(_Summarytemp2,CHR(34)+"A","AE")
+    _Summarytemp4 = RE_REPLACEEX(_Summarytemp3,CHR(34)+"U","UE")
+    _Summarytemp5 = RE_REPLACEEX(_Summarytemp4,CHR(34)+"O","OE")
+    _Summarytemp6 = RE_REPLACEEX(_Summarytemp5,CHR(34)+"a","ae")
+    _Summarytemp7 = RE_REPLACEEX(_Summarytemp6,CHR(34)+"u","ue")
+    _Summarytemp8 = RE_REPLACEEX(_Summarytemp7,CHR(34)+"o","oe")
+    //RSSSummary[_i] = RE_REPLACEEX(_Summarytemp8,CHR(34),"")
+    RSSSummary[_i] = _Summarytemp8
   }
   RSSarraymodifier//キーワードでソート
   OnRSSView
@@ -88,11 +107,11 @@ OnRSSView{
   _RSSSize = ARRAYSIZE(RSSTitle)
   PAGER.List = IARRAY
   for _i = 0; _i < _RSSSize; _i++{
-    PAGER.List = (PAGER.List,"\__q[OnRSSSummaryShow,%(_i)]%(RSSTitle[_i])\__q")
+    PAGER.List = (PAGER.List,"\__q[OnRSSSummaryShow,%(_i)]%(RSSTitle[_i])\__q"+"　\__q[OnRSSBookmarkChange,%(_i)]%(ShowBookmarkMarker(RSSURL[_i]))\__q")
   }
 		//PAGER.Listに表示したいリストを入れる。
 		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[SearchPapersInput]Search\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\__q\n'		//リストヘッダ
-		PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q\n'		//ページヘッダ
+		PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnShowBookmarkedPapers]Bookmark\__q\f[name,default]\f[bold,0]\n'		//ページヘッダ
 		PAGER.Footer='\n\![*]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\q[CLOSE,close]\f[bold,0]\_q'	//フッタ
 		PAGER.Marker='\![*]'					//項目マーカ
 		PAGER.Separator='|'						//項目名と選択肢名の区切り
@@ -107,10 +126,71 @@ OnRSSSummaryShow{
   //OnShowPageはindex*shownumで
   FUNCTIONEX("SAORI\mciaudior.dll", "play")
   --
-  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■　　　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(RSSURL[_label])]Read this paper\__q\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\n/
+  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■/
+  　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(RSSURL[_label])]Read this paper\__q/
+  \f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\n/
   %(RSSSummary[_label])\![set,balloontimeout,600000]\n/
   \![*]\__q[OnShowPage, %(PAGE_INDEX*PAGER.ShowNum)]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\f[name,default]\f[bold,0]\__q\_q"
 }
+
+//論文Bookmark
+OnRSSBookmarkChange{
+  _label = TOINT(reference[0])//paperのラベル
+  _index = ASEARCH(RSSURL[_label], BookmarkedPaperURL)
+  if (_index == -1){
+    BookmarkedPaperTitle = (BookmarkedPaperTitle,RSSTitle[_label])
+    BookmarkedPaperURL = (BookmarkedPaperURL,RSSURL[_label])
+    BookmarkedPaperAbst = (BookmarkedPaperAbst,RSSSummary[_label])
+  }
+  OnRSSView
+}
+ShowBookmarkMarker{
+  _PaperID = _argv[0]
+  if (ASEARCH(_PaperID, BookmarkedPaperURL) != -1){
+    "\f[name,font\Aramis Italic.ttf]\f[bold,1]☆\f[name,font\averia-serif-libre.italic.ttf]\f[bold,0]"
+  }
+  else{
+    "\[+\]\f[bold,0]"
+  }
+}
+OnRSSBookmarkSummaryShow{
+  _label = TOINT(reference0)
+  //OnShowPageはindex*shownumで
+  FUNCTIONEX("SAORI\mciaudior.dll", "play")
+  --
+  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■/
+  　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(BookmarkedPaperURL[_label])]Read this paper\__q\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\n/
+  %(BookmarkedPaperAbst[_label])\![set,balloontimeout,600000]\n/
+  \![*]\__q[OnShowPage, %(PAGE_INDEX*PAGER.ShowNum)]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\f[name,default]\f[bold,0]\__q\_q"
+}
+OnShowBookmarkedPapers{
+  _BookmarkSize = ARRAYSIZE(BookmarkedPaperTitle)
+  PAGER.List = IARRAY
+  for _i = 0; _i < _BookmarkSize; _i++{
+    PAGER.List = (PAGER.List,"\f[name,font\averia-serif-libre.italic.ttf]\f[bold,0]\f[height,13]\__q[OnRSSBookmarkSummaryShow,%(_i)]%(BookmarkedPaperTitle[_i])\__q　　\__q[OnRSSBookmarkDelete,%(_i)]\[×\]\__q")
+  }
+    //PAGER.Listに表示したいリストを入れる。
+    PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Bookmark\f[name,default]\f[bold,0]■\n'		//リストヘッダ
+    PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■\n'		//ページヘッダ
+    PAGER.Footer='\n\![*]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSView]Return\__q\f[bold,0]\_q'	//フッタ
+    PAGER.Marker='\![*]'					//項目マーカ
+    PAGER.Separator='|'						//項目名と選択肢名の区切り
+    PAGER.ShowNum=8			//リスト表示数
+    PAGER.PageNum=5							//ページ表示数（奇数で）
+    reference0=0							//初期表示時のおまじない
+    OnShowPage								//初期表示コール
+    PAGE_INDEX = 0//初期表示用
+}
+OnRSSBookmarkDelete{
+  _label = TOINT(reference[0])
+
+  BookmarkedPaperTitle[_label] = IARRAY
+  BookmarkedPaperURL[_label] = IARRAY
+  BookmarkedPaperAbst[_label] = IARRAY
+  OnShowBookmarkedPapers
+}
+
+//以下は今は使ってない。普通に正規表現でやった方が良い
 PhysicsWords : array
 {
   "Superstring"
@@ -509,11 +589,11 @@ PhysicsCheck
 
 ShowKeywordlist{
   RSSarraymodifier//ここでRSSTitleの配列をソート
-  _show = "\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Keyword List\f[name,default]\f[bold,0]■　　\__q[DeleteALLKeyword][Alldelete]\__q\n"
+  _show = "\_q\![set,autoscroll,disable]■\f[name,font\Aramis Italic.ttf]\f[bold,1]Keyword List\f[name,default]\f[bold,0]■　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[DeleteALLKeyword]\[All delete\]\__q\f[name,font\averia-serif-libre.italic.ttf]\f[bold,0]\f[height,13]\n"
   for _i = 0; _i < ARRAYSIZE(SearchKeyword); _i++{
-    _show = _show + "\![*]%(SearchKeyword[_i])  \__q[OnDeleteKeyword, %(_i)][delete]\__q\n"
+    _show = _show + "\![*]%(SearchKeyword[_i])  \__q[OnDeleteKeyword, %(_i)][×]\__q\n"
   }
-  _show = _show + "\__q[AddKeyword][Add]\__q\n\n\n\__q[OnRSSView]戻る\__q\_q"
+  _show = _show + "\__q[AddKeyword]\f[font,default]\f[height,12]\[Add\]\__q\n\n\n\![*]\__q[OnRSSView]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\__q\_q"
   _show
 }
 AddKeyword{

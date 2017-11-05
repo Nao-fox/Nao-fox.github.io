@@ -440,7 +440,7 @@ RandomTalk_AfterDo{
 			リサ２０１：\_a[https://arxiv.org/pdf/1601.06768.pdf]SYK model\_aを使えばブラックホールの性質をSpin glass系で調べることができるみたいだけど……
 			リサ２０２：2次元のAdSブラックホール解を持つ重力側のLagrangianは……Almheiri-Polchinski modelとかかな？
 			本００：\"SYK model\"
-			(Neary)Conformal対称性を持ち、AdS/CFT対応が成り立つとされる1次元場の量子論のモデル。
+			(Nearly)Conformal対称性を持ち、AdS/CFT対応が成り立つとされる1次元場の量子論のモデル。
 			相互作用のRandom couplingのために、Green関数が厳密に定まるという性質を持つ。
 			\e%(TalkReading = 1)
 			'>>
