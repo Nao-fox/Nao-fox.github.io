@@ -86,7 +86,11 @@ OpenMenu_2
 		\![*]\__q[Menu_CANCEL]‚È‚ñ‚Å‚à‚È‚¢\_q"
 	}
 }
-
+AATest{
+	BookmarkedPaperTitle = IARRAY
+	BookmarkedPaperURL = IARRAY
+	BookmarkedPaperAbst = IARRAY
+}
 HAtest{
 	/*
 	%(username), Trick or Treat!

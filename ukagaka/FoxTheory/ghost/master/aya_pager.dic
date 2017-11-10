@@ -11,11 +11,22 @@ OnShowPage{
 	//追記：aya_lilith.dicで初期化処理
 
 	_list =PAGER.List
-	_start=TOINT(reference0)
+	_start=FLOOR(TOINT(reference0)/PAGER.ShowNum)*PAGER.ShowNum
+
+	//Bookmarkerのところで使ってる処理
+
+	if (_argc == 1){
+		_start=FLOOR(TOINT(_argv[0])/PAGER.ShowNum)*PAGER.ShowNum
+	}
+
+
 	_end  =_start+PAGER.ShowNum
 	_max  =ARRAYSIZE(_list)
-	//追加
-	PAGE_INDEX = TOINT(reference1)
+
+	//追加ここから
+	//PAGE_INDEX = TOINT(reference1)
+	//なにこれ……ref1なんか渡してないはずだし…
+	//93行目でわたしてる
 
 	//リスト作成
 	_showlist=''
@@ -24,12 +35,12 @@ OnShowPage{
 			break
 		}
 		_key=_list[_i][0,PAGER.Separator]
-		_val=_list[_i][1,PAGER.Separator]
+		//_val=_list[_i][1,PAGER.Separator]
 		//_showlist+="%(PAGER.Marker)\q[%(_key),%(_val)]\n"
 		//SSP2.00.15以降なら以下のようにすればマーカーも押せる
-		_showlist+="\__q[%(_val)]%(PAGER.Marker)%(_key)\__q\n"
+		//_showlist+="\__q[%(_val)]%(PAGER.Marker)%(_key)\__q\n"
+		_showlist+="%(PAGER.Marker)%(_key)\n"
 	}
-
 	//nowpageは０はじまり
 	//maxpageはページ個数でなくインデックス
 	_nowpage  =TOINT(_start / PAGER.ShowNum)
@@ -83,7 +94,7 @@ OnShowPage{
 			_pagelist+=_pagestr+' '
 		}else{
 			_pagestart=_i*PAGER.ShowNum
-			_pagelist+="\f[bold,true]\q[%(_pagestr),OnShowPage,%(_pagestart),%(_i)]\f[bold,false] "
+			_pagelist+="\f[bold,true]\q[%(_pagestr),OnShowPage,%(_pagestart)]\f[bold,false] "
 		}
 	}
 
