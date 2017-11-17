@@ -14,14 +14,18 @@ OpenMenu
 	"\![set,autoscroll,disable]"
 	--
 	//メニュー：で実行する関数は引数を渡せない。(実質\qタグ)
+
 	if (EnglishMenu == 1){
 		if (PokeBust || TouchBust || Conversation_Sexual){
 			"\s[324]……\n"
 			"\s[353]……\n"
 		}
-		if (PokeCrotch || TouchCrotch || Conversation_Sexual){
+		elseif (PokeCrotch || TouchCrotch || Conversation_Sexual){
 			"\s[24]……\n"
 			"\s[53]……\n"
+		}
+		else{
+			"\s[0]"
 		}
 		--
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
@@ -38,9 +42,12 @@ OpenMenu
 			"\s[324]……\n"
 			"\s[353]……\n"
 		}
-		if (PokeCrotch || TouchCrotch || Conversation_Sexual){
+		elseif (PokeCrotch || TouchCrotch || Conversation_Sexual){
 			"\s[24]……\n"
 			"\s[53]……\n"
+		}
+		else{
+			"\s[0]"
 		}
 		--
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
