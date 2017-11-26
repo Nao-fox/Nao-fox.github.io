@@ -319,8 +319,8 @@ PhysicsCheck
   }
   /*ïÅí Ç…ê≥ãKï\åªÇ≈òbëËçÏÇ¡ÇƒÇ‚Ç¡ÇΩï˚Ç™äyÇ»ãCÇ™Ç∑ÇÈÇÃÇ≈ÇªÇ§Ç∑ÇÈ*/
   _num = RAND(ARRAYSIZE(_hitrss))
-  if (JapaneseTalk == 1){
-    for _k = 0; _k < ARRAYSIZE(RSSTitle); _k++{
+  for _k = 0; _k < ARRAYSIZE(RSSTitle); _k++{
+    if (JapaneseTalk == 1){
       if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSTitle[_k], "AdS") == 0)){
         <<"
         ÉäÉTÇPÇXÇXÅF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]CFTÇ©ÅcÅc
@@ -527,70 +527,187 @@ PhysicsCheck
         ">>
       }
     }
-    //hitÇ»ÇµÇÃèÍçá
-    /*
-    <<"
-    ÉäÉTÇQÇOÇOÅFÇÒÅcÅc\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])Ç…Ç¬Ç¢ÇƒÇÃå§ãÜ\_aÇ©ÅcÅc
-    ">>
 
-    <<"
-    ÉäÉTÇQÇOÇPÅFÅu\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(RSSTitle[_hitrank[_num]])\_aÅvÅcÅcÅH
-    ÉäÉTÇPÇOÇOÅF%(username)Ç¡Çƒ%(_hitrss[_num])Ç…ÇÕè⁄ÇµÇ¢ÅH
-    ">>
+    if (EnglishTalk == 1){
+      if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && !(RE_SEARCH(RSSTitle[_k], "AdS")) && !(RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal"))) {
+        <<"
+        ÉäÉTÇPÇXÇXÅF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]Conformal Field TheoryÅcÅc
+        ÉäÉTÇPÇOÇTÅFIt\'s quite interesting that we can identify the property of the theory without Lagrangian, indeed.
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
 
-    <<"
-    ÉäÉTÇQÇOÇPÅFÇ±ÇÍÇÕÅcÅc\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])\_aÇÃå§ãÜÇ©Ç»ÅcÅc
-    ÉäÉTÇQÇOÇQÅFÇ§Å[ÇÒÅcÅc
-    ">>
+        <<"
+        ÉäÉTÇOÇQÅF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username), Are you famiiar with CFT?
+        ÉäÉTÇOÇPÅFThe origin of CFT is the phenomena of phase transition but this theory are inevitable for field theory anymoreÅcÅc
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
 
-    <<"
-    ÉäÉTÇQÇOÇOÅF\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])ÇÃò_ï∂\_aÅcÅcÅH
-    ÉäÉTÇQÇOÇPÅFëOÇ…éóÇΩÇÊÇ§Ç»ÇÃÇì«ÇÒÇæÇÊÇ§Ç»ãCÇ™Ç∑ÇÈÅcÅc
-    ">>
-    */
-  }
-  if (EnglishTalk == 1){
-    if (_hitrss[_num] == "AdS/CFT"){
-      <<"
-      ÉäÉTÇQÇOÇPÅF\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]The one is about AdS/CFT\_aÅcÅc
-      ÉäÉTÇQÇOÇPÅFHow many the original paper is cited so far...?
-      ">>
+      if (RE_SEARCH(RSSTitle[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
+        <<"
+        ÉäÉTÇQÇOÇPÅF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFT, WellÅcÅc
+        ÉäÉTÇQÇOÇQÅFWhen do we fully understand Holographic QFT, the fascionating and astonishing idea?
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        ÉäÉTÇQÇOÇOÅF\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]This paper isÅcÅcabout AdS/CFT, Hum.
+        ÉäÉTÇQÇOÇQÅFThe mathematical proof is still not clear, however, it\'s quite practical to calculate physical quantities whose theory has strong coupling.
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(R|r)andom (M|m)atrix")){
+        <<"
+        ÉäÉTÇQÇOÇQÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]/
+        Originally the theory of random matrix was used for material science, however, according to the discovery of relation of gravity, it has been popular in gravity theoryÅcÅc
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "SYK")){
+        <<"
+        ÉäÉTÇPÇOÇTÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Come to thing about SYK, why quantum Lyapunov exponent has the maxima, 2ÉŒ/É¿?
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
+        <<"
+        ÉäÉTÇQÇOÇPÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]The coincidence of the value of Casimir energy and analytic continued zeta function is not fully understood, actuallyÅcÅc
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        ÉäÉTÇQÇOÇQÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]It\'s quite weird fact that the vacuum, which has nothing in the area can emarge forceÅcÅc
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "GUT")){
+        <<"
+        ÉäÉTÇQÇOÇPÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Grand Unified TheoryÅcÅc
+        ÉäÉTÇQÇOÇQÅFThe minimal model, SU(5) GUT is already discarded by phenomenology but the idea is quite fascionating, isn\'t it?
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        ÉäÉTÇQÇOÇQÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]It\'s true that Renormalization group of GUT predict the coupling unification on certain scale.
+        ÉäÉTÇQÇOÇQÅFÅcÅcAlthough I\'m dubious about the possibility ofÅ@actual verification in near future.
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(B|b)lack (H|h)ole")){
+        <<"
+        ÉäÉTÇPÇXÇXÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Analysis of Black hole, Hum.
+        ÉäÉTÇPÇOÇTÅFAccording to the recent development of duality, its property is getting unveiled but still a misterious object even in classical mechanicsÅcÅc
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+
+        <<"
+        ÉäÉTÇQÇOÇUÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Black HoleÅcÅcIndeed we can understand the property as the solution of Einstein equation, thoughÅcÅc
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "M-(T|t)heory")){
+        <<"
+        ÉäÉTÇQÇOÇQÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]This isÅcÅc
+        ÉäÉTÇQÇOÇPÅFMother, Membrane, MatrixÅArightÅH
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+        <<"
+        ÉäÉTÇQÇOÇQÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]M theory, WellÅcÅc
+        ÉäÉTÇQÇOÇPÅFThe Dimentional reduction of its theory can be the SUGRA as an effective theory type áUB superstring, am I rightÅH
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(E|e)ntangle")){
+        <<"
+        ÉäÉTÇQÇOÇUÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username), Have you used a replica method?
+        ÉäÉTÇPÇOÇQÅFIt is quite useful for calculationg entanglement entropy.
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 0)
+        ">>
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(S|s)uperstring")){
+        <<"
+        ÉäÉTÇQÇOÇQÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]When is the nonperturbative definition of string theory found?
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+
+      }
+      if (RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal|SCFT")){
+        <<"
+        ÉäÉTÇQÇOÇOÅF\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Super Conformal algebraÅcÅc
+        ÉäÉTÇQÇOÇQÅFRecently the method is used for the derivation of SUGRA action. Do you know it?
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]Å°
+        \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
+        Å°\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]Å°
+        %(RSSSummary[_k])
+        \e%(TalkReading = 1)
+        ">>
+      }
     }
-
-    /*
-    if ((_hitrss[_num] == "QFT") || (_hitrss[_num] == "Quantum Field Theory") || (_hitrss[_num] == "Quantum field theory") || (_hitrss[_num] == "quantum field theory")){
-    <<"
-    QFT
-    ">>
-    åˆóùò_ìIèÍÇÃó éqò_
-    }
-    */
-    if ((_hitrss[_num] == "Random Matrix") || (_hitrss[_num] == "Random matrix") || (_hitrss[_num] == "random matrix") || (_hitrss[_num] == "Random Matrices") || (_hitrss[_num] == "Random matrices") || (_hitrss[_num] == "random matrices")){
-
-      <<"
-      ÉäÉTÇQÇOÇOÅFThis one is ...\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]about Random Matrix\_a
-      ÉäÉTÇQÇOÇQÅFAlthough the concept is from material science, it's getting used a lot in other areas like String theory nowadays.
-      ">>
-    }
-
-    <<"
-    ÉäÉTÇQÇOÇOÅFWell, this paper is about \f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])\_aÅcÅc
-    ">>
-
-    <<"
-    ÉäÉTÇQÇOÇPÅFÅu\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(RSSTitle[_hitrank[_num]])\_aÅvÅcÅcÅH
-    ÉäÉTÇPÇOÇOÅF%(username), are you familiar with %(_hitrss[_num])?
-    ">>
-
-    <<"
-    ÉäÉTÇQÇOÇPÅFWell, Åu\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(RSSTitle[_hitrank[_num]])\_aÅvÅcÅcÅH
-    ÉäÉTÇQÇOÇQÅFLet's me see...
-    ">>
-
-    <<"
-    ÉäÉTÇQÇOÇOÅFHmm, this study is related to \f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]\_a[%(RSSURL[_hitrank[_num]])]%(_hitrss[_num])\_aÅcÅc
-    ÉäÉTÇQÇOÇPÅFPerhaps I've read similar one before?
-    ">>
   }
 }
 //åˆóùò_ìIèÍÇÃó éqò_

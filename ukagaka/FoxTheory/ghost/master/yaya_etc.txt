@@ -403,11 +403,21 @@ OnUpdateComplete
 	}
 	else
 	{
+		priorityCntJ = 0
+		priorityCntE = 0//新規ランダムトーク処理用
 		//---- 実際に更新が完了した
+		"\0\s[1]うまくいったみたい。\w9\n/
+			\1\b[2]\_q更新箇所(2017/11/27)\n/
+			1.ランダムトーク追加\n/
+			2.新規追加トークを優先して表示する機能を追加\n/
+			3.Add some comments for papers(English)\n/
+			\_a[https://nao-fox.github.io/HTML/UpdateHistory.md.html]Update History\_a\_q"
+		/*
 		"\0\s[1]うまくいったみたい。\w9\n/
 			\1\b[2]\_q更新箇所(2017/11/10)\n/
 			1.論文表示時およびBookmark機能に存在した深刻なバグを修正\n/
 			\_a[https://nao-fox.github.io/HTML/UpdateHistory.md.html]Update History\_a\_q"
+		*/
 			/*
 		"\0\s[1]うまくいったみたい。\w9\n/
 			\1\b[2]\_q更新箇所(2017/11/06)\n/

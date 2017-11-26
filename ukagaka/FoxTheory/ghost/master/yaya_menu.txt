@@ -94,9 +94,10 @@ OpenMenu_2
 	}
 }
 AATest{
-	BookmarkedPaperTitle = IARRAY
-	BookmarkedPaperURL = IARRAY
-	BookmarkedPaperAbst = IARRAY
+	priorityCntJ = 0
+	priorityCntE = 0
+	ERASEVAR(priorityCnt)
+	EnglishTalk
 }
 HAtest{
 	/*

@@ -915,7 +915,8 @@ GetCloseSharedScript
 {
 	RandomTalk()
 }
-
+//Nao 新規追加トーク処理を自力で行いたいのでこれを使わないことにする
+/*
 RandomTalk
 {
 	//高速ランダムトーク処理用
@@ -930,7 +931,7 @@ RandomTalk
 
 	_vf
 }
-
+*/
 GetSeasonSlot
 {
 	//3-5,6-8,9-11,12-2……でいいよね？
