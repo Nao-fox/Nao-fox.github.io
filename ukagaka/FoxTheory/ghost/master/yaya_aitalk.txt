@@ -59,7 +59,7 @@ PriorityRandomTalkJapanese : nonoverlap{
 	">>
 
 	<<"
-	リサ０５：homotopyが同じなら多様体は同相だけど、homotopyが同じであっても同相であるとは限らないんだよね……
+	リサ０５：多様体は同相ならhomotopyは同じだけど、homotopyが同じであっても同相であるとは限らないんだよね……
 	リサ００：多様体を分類するのに、より強力な位相不変量は見つかるのかな？
 	本００：\"homotopy\"
 	ループによって多様体を分類する時に使われる同値関係。
@@ -95,10 +95,10 @@ PriorityRandomTalkJapanese : nonoverlap{
 
 	<<"
 	リサ２００：Standard modelにおけるペンギンのCP violationの話か……
-	リサ２０４：……鏡の国のペンギンは少ないのかな？
+	リサ２０１：……そういえば、なんでペンギンなんだろう。いや、見えなくはないけど……
 	本００：\"Penguin diagram\"
 	クォークがWボソンを介してフレーバーを変える過程を記述するFeynman diagramの一つ。
-	この名前は1977年にJohn EllisがMelissa Franklinとゲームで負けたら"Penguin"という単語を次の論文に登場させるという賭けを行い、負けたことに由来する。
+	この名前は1977年にJohn EllisがMelissa Franklinとゲームで負けたら\"Penguin\"という単語を次の論文に登場させるという賭けを行い、負けたことに由来する。
 	\e%(TalkReading = 1)
 	">>
 
@@ -453,7 +453,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ０５：homotopyが同じなら多様体は同相だけど、homotopyが同じであっても同相であるとは限らないんだよね……
+			リサ０５：多様体は同相ならhomotopyは同じだけど、homotopyが同じであっても同相であるとは限らないんだよね……
 			リサ００：多様体を分類するのに、より強力な位相不変量は見つかるのかな？
 			本００：\"homotopy\"
 			ループによって多様体を分類する時に使われる同値関係。
@@ -705,7 +705,7 @@ RandomTalk_Main : nonoverlap
 
 			<<"
 			リサ２００：Standard modelにおけるCP violationの話か……
-			リサ２０４：この散乱過程、なんでペンギンなんだろう……
+			リサ２０１：……そういえば、なんでペンギンなんだろう。いや、見えなくはないけど……
 			本００：\"Penguin diagram\"
 			クォークがWボソンを介してフレーバーを変える過程を記述するFeynman diagramの一つ。
 			この名前は1977年にJohn EllisがMelissa Franklinとゲームで負けたら\"Penguin\"という単語を次の論文に登場させるという賭けを行い、負けたことに由来する。
