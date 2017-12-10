@@ -77,7 +77,7 @@ ShowLearnedWordsList{
   _show
 }
 OnSelectLearned_all{
-  Learned_Ghost = 0
+  Learned_Ghost = ""
   flag_Learned_all = 1
   ShowLearnedWordsList
 }
@@ -246,7 +246,8 @@ TextParsedataMake{
   _f = FCOPY(_input, "words\\bookshelf")
   Morph_Mecab_3(_input, _outputparse)
   //複数の本から学習する用
-  Morph_Mecab_3add(_input,"words\\Books_all.txt")
+  //エラー吐くのでコメントアウト
+  //Morph_Mecab_3add(_input,"words\\Books_all.txt")
 
 }
 
@@ -274,7 +275,7 @@ ShowBooksList{
 }
 
 OnSelectBooks_all{
-  Learned_Book = 0
+  Learned_Book = ""
   flag_books_all = 1
   ShowBooksList
 }
@@ -334,7 +335,7 @@ OnWord2Vec_book{
     if (Learned_Book[1,"__"]){
       <<"
       リサ０５：%(Learned_Book[0,'__'])によると……%(_result_rank[0][0," "])とか？
-      リサ０１：あとは……%(_result_rank[1][0," "])とか？
+      リサ６３：あとは……%(_result_rank[1][0," "])とか？
       ">>
     }
     else{

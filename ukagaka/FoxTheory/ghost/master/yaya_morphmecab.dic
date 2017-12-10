@@ -5,7 +5,7 @@ Morph_List_Create_Mecab{
   _outputfilename = _argv[2]//出力ファイル名。相対パスなのでwords\test.txtとか
   //いちいちこれを読み込むのもあれなのでグローバル配列も作っておくか…
   //_prefixnum = 2
-  FCHARSET("Shift-JIS")//単語ファイルの文字コードを指定。UTF-8ならここを変える
+  FCHARSET("UTF-8")//単語ファイルの文字コードを指定。UTF-8ならここを変える
   _flag = FOPEN(_filename, "r")
 
   _morphlist = IARRAY
@@ -23,7 +23,7 @@ Morph_List_Create_Mecab{
 
   //グローバル配列も作っておく
   MorphListMecab = IARRAY
-  FCHARSET("Shift-JIS")
+  FCHARSET("UTF-8")
   _flag2 = FOPEN(_outputfilename, "w")
   for _i = 0; _i < ARRAYSIZE(_morphlist); _i++{
     /*
@@ -78,7 +78,7 @@ OnMorph_Mecab2{
   _filename = _argv[0]//novel.txtを受け取ることを想定
   _outputfilename = _argv[1]//"words\mecabmorph.txt"などを想定
 
-  FCHARSET("Shift-JIS")//単語ファイルの文字コードを指定。UTF-8ならここを変える
+  FCHARSET("UTF-8")//単語ファイルの文字コードを指定。UTF-8ならここを変える
   _flag = FOPEN(_filename, "r")//novelを開く
   _FLAG = FOPEN(_outputfilename, "w")//書き込み用のファイルを開く。aで追加書き込み
   _noveltext = ""
@@ -88,7 +88,7 @@ OnMorph_Mecab2{
       break
     }
     _Rank = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'parse',_noveltext)
-    FCHARSET("Shift_JIS")
+    FCHARSET("UTF-8")
     for _i = 0; _i < _Rank; _i++{
       FWRITE(_outputfilename, valueex[_i])//EOSとかは除く
     }
@@ -112,7 +112,7 @@ MakeMarkovChain{
   //_argv[1]がテキスト(0)か配列(1)か指定。配列の場合は_argv[0]は使ってない(globalなので)
   if (_argv[1] == 0){
     _filename = _argv[0]//形態素が3つ並んだファイルを想定
-    FCHARSET("Shift-JIS")//単語ファイルの文字コードを指定。UTF-8ならここを変える
+    FCHARSET("UTF-8")//単語ファイルの文字コードを指定。UTF-8ならここを変える
     _flag = FOPEN(_filename, "r")
 
     while 1 {
@@ -188,7 +188,7 @@ MakeMarkovChain{
     }
     _candidaterand = _candidate[RAND(ARRAYSIZE(_candidate))]//候補決定
     //chainのend処理
-    if (_counter > 10){//長すぎの時
+    if (_counter > 20){//長すぎの時
       break;
     }
     elseif (RE_SEARCH(_candidaterand[2,";;"][0,"::"],'EOS|。|!|！|\?|？|…') || ""){

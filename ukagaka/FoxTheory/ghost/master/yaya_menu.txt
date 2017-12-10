@@ -19,10 +19,12 @@ OpenMenu
 		if (PokeBust || TouchBust || Conversation_Sexual){
 			"\s[324]……\n"
 			"\s[353]……\n"
+			"\s[63]……\n"
 		}
 		elseif (PokeCrotch || TouchCrotch || Conversation_Sexual){
 			"\s[24]……\n"
 			"\s[53]……\n"
+			"\s[63]……\n"
 		}
 		else{
 			"\s[0]"
@@ -93,11 +95,23 @@ OpenMenu_2
 		\![*]\__q[Menu_CANCEL]なんでもない\_q"
 	}
 }
-AATest{
-	priorityCntJ = 0
-	priorityCntE = 0
-	ERASEVAR(priorityCnt)
-	EnglishTalk
+
+Markovvvv{
+	/*
+	まとめ
+
+	OnMorph_Mecab2("words\mine.txt","words\output.txt")//outputに書き込まれる
+	Morph_List_Create_Mecab("words\mecabmorph.txt",3,"words\outputlist.txt")
+	の実行でMakeMarkovChain用のテキストファイルが作られる
+
+	MakeMarkovChainは3行prefixのテキストを受け取って(第二引数を1にするとMorphListMecab)連鎖する
+	MakeMarkovChain("words\outputlist.txt")
+	*/
+	//OnMorph_Mecab2("words\bookshelf\Kabukinomicon_ver1.4.txt","words\kabukiout.txt")
+	//Morph_List_Create_Mecab("words\kabukiout_short.txt",3,"words\outputlist.txt")
+	"\s[34]"
+	--
+	MakeMarkovChain("words\outputlist.txt")
 }
 HAtest{
 	/*

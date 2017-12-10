@@ -11,8 +11,8 @@ RandomTalk_AfterDo{
 //あー、nonoverlapは数が変わるとリセットされるんだっけ
 RandomTalk
 {
-	_numJ = 10
-	_numE = 2
+	_numJ = 3
+	_numE = 0
 	if (JapaneseTalk && EnglishTalk){
 		if (priorityCntJ < _numJ){
 			priorityCntJ++
@@ -49,108 +49,47 @@ RandomTalk
 
 //arrayからnonoverlapに変更
 PriorityRandomTalkJapanese : nonoverlap{
-	<<"
-	リサ０１：2次元空間ではEinstein-Hilbert Actionではなく、dilatonも含めたActionでないと重力を定義できないって知ってる？
-	リサ０２：これはfundamental homotopy groupが2次元の時のみ特殊になるのと関係しているよ。
-	本００：\"Gauss-Bonnet theorem\"
-	2次元でコンパクトなRiemann多様体においては、RをRicci scalar, χをEuler numberとすると\"∫RdS = 4πχ\"が成立する。
-	これはmetricの変分が多様体のhomotopyを変えないのであれば、Einstein-Hilbert Actionは常に定数であることを意味する。
-	\e%(TalkReading = 0)
-	">>
 
 	<<"
-	リサ０５：多様体は同相ならhomotopyは同じだけど、homotopyが同じであっても同相であるとは限らないんだよね……
-	リサ００：多様体を分類するのに、より強力な位相不変量は見つかるのかな？
-	本００：\"homotopy\"
-	ループによって多様体を分類する時に使われる同値関係。
-	日常的に使われる\"トポロジー\"という言葉はこのhomotopyである場合が多い。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２００：\"驚異の定理\"か……
-	リサ２０２：宇宙の形や曲率を外部から見なくても、宇宙内部での観測のみから分かるのは確かに不思議だよね……
-	本００：\"驚異の定理(Theorema Egresium)\"
-	Karl Friedrich Gaussにより1827年に証明された、\"Gauss曲率は第一基本形式(線素)の情報から求められる\"という定理。
-	これは自分がいる平面のhomotopyや曲率を、外から見なくてもその平面上の人は知ることができることを意味する。
+	リサ２０１：Einstein-Rosen bridgeか……
+	リサ２０６：%(username)はこの\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]EinsteinとRosenの論文\_aって読んだことある？
+	リサ２０２：たしかにこの解なら時空の異なる点が同一視されるから\"ワープ\"が可能になるけど……どうやって安定化すればいいんだろう？
+	本００:\"Einstein-Rosen bridge\"
+	Einstein方程式の解であるBlack hole解を解析接続することによって、Black holeとは真逆の性質を持つWhite holeが繋がった解が得られることがある。
+	これをEinstein-Rosen bridgeもしくはワームホールと呼ぶ。
+	この解は極値条件は満たすものの、Actionを極小にはしておらず不安定な解である。
 	\e%(TalkReading = 1)
 	">>
 
 	<<"
-	リサ０１：Higgs機構は、もともと物性の分野で考えられたGinzburg-Landau modelがアイデアって知ってた？
-	リサ０２：この場合、自発的対称性の破れによる質量の獲得は、物性における自発磁化の発生と等価な現象になるよ。
-	本００：\"Ginzburg-Landau theory\"
-	微視的なHamiltonianではなく、巨視的な自由エネルギーに注目して相転移の解析を行う理論。
-	この時考えられたモデルにより、自由エネルギーの持つ対称性と自発磁化の関係が示された。
+	リサ００：%(username)は\"幽霊\"っていると思う？
+	リサ６５：Lagrangianには時々出てくるよね、幽霊。特にゲージ固定するときとか。
+	本００：\"Ghost\"場
+	場の量子論において、その場の固有状態のノルムが負となる場のこと。非物理的な量であり、一般にLagrangianにはFadeev-Popov Ghostなどゲージ固定をするため補助的に導入される。
 	\e%(TalkReading = 0)
 	">>
 
 	<<"
-	リサ２０１：Bosonicなstring理論は26次元、superstringは10次元でしかPoincare対称性を保てないけど……
-	リサ２０２：どうしてnaiveに解析接続したzeta functionの値でこれが評価できるんだろう……
-	本００：string theoryが定義される時空の次元は、対称性から特定の次元に制限される。
-	この時Virasoro代数とPoincare代数が閉じるという要請とzeta functionで評価するエネルギーのAnomalyが0となるいう要請が一致する。
+	リサ２０２：\"ゴーストと一緒\"、ね。
+	リサ２０６：%(username)はHawkingのこの論文、\"\_a[https://arxiv.org/pdf/hep-th/0107088.pdf]Living with Ghosts\_a\"は読んだ？
+	リサ２００：path integral後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
+	本００：一般にLagrangianに3階以上の微分を含む理論を量子化すると、正準量子化の手続きではghost場が生じる。このためunitarityが満たされなくなり、因果律が破綻する。
 	\e%(TalkReading = 1)
 	">>
 
-	<<"
-	リサ２００：Standard modelにおけるペンギンのCP violationの話か……
-	リサ２０１：……そういえば、なんでペンギンなんだろう。いや、見えなくはないけど……
-	本００：\"Penguin diagram\"
-	クォークがWボソンを介してフレーバーを変える過程を記述するFeynman diagramの一つ。
-	この名前は1977年にJohn EllisがMelissa Franklinとゲームで負けたら\"Penguin\"という単語を次の論文に登場させるという賭けを行い、負けたことに由来する。
-	\e%(TalkReading = 1)
-	">>
-
-
-	<<"
-	リサ０１：%(username)はWitten indexの計算をやったことはある？
-	リサ０２：実はWitten indexはtopological invariantで、この性質から汎関数積分によるMorse理論の発展につながっているよ。
-	本００：\"Witten index\"
-	Supersymmetryを持つ系においてFをFermion number operatorとし、Z=tr((-1)^Fe^(-βH))で定義される量。
-	これは理論のsupermultipletにおける基底エネルギーの縮退の数の差を表す。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ０５：\"奇跡の年\"に発表された論文は当時は独立な内容として受け入れられていたけど、今ではどれも関連しあってるよね……
-	リサ０１：例えば特殊相対論は場の理論を通して量子論とつながっているし、ブラウン運動も複素Langevin方程式を通して量子系と関連している。
-	リサ０２：100年経ってつながりが見つかるなんて、本当に奇跡みたいだよね。
-	本００：\"奇跡の年(annus mirabilis)\"
-	Albert Einsteinが特殊相対論、ブラウン運動、光量子仮説に関する論文を発表した年、すなわち1905年のこと。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２０１：semi-latus rectumって変な名前だよね……
-	リサ２０４：確かラテン語で……\s[205]いや、なんでもない。
-	本００：semi-latus rectumとは楕円の長半径をa,短半径をbとしたときb^2/aで定義される量であるが、latusは\"拡張された\"、rectumは\"直腸\"という意味も持つ。
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ０１：syzygyって単語、知ってる？
-	リサ０１：これは惑星直列って意味なんだけど……なんだか不思議な語感だよね。
-	本００：後期ラテン語でpairという意味のsyzygiaに由来する。
-	\e%(TalkReading = 0)
-	">>
+	/*
+		<<"
+		リサ００：ファントムはGhostだけど、
+		リサ００：\"オペラ座の怪人\"
+		本００：\"Phantom field\"
+		\_a[https://arxiv.org/pdf/hep-th/0305110.pdf]宇宙論において負のエネルギーを生成するために導入されるkinetic termの符号が反対のscalar場のこと。\_a
+		定義よりphantomの固有状態のノルムは負、すなわちghost場である。
+		">>
+		*/
 }
 
 PriorityRandomTalkEnglish : nonoverlap{
-	<<"
-	リサ０１：%(username), Have you read Alice\'s Adventures in Wonderland?
-	It\'s a little childlish of us, I suppose, but it has a certain charm, even at my age.
-	\e%(TalkReading = 0)
-	">>
 
-	<<"
-	リサ０１：Do you know, in 2 dimension, the Einstein-Hilbert Action itself can\'t determine the geometry? Actually we have to add dilaton into the Action so that makes the gravity.
-	リサ０２：This fact is related to the speciality of fundamental homotopy group.
-	本００：\"homotopy\"
-	The equivalence relation which classifies manifolds using loops.
-	A term \"topology\", often used in conversations is actually homotopy in many cases.
-	\e%(TalkReading = 0)
-	">>
 }
 //******************************************************************************
 // ランダムトーク
@@ -249,7 +188,7 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０２：自然科学の理論を作るとき、時としてその理論の\"美しさ\"が重視されることがある。
 			リサ１０５：ここでいう美しさとは、少ない単純な原理から、豊かな法則や定理が導かれる、ということ。
-			リサ１０１：最小作用の原理と解析力学とか、だね。
+			リサ１０３：最小作用の原理と解析力学とか、だね。
 			本００：\"最小作用の原理\"
 			式で表すと\"δS = 0\"。この原理により古典物理学のあらゆる現象は全て記述される。
 			量子力学にこれを拡張したものが経路積分(path integral)である。
@@ -427,11 +366,11 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ０５：リサージェンスのBorel singularityとinstanton解は本当に一対一対応しているのかな？
-			リサ０５：たしかに関数形は近いけど……
+			リサ０５：リサージェンス理論のBorel singularityとinstanton解は本当に一対一対応しているのかな？
+			リサ０５：なんにせよ、摂動論から非摂動寄与が得られるのはとても不思議だよね。
 			本００：\"Borel singularity\"
 			Borel tranformの際に生じる特異点のこと。この特異点の位置がinstanton解に対応するというのがリサージェンス理論の主張である。
-			両者は非摂動的な形をしており、いくつかの場合で一致することが示されている。
+			両者は非摂動的な形をしており、topological chargeが0の場合は真空の摂動から生じるsingularityにで一致すると考えられている。
 			\e%(TalkReading = 0)
 			">>
 
@@ -510,8 +449,8 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ３０５：Anomalyの起源は何なんだろう……
-			リサ３０５：存在性を厳密に定義できるのかな……
+			リサ３０５：Anomalyの取扱いに対する議論って、正則化の問題があって数学的には微妙な部分があるよね。
+			リサ３０５：でもTrace anomalyとcentral chargeの関係のように、代数的に意味のある量にはなってると思うけど……
 			本００：\"Anomaly\"
 			量子異常とも呼ばれる。古典論における対称性が量子論で破綻する現象を指す。
 			これが物理的に意味のあるものであるのか、理論の破綻が原因であるかの判定は難しい。
@@ -519,8 +458,8 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ０５：どうして時空は4次元なんだろう……
-			リサ０５：10次元時空の方が自然なのに……
+			リサ０５：どうして時空は4次元なんだろう？
+			リサ０５：Superstringが正しいなら、\"自然な時空\"は10次元になるけど……
 			本００：\"Critical dimension\"
 			superstring theoryがLorentz対称性を維持したまま量子化されるには、時空の次元が10次元でなくてはならない。
 			従って理論を現象論的に定式化するには、余剰次元をコンパクト化する必要がある。
@@ -559,7 +498,7 @@ RandomTalk_Main : nonoverlap
 			本００：\"Liouville action\"
 			LagrangianがConformal対称性を持っていても、Weyl変換の際に汎関数積分測度から余分な項が寄与する場合がある。
 			この項はあたかももとのLagrangianに重力項を加えた形になっており、この項をLiouville actionと呼ぶ。
-			\_a[https://arxiv.org/pdf/1706.07056.pdf]これの古典解とAdS/CFTに関連があることが示唆されている。\_a
+			\_a[https://arxiv.org/pdf/1706.07056.pdf]この作用の古典解とAdS/CFTに関連があることが示唆されている。\_a
 			\e%(TalkReading = 1)
 			">>
 
@@ -724,7 +663,7 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ０５：\"奇跡の年\"に発表された論文は当時は独立な内容として受け入れられていたけど、今ではどれも関連しあってるよね……
 			リサ０１：例えば特殊相対論は場の理論を通して量子論とつながっているし、ブラウン運動も複素Langevin方程式を通して量子系と関連している。
-			リサ０２：100年経ってつながりが見つかるなんて、本当に奇跡みたいだよね。
+			リサ０３：100年経ってつながりが見つかるなんて、本当に奇跡みたいだよね。
 			本００：\"奇跡の年(annus mirabilis)\"
 			Albert Einsteinが特殊相対論、ブラウン運動、光量子仮説に関する論文を発表した年、すなわち1905年のこと。
 			\e%(TalkReading = 0)
@@ -742,6 +681,33 @@ RandomTalk_Main : nonoverlap
 			リサ０１：これは惑星直列って意味なんだけど……なんだか不思議な語感だよね。
 			本００：後期ラテン語でpairという意味のsyzygiaに由来する。
 			\e%(TalkReading = 0)
+			">>
+
+			<<"
+			リサ２０１：Einstein-Rosen bridgeか……
+			リサ２０６：%(username)はこの\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]EinsteinとRosenの論文\_aって読んだことある？
+			リサ２０２：たしかにこの解なら時空の異なる点が同一視されるから\"ワープ\"が可能になるけど……どうやって安定化すればいいんだろう？
+			本００:\"Einstein-Rosen bridge\"
+			Einstein方程式の解であるBlack hole解を解析接続することによって、Black holeとは真逆の性質を持つWhite holeが繋がった解が得られることがある。
+			これをEinstein-Rosen bridgeもしくはワームホールと呼ぶ。
+			この解は極値条件は満たすものの、Actionを極小にはしておらず不安定な解である。
+			\e%(TalkReading = 1)
+			">>
+
+			<<"
+			リサ００：%(username)は\"幽霊\"っていると思う？
+			リサ６５：Lagrangianには時々出てくるよね、幽霊。特にゲージ固定するときとか。
+			本００：\"Ghost\"場
+			場の量子論において、その場の固有状態のノルムが負となる場のこと。非物理的な量であり、一般にLagrangianにはFadeev-Popov Ghostなどゲージ固定をするため補助的に導入される。
+			\e%(TalkReading = 0)
+			">>
+
+			<<"
+			リサ２０２：\"ゴーストと一緒\"、ね。
+			リサ２０６：%(username)はHawkingのこの論文、\"\_a[https://arxiv.org/pdf/hep-th/0107088.pdf]Living with Ghosts\_a\"は読んだ？
+			リサ２００：path integral後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
+			本００：一般にLagrangianに3階以上の微分を含む理論を量子化すると、正準量子化の手続きではghost場が生じる。このためunitarityが満たされなくなり、因果律が破綻する。
+			\e%(TalkReading = 1)
 			">>
 		}
 

@@ -106,13 +106,41 @@ Vanish後初回起動
 {
 	<<"
 	リサ０２：こんにちは、%(username)。
+	\e%(TalkReading = 0)
+	">>
+
+	<<"
+	リサ０２：What's up, %(username).
+	\e%(TalkReading = 0)
 	">>
 
 	<<"
 	リサ１９９：……
 	リサ１０９：あ、%(username)。
+	\e%(TalkReading = 0)
 	">>
 
+	<<"
+	リサ２０２：うーん……topological chargeが異なるときの配位は……
+	\e%(TalkReading = 1)
+	">>
+
+	<<"
+	リサ２０２：Well……in the case, the equivalence is……
+	\e%(TalkReading = 1)
+	">>
+
+	<<"
+	リサ２０２：このLie代数の構造定数はたしか……
+	リサ２０６：あ、\s[1]%(username)。どうしたの？
+	\e%(TalkReading = 0)
+	">>
+
+	<<"
+	リサ２０１：この論文、前にも読んだような……
+	リサ２０６：ん、\s[1]%(username)。どうしたの？
+	\e%(TalkReading = 0)
+	">>
 
 	--
 	SakuraBootFunc
@@ -131,7 +159,7 @@ Vanish後初回起動
 }
 
 //日々の起動トーク。
-
+/*
 朝に起動
 {
 	if (JapaneseTalk == 1){
@@ -148,7 +176,8 @@ Vanish後初回起動
 	--
 	SakuraBootFunc
 }
-
+*/
+/*
 昼食時に起動
 {
 	if (JapaneseTalk == 1){
@@ -164,7 +193,8 @@ Vanish後初回起動
 	--
 	SakuraBootFunc
 }
-
+*/
+/*
 夜に起動
 {
 	if (JapaneseTalk == 1){
@@ -181,6 +211,7 @@ Vanish後初回起動
 	--
 	SakuraBootFunc
 }
+*/
 
 深夜に起動
 {
@@ -202,12 +233,22 @@ Vanish後初回起動
 {
 
 }
-
-10月13日に起動
+*/
+/*
+12月25日に起動
+{
+	今日はクリスマスだね、%(username)。
+	クリスマスというと
+}
+*/
+//Halloween
+/*
+10月31日に起動
 {
 
 }
-
+*/
+/*
 10月第2週土曜に起動
 {
 

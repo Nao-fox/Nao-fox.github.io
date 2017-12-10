@@ -10,19 +10,19 @@ descript
 ////////////////////////////////////////////////////
 
 // 正面・通常
-surface0-9,20-29,31-37,50-53,61-71,99
+surface0-9,20-29,31-41,50-53,61-71,99
 {
 	element0,base,surface1000.png,0,0
 }
 
 // 正面・本読み
-surface100-109,120-129,131-137,150-153,161-171,199
+surface100-109,120-129,131-141,150-153,161-171,199
 {
 	element0,base,surface1001.png,0,0
 }
 
 // 正面・胸抑え
-surface300-309,320-329,331-337,350-353,361-371,399
+surface300-309,320-329,331-341,350-353,361-371,399
 {
 	element0,base,surface1002.png,0,0
 }
@@ -40,7 +40,7 @@ surface200-209
 ////////////////////////////////////////////////////
 
 // 正面・共通
-surface.append0-9,20-29,31-37,50-53,61-71,99,100-109,120-129,131-137,150-153,161-171,199,300-309,320-329,331-337,350-353,361-371,399
+surface.append0-9,20-29,31-41,50-53,61-71,99,100-109,120-129,131-141,150-153,161-171,199,300-309,320-329,331-341,350-353,361-371,399
 {
 	collisionex1,Ear,polygon,97,81,118,81,133,59,100,15
 	collisionex2,Ear,polygon,152,58,165,81,190,81,180,15
@@ -60,7 +60,7 @@ surface.append0-9,20-29,31-37,50-53,61-71,99,100-109,120-129,131-137,150-153,161
 }
 
 // 正面・通常
-surface.append0-9,20-29,31-37,50-53,61-71,99
+surface.append0-9,20-29,31-41,50-53,61-71,99
 {
 	collisionex16,Bust,polygon,119,206,106,200,106,190,179,190,179,237,125,237
 	collisionex17,Hand,polygon,94,234,104,223,107,228,98,240,123,229,127,248,123,256,116,262,95,262,90,252
@@ -71,7 +71,7 @@ surface.append0-9,20-29,31-37,50-53,61-71,99
 }
 
 // 正面・本読み
-surface.append100-109,120-129,131-137,150-153,161-171,199
+surface.append100-109,120-129,131-141,150-153,161-171,199
 {
 	collisionex16,Hand,polygon,161,258,148,261,137,255,129,245,133,229,142,236,154,237,150,229,149,220,167,235,168,254
 	collisionex17,Hand,polygon,134,225,148,220,159,211,161,198,139,189,131,194,126,207,128,221
@@ -83,7 +83,7 @@ surface.append100-109,120-129,131-137,150-153,161-171,199
 }
 
 // 正面・胸抑え
-surface.append300-309,320-329,331-337,350-353,361-371,399
+surface.append300-309,320-329,331-341,350-353,361-371,399
 {
 	collisionex16,Hand,polygon,145,203,132,193,115,193,111,201,117,220,141,224,145,213
 	collisionex17,Hand,polygon,145,203,155,194,164,200,168,217
@@ -121,7 +121,7 @@ surface.append200-209
 // まばたき
 
 // 正面-素
-surface.append0-3,6,63-64,67,100-103,106,163-164,167,300-303,306,342,363-364,367
+surface.append0-2,6,63-64,67,100-102,106,163-164,167,300-302,306,342,363-364,367
 {
 	animation0.interval,periodic,4
 	animation0.pattern0,overlay,1501,0-800,110,90
@@ -149,7 +149,7 @@ surface.append50,150,350
 }
 
 // 正面-照
-surface.append20-23,26,33-34,37,120-123,126,133-134,137,320-323,326,333-334,337
+surface.append20-22,26,33-34,37,120-122,126,133-134,137,320-322,326,333-334,337
 {
 	animation0.interval,periodic,4
 	animation0.pattern0,overlay,1503,0-800,110,90
@@ -259,9 +259,9 @@ surface.append2,102,302
 
 surface.append3,103,303
 {
-	element1,overlay,surface1100.png,110,90
-	element2,overlay,surface1201.png,110,90
-	element3,overlay,surface1303.png,110,90
+	element1,overlay,surface1103.png,110,90
+	element2,overlay,surface1200.png,110,90
+	element3,overlay,surface1301.png,110,90
 }
 
 surface.append4,104,304
@@ -333,9 +333,9 @@ surface.append22,122,322
 surface.append23,123,323
 {
 	element1,overlay,surface1400.png,110,90
-	element2,overlay,surface1100.png,110,90
-	element3,overlay,surface1201.png,110,90
-	element4,overlay,surface1303.png,110,90
+	element2,overlay,surface1103.png,110,90
+	element3,overlay,surface1200.png,110,90
+	element4,overlay,surface1301.png,110,90
 }
 
 surface.append24,124,324
@@ -405,17 +405,17 @@ surface.append32,132,332
 surface.append33,133,333
 {
 	element1,overlay,surface1400.png,110,90
-	element2,overlay,surface1100.png,110,90
-	element3,overlay,surface1202.png,110,90
-	element4,overlay,surface1301.png,110,90
+	element2,overlay,surface1102.png,110,90
+	element3,overlay,surface1203.png,110,90
+	element4,overlay,surface1300.png,110,90
 }
 
 surface.append34,134,334
 {
 	element1,overlay,surface1400.png,110,90
-	element2,overlay,surface1100.png,110,90
-	element3,overlay,surface1202.png,110,90
-	element4,overlay,surface1302.png,110,90
+	element2,overlay,surface1102.png,110,90
+	element3,overlay,surface1203.png,110,90
+	element4,overlay,surface1305.png,110,90
 }
 
 surface.append35,135,335
@@ -440,6 +440,38 @@ surface.append37,137,337
 	element2,overlay,surface1100.png,110,90
 	element3,overlay,surface1200.png,110,90
 	element4,overlay,surface1308.png,110,90
+}
+//kokokara
+surface.append38,138,338
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1109.png,110,90
+	element3,overlay,surface1204.png,110,90
+	element4,overlay,surface1304.png,110,90
+}
+
+surface.append39,139,339
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1109.png,110,90
+	element3,overlay,surface1204.png,110,90
+	element4,overlay,surface1305.png,110,90
+}
+
+surface.append40,140,340
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1110.png,110,90
+	element3,overlay,surface1204.png,110,90
+	element4,overlay,surface1304.png,110,90
+}
+
+surface.append41,141,341
+{
+	element1,overlay,surface1400.png,110,90
+	element2,overlay,surface1110.png,110,90
+	element3,overlay,surface1204.png,110,90
+	element4,overlay,surface1305.png,110,90
 }
 
 surface.append50,150,350
@@ -488,16 +520,16 @@ surface.append62,162,362
 
 surface.append63,163,363
 {
-	element1,overlay,surface1100.png,110,90
-	element2,overlay,surface1202.png,110,90
-	element3,overlay,surface1301.png,110,90
+	element1,overlay,surface1102.png,110,90
+	element2,overlay,surface1203.png,110,90
+	element3,overlay,surface1300.png,110,90
 }
 
 surface.append64,164,364
 {
-	element1,overlay,surface1100.png,110,90
-	element2,overlay,surface1202.png,110,90
-	element3,overlay,surface1302.png,110,90
+	element1,overlay,surface1102.png,110,90
+	element2,overlay,surface1203.png,110,90
+	element3,overlay,surface1305.png,110,90
 }
 
 surface.append65,165,365
