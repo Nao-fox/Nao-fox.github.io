@@ -189,8 +189,12 @@ OnShowBookmarkedPapers{
     PAGER.ShowNum=8			//リスト表示数
     PAGER.PageNum=5							//ページ表示数（奇数で）
     reference0=0							//初期表示時のおまじない
-    OnShowPage								//初期表示コール
-    //PAGE_INDEX = 0//初期表示用
+    if (_argc == 1){
+      OnShowPage(_argv[0])
+    }
+    else{
+      OnShowPage //初期表示コール
+    }
 }
 OnRSSBookmarkDelete{
   _label = TOINT(reference[0])
@@ -198,7 +202,7 @@ OnRSSBookmarkDelete{
   BookmarkedPaperTitle[_label] = IARRAY
   BookmarkedPaperURL[_label] = IARRAY
   BookmarkedPaperAbst[_label] = IARRAY
-  OnShowBookmarkedPapers
+  OnShowBookmarkedPapers(_label)
 }
 
 //以下は今は使ってない。普通に正規表現でやった方が良い

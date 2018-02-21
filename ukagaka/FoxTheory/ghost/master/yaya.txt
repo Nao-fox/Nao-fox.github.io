@@ -31,11 +31,12 @@ dic, yaya_morphjuman.dic//jumanを用いた形態素解析
 dic, yaya_word2vec.txt
 dic, yaya_flagcontrol.txt //フラグ管理
 dic, yaya_rss.txt
-dic, yaya_useful.txt
+//dic, yaya_useful.txt
 dic, yaya_conversation.dic
 
 //以下は特殊系
 dic, aya_pager.dic //ページャ関数
+//dic, text_pager.dic
 dic, yaya_config.txt
 //------------------------------------------------------------------------------
 //セーブファイル暗号化

@@ -59,22 +59,33 @@ OnTellNameFirst{
 	username = reference[0]
 	_flag = FUNCTIONEX("SAORI\kisaragi\kisaragi.dll",'yomi',reference[0])
 	username_yomi = valueex[0]
-	if (username_yomi){
+	if (username == ""){
 		<<"
-		リサ６７：%(username_yomi)……%(username)さん？
-		リサ０５：そういえば、そんな名前の人が来るって聞いたような……
-		リサ０２：私はリサ。一応、研究者……になるのかな。私にわかることなら、手助けをするよ。
-		リサ０１：これからよろしくね、%(username)さん。
+		リサ０５：……？
+		本００：(入力してください)
 		">>
+		--
+		OnTellNameFirst
 	}
 	else{
-		<<"
-		リサ０５：%(username)……さん？
-		リサ０５：そういえば、そんな名前の人が来るって聞いたような……
-		リサ０２：私はリサ。一応、研究者……になるのかな。私にわかることなら、手助けをするよ。
-		リサ０１：これからよろしくね、%(username)さん。
-		">>
+		if (username_yomi){
+			<<"
+			リサ６７：%(username_yomi)……%(username)さん？
+			リサ０５：そういえば、そんな名前の人が来るって聞いたような……
+			リサ０２：私はリサ。一応、研究者……になるのかな。私にわかることなら、手助けをするよ。
+			リサ０１：これからよろしくね、%(username)さん。
+			">>
+		}
+		else{
+			<<"
+			リサ０５：%(username)……さん？
+			リサ０５：そういえば、そんな名前の人が来るって聞いたような……
+			リサ０２：私はリサ。一応、研究者……になるのかな。私にわかることなら、手助けをするよ。
+			リサ０１：これからよろしくね、%(username)さん。
+			">>
+		}
 	}
+
 	--
 	SakuraBootFunc
 }

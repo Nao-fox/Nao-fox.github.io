@@ -357,11 +357,10 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			ƒŠƒT‚Q‚O‚QFpath-integral‚Ìlocalization‚Á‚Ä•¨—“I‚É‚Í‚Ç‚¤‚¢‚¤ó‘Ô‚È‚ñ‚¾‚ë‚¤cc
-			ƒŠƒT‚Q‚O‚QF—ÊŽq—h‚ç‚¬‚ª‘S‚ÄƒLƒƒƒ“ƒZƒ‹‚·‚é‚Á‚Ä‚±‚Æ‚È‚Ì‚©‚Ècc
+			ƒŠƒT‚O‚PFŠî–{“I‚Épath integral‚ÍŒµ–§‚ÉŒvŽZ‚Ío—ˆ‚È‚¢‚¯‚ÇASUSY exact‚ÈŒn‚Æ‚©‚¾‚Á‚½‚çŒvŽZo—ˆ‚é‚Á‚Ä’m‚Á‚Ä‚éH
+			ƒŠƒT‚O‚RFlocalization‚Á‚ÄŒÄ‚Î‚ê‚éƒeƒNƒjƒbƒN‚È‚ñ‚¾‚¯‚Çcc—L–¼‚ÈŒvŽZ‚¾‚ÆABJM–ÍŒ^‚Æ‚©‚ÅŽg‚í‚ê‚Ä‚é‚æB
 			–{‚O‚OF\"localization\"
-			path-integral‚ª•¡”‚ÌŒÃ“T”zˆÊ(instanton)‚Ì‘«‚µã‚°‚É‚È‚é‚±‚ÆB
-			Supersymmetry‚È‚Ç‚Ìnilpotent‚Ì«Ž¿‚ðŽ‚Â‘ÎÌ«‚ðŽg‚Á‚Ä‚±‚Ì«Ž¿‚ð—^‚¦‚é‚±‚Æ‚ª‚Å‚«‚éB
+			Œn‚ÌAction‚ªnilpotent‚Ì«Ž¿‚ðŽ‚Â‘ÎÌ«(e.g. SUSY)‚ðŽ‚¿A‚©‚ÂÏ•ª‘ª“x‚Éanomaly‚ª‘¶Ý‚µ‚È‚¢ê‡‚É‚ÍŒo˜HÏ•ª‚ðGaussian‚Å•]‰¿‚·‚é‚±‚Æ‚ª‚Å‚«‚éB‚±‚ê‚ðlocalization‚ÆŒÄ‚ÔB
 			\e%(TalkReading = 1)
 			">>
 
@@ -369,8 +368,7 @@ RandomTalk_Main : nonoverlap
 			ƒŠƒT‚O‚TFƒŠƒT[ƒWƒFƒ“ƒX—˜_‚ÌBorel singularity‚Æinstanton‰ð‚Í–{“–‚Éˆê‘Îˆê‘Î‰ž‚µ‚Ä‚¢‚é‚Ì‚©‚ÈH
 			ƒŠƒT‚O‚TF‚È‚ñ‚É‚¹‚æAÛ“®˜_‚©‚ç”ñÛ“®Šñ—^‚ª“¾‚ç‚ê‚é‚Ì‚Í‚Æ‚Ä‚à•sŽv‹c‚¾‚æ‚ËB
 			–{‚O‚OF\"Borel singularity\"
-			Borel tranform‚ÌÛ‚É¶‚¶‚é“ÁˆÙ“_‚Ì‚±‚ÆB‚±‚Ì“ÁˆÙ“_‚ÌˆÊ’u‚ªinstanton‰ð‚É‘Î‰ž‚·‚é‚Æ‚¢‚¤‚Ì‚ªƒŠƒT[ƒWƒFƒ“ƒX—˜_‚ÌŽå’£‚Å‚ ‚éB
-			—¼ŽÒ‚Í”ñÛ“®“I‚ÈŒ`‚ð‚µ‚Ä‚¨‚èAtopological charge‚ª0‚Ìê‡‚Í^‹ó‚ÌÛ“®‚©‚ç¶‚¶‚ésingularity‚É‚Åˆê’v‚·‚é‚Æl‚¦‚ç‚ê‚Ä‚¢‚éB
+			‘Q‹ß‹‰”‚ÌBorel tranform‚É‚æ‚è¶‚¶‚é“ÁˆÙ“_‚Ì‚±‚ÆB‚±‚ê‚ÍStokes phenomenon‚ª‹N‚«‚éˆÊ’u‚Éˆê’v‚·‚éB
 			\e%(TalkReading = 0)
 			">>
 
@@ -672,7 +670,7 @@ RandomTalk_Main : nonoverlap
 			<<"
 			ƒŠƒT‚Q‚O‚PFsemi-latus rectum‚Á‚Ä•Ï‚È–¼‘O‚¾‚æ‚Ëcc
 			ƒŠƒT‚Q‚O‚SFŠm‚©ƒ‰ƒeƒ“Œê‚Åcc\s[205]‚¢‚âA‚È‚ñ‚Å‚à‚È‚¢B
-			–{‚O‚OFsemi-latus rectum‚Æ‚Í‘È‰~‚Ì’·”¼Œa‚ða,’Z”¼Œa‚ðb‚Æ‚µ‚½‚Æ‚«b^2/a‚Å’è‹`‚³‚ê‚é—Ê‚Å‚ ‚é‚ªAlatus‚Í"Šg’£‚³‚ê‚½"Arectum‚Í"’¼’°"‚Æ‚¢‚¤ˆÓ–¡‚àŽ‚ÂB
+			–{‚O‚OFsemi-latus rectum‚Æ‚Í‘È‰~‚Ì’·”¼Œa‚ða,’Z”¼Œa‚ðb‚Æ‚µ‚½‚Æ‚«b^2/a‚Å’è‹`‚³‚ê‚é—Ê‚Å‚ ‚é‚ªAlatus‚Í\"Šg’£‚³‚ê‚½\"Arectum‚Í\"’¼’°\"‚Æ‚¢‚¤ˆÓ–¡‚àŽ‚ÂB
 			\e%(TalkReading = 1)
 			">>
 
@@ -684,14 +682,14 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			ƒŠƒT‚Q‚O‚PFEinstein-Rosen bridge‚©cc
-			ƒŠƒT‚Q‚O‚UF%(username)‚Í‚±‚Ì\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]Einstein‚ÆRosen‚Ì˜_•¶\_a‚Á‚Ä“Ç‚ñ‚¾‚±‚Æ‚ ‚éH
-			ƒŠƒT‚Q‚O‚QF‚½‚µ‚©‚É‚±‚Ì‰ð‚È‚çŽž‹ó‚ÌˆÙ‚È‚é“_‚ª“¯ˆêŽ‹‚³‚ê‚é‚©‚ç\"ƒ[ƒv\"‚ª‰Â”\‚É‚È‚é‚¯‚Çcc‚Ç‚¤‚â‚Á‚ÄˆÀ’è‰»‚·‚ê‚Î‚¢‚¢‚ñ‚¾‚ë‚¤H
+			ƒŠƒT‚Q‚O‚PFEinstein-Rosen bridge‚ÌˆÀ’è«‚Æƒ[ƒv‚É‚Â‚¢‚ÄccH
+			ƒŠƒT‚P‚U‚VFcc%(username)‚Í‚±‚Ì\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]Einstein‚ÆRosen‚Ì˜_•¶\_a‚Á‚Ä“Ç‚ñ‚¾‚±‚Æ‚ ‚éH‚Ù‚çAworm hole‚Å—L–¼‚Ècc
+			ƒŠƒT‚P‚T‚PFworm‚É‚Æ‚Á‚Ä‚ÍŽž‹ó‚Á‚Ä”ü–¡‚µ‚¢‚Ì‚©‚ÈH‚¢‚âA‚à‚¿‚ë‚ñworm‚Í”äšg‚È‚ñ‚¾‚¯‚Çcc
 			–{‚O‚O:\"Einstein-Rosen bridge\"
 			Einstein•û’öŽ®‚Ì‰ð‚Å‚ ‚éBlack hole‰ð‚ð‰ðÍÚ‘±‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄABlack hole‚Æ‚Í^‹t‚Ì«Ž¿‚ðŽ‚ÂWhite hole‚ªŒq‚ª‚Á‚½‰ð‚ª“¾‚ç‚ê‚é‚±‚Æ‚ª‚ ‚éB
 			‚±‚ê‚ðEinstein-Rosen bridge‚à‚µ‚­‚Íƒ[ƒ€ƒz[ƒ‹‚ÆŒÄ‚ÔB
 			‚±‚Ì‰ð‚Í‹É’lðŒ‚Í–ž‚½‚·‚à‚Ì‚ÌAAction‚ð‹É¬‚É‚Í‚µ‚Ä‚¨‚ç‚¸•sˆÀ’è‚È‰ð‚Å‚ ‚éB
-			\e%(TalkReading = 1)
+			\e%(TalkReading = 0)
 			">>
 
 			<<"

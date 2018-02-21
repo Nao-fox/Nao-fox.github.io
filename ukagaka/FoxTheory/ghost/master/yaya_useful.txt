@@ -9,7 +9,45 @@ EraseSakuraScript{
 //SHIORI3FW.RemoveAllTagsで既に作られてた
 //さくらスクリプト除去()でもOK
 
-//スライダー作成
-UI_Slider{
+TestPagerFunc{
+  _startpage = 2
+  PagerFunction(_startpage)
+}
+
+PagerFunction{
+  //メンバ変数...はないのでグローバルにする
+  _PagerFunction.List = ("a","b","c",4,5,6,7,8,9,10,11,12,13,14,15,16)
+  _PagerFunction.ShowNumber = 5//1ページに表示するリストの数
+  _PagerFunction.PageNumber = 3//目次に表示するページの数
+
+  //本当にローカルのやつ
+  _CurrentPage = 0
+  //引数は何ページを表示するか
+
+
+  //これないとスコープではじかれる
+
+  if (_argc == 1){
+    _CurrentPage = _argv[0]
+  }
+  else{
+    _CurrentPage = 1
+  }
+
+  _MaxPage = TOINT(CEIL(ARRAYSIZE(_PagerFunction.List)/_PagerFunction.ShowNumber))
+
+  //_CurrentPage*ShowNumber がページに表示するリストの先頭(_CurrentPageは1始まり)
+  _firstindex = (_CurrentPage - 1) * _PagerFunction.ShowNumber
+  _lastindex = _firstindex + _PagerFunction.ShowNumber - 1
+
+  _ShowedPageList =""
+  for _i = 0; _i < _lastindex; _i++{
+    _ShowedPageList = _ShowedPageList + "\![*]"+_PagerFunction.List[_i]+"\n"
+  }
+  _PagerFunction.List[_firstindex, _lastindex]
+  //これが_CurrentPageに表示するリストになる
+  //これをグローバルにしておけば最後に表示したページが保存されるのでこれでいいのでは
+  //2回「戻る」とまずい
+
 
 }

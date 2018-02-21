@@ -81,8 +81,8 @@ OnShowPage{
 
 	//ページリスト作成
 	_pagelist=''
-	for _i=_startpage ; _i<=_endpage ; _i++ {
-		//インデックスなので <=
+	for _i=_startpage ; _i<=_endpage+1 ; _i++ {
+		//インデックスなので <=　違う。ページは1始まり
 		_pagestr=''
 		if _i < 10 {
 			_pagestr='0'+TOSTR(_i+1)	//0はじまり->1はじまり
