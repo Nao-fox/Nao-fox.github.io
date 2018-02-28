@@ -1,3 +1,7 @@
+///////// 文　ページャ　汎用関数
+///////// written by ukiya.
+///////// 2007/08/04 version 1.0	新規作成
+///////// 2018/03/01 version 1.1 CEILの処理とリストの最後に空白が挿入されるバグを修正(Nao)
 //*****************************************************************************
 //	OnShowPage
 //	ページャ用独自イベント
@@ -6,42 +10,30 @@
 //	ページングされると再度OnShowPageを呼ぶ
 //*****************************************************************************
 OnShowPage{
-	//音声再生。音を出すかはフラグ管理しておく
-	//今はここで書いておくけど初期化ってどこですればいいのやら
-	//追記：aya_lilith.dicで初期化処理
-
 	_list =PAGER.List
 	_start=FLOOR(TOINT(reference0)/PAGER.ShowNum)*PAGER.ShowNum
-
-	//Bookmarkerのところで使ってる処理
-
 	if (_argc == 1){
-		_start=FLOOR(TOINT(_argv[0])/PAGER.ShowNum)*PAGER.ShowNum
+		_start=FLOOR(_argv[0]/PAGER.ShowNum)*PAGER.ShowNum
 	}
-
-
+	
 	_end  =_start+PAGER.ShowNum
-	_max  =ARRAYSIZE(_list)
-
-	//追加ここから
-	//PAGE_INDEX = TOINT(reference1)
-	//なにこれ……ref1なんか渡してないはずだし…
-	//93行目でわたしてる
+	_max  = TOREAL(ARRAYSIZE(_list))//CEILの処理用にdouble型にしておく。これがないとint同士の演算で余りが常に切り捨てになってしまう
 
 	//リスト作成
 	_showlist=''
 	for _i=_start ; _i<_end ; _i++ {
-		if  _i > _max - 1 {
+		if  _i >= _max - 1 {//ここの等号が抜けていたので追加
 			break
 		}
 		_key=_list[_i][0,PAGER.Separator]
 		//_val=_list[_i][1,PAGER.Separator]
-		//_showlist+="%(PAGER.Marker)\q[%(_key),%(_val)]\n"
+		//_showlist += "%(PAGER.Marker)\q[%(_key),%(_val)]\n"
 		//SSP2.00.15以降なら以下のようにすればマーカーも押せる
 		//_showlist+="\__q[%(_val)]%(PAGER.Marker)%(_key)\__q\n"
 		_showlist+="%(PAGER.Marker)%(_key)\n"
 	}
-	//nowpageは０はじまり
+
+	//nowpageは0はじまり
 	//maxpageはページ個数でなくインデックス
 	_nowpage  =TOINT(_start / PAGER.ShowNum)
 	_startpage=_nowpage-TOINT(PAGER.PageNum/2)
@@ -81,8 +73,8 @@ OnShowPage{
 
 	//ページリスト作成
 	_pagelist=''
-	for _i=_startpage ; _i<=_endpage+1 ; _i++ {
-		//インデックスなので <=　違う。ページは1始まり
+	for _i=_startpage ; _i<=_endpage ; _i++ {
+		//インデックスなので <=
 		_pagestr=''
 		if _i < 10 {
 			_pagestr='0'+TOSTR(_i+1)	//0はじまり->1はじまり
@@ -99,7 +91,7 @@ OnShowPage{
 	}
 
 	//最終出力
-	"\![set,balloontimeout,600000]%(PAGER.ShowHeader)%(_showlist)%(PAGER.PageHeader)%(_prevstr)%(_pagelist)%(_nextstr)%(PAGER.Footer)"
+	"%(PAGER.ShowHeader)%(_showlist)%(PAGER.PageHeader)%(_prevstr)%(_pagelist)%(_nextstr)%(PAGER.Footer)"
 	--
 	FUNCTIONEX("SAORI\mciaudior.dll", "play")
 }
