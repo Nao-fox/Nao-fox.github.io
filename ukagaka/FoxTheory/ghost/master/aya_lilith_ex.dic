@@ -149,18 +149,18 @@ AYALilithEX.TextOnlyTranslatorFunc
 	_text = REPLACE(_text,'‥','…')
 	_text = RE_REPLACE(_text,'[（(](ユーザー*|ユーザー*名|ユーザー*さん)[)）]',username)
 	/*
+	おりじなる
 	if ! _argv[1] {
 		_text = RE_REPLACEEX(_text, '([、…])(?=.)', '$1\\w5')
 		_text = RE_REPLACEEX(_text, '([。！？」』])(?=[^。、！？」』])', '$1\\w9')
 	}
 	*/
-	//ピリオド.とコンマ,も対応するように変更し多少挙動も変更(Nao)
-
 	if ! _argv[1] {
-		_text = RE_REPLACEEX(_text, '([、,])|(\.$)', '$1\\w5')
-		_text = RE_REPLACEEX(_text, '([。！？\?」』]|(……|\.\.\.))', '$1\\w9')
+		_text = RE_REPLACEEX(_text, '([、,……])(?=.)', '$1\\w5')
+		_text = RE_REPLACEEX(_text, '([。！？\?」』]|\.$)(?=[^。、！？」』])', '$1\\w9')
 	}
 
+	//ピリオド.とコンマ,及び?に対応(Nao)
 	_text
 }
 

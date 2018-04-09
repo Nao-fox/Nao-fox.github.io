@@ -95,46 +95,17 @@ OpenMenu_2
 		\![*]\__q[Menu_CANCEL]‚È‚ñ‚Å‚à‚È‚¢\_q"
 	}
 }
-Teee : sequential{
-	if (2>0){
-		"sss"
-		"kkk"
-		"aa"
-		"ddd"
-	}
-	else{
-		<<"
-		ƒŠƒT‚O‚OF‚P0
-		">>
-		<<"
-		ƒŠƒT‚O‚PF‚Q0
-		">>
-		<<"
-		ƒŠƒT‚O‚QF‚R0
-		">>
-		<<"
-		ƒŠƒT‚O‚OF‚S0
-		">>
-	}
-}
-ArrayTest : array{
+Kakuteishi{
 	<<"
-	ƒŠƒT‚O‚OF‚P
+	\1\![set,alignmenttodesktop,free]\![move,0,0,0,0,left.top,left.top]\![set,sticky-window,1,0]\f[name,font\cinecaption2.28.ttf]
 	">>
+	--
+	CHR(0xd,0xa)
+	--
 	<<"
-	ƒŠƒT‚O‚PF‚Q
-	">>
-	<<"
-	ƒŠƒT‚O‚QF‚R
-	">>
-	<<"
-	ƒŠƒT‚O‚OF‚S
-	">>
-	<<"
-	ƒŠƒT‚O‚PF‚T
-	">>
-	<<"
-	ƒŠƒT‚O‚QF‚U
+	ƒŠƒT‚O‚TFlewd.
+	ƒŠƒT‚O‚RFP.A.M. Dirac
+	ƒŠƒT‚O‚QFcc‚±‚ê‚È‚çA‚Ç‚¤H‚ ‚Æ.‚±‚ê‚ÍH
 	">>
 }
 Markovvvv{

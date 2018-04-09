@@ -54,7 +54,7 @@ PriorityRandomTalkJapanese : nonoverlap{
 	リサ２０１：Einstein-Rosen bridgeか……
 	リサ２０６：%(username)はこの\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]EinsteinとRosenの論文\_aって読んだことある？
 	リサ２０２：たしかにこの解なら時空の異なる点が同一視されるから\"ワープ\"が可能になるけど……どうやって安定化すればいいんだろう？
-	本００:\"Einstein-Rosen bridge\"
+	本００：\"Einstein-Rosen bridge\"
 	Einstein方程式の解であるBlack hole解を解析接続することによって、Black holeとは真逆の性質を持つWhite holeが繋がった解が得られることがある。
 	これをEinstein-Rosen bridgeもしくはワームホールと呼ぶ。
 	この解は極値条件は満たすものの、Actionを極小にはしておらず不安定な解である。
@@ -685,7 +685,7 @@ RandomTalk_Main : nonoverlap
 			リサ２０１：Einstein-Rosen bridgeの安定性とワープについて……？
 			リサ１６７：……%(username)はこの\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]EinsteinとRosenの論文\_aって読んだことある？ほら、worm holeで有名な……
 			リサ１５１：wormにとっては時空って美味しいのかな？いや、もちろんwormは比喩なんだけど……
-			本００:\"Einstein-Rosen bridge\"
+			本００：\"Einstein-Rosen bridge\"
 			Einstein方程式の解であるBlack hole解を解析接続することによって、Black holeとは真逆の性質を持つWhite holeが繋がった解が得られることがある。
 			これをEinstein-Rosen bridgeもしくはワームホールと呼ぶ。
 			この解は極値条件は満たすものの、Actionを極小にはしておらず不安定な解である。

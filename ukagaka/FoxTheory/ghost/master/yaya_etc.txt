@@ -407,9 +407,9 @@ OnUpdateComplete
 		//priorityCntE = 0//新規ランダムトーク処理用
 		//---- 実際に更新が完了した
 		"\0\s[1]うまくいったみたい。\w9\n/
-			\1\b[2]\_q更新箇所(2018/2/22)\n/
-			1.Bookmark機能のバグ修正\n/
-			2.フラグ関係のバグ修正\n/
+			\1\b[2]\_q更新箇所(2018/4/09)\n/
+			1.1側バルーンが追従しないバグ修正\n/
+			2.トーク少し加筆\n/
 			\_a[https://nao-fox.github.io/HTML/UpdateHistory.md.html]Update History\_a\_q"
 	}
 }

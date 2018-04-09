@@ -87,7 +87,7 @@ OnTellNameFirst{
 	}
 
 	--
-	SakuraBootFunc
+	FlagInit_Boot
 }
 
 
@@ -103,8 +103,7 @@ Vanish後初回起動
 	リサ０１：……久しぶりだね。
 	">>
 	--
-	SakuraBootFunc
-
+	FlagInit_Boot
 }
 
 
@@ -115,47 +114,32 @@ Vanish後初回起動
 //該当がない時は「起動」でトークします。
 起動
 {
-	<<"
-	リサ０２：こんにちは、%(username)。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ０２：What's up, %(username).
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ１９９：……
-	リサ１０９：あ、%(username)。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２０２：うーん……topological chargeが異なるときの配位は……
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ２０２：Well……in the case, the equivalence is……
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ２０２：このLie代数の構造定数はたしか……
-	リサ２０６：あ、\s[1]%(username)。どうしたの？
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２０１：この論文、前にも読んだような……
-	リサ２０６：ん、\s[1]%(username)。どうしたの？
-	\e%(TalkReading = 0)
-	">>
-
+	FlagInit_Boot
 	--
-	SakuraBootFunc
 
+	"\0\s[2]こんにちは、\w5%(username)。/
+	\e%(TalkReading = 0)"
+
+	"\0\s[2]What's up, \w5%(username)./
+	\e%(TalkReading = 0)"
+
+	"\0\s[199]……\w9\w9\n/
+	\0\s[109]あ、\w5%(username)。/
+	\e%(TalkReading = 0)"
+
+	"\0\s[202]うーん……\w9topological chargeが異なるときの配位は……\w9\w9/
+	\e%(TalkReading = 1)"
+
+	"\0\s[202]Well……\w9in the case, the equivalence is……\n/
+	\e%(TalkReading = 1)"
+
+	"\0\s[202]このLie代数の構造定数はたしか……\w9\w9\n/
+	\s[206]あ、\w5\s[1]%(username)。\w9どうしたの？/
+	\e%(TalkReading = 0)"
+
+	"\0\s[201]この論文、前にも読んだような……\w9\w9\n/
+	\0\s[206]ん、\w5\s[1]%(username)。\w9どうしたの？/
+	\e%(TalkReading = 0)"
 }
 
 終了{
@@ -170,24 +154,43 @@ Vanish後初回起動
 }
 
 //日々の起動トーク。
-/*
+
 朝に起動
 {
+	FlagInit_Boot
+	--
 	if (JapaneseTalk == 1){
-		<<"
-		リサ０１：おはよう、%(username)。
-		">>
+		"\0\s[1]おはよう、\w5%(username)。/
+		\e%(TalkReading = 0)"
 
+		"\0\s[1]おはよう、%(username)。\w9\n/
+		\s[2]今日は何をするの？/
+		\e%(TalkReading = 0)"
+
+		"\0\s[63]……\w9眠い……\w9\n/
+		\s[29]あ、\w5%(username)。\w9\s[7]ごめん、\w5ちょっと昨日は夜更かししちゃって……\w9\n/
+		\s[67]%(username)は大丈夫？/
+		\e%(TalkReading = 0)"
 	}
 	if (EnglishTalk == 1){
-		<<"
-		リサ０２：Good morning, %(username).
-		">>
+		"\0\s[2]Good morning,\w5 %(username)./
+		\e%(TalkReading = 0)"
+
+		"\0\s[1]Good morning,\w5 %(username).\w9\n/
+		\s[2]Whats is your today's plan?/
+		\e%(TalkReading = 0)"
+
+		"\0\s[63]……\w9I wanna sleep more……\w9\n/
+		\s[29]Wha, %(username)?\w9……\\s[7]Sorry, \w5I was staying up late yesterday……\w9\n/
+		\s[65]Are you not a nightowl?/
+		\e%(TalkReading = 0)"
+
+		"\0\s[64]Good Morning……\w9\n/
+		\s[7]I shouldn't have read that book……\w9 Sorry,\w5 I'm still sleepy……\n/
+		\e%(TalkReading = 0)"
 	}
-	--
-	SakuraBootFunc
 }
-*/
+
 /*
 昼食時に起動
 {
@@ -226,17 +229,39 @@ Vanish後初回起動
 
 深夜に起動
 {
-	<<"
-	リサ２０１：……
-	リサ２０６：あれ、%(username)……？
-	">>
-
-	<<"
-	リサ１９９：……
-	リサ１０９：あ、%(username)。
-	">>
+	FlagInit_Boot
 	--
-	SakuraBootFunc
+	if (JapaneseTalk == 1){
+		"\0\s[201]……\w9\w9\n/
+		\s[206]あれ、\w5%(username)……？\w9\w9\n/
+		\s[67]どうしたの？\w5こんな時間に。\w9\w9\n/
+		\s[65]もしかして、\w5私に会いに来たの？\w9\w9……なんてね。\n/
+		\e%(TalkReading = 0)"
+
+		"\0\s[199]……\w9\w9\n/
+		\s[109]あ、\w5%(username)。\w9\w9\n/
+		\s[65]……これくらいの時間の方が、\w5集中できたりするよね。\w9%(username)もそうなの？/
+		\e%(TalkReading = 0)"
+	}
+	if (EnglishTalk == 1){
+		"\0\s[201]……\w9\w9\n/
+		\s[206]Huh? %(username)……？\w9\w9\n/
+		\s[67]What're you doing? such a late time……\w9\w9\n/
+		\s[65]Are you coming here to see me?\w9\w9 ……well,\w5 just a kidding./
+		\e%(TalkReading = 0)"
+
+		"\0\s[199]……\w9\w9\n/
+		\s[109]Ah,\w5 %(username)。\w9\w9\n/
+		\s[65]Actually,\w5 around this time makes me easy……\w9\w9 You too?/
+		\e%(TalkReading = 0)"
+
+		"\0\s[25]…………\w9\w9\n/
+		\1She looks doing something……?\w9\w9\n/
+		\0\s[25]……\w9\w9\s[32]!\w9\w9\n/
+		\s[9999]%(username)!?\w9\w9 Wait,\w5 stay there!\n/
+		\s[53]Why such a late time……\w9\w9 What's up?/
+		\e%(TalkReading = 0)"
+	}
 }
 /*
 //特定条件での起動トーク。
