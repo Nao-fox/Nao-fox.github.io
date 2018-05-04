@@ -36,6 +36,7 @@ OpenMenu
 		\![*]\__q[PhysicsCheck]Pick up a recent paper\__q\n/
 		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
 		\![*]\__q[ReadBookPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
+		\![*]\__q[Menu_Webclap]WebClap\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]Cancel\__q\_q"
 	}
@@ -57,6 +58,7 @@ OpenMenu
 		\![*]\__q[PhysicsCheck]最近の研究pick up(arXiv:hep-th)\n/
 		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
 		\![*]\__q[ReadBookPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
+		\![*]\__q[Menu_Webclap]拍手送信\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]なんでもない\__q\_q"
 	}
@@ -95,18 +97,46 @@ OpenMenu_2
 		\![*]\__q[Menu_CANCEL]なんでもない\_q"
 	}
 }
-Kakuteishi{
+Menu_Webclap{
 	<<"
-	\1\![set,alignmenttodesktop,free]\![move,0,0,0,0,left.top,left.top]\![set,sticky-window,1,0]\f[name,font\cinecaption2.28.ttf]
+	リサ６７：何か質問？\w9\s[2]いいよ、どうしたの？\![open,inputbox,OnSendWebclap,-1,]
+	本００：(質問、感想、バグ報告等何でもどうぞ)
 	">>
-	--
-	CHR(0xd,0xa)
-	--
-	<<"
-	リサ０５：lewd.
-	リサ０３：P.A.M. Dirac
-	リサ０２：……これなら、どう？あと.これは？
-	">>
+}
+OnSendWebclap
+{
+	_ghostprefix = 'FoxTeory:'
+	_cutoff = 1000
+	_msg = REPLACE( reference0, '[', '\[' )
+	_parameters = "%( _ghostprefix + SUBSTR(_msg,0,_cutoff) )"
+	if (STRLEN(_msg) > TOINT(_cutoff)){
+		"\![open,inputbox,OnSendWebclap,0,%(SUBSTR(_msg,0,_cutoff))]"
+		--
+		"\0\s[7]長すぎるよ……\w9もっと短く言ってくれる？\w9\e"
+	}elseif (reference0 != 'timeout'){
+		"\![execute,http-post,http://clap.webclap.com/clap.php?id=riddle24,--param=message_body=%(_parameters),--async=WEBCLAP]\e"
+	}else{
+		"\0\s[7]……なんだったの？\e"
+	}
+}
+
+OnExecuteHTTPComplete
+{
+	if (reference1 == 'WEBCLAP'){
+		<<"
+		本００：(送信成功)
+		">>
+	}
+}
+
+OnExecuteHTTPFailure
+{
+	if (reference1 == 'WEBCLAP'){
+		<<"
+		本００：(送信失敗…)
+		原因 %(reference4)
+		">>
+	}
 }
 Markovvvv{
 	/*
