@@ -408,8 +408,8 @@ OnUpdateComplete
 		//---- 実際に更新が完了した
 		"\0\s[1]うまくいったみたい。\w9\n/
 			\1\b[2]\_q更新箇所(2018/5/10)\n/
-			1.web拍手機能追加
-			2.バグ修正
+			1.web拍手機能追加\n/
+			2.バグ修正\n/
 			\_a[https://nao-fox.github.io/HTML/UpdateHistory.html]Update History\_a\_q"
 	}
 }
