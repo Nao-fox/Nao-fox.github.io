@@ -14,7 +14,7 @@ OnExecuteRSSComplete{
     _RSSTitletemp = RE_REPLACEEX(_sprss[0]," \(arXiv(.+)\)","")//まずarXivを除く
     _RSSTitletemp2 = RE_REPLACEEX(_RSSTitletemp,"(\\|$|\^)","")//文章中に\が入ってるとさくらスクリプトとして認識されるので
     //ウムラウトが"で表現されるのでこれをなんとかする
-
+    // |も悪さしてる。あやりりすのせい？
     _RSSTitletemp3 = RE_REPLACEEX(_RSSTitletemp2,CHR(34)+"A","AE")
     _RSSTitletemp4 = RE_REPLACEEX(_RSSTitletemp3,CHR(34)+"U","UE")
     _RSSTitletemp5 = RE_REPLACEEX(_RSSTitletemp4,CHR(34)+"O","OE")
@@ -323,210 +323,212 @@ PhysicsCheck
   }
   /*普通に正規表現で話題作ってやった方が楽な気がするのでそうする*/
   _num = RAND(ARRAYSIZE(_hitrss))
+//待ち無しの処理+スクロールしない処理追加して
+
   for _k = 0; _k < ARRAYSIZE(RSSTitle); _k++{
     if (JapaneseTalk == 1){
       if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSTitle[_k], "AdS") == 0)){
         <<"
-        リサ１９９：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]CFTか……
+        リサ１９９：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]CFTか……
         リサ１０５：Lagrangianが分かっていなくても、理論の性質がほとんど固定されるのは不思議だよね……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 0)
         ">>
 
         <<"
-        リサ０２：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)は共形場理論には詳しい？
+        リサ０２：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username)は共形場理論には詳しい？
         リサ０１：2次元系のCFTは面白いよね、Virasoro代数の次元が無限次元になって色々非自明な構造が出てくるし……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 0)
         ">>
       }
 
       if (RE_SEARCH(RSSTitle[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
         <<"
-        リサ２０１：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFTか……
+        リサ２０１：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFTか……
         リサ２０２：統計力学の話がBlack holeを使って表現できるのは、やっぱり不思議だよね……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２００：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFTの話かな……
+        リサ２００：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFTの話かな……
         リサ２０２：Black holeのエントロピーの解釈として、Holography dualなCFTの状態数を対応させてみたり、いろいろ応用があるよね。
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２０２：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]\'tHooft limitをとるときは考えるゲージ群の次元が大きくなるけど、ちゃんとAdS/CFTで現象論的に一致するモデルは作れるのかな？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２０２：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]\'tHooft limitをとるときは考えるゲージ群の次元が大きくなるけど、ちゃんとAdS/CFTで現象論的に一致するモデルは作れるのかな？
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "(R|r)andom (M|m)atrix")){
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]もともとRandom Matrixは複雑系の物性の計算で考案されていたものだけど、いまではString理論でもよく使われるようになったよね……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]もともとRandom Matrixは複雑系の物性の計算で考案されていたものだけど、いまではString理論でもよく使われるようになったよね……
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "SYK")){
         <<"
-        リサ１０５：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]SYKといえば、どうして量子Lyapunov指数の上限は2π/βなんだろう？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ１０５：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]SYKといえば、どうして量子Lyapunov指数の上限は2π/βなんだろう？
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 0)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
         <<"
-        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Casimir energyの値は、どうして解析接続したζ関数の値で評価できるんだろう？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２０１：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Casimir energyの値は、どうして解析接続したζ関数の値で評価できるんだろう？
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Casimir effect……改めて考えると、真空なのに力が働くって不思議だよね……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Casimir effect……改めて考えると、真空なのに力が働くって不思議だよね……
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "GUT")){
         <<"
-        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]大統一理論か……
+        リサ２０１：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]大統一理論か……
         リサ２０２：たしかに複数の場を同じLie群の表現に出来るのは魅力的だけど……現象論的に有効な模型は今どのくらいあるのかな？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]GUTでRenormalization groupを考えると、複数の結合定数がたしかにあるスケールで一致するけど……
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]GUTでRenormalization groupを考えると、複数の結合定数がたしかにあるスケールで一致するけど……
         リサ２０２：実験で検証できる日は来るのかな……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "(B|b)lack (H|h)ole")){
         <<"
-        リサ１９９：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Black holeの解析……
+        リサ１９９：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Black holeの解析……
         リサ１０５：dualityの観点で少し理解が進んできたけど、まだ古典重力の範囲でさえ謎が多い対象だよね。
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 0)
         ">>
 
         <<"
-        リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Einstein方程式の解としてなら理解できるけど、量子情報のunitary性とかを考えるとまだ未知な性質が多いよね……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２０６：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Einstein方程式の解としてなら理解できるけど、量子情報のunitary性とかを考えるとまだ未知な性質が多いよね……
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 0)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "M-(T|t)heory")){
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]これは……
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]これは……
         リサ２０１：Mother, Membrane, Matrix、だっけ？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]M理論の研究か……
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]M理論の研究か……
         リサ２０１：Dimentional reductionでtype ⅡB superstringのSUGRA解になるんだっけ……？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "(E|e)ntangle")){
         <<"
-        リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)はEntanglement entropyの計算をしたことはある？
+        リサ２０６：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username)はEntanglement entropyの計算をしたことはある？
         リサ１０２：工学的な応用も最近進んできてるよね。
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 0)
         ">>
       }
       if (RE_SEARCH(RSSTitle[_k], "(S|s)uperstring")){
         <<"
-        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstringか……\s[206]%(username)は詳しい？
+        リサ２０１：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstringか……\s[206]%(username)は詳しい？
         リサ２０２：この内容はPolchinskiのString theoryに書いてあったと思うんだけど……
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstringのamplitudeの計算を非摂動的な定義は、どうやったらできるんだろう？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Superstringのamplitudeの計算を非摂動的な定義は、どうやったらできるんだろう？
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
       }
       if (RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal|SCFT")){
         <<"
-        リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Super Conformal algebra……
+        リサ２００：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Super Conformal algebra……
         リサ２０２：超重力理論を定義するときに最近よく使われてきているよね。
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
 
         <<"
-        リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]SCFTって、時空対称性としてはもっとも対称性が高い理論なんだっけ？
-        ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
+        リサ２００：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]SCFTって、時空対称性としてはもっとも対称性が高い理論なんだっけ？
+        \_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
-        %(RSSSummary[_k])
+        %(RSSSummary[_k])\_q
         \e%(TalkReading = 1)
         ">>
       }
@@ -535,7 +537,7 @@ PhysicsCheck
     if (EnglishTalk == 1){
       if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && !(RE_SEARCH(RSSTitle[_k], "AdS")) && !(RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal"))) {
         <<"
-        リサ１９９：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]Conformal Field Theory……
+        リサ１９９：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]Conformal Field Theory……
         リサ１０５：It\'s quite interesting that we can identify the property of the theory without Lagrangian, indeed.
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -545,7 +547,7 @@ PhysicsCheck
         ">>
 
         <<"
-        リサ０２：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username), Are you famiiar with CFT?
+        リサ０２：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]%(username), Are you famiiar with CFT?
         リサ０１：The origin of CFT is the phenomena of phase transition but this theory are inevitable for field theory anymore……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -557,7 +559,7 @@ PhysicsCheck
 
       if (RE_SEARCH(RSSTitle[_k], "(H|h)olograph|^(?=.*AdS)(?=.*CFT)")){
         <<"
-        リサ２０１：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFT, Well……
+        リサ２０１：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]AdS/CFT, Well……
         リサ２０２：When do we fully understand Holographic QFT, the fascionating and astonishing idea?
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -567,7 +569,7 @@ PhysicsCheck
         ">>
 
         <<"
-        リサ２００：\b[2]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]This paper is……about AdS/CFT, Hum.
+        リサ２００：\b[2]\![set,autoscroll,disable]\![set,choicetimeout,15000]\f[anchor.font.color,80,80,150]This paper is……about AdS/CFT, Hum.
         リサ２０２：The mathematical proof is still not clear, however, it\'s quite practical to calculate physical quantities whose theory has strong coupling.
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -578,7 +580,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(R|r)andom (M|m)atrix")){
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]/
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]/
         Originally the theory of random matrix was used for material science, however, according to the discovery of relation of gravity, it has been popular in gravity theory……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -589,7 +591,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "SYK")){
         <<"
-        リサ１０５：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Come to thing about SYK, why quantum Lyapunov exponent has the maxima, 2π/β?
+        リサ１０５：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Come to thing about SYK, why quantum Lyapunov exponent has the maxima, 2π/β?
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
@@ -599,7 +601,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(C|c)asimir ((E|e)(nergy|ffect)")){
         <<"
-        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]The coincidence of the value of Casimir energy and analytic continued zeta function is not fully understood, actually……
+        リサ２０１：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]The coincidence of the value of Casimir energy and analytic continued zeta function is not fully understood, actually……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
@@ -608,7 +610,7 @@ PhysicsCheck
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]It\'s quite weird fact that the vacuum, which has nothing in the area can emarge force……
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]It\'s quite weird fact that the vacuum, which has nothing in the area can emarge force……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
@@ -618,7 +620,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "GUT")){
         <<"
-        リサ２０１：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Grand Unified Theory……
+        リサ２０１：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Grand Unified Theory……
         リサ２０２：The minimal model, SU(5) GUT is already discarded by phenomenology but the idea is quite fascionating, isn\'t it?
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -628,7 +630,7 @@ PhysicsCheck
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]It\'s true that Renormalization group of GUT predict the coupling unification on certain scale.
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]It\'s true that Renormalization group of GUT predict the coupling unification on certain scale.
         リサ２０２：……Although I\'m dubious about the possibility of　actual verification in near future.
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -639,7 +641,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(B|b)lack (H|h)ole")){
         <<"
-        リサ１９９：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Analysis of Black hole, Hum.
+        リサ１９９：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Analysis of Black hole, Hum.
         リサ１０５：According to the recent development of duality, its property is getting unveiled but still a misterious object even in classical mechanics……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -649,7 +651,7 @@ PhysicsCheck
         ">>
 
         <<"
-        リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Black Hole……Indeed we can understand the property as the solution of Einstein equation, though……
+        リサ２０６：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Black Hole……Indeed we can understand the property as the solution of Einstein equation, though……
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
@@ -659,7 +661,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "M-(T|t)heory")){
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]This is……
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]This is……
         リサ２０１：Mother, Membrane, Matrix、right？
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -669,7 +671,7 @@ PhysicsCheck
         ">>
 
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]M theory, Well……
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]M theory, Well……
         リサ２０１：The Dimentional reduction of its theory can be the SUGRA as an effective theory type ⅡB superstring, am I right？
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -680,7 +682,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(E|e)ntangle")){
         <<"
-        リサ２０６：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username), Have you used a replica method?
+        リサ２０６：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]%(username), Have you used a replica method?
         リサ１０２：It is quite useful for calculationg entanglement entropy.
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
@@ -691,7 +693,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(S|s)uperstring")){
         <<"
-        リサ２０２：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]When is the nonperturbative definition of string theory found?
+        リサ２０２：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]When is the nonperturbative definition of string theory found?
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■
@@ -702,7 +704,7 @@ PhysicsCheck
       }
       if (RE_SEARCH(RSSTitle[_k], "(S|s)uperconformal|SCFT")){
         <<"
-        リサ２００：\b[2]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Super Conformal algebra……
+        リサ２００：\b[2]\![set,autoscroll,disable]\f[anchor.font.color,80,80,150]\![set,choicetimeout,15000]Super Conformal algebra……
         リサ２０２：Recently the method is used for the derivation of SUGRA action. Do you know it?
         ■\f[name,font\Aramis Italic.ttf]\f[bold,1]Title\f[name,default]\f[bold,0]■
         \_a[%(RSSURL[_k])]%(RSSTitle[_k])\_a

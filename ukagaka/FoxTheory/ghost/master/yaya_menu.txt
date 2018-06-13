@@ -33,9 +33,9 @@ OpenMenu
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
 		\![*]\__q[Menu_AITALK]Tell me something\__q\n/
 		\![*]\__q[Conversation_Begin]Conversation\__q\n/
-		\![*]\__q[PhysicsCheck]Pick up a recent paper\__q\n/
+		\![*]\__q[PhysicsNotes_Show]Tips\__q　　\![*]\__q[PhysicsCheck]Pick-up paper\__q\n/
 		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
-		\![*]\__q[ReadBookPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
+		\![*]\__q[SilentPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
 		\![*]\__q[Menu_Webclap]WebClap\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]Cancel\__q\_q"
@@ -50,20 +50,34 @@ OpenMenu
 			"\s[53]……\n"
 		}
 		else{
-			"\s[0]"
+				"\s[0]"
 		}
 		--
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
 		\![*]\__q[Menu_AITALK]なにか話して\__q　　\![*]\__q[Conversation_Begin]会話する\__q\n/
-		\![*]\__q[PhysicsCheck]最近の研究pick up(arXiv:hep-th)\n/
+		\![*]\__q[PhysicsNotes_Show]物理ノート\__q　　\![*]\__q[PhysicsCheck]論文Pick-Up\n/
 		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
-		\![*]\__q[ReadBookPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
+		\![*]\__q[SilentPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
 		\![*]\__q[Menu_Webclap]拍手送信\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]なんでもない\__q\_q"
 	}
-	--
-	ExTalkFlagInit
+	//--
+	//ExTalkFlagInit
+}
+
+Time_E{
+	<<"
+	リサ０１：\b[2]作用(Action)は
+	\_b[picture//resize//Action_principle-1.png,inline,--option=use_self_alpha]
+	で定義される量。ここでLはLagrangianと呼ばれる汎関数で、\"L=運動エネルギー-ポテンシャルエネルギー\"として定義される。
+	例えば1次元系なら
+	\_b[picture//resize//Action_principle-2.png,inline,--option=use_self_alpha]
+	となるよ。
+	運動方程式はActionをx(t)について変分して0となる配位として得られる:
+	\_b[picture//resize//test-3.png,inline,--option=use_self_alpha]
+	これがEuler-Lagrange方程式だね。
+	">>
 }
 
 OpenMenu_2
@@ -75,24 +89,24 @@ OpenMenu_2
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
 		\![*]\__q[Menu_AITALK]Tell me something\__q\n/
 		\![*]\__q[Conversation_Begin]Conversation\__q\n/
-		\![*]\__q[PhysicsCheck]Pick up a recent paper\__q\n/
+		\![*]\__q[PhysicsNotes_Show]Tips\__q　　\![*]\__q[PhysicsCheck]Pick-up paper\__q\n/
 		\__q[OpenMenu]\[-\]Word2Vec\__q\n/
 		\![*]\__q[ShowBooksList]with text\__q　　\![*]\__q[ShowLearnedWordsList]with Ghosts\__q\n/
 		\![*]\__q[Word2Vec_begin_wiki]with wikipedia\__q\n/
 		\n/
-		\![*]\__q[ReadBookPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
+		\![*]\__q[SilentPlease]Quiet please\__q　　\![*]\__q[Option]Option\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]Cancel\__q\_q"
 	}
 	else{
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
 		\![*]\__q[Menu_AITALK]なにか話して\__q　　\![*]\__q[Conversation_Begin]会話する\__q\n/
-		\![*]\__q[PhysicsCheck]最近の研究pick up(arXiv:hep-th)\__q\n/
+		\![*]\__q[PhysicsNotes_Show]物理ノート\__q　　\![*]\__q[PhysicsCheck]論文pick-up\__q\n/
 		\__q[OpenMenu]\[-\]Word2Vec\__q\n/
 		\![*]\__q[ShowBooksList]テキストで解析\__q　　\![*]\__q[ShowLearnedWordsList]ゴーストで解析\__q\n/
 		\![*]\__q[Word2Vec_begin_wiki]Wikipediaで解析\__q\n/
 		\n/
-		\![*]\__q[ReadBookPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
+		\![*]\__q[SilentPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]なんでもない\_q"
 	}
@@ -105,7 +119,7 @@ Menu_Webclap{
 }
 OnSendWebclap
 {
-	_ghostprefix = 'FoxTeory:'
+	_ghostprefix = 'FoxTheory:'
 	_cutoff = 1000
 	_msg = REPLACE( reference0, '[', '\[' )
 	_parameters = "%( _ghostprefix + SUBSTR(_msg,0,_cutoff) )"
@@ -248,64 +262,48 @@ OnTellName{
 		">>
 	}
 }
-Developtest{
-	<<"
-	＠メニュー：形態素解析テスト｜TestJuman
-	＠メニュー：あにめ|Animetest
-	＠メニュー：フラグチェッカ|Flagchecker
-	＠メニュー：学習+マルコフ連鎖|Markov_Test
-	＠メニュー：ディープラーニング(wikipedia)テスト|Word2Vec_begin_wiki
-	＠メニュー：ディープラーニング(from text)テスト|Word2Vec_begin_text
-	＠メニュー：分かち書き|Wakati_Mecab
-	＠メニュー：Sep|Sep
-	＠メニュー：初回起動だったはず|初回起動だったはず
-	＠改行多めメニュー：戻る|OpenMenu
-	">>
-	//＠メニュー：つつきコマンド変更|PokeChange
-}
-Sep{
-	"\![open,sliderinput,OnSlidertest,30000,10,0,20]"
-	//初期値、最小、最大
-}
-OnSlidertest{
-	"%(reference0)だよ"
-}
+
+
 Flagchecker{
 	<<"
 	＠メニュー：フラグ表示(一部)|ShowFlag
 	＠メニュー：つつきコマンド変更|PokeChange
-	＠メニュー：本読んでて|ReadBookPlease
+	＠メニュー：本読んでて|SilentPlease
 	＠改行多めメニュー：戻る|OpenMenu
 	">>
 }
-ReadBookPlease{
+SilentPlease{
 	Silence = 1
-	TalkReading = 1
 	if (TouchBust||PokeBust||TouchCrotch||PokeCrotch){
 		<<"
 		リサ２０９：……本を読んでる間に変なところ触らないでよ？
+		\e%(TalkReading = 1)
 		">>
 
 		<<"
 		リサ２０４：……変なところ触らないでよ？
+		\e%(TalkReading = 1)
 		">>
 
 		<<"
 		リサ２０９：……変なことしないでね？
+		\e%(TalkReading = 1)
 		">>
 	}
 	else{
-		<<"
-		\0\s[200]
-		">>
+		//なぜかTalkReadingフラグが立たない…
+		//上のif文内部だとOKなので謎。
+		"\s[200]\e%(TalkReading = 1)"
 
-		<<"
-		\0\s[201]
-		">>
+		"\s[201]\e%(TalkReading = 1)"
 
-		<<"
-		\0\s[202]
-		">>
+		"\s[202]\e%(TalkReading = 1)"
+
+		"\s[0]\e%(TalkReading = 0)"
+
+		"\s[5]\e%(TalkReading = 0)"
+
+		"\s[199]\e%(TalkReading = 0)"
 	}
 }
 
@@ -485,7 +483,7 @@ TalkIntervalShow{
 	}
 	else{
 		if (_interval == 30){
-			"frequently"
+			"frequent"
 		}
 		elseif (_interval == 180){
 			"normal"

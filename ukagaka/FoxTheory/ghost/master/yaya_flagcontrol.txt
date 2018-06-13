@@ -204,10 +204,10 @@ ShowFlag{
 }
 
 //あるトーク中にアクションすると特別な反応を……を作る
-
+//未実装
 ExTalkFlagInit
 {
-  TalkReading = 0
+  //TalkReading = 0
   //RSSTalk = 1
   //WhetherEnglishTalk = 1
 }

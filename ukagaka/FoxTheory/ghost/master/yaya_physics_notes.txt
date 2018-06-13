@@ -1,0 +1,106 @@
+//用語解説の配列
+
+//論文に飛ぶリンクと用語解説のリンクで色を変える
+
+PhysicsNotes_Show{
+  "\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Lisa's notes\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+  \![*]\__q[OnPhysicsNotes,Action_principle]最小作用の原理\__q\n/
+  \![*]\__q[OnPhysicsNotes,Schroedinger_eq]シュレーディンガー方程式\__q\n/
+  \![*]\__q[OnPhysicsNotes,path_integral]経路積分(path integral)\__q\n/
+  \![*]\__q[OnPhysicsNotes,imaginary_time]虚時間形式\__q\n/
+  \![*]\__q[OnPhysicsNotes,Riemann_zeta]リーマンゼータ関数\__q\n/
+  \n/
+  \![*]\__q[OpenMenu]戻る\__q\_q"
+  /*
+  \![*]\__q[OnPhysicsNotes,CFT]共形場理論(CFT)\__q\n/
+  \![*]\__q[OnPhysicsNotes,Hawking_radiation]ホーキング輻射\__q\n/
+  \![*]\__q[OnPhysicsNotes,gauge_principle]ゲージ原理\__q\n/
+  \![*]\__q[OnPhysicsNotes,Borel_summation]ボレル和\__q\n/
+  \![*]\__q[OnPhysicsNotes,superstring]超弦理論\__q\n
+  \![*]\__q[OnPhysicsNotes,Higgs]ヒッグス機構\__q\n"
+  */
+}
+OnPhysicsNotes{
+  _input = reference[0]
+  case _input{
+    when "Action_principle"{
+      <<"
+      リサ０１：\b[2]\![set,choicetimeout,15000]\"最小作用の原理\"
+      作用(Action):Sとは始点と終点の時刻をti, tfとして
+      \_b[picture//tex//Action_principle-1.png,inline,--option=use_self_alpha]
+      で定義される量のこと。ここでLはLagrangianと呼ばれる汎関数で、\"L=運動エネルギー-ポテンシャルエネルギー\"として定義される。
+      リサ０２：例えば1次元系なら
+      \_b[picture//tex//Action_principle-2.png,inline,--option=use_self_alpha]
+      となるよ。
+      リサ０１：\"最小作用の原理\"が主張することは、この\"Sを最小とするような配位が古典的に実現される粒子の軌道である\"ということ。つまり配位の変分をとって
+      \_b[picture//tex//Action_principle-3.png,inline,--option=use_self_alpha]
+      (端点における変分を0として表面項を落とした)
+      これがEuler-Lagrange方程式、つまり古典物理における運動方程式だね。
+      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      ">>
+    }
+    when "Schroedinger_eq"{
+      <<"
+      リサ０１：\b[2]\![set,choicetimeout,15000]\"シュレーディンガー(Schroedinger)方程式\"
+      量子論における状態の時間発展を記述する方程式で、bra-ket記法で書くと
+      \_b[picture//tex//Schroedinger_eq-1.png,inline,--option=use_self_alpha]
+      |ψ>は状態ベクトル、Hは解析力学におけるHamiltonianをHermite演算子にしたもので、例えばエネルギーが保存する系における1粒子系なら
+      \_b[picture//tex//Schroedinger_eq-2.png,inline,--option=use_self_alpha]
+      となるね。この問題は結局Hの固有値と固有ベクトルを求める問題に帰着するけど、位置演算子の固有ベクトルと運動量演算子に成り立つ関係:
+      \_b[picture//tex//Schroedinger_eq-3.png,inline,--option=use_self_alpha]
+      を使えば次の微分方程式:
+      \_b[picture//tex//Schroedinger_eq-4.png,inline,--option=use_self_alpha]
+      と等価になる。
+      いわゆる波動関数はこの<x|ψ>で、\"粒子がxにいる確率\"は|<x|ψ>|^2で表されるよ。
+      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      ">>
+    }
+    when "path_integral"{
+      <<"
+      リサ０１：\b[2]\![set,choicetimeout,15000]\"経路積分(path integral)\"
+      path integralは正準量子化とは異なるアプローチで量子化する手続きで、\"時間tをかけてx_1->x_2に移動する確率\"が
+      \_b[picture//tex//path_integral-1.png,inline,--option=use_self_alpha]
+      で与えられるとする定式化のこと。この積分は通常の積分ではなく汎関数積分で、意味としては\"x(0)=x_1, x(t)=x_2 となるあらゆる関数形x(t)を足し上げる\"ということ。つまりそれらの関数をnでラベルすると
+      \_b[picture//tex//path_integral-2.png,inline,--option=use_self_alpha]
+      という形になるね。
+      この形は古典力学における最小作用の原理の拡張になっていて、古典論では始点と終点を決めれば粒子の軌道は一つに決まるのに対し、量子論では古典的に不可能な軌道の寄与も足す必要がある。ただしその寄与は
+      \_b[picture//tex//path_integral-3.png,inline,--option=use_self_alpha]
+      とすれば分かるように、プランク定数を0とする極限ではδS=0とする解、つまり古典解が一番強く寄与することになる。
+      この意味で、量子論は古典論にプランク定数程度の\"揺らぎ\"を加えた理論とみなせるよ。
+      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      ">>
+    }
+    when "imaginary_time"{
+      <<"
+      リサ０１：\b[2]\![set,choicetimeout,15000]\"虚時間形式(imaginary-time formalism)\"
+      統計力学における分配関数は
+      \_b[picture//tex//imaginary_time-1.png,inline,--option=use_self_alpha]
+      として定義されるけど(β=1/T)、このtraceを座標のtraceとして
+      \_b[picture//tex//imaginary_time-2.png,inline,--option=use_self_alpha]
+      と書くと、量子論において状態A->Bの遷移確率振幅が
+      \_b[picture//tex//imaginary_time-3.png,inline,--option=use_self_alpha]
+      と書けることを考えれば、これは虚時間β=itにより時間発展して元の状態に戻る確率振幅と計算できる。
+      このことをpath integralで表すと、虚時間で書いたAction(Euclidian Action)S_Eを使って
+      \_b[picture//tex//imaginary_time-5.png,inline,--option=use_self_alpha]
+      となる。つまり虚時間の周期的境界条件を満たす配位のpath integralで分配関数は計算できる。
+      リサ０５：このように虚時間を導入して熱統計系を扱う手法を虚時間形式と呼ぶ訳だけど……虚時間が温度って、かなり不思議な関係だよね。
+      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      ">>
+    }
+    when "Riemann_zeta"{
+      <<"
+      リサ０１：\b[2]\![set,choicetimeout,15000]\"リーマンゼータ関数(Riemann zeta function)\"
+      Re(s)>1においては、級数表示
+      \_b[picture//tex//Riemann_zeta-1.png,inline,--option=use_self_alpha]
+      として定義される関数。これをΓ関数とBernoulli数:B_nを使って積分表示で表すと
+      \_b[picture//tex//Riemann_zeta-2.png,inline,--option=use_self_alpha]
+      となる。特にこの最後の表式は複素平面全体への解析接続を与える形の一つになっているよ。
+      リーマン予想はこの解析接続したゼータ関数においてζ(s)=0となるsを見つける問題。より正確には\"自明な零点\"はΓ関数の極とBerboulli数の零点から決定する部分、つまりs=-2,-4,-6...だけど、これ以外に非自明な零点が存在し、それがs=1/2+ia(aは実数)の形で書けることを示せればリーマン予想を示したことになる……\s[5]ね。
+      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      ">>
+    }
+    others{
+      reference1
+    }
+  }
+}

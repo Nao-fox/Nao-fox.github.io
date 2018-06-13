@@ -50,42 +50,6 @@ RandomTalk
 //arrayからnonoverlapに変更
 PriorityRandomTalkJapanese : nonoverlap{
 
-	<<"
-	リサ２０１：Einstein-Rosen bridgeか……
-	リサ２０６：%(username)はこの\_a[https://journals.aps.org/pr/pdf/10.1103/PhysRev.48.73]EinsteinとRosenの論文\_aって読んだことある？
-	リサ２０２：たしかにこの解なら時空の異なる点が同一視されるから\"ワープ\"が可能になるけど……どうやって安定化すればいいんだろう？
-	本００：\"Einstein-Rosen bridge\"
-	Einstein方程式の解であるBlack hole解を解析接続することによって、Black holeとは真逆の性質を持つWhite holeが繋がった解が得られることがある。
-	これをEinstein-Rosen bridgeもしくはワームホールと呼ぶ。
-	この解は極値条件は満たすものの、Actionを極小にはしておらず不安定な解である。
-	\e%(TalkReading = 1)
-	">>
-
-	<<"
-	リサ００：%(username)は\"幽霊\"っていると思う？
-	リサ６５：Lagrangianには時々出てくるよね、幽霊。特にゲージ固定するときとか。
-	本００：\"Ghost\"場
-	場の量子論において、その場の固有状態のノルムが負となる場のこと。非物理的な量であり、一般にLagrangianにはFadeev-Popov Ghostなどゲージ固定をするため補助的に導入される。
-	\e%(TalkReading = 0)
-	">>
-
-	<<"
-	リサ２０２：\"ゴーストと一緒\"、ね。
-	リサ２０６：%(username)はHawkingのこの論文、\"\_a[https://arxiv.org/pdf/hep-th/0107088.pdf]Living with Ghosts\_a\"は読んだ？
-	リサ２００：path integral後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
-	本００：一般にLagrangianに3階以上の微分を含む理論を量子化すると、正準量子化の手続きではghost場が生じる。このためunitarityが満たされなくなり、因果律が破綻する。
-	\e%(TalkReading = 1)
-	">>
-
-	/*
-		<<"
-		リサ００：ファントムはGhostだけど、
-		リサ００：\"オペラ座の怪人\"
-		本００：\"Phantom field\"
-		\_a[https://arxiv.org/pdf/hep-th/0305110.pdf]宇宙論において負のエネルギーを生成するために導入されるkinetic termの符号が反対のscalar場のこと。\_a
-		定義よりphantomの固有状態のノルムは負、すなわちghost場である。
-		">>
-		*/
 }
 
 PriorityRandomTalkEnglish : nonoverlap{
@@ -104,24 +68,33 @@ RandomTalk_Main : nonoverlap
 	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	_timearray = GETTIME()
 	if (Silence == 1){
-		TalkReading = 1
-		"\s[200]"
+		//sleepy
+		if ((13 <= _timearray[4] && _timearray[4] <= 14) || (4 <= _timearray[4] && _timearray[4] <= 7)){
+			"\s[0]\e%(TalkReading = 0)"
 
-		"\s[201]"
+			"\s[63]\e%(TalkReading = 0)"
+		}
+		else{
+			"\s[200]\e%(TalkReading = 1)"
 
-		"\s[202]"
+			"\s[201]\e%(TalkReading = 1)"
+
+			"\s[202]\e%(TalkReading = 1)"
+
+			"\s[0]\e%(TalkReading = 0)"
+
+			"\s[1]\e%(TalkReading = 0)"
+
+			"\s[3]\e%(TalkReading = 0)"
+
+			"\s[5]\e%(TalkReading = 0)"
+
+			"\s[5]\w9\w9\s[199]\e%(TalkReading = 0)"
+
+			"\s[200]\w9\w9\s[206]\e%(TalkReading = 1)"
+		}
 	}
 	else{
-		/*
-		{//reading book
-			TalkReading = 1
-			"\s[200]"
-
-			"\s[201]"
-
-			"\s[202]"
-		}
-		*/
 		if (RSSTalk == 1){
 			PhysicsCheck
 		}
@@ -188,10 +161,10 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０２：自然科学の理論を作るとき、時としてその理論の\"美しさ\"が重視されることがある。
 			リサ１０５：ここでいう美しさとは、少ない単純な原理から、豊かな法則や定理が導かれる、ということ。
-			リサ１０３：最小作用の原理と解析力学とか、だね。
-			本００：\"最小作用の原理\"
+			リサ１０３：\__q[OnPhysicsNotes,Action_principle]最小作用の原理\__qと解析力学とか、だね。
+			本００：\"\__q[OnPhysicsNotes,Action_principle]最小作用の原理\__q\"
 			式で表すと\"δS = 0\"。この原理により古典物理学のあらゆる現象は全て記述される。
-			量子力学にこれを拡張したものが経路積分(path integral)である。
+			量子力学にこれを拡張したものが\__q[OnPhysicsNotes,path_integral]経路積分(path integral)\__qである。
 			\e%(TalkReading = 0)
 			">>
 
@@ -231,7 +204,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ２０２：Montgomery-Odlyzko予想によると、Random Matrixの固有値分布が、Riemann zeta関数の固有値間隔と一致する……
+			リサ２０２：Montgomery-Odlyzko予想によると、Random Matrixの固有値分布が、\__q[OnPhysicsNotes,Riemann_zeta]Riemann zeta関数\__qの零点間隔と一致する……
 			リサ２０２：……\0\s[201]どうにか物理的なモデルと対応できないかな？
 			本００：\"Random Matrix\"
 			行列の要素がガウス分布に従う直交かunitaryまたはsymplecticな行列のこと。
@@ -270,7 +243,7 @@ RandomTalk_Main : nonoverlap
 			リサ１６５：ちなみにresurgenceは\"復活\"って意味。ちょっと洒落てるかも？
 			本００：\"リサージェンス\"
 			数学的にはBorel総和法と呼ばれる。1981年にEcalleによる\"Les fonctions resurgentes\"によって微分方程式の解法として定式化された。
-			物理においてはpath integralの非摂動論的定式化として応用されている。
+			物理においては\__q[OnPhysicsNotes,path_integral]path integral\__qの非摂動論的定式化として応用されている。
 			\e%(TalkReading = 0)
 			">>
 
@@ -310,14 +283,14 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０１：生成汎関数の時間を虚数にすると、統計力学の分配関数と等価になる……
 			リサ２００：これは時間とentropyの関係とどう関係があるのかな？
-			本００：\"虚時間形式(imaginary-time formalism)\"
+			本００：\"\__q[OnPhysicsNotes,imaginary_time]虚時間形式\__q(imaginary-time formalism)\"
 			量子系において時間を虚数時間, t=iτとし、適切な境界条件を課すことで虚時間を逆温度とする統計力学に移行することができる。
 			特に量子系の真空は熱統計系における平衡状態に対応する。
 			\e%(TalkReading = 1)
 			">>
 
 			<<"
-			リサ０１：path integralを最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
+			リサ０１：\__q[OnPhysicsNotes,path_integral]path integral\__qを最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
 			本００：P.A.M. Diracによる\"The Principles of Quantum Mechanics\", Chapter32 \"The action principle\"において、DiracはFeynmanより先に確率振幅がe^(iS)で与えられることを指摘している。
 			\e%(TalkReading = 0)
 			">>
@@ -357,7 +330,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ０１：基本的にpath integralは厳密に計算は出来ないけど、SUSY exactな系とかだったら計算出来るって知ってる？
+			リサ０１：基本的に\__q[OnPhysicsNotes,path_integral]path integral\__qは厳密に計算は出来ないけど、SUSY exactな系とかだったら計算出来るって知ってる？
 			リサ０３：localizationって呼ばれるテクニックなんだけど……有名な計算だとABJM模型とかで使われてるよ。
 			本００：\"localization\"
 			系のActionがnilpotentの性質を持つ対称性(e.g. SUSY)を持ち、かつ積分測度にanomalyが存在しない場合には経路積分をGaussianで評価することができる。これをlocalizationと呼ぶ。
@@ -428,7 +401,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ３６７：Schroedinger equationは線形なのに、どうして量子カオスが起きるんだろう？
+			リサ３６７：\__q[OnPhysicsNotes,Schroedinger_eq]Schroedinger equation\__qは線形なのに、どうして量子カオスが起きるんだろう？
 			リサ３０５：確率過程が関係しているのかな……
 			本００：\"量子カオス\"
 			量子論において状態ベクトルの時間発展は線形であるにも関わらず、系がカオスの振る舞いを示すことがある。
@@ -448,10 +421,10 @@ RandomTalk_Main : nonoverlap
 
 			<<"
 			リサ３０５：Anomalyの取扱いに対する議論って、正則化の問題があって数学的には微妙な部分があるよね。
-			リサ３０５：でもTrace anomalyとcentral chargeの関係のように、代数的に意味のある量にはなってると思うけど……
+			リサ３０５：汎関数積分測度の正確な定義が出来ればいいんだけど……
 			本００：\"Anomaly\"
 			量子異常とも呼ばれる。古典論における対称性が量子論で破綻する現象を指す。
-			これが物理的に意味のあるものであるのか、理論の破綻が原因であるかの判定は難しい。
+			ゲージ対称性のanomalyはS行列のユニタリー性から消えなくてはならないが、大域的対称性の場合はその限りではない。
 			\e%(TalkReading = 0)
 			">>
 
@@ -519,7 +492,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ２００：エルゴード仮説って、虚時間形式の場の理論と統計力学の関係から肯定的に証明できないのかな……
+			リサ２００：エルゴード仮説って、\__q[OnPhysicsNotes,imaginary_time]虚時間形式\__qの場の理論と統計力学の関係から肯定的に証明できないのかな……
 			本００：\"エルゴード仮説\"
 			時間平均と統計平均が一致するという仮説。統計力学の原理である等重率の原理はこれを支持する原理である。
 			\e%(TalkReading = 1)
@@ -634,9 +607,9 @@ RandomTalk_Main : nonoverlap
 
 			<<"
 			リサ２０１：Bosonicなstring理論は26次元、superstringは10次元でしかPoincare対称性を保てないけど……
-			リサ２０２：どうしてnaiveに解析接続したzeta functionの値でこれが評価できるんだろう……
+			リサ２０２：どうしてnaiveに解析接続した\__q[OnPhysicsNotes,Riemann_zeta]zeta function\__qの値でこれが評価できるんだろう……
 			本００：string theoryが定義される時空の次元は、対称性から特定の次元に制限される。
-			この時Virasoro代数とPoincare代数が閉じるという要請とzeta functionで評価するエネルギーのAnomalyが0となるいう要請が一致する。
+			この時Virasoro代数とPoincare代数が閉じるという要請とzeta functionで評価するエネルギーのAnomalyが0になるという要請が一致する。
 			\e%(TalkReading = 1)
 			">>
 
@@ -703,10 +676,28 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０２：\"ゴーストと一緒\"、ね。
 			リサ２０６：%(username)はHawkingのこの論文、\"\_a[https://arxiv.org/pdf/hep-th/0107088.pdf]Living with Ghosts\_a\"は読んだ？
-			リサ２００：path integral後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
+			リサ２００：\__q[OnPhysicsNotes,path_integral]path integral\__q後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
 			本００：一般にLagrangianに3階以上の微分を含む理論を量子化すると、正準量子化の手続きではghost場が生じる。このためunitarityが満たされなくなり、因果律が破綻する。
 			\e%(TalkReading = 1)
 			">>
+
+			<<"
+			リサ０２：超対称性変換はBosonとFermionの自由度を入れ替える変換として定義されるけど、実は時空座標にグラスマン数を導入した超空間上の並進変換としても記述することができるよ。
+			リサ０５：もっとも、超空間そのものの物理的な意味はよくわからないけど……
+			本００：\"超空間(superspace)\"
+			通常の空間にグラスマン数、つまり反可換性を持つ数の自由度を加えた空間。
+			グラスマン数は長さという概念を持たず、それ自身は観測可能量ではない。
+			\e%(TalkReading = 0)
+			">>
+
+			<<"
+			リサ１０５：\"未来は過去により完全に決まっているのだから、努力は無意味である\"……\s[102]こうした決定論的な思想の人がいるけど、量子論的にはこの考えは否定される……つまり、ラプラスの悪魔はもういない。
+			リサ１０３：%(username)の未来も確定はしていないし、原理的に予想は不可能ってことだね。
+			本００：\"ラプラスの悪魔(Laplacescher Geist)\"
+			宇宙の初期条件を全て知っている存在として仮定された悪魔。古典力学がこの世界を記述するのであれば、運動方程式を解くことでこの悪魔は未来を全て予想することができることになるが、量子論の確率過程と不確定性関係によりこれは否定される。
+			\e%(TalkReading = 0)
+			">>
+
 		}
 
 		if (EnglishTalk == 1){//English talking
@@ -903,7 +894,7 @@ RandomTalk_Main : nonoverlap
 			リサ０５：Borel singularities of resurgence method are really equivalent to instanton solutions?
 			リサ０５：Then what is the meaning of complex ones...
 			本００：\"Borel singularity\"
-			A singularity emerged when Borel tranform is applied. Resurgence method claims the places of these singularities are equivalent to instanton solutions.
+			A singularity which is emerged from Borel transform. Resurgence method claims the places of these singularities are equivalent to instanton solutions.
 			Both factor are nonperturbative and also verified in some cases.
 			\e%(TalkReading = 0)
 			">>
@@ -927,7 +918,7 @@ RandomTalk_Main : nonoverlap
 
 			<<"
 			リサ０１：The man who solved Basel problem is Leonhard Euler but his method was not well-defined in the era.
-			リサ０２：Still his method was completely different from the old algebraic approach and people could grasp the meaning easily.
+			リサ０２：But his solution based on \"factorization\" was surprising and break-through of the study in mathematics.
 			本００：\"Basel problem\"
 			The Basel problem asks for the value of \"Σ1/n^2\". It was first posed by Pietro Mengoli in 1644 and solved by Leonhard Euler in 1734.
 			The answer is π^2/6. His proof was verified by Weierstrass\'formulation of infinite product.
