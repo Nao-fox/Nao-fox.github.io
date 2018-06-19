@@ -32,7 +32,7 @@ OnPhysicsNotes{
       リサ０２：例えば1次元系なら
       \_b[picture//tex//Action_principle-2.png,inline,--option=use_self_alpha]
       となるよ。
-      リサ０１：\"最小作用の原理\"が主張することは、この\"Sを最小とするような配位が古典的に実現される粒子の軌道である\"ということ。つまり配位の変分をとって
+      リサ０１：\"最小作用の原理\"が主張することは、この\"Sを最小とするような配位が古典的に実現される粒子の軌道である\"ということ。つまり配位の変分をとってそれを0とした式:
       \_b[picture//tex//Action_principle-3.png,inline,--option=use_self_alpha]
       (端点における変分を0として表面項を落とした)
       これがEuler-Lagrange方程式、つまり古典物理における運動方程式だね。
@@ -44,7 +44,7 @@ OnPhysicsNotes{
       リサ０１：\b[2]\![set,choicetimeout,15000]\"シュレーディンガー(Schroedinger)方程式\"
       量子論における状態の時間発展を記述する方程式で、bra-ket記法で書くと
       \_b[picture//tex//Schroedinger_eq-1.png,inline,--option=use_self_alpha]
-      |ψ>は状態ベクトル、Hは解析力学におけるHamiltonianをHermite演算子にしたもので、例えばエネルギーが保存する系における1粒子系なら
+      となる。|ψ>は状態ベクトル、Hは解析力学におけるHamiltonianをHermite演算子にしたもので、例えばエネルギーが保存する系における1粒子系なら
       \_b[picture//tex//Schroedinger_eq-2.png,inline,--option=use_self_alpha]
       となるね。この問題は結局Hの固有値と固有ベクトルを求める問題に帰着するけど、位置演算子の固有ベクトルと運動量演算子に成り立つ関係:
       \_b[picture//tex//Schroedinger_eq-3.png,inline,--option=use_self_alpha]
@@ -95,7 +95,7 @@ OnPhysicsNotes{
       として定義される関数。これをΓ関数とBernoulli数:B_nを使って積分表示で表すと
       \_b[picture//tex//Riemann_zeta-2.png,inline,--option=use_self_alpha]
       となる。特にこの最後の表式は複素平面全体への解析接続を与える形の一つになっているよ。
-      リーマン予想はこの解析接続したゼータ関数においてζ(s)=0となるsを見つける問題。より正確には\"自明な零点\"はΓ関数の極とBerboulli数の零点から決定する部分、つまりs=-2,-4,-6...だけど、これ以外に非自明な零点が存在し、それがs=1/2+ia(aは実数)の形で書けることを示せればリーマン予想を示したことになる……\s[5]ね。
+      リーマン予想はこの解析接続したゼータ関数においてζ(s)=0となるsを見つける問題。より正確には\"自明な零点\"はΓ関数の極とBernoulli数の零点から決定する部分、つまりs=-2,-4,-6...だけど、これ以外に非自明な零点が存在し、それがs=1/2+ia(aは実数)の形で書けることを示せればリーマン予想を示したことになる……\s[5]ね。
       \![*]\__q[PhysicsNotes_Show]戻る\__q
       ">>
     }

@@ -22,7 +22,7 @@ OnShowPage{
 	//ƒŠƒXƒgì¬
 	_showlist=''
 	for _i=_start ; _i<_end ; _i++ {
-		if  _i >= _max - 1 {//‚±‚±‚Ì“™†‚ª”²‚¯‚Ä‚¢‚½‚Ì‚Å’Ç‰Á
+		if  _i > _max - 1 {//‚±‚±‚Ì“™†‚ª”²‚¯‚Ä‚¢‚½‚Ì‚Å’Ç‰Á->‚â‚Á‚Ï‚è‚¢‚ç‚È‚©‚Á‚½
 			break
 		}
 		_key=_list[_i][0,PAGER.Separator]
