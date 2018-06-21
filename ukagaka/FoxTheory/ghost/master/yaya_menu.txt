@@ -55,15 +55,16 @@ OpenMenu
 		--
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
 		\![*]\__q[Menu_AITALK]なにか話して\__q　　\![*]\__q[Conversation_Begin]会話する\__q\n/
-		\![*]\__q[PhysicsNotes_Show]物理ノート\__q　　\![*]\__q[PhysicsCheck]論文Pick-Up\n/
+		\![*]\__q[PhysicsNotes_Show]物理ノート\__q　　　\![*]\__q[PhysicsCheck]論文Pick-Up\n/
 		\__q[OpenMenu_2]\[+\]Word2Vec\__q\n/
 		\![*]\__q[SilentPlease]静かにしてて\__q　　\![*]\__q[Option]Option\__q\n/
 		\![*]\__q[Menu_Webclap]拍手送信\__q\n/
 		\n/
 		\![*]\__q[Menu_CANCEL]なんでもない\__q\_q"
 	}
-	//--
+	--
 	//ExTalkFlagInit
+	"\e%(TalkReading=0)"
 }
 
 Time_E{
@@ -101,7 +102,7 @@ OpenMenu_2
 	else{
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
 		\![*]\__q[Menu_AITALK]なにか話して\__q　　\![*]\__q[Conversation_Begin]会話する\__q\n/
-		\![*]\__q[PhysicsNotes_Show]物理ノート\__q　　\![*]\__q[PhysicsCheck]論文pick-up\__q\n/
+		\![*]\__q[PhysicsNotes_Show]物理ノート\__q　　　\![*]\__q[PhysicsCheck]論文pick-up\__q\n/
 		\__q[OpenMenu]\[-\]Word2Vec\__q\n/
 		\![*]\__q[ShowBooksList]テキストで解析\__q　　\![*]\__q[ShowLearnedWordsList]ゴーストで解析\__q\n/
 		\![*]\__q[Word2Vec_begin_wiki]Wikipediaで解析\__q\n/
