@@ -64,15 +64,6 @@ file,ghost/master/SAORI/juman2/juman-i.bat946a07a4acf10f76c79779fe86424e08size
 file,ghost/master/SAORI/juman2/juman.exe75f8f9b243755cb29cb5c8f3d140a2ffsize=1899798
 file,ghost/master/SAORI/juman2/jumanrc791b100ce3f2bca5aa4c57ec7e8afbfbsize=1059
 file,ghost/master/SAORI/juman2/manual.pdf21baa71f9bdc33b27b6b9c28fd0e1f36size=759478
-file,ghost/master/SAORI/kisaragi/dic/char.bin5241444579a5bb0fa0a33f00f24a29bcsize=262496
-file,ghost/master/SAORI/kisaragi/dic/dicrc23ddf7a6875ac87866a5c24f60b05fafsize=725
-file,ghost/master/SAORI/kisaragi/dic/matrix.binfa07c3f27a78c4db00b6c04d453f7707size=3463716
-file,ghost/master/SAORI/kisaragi/dic/sys.dicd3e801ac4c20aebc31f79205aaf436casize=49205956
-file,ghost/master/SAORI/kisaragi/dic/unk.dic05f942a523ddd08af0f9dc6e9e0a86c0size=5690
-file,ghost/master/SAORI/kisaragi/kisaragi.dll90d6390d597b76df7f616b95bf7e972fsize=50688
-file,ghost/master/SAORI/kisaragi/libmecab.dll30a6ae0cc95a8bf1f03800b127169161size=4901376
-file,ghost/master/SAORI/kisaragi/license.txt30b3a467e8ad704103759af12bfbed87size=4917
-file,ghost/master/SAORI/kisaragi/readme.txte3dc9ded4cc805b087bf0d0bf8bfe798size=3934
 file,ghost/master/SAORI/openpipe_juman.cppf462f9d1b0bcb3018390c721a2d7c644size=700
 file,ghost/master/SAORI/openpipe_juman.exea82db8bda2e7bc3e010d6636d7db1836size=3016909
 file,ghost/master/system/yaya_compatible.dic7a88aa6adc1fc3cc60cf82cb0c368296size=4302
