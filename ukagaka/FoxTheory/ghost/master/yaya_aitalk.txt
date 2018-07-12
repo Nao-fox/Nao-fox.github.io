@@ -161,10 +161,10 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０２：自然科学の理論を作るとき、時としてその理論の\"美しさ\"が重視されることがある。
 			リサ１０５：ここでいう美しさとは、少ない単純な原理から、豊かな法則や定理が導かれる、ということ。
-			リサ１０３：\__q[OnPhysicsNotes,Action_principle]最小作用の原理\__qと解析力学とか、だね。
-			本００：\"\__q[OnPhysicsNotes,Action_principle]最小作用の原理\__q\"
+			リサ１０３：\f[color,blue]\_a[OnPhysicsNotes,Action_principle]最小作用の原理\_a\f[color,default]と解析力学とか、だね。
+			本００：\"\f[color,blue]\_a[OnPhysicsNotes,Action_principle]最小作用の原理\_a\f[color,default]\"
 			式で表すと\"δS = 0\"。この原理により古典物理学のあらゆる現象は全て記述される。
-			量子力学にこれを拡張したものが\__q[OnPhysicsNotes,path_integral]経路積分(path integral)\__qである。
+			量子力学にこれを拡張したものが\f[color,blue]\_a[OnPhysicsNotes,path_integral]経路積分(path integral)\_a\f[color,default]である。
 			\e%(TalkReading = 0)
 			">>
 
@@ -204,7 +204,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ２０２：Montgomery-Odlyzko予想によると、Random Matrixの固有値分布が、\__q[OnPhysicsNotes,Riemann_zeta]Riemann zeta関数\__qの零点間隔と一致する……
+			リサ２０２：Montgomery-Odlyzko予想によると、Random Matrixの固有値分布が、\f[color,blue]\_a[OnPhysicsNotes,Riemann_zeta]Riemann zeta関数\_a\f[color,default]の零点間隔と一致する……
 			リサ２０２：……\0\s[201]どうにか物理的なモデルと対応できないかな？
 			本００：\"Random Matrix\"
 			行列の要素がガウス分布に従う直交かunitaryまたはsymplecticな行列のこと。
@@ -243,7 +243,7 @@ RandomTalk_Main : nonoverlap
 			リサ１６５：ちなみにresurgenceは\"復活\"って意味。ちょっと洒落てるかも？
 			本００：\"リサージェンス\"
 			数学的にはBorel総和法と呼ばれる。1981年にEcalleによる\"Les fonctions resurgentes\"によって微分方程式の解法として定式化された。
-			物理においては\__q[OnPhysicsNotes,path_integral]path integral\__qの非摂動論的定式化として応用されている。
+			物理においては\f[color,blue]\_a[OnPhysicsNotes,path_integral]path integral\_a\f[color,default]の非摂動論的定式化として応用されている。
 			\e%(TalkReading = 0)
 			">>
 
@@ -283,14 +283,14 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０１：生成汎関数の時間を虚数にすると、統計力学の分配関数と等価になる……
 			リサ２００：これは時間とentropyの関係とどう関係があるのかな？
-			本００：\"\__q[OnPhysicsNotes,imaginary_time]虚時間形式\__q(imaginary-time formalism)\"
+			本００：\"\f[color,blue]\_a[OnPhysicsNotes,imaginary_time]虚時間形式(imaginary-time formalism)\_a\f[color,default]\"
 			量子系において時間を虚数時間, t=iτとし、適切な境界条件を課すことで虚時間を逆温度とする統計力学に移行することができる。
 			特に量子系の真空は熱統計系における平衡状態に対応する。
 			\e%(TalkReading = 1)
 			">>
 
 			<<"
-			リサ０１：\__q[OnPhysicsNotes,path_integral]path integral\__qを最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
+			リサ０１：\f[color,blue]\_a[OnPhysicsNotes,path_integral]path integral\_a\f[color,default]を最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
 			本００：P.A.M. Diracによる\"The Principles of Quantum Mechanics\", Chapter32 \"The action principle\"において、DiracはFeynmanより先に確率振幅がe^(iS)で与えられることを指摘している。
 			\e%(TalkReading = 0)
 			">>
@@ -330,7 +330,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ０１：基本的に\__q[OnPhysicsNotes,path_integral]path integral\__qは厳密に計算は出来ないけど、SUSY exactな系とかだったら計算出来るって知ってる？
+			リサ０１：基本的に\f[color,blue]\_a[OnPhysicsNotes,path_integral]path integral\_a\f[color,default]は厳密に計算は出来ないけど、SUSY exactな系とかだったら計算出来るって知ってる？
 			リサ０３：localizationって呼ばれるテクニックなんだけど……有名な計算だとABJM模型とかで使われてるよ。
 			本００：\"localization\"
 			系のActionがnilpotentの性質を持つ対称性(e.g. SUSY)を持ち、かつ積分測度にanomalyが存在しない場合には経路積分をGaussianで評価することができる。これをlocalizationと呼ぶ。
@@ -401,7 +401,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ３６７：\__q[OnPhysicsNotes,Schroedinger_eq]Schroedinger equation\__qは線形なのに、どうして量子カオスが起きるんだろう？
+			リサ３６７：\f[color,blue]\_a[OnPhysicsNotes,Schroedinger_eq]Schroedinger equation\_a\f[color,default]は線形なのに、どうして量子カオスが起きるんだろう？
 			リサ３０５：確率過程が関係しているのかな……
 			本００：\"量子カオス\"
 			量子論において状態ベクトルの時間発展は線形であるにも関わらず、系がカオスの振る舞いを示すことがある。
@@ -492,7 +492,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ２００：エルゴード仮説って、\__q[OnPhysicsNotes,imaginary_time]虚時間形式\__qの場の理論と統計力学の関係から肯定的に証明できないのかな……
+			リサ２００：エルゴード仮説って、\f[color,blue]\_a[OnPhysicsNotes,imaginary_time]虚時間形式\_a\f[color,default]の場の理論と統計力学の関係から肯定的に証明できないのかな……
 			本００：\"エルゴード仮説\"
 			時間平均と統計平均が一致するという仮説。統計力学の原理である等重率の原理はこれを支持する原理である。
 			\e%(TalkReading = 1)
@@ -607,7 +607,7 @@ RandomTalk_Main : nonoverlap
 
 			<<"
 			リサ２０１：Bosonicなstring理論は26次元、superstringは10次元でしかPoincare対称性を保てないけど……
-			リサ２０２：どうしてnaiveに解析接続した\__q[OnPhysicsNotes,Riemann_zeta]zeta function\__qの値でこれが評価できるんだろう……
+			リサ２０２：どうしてnaiveに解析接続した\f[color,blue]\_a[OnPhysicsNotes,Riemann_zeta]zeta function\_a\f[color,default]の値でこれが評価できるんだろう……
 			本００：string theoryが定義される時空の次元は、対称性から特定の次元に制限される。
 			この時Virasoro代数とPoincare代数が閉じるという要請とzeta functionで評価するエネルギーのAnomalyが0になるという要請が一致する。
 			\e%(TalkReading = 1)
@@ -676,7 +676,7 @@ RandomTalk_Main : nonoverlap
 			<<"
 			リサ２０２：\"ゴーストと一緒\"、ね。
 			リサ２０６：%(username)はHawkingのこの論文、\"\_a[https://arxiv.org/pdf/hep-th/0107088.pdf]Living with Ghosts\_a\"は読んだ？
-			リサ２００：\__q[OnPhysicsNotes,path_integral]path integral\__q後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
+			リサ２００：\f[color,blue]\_a[OnPhysicsNotes,path_integral]path integral\_a\f[color,default]後にghost場の寄与をtrace outすることでEffectiveにunitarityを保つ方法だけど……\s[204]ちょっとおもしろいよね、アイデアもタイトルも。
 			本００：一般にLagrangianに3階以上の微分を含む理論を量子化すると、正準量子化の手続きではghost場が生じる。このためunitarityが満たされなくなり、因果律が破綻する。
 			\e%(TalkReading = 1)
 			">>
@@ -951,7 +951,7 @@ binky…は"ウサギが喜んで跳ねる"ことを意味する動詞。
 用法が限定的過ぎるような…
 
 
-\__qお菓子の名前\__qとして
+\_aお菓子の名前\_aとして
 き、聞こえてたの？
 
 

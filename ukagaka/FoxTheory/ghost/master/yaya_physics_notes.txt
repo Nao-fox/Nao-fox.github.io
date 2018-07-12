@@ -1,106 +1,236 @@
-//用語解説の配列
 
 //論文に飛ぶリンクと用語解説のリンクで色を変える
-
+//簡易説明と詳細説明に分ける？
 PhysicsNotes_Show{
-  "\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Lisa's notes\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
-  \![*]\__q[OnPhysicsNotes,Action_principle]最小作用の原理\__q\n/
-  \![*]\__q[OnPhysicsNotes,Schroedinger_eq]シュレーディンガー方程式\__q\n/
-  \![*]\__q[OnPhysicsNotes,path_integral]経路積分(path integral)\__q\n/
-  \![*]\__q[OnPhysicsNotes,imaginary_time]虚時間形式\__q\n/
-  \![*]\__q[OnPhysicsNotes,Riemann_zeta]リーマンゼータ関数\__q\n/
+  "\0\_q\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\f[name,font\Aramis Italic.ttf]\f[bold,1]Lisa's notes\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+  \![*]\_a[OnPhysicsNotes,Classical_Mechanics,note]古典力学\_a\n/
+  \![*]\_a[OnPhysicsNotes,Action_principle,note]最小作用の原理\_a\n/
+  \![*]\_a[OnPhysicsNotes,Quantum_Mechanics,note]量子力学\_a\n/
+  \![*]\_a[OnPhysicsNotes,Schroedinger_eq,note]シュレーディンガー方程式\_a\n/
+  \![*]\_a[OnPhysicsNotes,bra-ket,note]bra-ket記法\_a\n/
+  \![*]\_a[OnPhysicsNotes,double_slit,note]二重スリット実験\_a\n/
+  \![*]\_a[OnPhysicsNotes,path_integral,note]経路積分(path integral)\_a\n/
+  \![*]\_a[OnPhysicsNotes,imaginary_time,note]虚時間形式\_a\n/
+  \![*]\_a[OnPhysicsNotes,Riemann_zeta,note]リーマンゼータ関数\_a\n/
   \n/
-  \![*]\__q[OpenMenu]戻る\__q\_q"
+  \![*]\_a[OpenMenu]戻る\_a\_q"
   /*
-  \![*]\__q[OnPhysicsNotes,CFT]共形場理論(CFT)\__q\n/
-  \![*]\__q[OnPhysicsNotes,Hawking_radiation]ホーキング輻射\__q\n/
-  \![*]\__q[OnPhysicsNotes,gauge_principle]ゲージ原理\__q\n/
-  \![*]\__q[OnPhysicsNotes,Borel_summation]ボレル和\__q\n/
-  \![*]\__q[OnPhysicsNotes,superstring]超弦理論\__q\n
-  \![*]\__q[OnPhysicsNotes,Higgs]ヒッグス機構\__q\n"
+  \![*]\_a[OnPhysicsNotes,CFT]共形場理論(CFT)\_a\n/
+  \![*]\_a[OnPhysicsNotes,Hawking_radiation]ホーキング輻射\_a\n/
+  \![*]\_a[OnPhysicsNotes,gauge_principle]ゲージ原理\_a\n/
+  \![*]\_a[OnPhysicsNotes,Borel_summation]ボレル和\_a\n/
+  \![*]\_a[OnPhysicsNotes,superstring]超弦理論\_a\n
+  \![*]\_a[OnPhysicsNotes,Higgs]ヒッグス機構\_a\n"
   */
 }
 OnPhysicsNotes{
   _input = reference[0]
   case _input{
+    when "Classical_Mechanics"{
+      <<"
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"古典力学\"
+      力学とは、物理学において物体の時間発展を記述する理論体系のこと。この\"古典(classical)\"の名は量子論以前の力学体系ということに由来する。
+      古典力学には理論体系としてニュートン(Newton)力学と解析力学の2つの枠組みが存在するよ。
+
+
+      \"ニュートン(Newton)力学\"
+      リサ０２：\"ニュートンの運動方程式\": \_b[picture//tex//Classical_Mechanics.png,inline,--option=use_self_alpha]
+      に基づく理論体系で、ある点に作用する力を求めて加速度を求めるという\"局所的な視点\"で運動を記述する。
+      リサ０５：この理論はIsaac Newton著\"プリンキピア(Philosophiae Naturalis Principia Mathematica, 1687年)\"に初めてまとめられたんだけど、この本では微分方程式による記述はされていないんだよね……
+      本００：これは当時NewtonとLebnizが微分法の発見者として対立していたことに由来する。微分方程式による表現である\_b[picture//tex//Classical_Mechanics.png,inline,--option=use_self_alpha]は後年のEulerによるもの。
+
+      リサ０１：\"解析力学\"
+      Joseph-Louis Lagrange著\"解析力学(Mecanique analytique, 1788年)\"において確立した、\_a[OnPhysicsNotes,Action_principle]最小作用の原理\_aに基づく理論体系。ニュートン力学が局所的な視点であるのに対し\"巨視的な視点\"で運動を記述する点が特徴。
+      リサ０２：たとえば山を転がるボールの軌道は、ボールに働く力が具体的に分からなくても初期条件と\"山の形\"から一意に定まるよね？これが巨視的な視点っていう意味。これはつまり幾何学的な情報から運動を記述することができる理論ともいえるね。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      ">>
+    }
     when "Action_principle"{
       <<"
-      リサ０１：\b[2]\![set,choicetimeout,15000]\"最小作用の原理\"
-      作用(Action):Sとは始点と終点の時刻をti, tfとして
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"最小作用の原理\"
+      作用(Action):Sとは粒子の位置をx(t), 始点と終点の時刻をti, tfとして
       \_b[picture//tex//Action_principle-1.png,inline,--option=use_self_alpha]
       で定義される量のこと。ここでLはLagrangianと呼ばれる汎関数で、\"L=運動エネルギー-ポテンシャルエネルギー\"として定義される。
       リサ０２：例えば1次元系なら
       \_b[picture//tex//Action_principle-2.png,inline,--option=use_self_alpha]
-      となるよ。
+      となる。Lagrangianは座標に依存するけど、その積分であるActionは座標によらない点が特徴だね。
       リサ０１：\"最小作用の原理\"が主張することは、この\"Sを最小とするような配位が古典的に実現される粒子の軌道である\"ということ。つまり配位の変分をとってそれを0とした式:
       \_b[picture//tex//Action_principle-3.png,inline,--option=use_self_alpha]
       (端点における変分を0として表面項を落とした)
-      これがEuler-Lagrange方程式、つまり古典物理における運動方程式だね。
-      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      これがEuler-Lagrange方程式、つまり古典物理における運動方程式。この方程式はNewtonの運動方程式とは異なり、座標系によらず成立するよ。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      ">>
+    }
+    when "Quantum_Mechanics"{
+      <<"
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"量子力学\"
+      現代物理における基礎理論の一つ。古典力学はこの理論における物理量の期待値が満たす理論として導かれる。
+      \"状態\"と呼ばれる概念や測定の有無で結果が変わる点、確率的にしか物理量の予言ができない点などで大きく古典力学と異なる。
+      リサ０２：具体的には、解析力学のフレームワークに
+      1.重ね合わせの原理(状態はHilbert spaceのベクトル)
+      2.物理量をHermite演算子で表し、測定値はその固有値とする
+      3.確率解釈
+      の3つの条件を課すことで量子力学に移行する。特に、系の時間発展は\_a[OnPhysicsNotes,Schroedinger_eq]Schroedinger方程式\_aまたは等価なHeisenberg方程式で表される。
+
+      一般には状態を指定して得られるのはあくまで確率や期待値であり、物理量そのものの値が確定するわけではない。
+      この\"状態\"はベクトル(→\_a[OnPhysicsNotes,bra-ket]bra-ket記法\_a)で表されるため、例えば次のような\"生きている状態\"と\"死んでいる状態\"の重ね合わせ:\s[5]
+      \_b[picture//tex//Quantum_Mechanics-1.png,inline,--option=use_self_alpha]
+      といったものが可能――\s[1]いわゆる、Schroedingerの猫だね。この時、\"生きている状態が想定される確率\"は
+      \_b[picture//tex//Quantum_Mechanics-2.png,inline,--option=use_self_alpha]
+      であり、測定後に系の状態は生と死の重ね合わせから純粋状態|alive>に変化する。
+      リサ６５：直感的には信じがたいけど、Bellの不等式の実験的証明などからこの解釈の正当性は証明されているよ。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：確率解釈に関してはまだCopenhagen解釈以外に多世界解釈などが存在するが、理論が予想する値に影響を与えるわけではない。
       ">>
     }
     when "Schroedinger_eq"{
       <<"
-      リサ０１：\b[2]\![set,choicetimeout,15000]\"シュレーディンガー(Schroedinger)方程式\"
-      量子論における状態の時間発展を記述する方程式で、bra-ket記法で書くと
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"シュレーディンガー(Schroedinger)方程式\"
+      量子論における状態の時間発展を記述する方程式。\_a[OnPhysicsNotes,bra-ket]bra-ket記法\_aで書くと
       \_b[picture//tex//Schroedinger_eq-1.png,inline,--option=use_self_alpha]
-      となる。|ψ>は状態ベクトル、Hは解析力学におけるHamiltonianをHermite演算子にしたもので、例えばエネルギーが保存する系における1粒子系なら
+      となる。これを解くことで系の状態は定まるけど、Newtonの運動方程式とは異なり物理量そのものの時間発展を記述しているわけではないよ。|ψ>は状態ベクトル、Hは演算子化したHamiltonianで、例えばエネルギーが保存する系における1粒子系なら
       \_b[picture//tex//Schroedinger_eq-2.png,inline,--option=use_self_alpha]
-      となるね。この問題は結局Hの固有値と固有ベクトルを求める問題に帰着するけど、位置演算子の固有ベクトルと運動量演算子に成り立つ関係:
+      となるね。特に位置演算子の固有ベクトルと運動量演算子に成り立つ関係:
       \_b[picture//tex//Schroedinger_eq-3.png,inline,--option=use_self_alpha]
-      を使えば次の微分方程式:
+      を使って表現空間を変えることで、次の波動方程式型微分方程式:
       \_b[picture//tex//Schroedinger_eq-4.png,inline,--option=use_self_alpha]
       と等価になる。
-      いわゆる波動関数はこの<x|ψ>で、\"粒子がxにいる確率\"は|<x|ψ>|^2で表されるよ。
-      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      いわゆる波動関数はこの<x|ψ>で\"粒子がxにいる確率\"は|<x|ψ>|^2で表されるから、この表記だと\"存在確率が波として伝わる\"ことがよくわかるね。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      ">>
+    }
+    when "bra-ket"{
+      <<"
+      リサ０１：\b[2]\![set,baloontimeout,0]\"bra-ket記法\"
+      量子論で用いられる複素数成分のベクトルを表す記法で、例えば2次元ではketベクトルとbraベクトルをそれぞれ
+      \_b[picture//tex//bra-ket-1.png,inline,--option=use_self_alpha]
+      と表し、AとBの内積(bra-ket)を
+      \_b[picture//tex//bra-ket-2.png,inline,--option=use_self_alpha]
+      のように表記する記法のこと。(*は複素共役)
+      このように内積が定義されたベクトル空間をHilbert空間と呼ぶ。内積が実数ではなく複素数になる点に注意。
+      bra-ketではなくket-braを計算すると、これは行列(演算子)になる。
+      \_b[picture//tex//bra-ket-3.png,inline,--option=use_self_alpha]
+      また、ベクトルの完全性は
+      \_b[picture//tex//bra-ket-5.png,inline,--option=use_self_alpha]
+      正規直交性は
+      \_b[picture//tex//bra-ket-6.png,inline,--option=use_self_alpha]
+      のように非常に簡潔に表記することができるよ。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      ">>
+    }
+    when "double_slit"{
+      <<"
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"二重スリット実験\"
+      電子を負に帯電したポールに向けて一個ずつ発射すると、古典的には電子はポールの右か左(Youngの実験の類推で以下左右をスリットと呼ぶ)のどちらかを通る軌道を動くと思うけど、このときどちらのスリットを通ったかを測定するかそうかで結果が変わるという実験。
+      状態ベクトル:|ψ>がスリットA、スリットBを通った状態の重ね合わせであるとすると
+      \_b[picture//tex//double_slit-1.png,inline,--option=use_self_alpha]
+      となる。この状態において位置の固有bra<x|との内積を計算すると
+      \_b[picture//tex//double_slit-2.png,inline,--option=use_self_alpha]
+      よって粒子が位置xで測定される確率は、内積がある複素数で表されることを用いて
+      \_b[picture//tex//double_slit-3.png,inline,--option=use_self_alpha]
+      となり、確かに干渉項:cos(θ_A-θ_B)が生まれることが分かる。
+      一方どちらのスリットを通ったかを確定させると、状態ベクトルは
+      \_b[picture//tex//double_slit-4.png,inline,--option=use_self_alpha]
+      となるので、粒子が位置xで測定される確率は
+      \_b[picture//tex//double_slit-5.png,inline,--option=use_self_alpha]
+      となり、干渉項は生じない。
+      リサ０２：このように状態の重ね合わせと確率解釈を原理として認めることで、粒子が\"自分自身と干渉する\"といった直感に反する現象も説明されるよ。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
       ">>
     }
     when "path_integral"{
       <<"
-      リサ０１：\b[2]\![set,choicetimeout,15000]\"経路積分(path integral)\"
-      path integralは正準量子化とは異なるアプローチで量子化する手続きで、\"時間tをかけてx_1->x_2に移動する確率\"が
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"経路積分(path integral)\"
+      \_a[OnPhysicsNotes,Classical_Mechanics]古典力学\_aでは初期条件を決めれば軌道は一つに定まるけど、量子論では確率的にしか物理量は決定しないからそうはならない。そこで\"始点と終点が等しいあらゆる軌道\"の寄与を考慮するように拡張したのが経路積分。
+      数式で表現すると\"時間tをかけてx_1->x_2に移動する確率振幅\"は
       \_b[picture//tex//path_integral-1.png,inline,--option=use_self_alpha]
-      で与えられるとする定式化のこと。この積分は通常の積分ではなく汎関数積分で、意味としては\"x(0)=x_1, x(t)=x_2 となるあらゆる関数形x(t)を足し上げる\"ということ。つまりそれらの関数をnでラベルすると
-      \_b[picture//tex//path_integral-2.png,inline,--option=use_self_alpha]
-      という形になるね。
-      この形は古典力学における最小作用の原理の拡張になっていて、古典論では始点と終点を決めれば粒子の軌道は一つに決まるのに対し、量子論では古典的に不可能な軌道の寄与も足す必要がある。ただしその寄与は
-      \_b[picture//tex//path_integral-3.png,inline,--option=use_self_alpha]
-      とすれば分かるように、プランク定数を0とする極限ではδS=0とする解、つまり古典解が一番強く寄与することになる。
-      この意味で、量子論は古典論にプランク定数程度の\"揺らぎ\"を加えた理論とみなせるよ。
-      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      となる。この積分は通常の積分ではなく汎関数積分で、意味としては\"x(0)=x_1, x(t)=x_2 となるあらゆる関数形x(t)を足し上げる\"ということ。この意味で、これは\_a[OnPhysicsNotes,Action_principle]最小作用の原理\_aの拡張になっているね。
+      リサ０５：path integralでは始点と終点が古典的にあり得ない位置――例えば、\"ボールを壁に投げたら跳ね返らずにすり抜けて反対側に出てくる\"といった軌道でもActionが有限である限り0でない確率を与える。
+      リサ０２：この現象はトンネル効果と呼ばれる有名な量子論特有の現象で正準量子化でも導けるけど、path integralだとその理由が明確に理解できるね。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：しかし経路積分の数学的に厳密な定義は未だ達成されていない。
+      これは汎関数積分が無限次元の積分で、その積分測度がwell-definedに定義できないことに由来する。
       ">>
     }
     when "imaginary_time"{
       <<"
-      リサ０１：\b[2]\![set,choicetimeout,15000]\"虚時間形式(imaginary-time formalism)\"
-      統計力学における分配関数は
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"虚時間形式(imaginary-time formalism)\"
+      統計力学における温度T(=1/β)の分配関数は
       \_b[picture//tex//imaginary_time-1.png,inline,--option=use_self_alpha]
-      として定義されるけど(β=1/T)、このtraceを座標のtraceとして
+      として定義されるけど、このtraceを座標のtraceとして
       \_b[picture//tex//imaginary_time-2.png,inline,--option=use_self_alpha]
       と書くと、量子論において状態A->Bの遷移確率振幅が
       \_b[picture//tex//imaginary_time-3.png,inline,--option=use_self_alpha]
       と書けることを考えれば、これは虚時間β=itにより時間発展して元の状態に戻る確率振幅と計算できる。
       このことをpath integralで表すと、虚時間で書いたAction(Euclidian Action)S_Eを使って
       \_b[picture//tex//imaginary_time-5.png,inline,--option=use_self_alpha]
-      となる。つまり虚時間の周期的境界条件を満たす配位のpath integralで分配関数は計算できる。
+      となる。つまり虚時間の周期的境界条件を満たす配位の\_a[OnPhysicsNotes,path_integral]path integral\_aで分配関数は計算できる。
       リサ０５：このように虚時間を導入して熱統計系を扱う手法を虚時間形式と呼ぶ訳だけど……虚時間が温度って、かなり不思議な関係だよね。
-      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：虚時間における古典的な経路はトンネル効果によるすり抜けの軌道に対応する。これは場の理論においてinstanton解と呼ばれるものであり、現象論的には真空崩壊などに寄与する。
       ">>
     }
     when "Riemann_zeta"{
       <<"
-      リサ０１：\b[2]\![set,choicetimeout,15000]\"リーマンゼータ関数(Riemann zeta function)\"
+      リサ０１：\b[2]\![set,baloontimeout,-1]\"リーマンゼータ関数(Riemann zeta function)\"
       Re(s)>1においては、級数表示
       \_b[picture//tex//Riemann_zeta-1.png,inline,--option=use_self_alpha]
       として定義される関数。これをΓ関数とBernoulli数:B_nを使って積分表示で表すと
       \_b[picture//tex//Riemann_zeta-2.png,inline,--option=use_self_alpha]
       となる。特にこの最後の表式は複素平面全体への解析接続を与える形の一つになっているよ。
       リーマン予想はこの解析接続したゼータ関数においてζ(s)=0となるsを見つける問題。より正確には\"自明な零点\"はΓ関数の極とBernoulli数の零点から決定する部分、つまりs=-2,-4,-6...だけど、これ以外に非自明な零点が存在し、それがs=1/2+ia(aは実数)の形で書けることを示せればリーマン予想を示したことになる……\s[5]ね。
-      \![*]\__q[PhysicsNotes_Show]戻る\__q
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
       ">>
     }
     others{
       reference1
+    }
+  }
+}
+OnAnchorHover{
+  //物理用語の簡易説明用
+  if (reference[3] == "note"){
+    PhysicsNotes_Show
+    --
+    case reference[2]{
+      when "Classical_Mechanics"{
+        "\_q\1量子論以前の力学形式。\n/
+        初期条件が与えられれば厳密に運動を予想できる。\n/
+        ニュートン力学と解析力学の2つのアプローチが存在する。\_q"
+      }
+      when "Action_principle"{
+        "\_q\1解析力学における基本原理。古典力学の運動は全てこの原理から決定される。\n/
+        ニュートンの法則とは異なり、幾何学的に運動を記述することを可能にする。\_q"
+      }
+      when "Quantum_Mechanics"{
+        "\_q\1現代物理における基礎理論の一つ。\n/
+        状態の時間発展は厳密に求まるが、物理量そのものは確率的にしか予想できない点で古典力学と異なる。\n/
+        古典力学が生んだラプラスの悪魔はこの理論により否定される。\_q"
+      }
+      when "Schroedinger_eq"{
+        "\_q\1量子論における状態ベクトルの時間発展を記述する方程式。\n/
+        ニュートンの運動方程式に代わる力学の式である。\_q"
+      }
+      when "bra-ket"{
+        "\_q\1量子論におけるベクトルを表す記法。\n/
+        名前はbracket(括弧)に由来し、braは女性用胸部下着の意味ではない。\_q"
+      }
+      when "double_slit"{
+        "\_q\1量子論特有の性質である「状態の干渉」を明白に示す実験の一つ。\n/
+        電子を使って実験は行われたが、これは一般の物質が持つ性質である。\_q"
+      }
+      when "path_integral"{
+        "\_q\1量子論における定式化の一つで、Feynmanにより導出された。\n/
+        古典力学における最小作用の原理を拡張した概念となっている。\_q"
+      }
+      when "imaginary_time"{
+        "\_q\1量子論のフレームワークを用いて統計力学を記述するテクニック。虚時間は温度の逆数に対応する。\n/
+        時間の不可逆性とエントロピーの類推はこれと関係があると考えられている。\_q"
+      }
+      when "Riemann_zeta"{
+        "\_q\1この関数の零点分布を求める問題は100年経った今でも未解決の問題である。\n/
+        素数分布や真空のエネルギーと深い関係がある。\_q"
+      }
     }
   }
 }

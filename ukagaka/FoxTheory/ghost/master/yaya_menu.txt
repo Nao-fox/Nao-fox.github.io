@@ -68,17 +68,11 @@ OpenMenu
 }
 
 Time_E{
-	<<"
-	リサ０１：\b[2]作用(Action)は
-	\_b[picture//resize//Action_principle-1.png,inline,--option=use_self_alpha]
-	で定義される量。ここでLはLagrangianと呼ばれる汎関数で、\"L=運動エネルギー-ポテンシャルエネルギー\"として定義される。
-	例えば1次元系なら
-	\_b[picture//resize//Action_principle-2.png,inline,--option=use_self_alpha]
-	となるよ。
-	運動方程式はActionをx(t)について変分して0となる配位として得られる:
-	\_b[picture//resize//test-3.png,inline,--option=use_self_alpha]
-	これがEuler-Lagrange方程式だね。
-	">>
+<<"
+リサ０１：\f[color,blue]\_a[OnPhysicsNotes,path_integral]path integral\_a\f[color,default]を最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
+本００：P.A.M. Diracによる\"The Principles of Quantum Mechanics\", Chapter32 \"The action principle\"において、DiracはFeynmanより先に確率振幅がe^(iS)で与えられることを指摘している。
+\e%(TalkReading = 0)
+">>
 }
 
 OpenMenu_2
@@ -116,6 +110,7 @@ Menu_Webclap{
 	<<"
 	リサ６７：何か質問？\w9\s[2]いいよ、どうしたの？\![open,inputbox,OnSendWebclap,-1,]
 	本００：(質問、感想、バグ報告等何でもどうぞ)
+	(お知らせ：分からない単語や解説の欲しいトピックがあればコメント送信で教えてくれると嬉しいです)
 	">>
 }
 OnSendWebclap
