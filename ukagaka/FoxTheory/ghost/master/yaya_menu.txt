@@ -69,9 +69,7 @@ OpenMenu
 Test1{
 	"\b[2]\![set,baloontimeout,-1]Induced. AdS. brabrabra\nbrabra.kokoko."
 }
-OnTest{
-	"クリック時"
-}
+
 OnChoiceHover{
 	//選択肢上にカーソルを置くとreference0に選択肢名、reference1に実行する関数が入る
 	//カーソルを外してもOnChiceEnterは呼ばれるがreferenceは何も与えられない
