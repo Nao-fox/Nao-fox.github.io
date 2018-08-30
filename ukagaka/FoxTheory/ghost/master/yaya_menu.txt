@@ -66,13 +66,38 @@ OpenMenu
 	//ExTalkFlagInit
 	"\e%(TalkReading=0)"
 }
-
-Time_E{
-<<"
-リサ０１：\f[color,blue]\_a[OnPhysicsNotes,path_integral]path integral\_a\f[color,default]を最初に定式化したのはFeynmanだけど、実はそのアイデアはDiracによるものって知ってた？
-本００：P.A.M. Diracによる\"The Principles of Quantum Mechanics\", Chapter32 \"The action principle\"において、DiracはFeynmanより先に確率振幅がe^(iS)で与えられることを指摘している。
-\e%(TalkReading = 0)
-">>
+Test1{
+	"\b[2]\![set,baloontimeout,-1]Induced. AdS. brabrabra\nbrabra.kokoko."
+}
+OnTest{
+	"クリック時"
+}
+OnChoiceHover{
+	//選択肢上にカーソルを置くとreference0に選択肢名、reference1に実行する関数が入る
+	//カーソルを外してもOnChiceEnterは呼ばれるがreferenceは何も与えられない
+	if (reference0 == "AAA"){
+		"\_q\__q[OnTest]BBB\__q\_q"
+	}
+	elseif (reference ==""){
+		"\_q\__q[OnTest]AAA\__q\_q"
+	}
+}
+Test_Exp{
+	//"\![open,inputbox,OnScraping,-1,]"
+	//_adress = "https://ja.wikipedia.org/wiki/"+"量子力学"
+	_adress = "https://arxiv.org/search/?query=resurgence"
+	//_adress = "https://nao-fox.github.io/HTML/UpdateHistory.html"
+	_result = FUNCTIONEX("SAORI\\proxy_ex.dll","scraping.exe",_adress)
+	_result
+	//"量子力学（りょうしりきがく、英 quantum mechanics）brabrabra「hogehoge」fugafuga"
+}
+OnScraping{
+	_input = reference[0]
+	//_adress = "https://ja.wikipedia.org/wiki/"+_input
+	//_adress = "https://nao-fox.github.io/"
+	_adress = "https://www.aozora.gr.jp/cards/000879/files/42_15228.html"
+	_result = FUNCTIONEX("SAORI\\Proxy2.dll","scraping.exe",_adress)
+	_result[2,";;;"]
 }
 
 OpenMenu_2

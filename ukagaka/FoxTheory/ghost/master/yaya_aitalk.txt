@@ -606,7 +606,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ２０１：Bosonicなstring理論は26次元、superstringは10次元でしかPoincare対称性を保てないけど……
+			リサ２０１：\f[color,blue]\_a[OnPhysicsNotes,Bosonic_string,note]Bosonicなstring理論\_a\f[color,default]は26次元、superstringは10次元でしかPoincare対称性を保てないけど……
 			リサ２０２：どうしてnaiveに解析接続した\f[color,blue]\_a[OnPhysicsNotes,Riemann_zeta]zeta function\_a\f[color,default]の値でこれが評価できるんだろう……
 			本００：string theoryが定義される時空の次元は、対称性から特定の次元に制限される。
 			この時Virasoro代数とPoincare代数が閉じるという要請とzeta functionで評価するエネルギーのAnomalyが0になるという要請が一致する。
@@ -698,6 +698,13 @@ RandomTalk_Main : nonoverlap
 			\e%(TalkReading = 0)
 			">>
 
+			<<"
+			リサ２００：\f[color,blue]\_a[OnPhysicsNotes,imaginary_time]真空崩壊\_a\f[color,default]の計算では偽真空からのbounce寄与がエネルギーに虚部を与えるけど……
+			でもHamiltonianはHermiteでその固有値はrealのはずだから、偽真空はHilbert spaceの要素として厳密には定義されていないってことになるのかな……
+			本００：\"Hermite性\"
+			量子論において物理量はHermite演算子として表される。つまり行列表現において転置をして複素共役をとっても不変な演算子である必要がある。
+			このとき固有値は実数で固有値の異なる固有ベクトルは常に直交することが示される。
+			">>
 		}
 
 		if (EnglishTalk == 1){//English talking

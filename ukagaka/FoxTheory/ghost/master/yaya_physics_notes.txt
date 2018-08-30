@@ -2,7 +2,7 @@
 //論文に飛ぶリンクと用語解説のリンクで色を変える
 //簡易説明と詳細説明に分ける？
 PhysicsNotes_Show{
-  "\0\_q\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\f[name,font\Aramis Italic.ttf]\f[bold,1]Lisa's notes\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+  "\0\b[2]\_q\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\f[name,font\Aramis Italic.ttf]\f[bold,1]Lisa's notes\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
   \![*]\_a[OnPhysicsNotes,Classical_Mechanics,note]古典力学\_a\n/
   \![*]\_a[OnPhysicsNotes,Action_principle,note]最小作用の原理\_a\n/
   \![*]\_a[OnPhysicsNotes,Quantum_Mechanics,note]量子力学\_a\n/
@@ -11,6 +11,8 @@ PhysicsNotes_Show{
   \![*]\_a[OnPhysicsNotes,double_slit,note]二重スリット実験\_a\n/
   \![*]\_a[OnPhysicsNotes,path_integral,note]経路積分(path integral)\_a\n/
   \![*]\_a[OnPhysicsNotes,imaginary_time,note]虚時間形式\_a\n/
+  \![*]\_a[OnPhysicsNotes,false_vacuum,note]真空崩壊\_a\n/
+  \![*]\_a[OnPhysicsNotes,Bosonic_string,note]ボソン型弦理論\_a\n/
   \![*]\_a[OnPhysicsNotes,Riemann_zeta,note]リーマンゼータ関数\_a\n/
   \n/
   \![*]\_a[OpenMenu]戻る\_a\_q"
@@ -28,7 +30,7 @@ OnPhysicsNotes{
   case _input{
     when "Classical_Mechanics"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"古典力学\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"古典力学\"
       力学とは、物理学において物体の時間発展を記述する理論体系のこと。この\"古典(classical)\"の名は量子論以前の力学体系ということに由来する。
       古典力学には理論体系としてニュートン(Newton)力学と解析力学の2つの枠組みが存在するよ。
 
@@ -47,7 +49,7 @@ OnPhysicsNotes{
     }
     when "Action_principle"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"最小作用の原理\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"最小作用の原理\"
       作用(Action):Sとは粒子の位置をx(t), 始点と終点の時刻をti, tfとして
       \_b[picture//tex//Action_principle-1.png,inline,--option=use_self_alpha]
       で定義される量のこと。ここでLはLagrangianと呼ばれる汎関数で、\"L=運動エネルギー-ポテンシャルエネルギー\"として定義される。
@@ -63,7 +65,7 @@ OnPhysicsNotes{
     }
     when "Quantum_Mechanics"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"量子力学\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"量子力学\"
       現代物理における基礎理論の一つ。古典力学はこの理論における物理量の期待値が満たす理論として導かれる。
       \"状態\"と呼ばれる概念や測定の有無で結果が変わる点、確率的にしか物理量の予言ができない点などで大きく古典力学と異なる。
       リサ０２：具体的には、解析力学のフレームワークに
@@ -85,7 +87,7 @@ OnPhysicsNotes{
     }
     when "Schroedinger_eq"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"シュレーディンガー(Schroedinger)方程式\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"シュレーディンガー(Schroedinger)方程式\"
       量子論における状態の時間発展を記述する方程式。\_a[OnPhysicsNotes,bra-ket]bra-ket記法\_aで書くと
       \_b[picture//tex//Schroedinger_eq-1.png,inline,--option=use_self_alpha]
       となる。これを解くことで系の状態は定まるけど、Newtonの運動方程式とは異なり物理量そのものの時間発展を記述しているわけではないよ。|ψ>は状態ベクトル、Hは演算子化したHamiltonianで、例えばエネルギーが保存する系における1粒子系なら
@@ -101,7 +103,7 @@ OnPhysicsNotes{
     }
     when "bra-ket"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,0]\"bra-ket記法\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"bra-ket記法\"
       量子論で用いられる複素数成分のベクトルを表す記法で、例えば2次元ではketベクトルとbraベクトルをそれぞれ
       \_b[picture//tex//bra-ket-1.png,inline,--option=use_self_alpha]
       と表し、AとBの内積(bra-ket)を
@@ -110,23 +112,23 @@ OnPhysicsNotes{
       このように内積が定義されたベクトル空間をHilbert空間と呼ぶ。内積が実数ではなく複素数になる点に注意。
       bra-ketではなくket-braを計算すると、これは行列(演算子)になる。
       \_b[picture//tex//bra-ket-3.png,inline,--option=use_self_alpha]
-      また、ベクトルの完全性は
+      また、ベクトルの正規直交性は
       \_b[picture//tex//bra-ket-5.png,inline,--option=use_self_alpha]
-      正規直交性は
-      \_b[picture//tex//bra-ket-6.png,inline,--option=use_self_alpha]
+      (直交)完全性は
+      \_b[picture//tex//bra-ket-4.png,inline,--option=use_self_alpha]
       のように非常に簡潔に表記することができるよ。
       \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
       ">>
     }
     when "double_slit"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"二重スリット実験\"
-      電子を負に帯電したポールに向けて一個ずつ発射すると、古典的には電子はポールの右か左(Youngの実験の類推で以下左右をスリットと呼ぶ)のどちらかを通る軌道を動くと思うけど、このとき\"どちらのスリットを通ったかを測定するか否か\"で結果が変わるという実験。
-      状態ベクトル:|ψ>がスリットA、スリットBを通った状態の重ね合わせであるとすると
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"二重スリット実験\"
+      粒子を1個ずつ二重スリットに向けて発射した際に、\"どちらのスリットを通ったかを測定するか否か\"で結果が変わるという実験。
+      これは状態ベクトル:|ψ>がスリットA、スリットBを通った状態の重ね合わせであるとすると
       \_b[picture//tex//double_slit-1.png,inline,--option=use_self_alpha]
-      となる。この状態において位置の固有bra<x|との内積を計算すると
+      となる。この状態において位置の固有bra<x|との内積を計算すると、内積がある複素数で表されることを用いて
       \_b[picture//tex//double_slit-2.png,inline,--option=use_self_alpha]
-      よって粒子が位置xで測定される確率は、内積がある複素数で表されることを用いて
+      よって粒子が位置xで測定される確率は
       \_b[picture//tex//double_slit-3.png,inline,--option=use_self_alpha]
       となり、確かに干渉項:cos(θ_A-θ_B)が生まれることが分かる。
       一方どちらのスリットを通ったかを確定させると、状態ベクトルは
@@ -136,11 +138,12 @@ OnPhysicsNotes{
       となり、干渉項は生じない。
       リサ０２：このように状態の重ね合わせと確率解釈を原理として認めることで、粒子が\"自分自身と干渉する\"といった直感に反する現象も説明されるよ。
       \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：電子を負に帯電したポールに向けて一個ずつ発射すると、古典的には電子はポールの右か左のどちらかを通る軌道を動く。これを使って二重スリットを構成し、実験的に検証された。
       ">>
     }
     when "path_integral"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"経路積分(path integral)\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"経路積分(path integral)\"
       \_a[OnPhysicsNotes,Classical_Mechanics]古典力学\_aでは初期条件を決めれば軌道は一つに定まるけど、量子論では確率的にしか物理量は決定しないからそうはならない。そこで\"始点と終点が等しいあらゆる軌道\"の寄与を考慮するように拡張したのが経路積分。
       数式で表現すると\"時間tをかけてx_1->x_2に移動する確率振幅\"は
       \_b[picture//tex//path_integral-1.png,inline,--option=use_self_alpha]
@@ -154,7 +157,7 @@ OnPhysicsNotes{
     }
     when "imaginary_time"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"虚時間形式(imaginary-time formalism)\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"虚時間形式(imaginary-time formalism)\"
       統計力学における温度T(=1/β)の分配関数は
       \_b[picture//tex//imaginary_time-1.png,inline,--option=use_self_alpha]
       として定義されるけど、このtraceを座標のtraceとして
@@ -170,16 +173,58 @@ OnPhysicsNotes{
       本００：虚時間における古典的な経路はトンネル効果によるすり抜けの軌道に対応する。これは場の理論においてinstanton解と呼ばれるものであり、現象論的には真空崩壊などに寄与する。
       ">>
     }
+    when "false_vacuum"{
+      <<"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"真空崩壊\"
+      場の真空は系のポテンシャルが最小となっている配位に対応する。
+      この時、最小ではないが極小である配位のことを偽真空(false vacuum)と呼び、これがより安定な真空へ遷移することを真空崩壊と呼ぶ。
+      例えば系のポテンシャルが次のような形をしているときを考えると
+      \_b[picture//tex//false_vacuum_potential.png,inline,--option=use_self_alpha]
+      原点が偽真空、そこから離れた位置にある最小点が真の真空となる。
+      偽真空が崩壊することは、そのエネルギーが虚部を持つことで説明される。\"時刻t経過してΩからΩになる確率\"、つまり状態Ωのままである確率は
+      \_b[picture//tex//false_vacuum-1.png,inline,--option=use_self_alpha]
+      となるけど、もしΩが偽真空でそのエネルギーに虚部が存在するなら
+      \_b[picture//tex//false_vacuum-2.png,inline,--option=use_self_alpha]
+      となり、時間が経つにつれ指数関数的にこの確率は消えてしまう。つまりその真空は崩壊する。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：真空崩壊が起こると、系の(Effective)Lagrangianの形が変化してしまうため、宇宙の物理法則が変化してしまうことになる。宇宙初期のインフレーションはこれが起きたことによる現象だと解釈されている。
+      ">>
+    }
+    when "Bosonic_string"{
+      <<"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"ボソン型弦理論(Bosonic string theory)\"
+      Lorentz invariantな自由粒子のActionは、粒子の世界線の積分として
+      \_b[picture//tex//Bosonic_string-1.png,inline,--option=use_self_alpha]
+      と書けるよね？
+      これを粒子ではなく弦にすると、弦の位置(X)とinduced metric(h)を使って
+      \_b[picture//tex//Bosonic_string-2.png,inline,--option=use_self_alpha]
+      と書ける。これをNambu-Goto Actionと呼び、Lorentz invariantな弦のActionになる。
+      このとき運動方程式は波動方程式になるので、解はFourier展開を使って
+      \_b[picture//tex//Bosonic_string-3.png,inline,--option=use_self_alpha]
+      と書ける。正準量子化ではこのFourierモードが弦を励起させる演算子になるため、真空(振動していない弦)の状態にこれを作用させて
+      \_b[picture//tex//Bosonic_string-4.png,inline,--option=use_self_alpha]
+      これが量子的に振動している弦の状態になる。この時、生成した状態が時空の足μを持っている点が場の量子論とは異なる点だね。
+      場の理論では励起モードは粒子に対応するけど、string theoryではこれが時空に存在する場であると解釈する。
+      つまり場の量子論では\"どのような場が存在するか\"は人間が決めたのに対し、string theoryでは理論からそれが決定される点が異なる。
+      特にclosed stringのモードにmasslessの2階のテンソル場――つまり重力場が存在する点が、string theoryが量子重力を扱える理論である根拠になっているよ。
+      ただBosonicの名の通りこのActionではfermionを扱えないのが問題で、これを解決するためにsupersymmetryを課した理論が超弦理論だね。
+      \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：string theoryは場の種類だけではなく時空の次元も真空のアノマリーの要請から決定する。
+      Bosonic stringにおいては時空は26次元でなくてはならない。
+      ">>
+    }
     when "Riemann_zeta"{
       <<"
-      リサ０１：\b[2]\![set,baloontimeout,-1]\"リーマンゼータ関数(Riemann zeta function)\"
+      リサ０１：\b[2]\![set,balloontimeout,-1]\"リーマンゼータ関数(Riemann zeta function)\"
       Re(s)>1においては、級数表示
       \_b[picture//tex//Riemann_zeta-1.png,inline,--option=use_self_alpha]
-      として定義される関数。これをΓ関数とBernoulli数:B_nを使って積分表示で表すと
+      として定義される関数。特に素数による無限積表示
       \_b[picture//tex//Riemann_zeta-2.png,inline,--option=use_self_alpha]
-      となる。特にこの最後の表式は複素平面全体への解析接続を与える形の一つになっているよ。
-      リーマン予想はこの解析接続したゼータ関数においてζ(s)=0となるsを見つける問題。より正確には\"自明な零点\"はΓ関数の極とBernoulli数の零点から決定する部分、つまりs=-2,-4,-6...だけど、これ以外に非自明な零点が存在し、それがs=1/2+ia(aは実数)の形で書けることを示せればリーマン予想を示したことになる……\s[5]ね。
+      が存在(Pnは各素数)する。またこの関数は複素平面全体へ解析接続可能で、その表式の一つに
+      \_b[picture//tex//Riemann_zeta-3.png,inline,--option=use_self_alpha]
+      (BnはBernoulli数)が存在する。リーマン予想はこの解析接続したゼータ関数においてζ(s)=0となるsを見つける問題。より正確には\"自明な零点\"はΓ関数の極とBernoulli数の零点から決定する部分、つまりs=-2,-4,-6...だけど、これ以外に非自明な零点が存在し、それがs=1/2+ia(aは実数)の形で書けることを示せればリーマン予想を示したことになる……\s[5]ね。
       \![*]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\_a[PhysicsNotes_Show]戻る\_a
+      本００：ζ関数を用いて\"1+2+3+...=-1/12\"という表式を見ることがあるが、これは等式という意味ではなくあくまで解析接続したζ関数を使って評価すると右辺の値になる、という意味である。
       ">>
     }
     others{
@@ -195,7 +240,7 @@ OnAnchorHover{
     case reference[2]{
       when "Classical_Mechanics"{
         "\_q\1量子論以前の力学形式。\n/
-        初期条件が与えられれば厳密に運動を予想できる。\n/
+        この形式では初期条件が与えられれば運動は決定される。\n/
         ニュートン力学と解析力学の2つのアプローチが存在する。\_q"
       }
       when "Action_principle"{
@@ -226,6 +271,12 @@ OnAnchorHover{
       when "imaginary_time"{
         "\_q\1量子論のフレームワークを用いて統計力学を記述するテクニック。虚時間は温度の逆数に対応する。\n/
         時間の不可逆性とエントロピーの類推はこれと関係があると考えられている。\_q"
+      }
+      when "false_vacuum"{
+        "\_q\1不安定な真空がより安定な真空へ遷移する現象。これが起こると(Effective)Lagrangianの形も変化するため、宇宙の物理法則が変化してしまう。\_q"
+      }
+      when "Bosonic_string"{
+        "\_q\1弦の振動モードを時空に存在する場であると解釈する理論。場の量子論とは異なり、重力場を扱うことができる。\_q"
       }
       when "Riemann_zeta"{
         "\_q\1この関数の零点分布を求める問題は100年経った今でも未解決の問題である。\n/

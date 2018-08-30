@@ -41,26 +41,26 @@ OpenTest{
 //消すのもちょっともったいないので、新しいやつと併用して使うことにする
 Conversation_old:nonoverlap{
 	//配列による判定
-  commumath_hard ="ヤング図,D-brane,アイゼンシュタイン級数,楕円関数,シュティーフェル多様体,汎関数積分,複素多様体,ガロア理論,ポアンカレ予想,フェルマーの最終定理,リーマン予想,フルヴィッツゼータ,選択公理,ゼータ"
-	commumath_easy = "微分,積分,方程式,線形,写像,足し算,割り算,暗算,テイラー展開,ローラン展開,ワイエルシュトラス,群,準同型写像,同型写像,ルベーグ積分,リー微分,多様体,余接空間,コンパクト,共形変換,楕円関数,ツォルンの補題,オイラーの定理,多様体,リー代数,積分測度,同相,ルジャンドル変換,ホモトピー,ホモロジー,トポロジー,パラコンパクト,微分形式,トポロジー,関数,次元,開集合,開被覆,ベクトル,テンソル,スカラー,基底,座標"
-	commuphysics_hard = "SU(5)GUT,Yang-Mills理論,エルゴード仮説,修正重力,カシミール効果,Casimir効果,ストリング,String,string,ハドロン,ニュートリノ,ヒッグス,AdS/CFT,CFT,QFT,Higgs doublet model,Einstein方程式,String,くりこみ,繰り込み,正則化,余剰次元,超電導,超流動,マイスナー効果,クリストッフェル,アインシュタイン方程式,ガモフ因子,超弦,イジング模型,ハイゼンベルグ模型"
-	commuphysics_easy = "バーテックス,量子,解析力学,分配関数,作用,プラズマ,電子,ミューオン,電流,波動関数,古典力学,マクスウェル,Maxwell,散乱,断面積,重力,電磁気,核力,粘性,流体,スピノル,湯川,ポテンシャル,スピンカレント,ポアンカレ不変性,有効作用,Effective Action,対称性,クォーク,レプトン,ゲージ,フェルミオン,ボソン,ヒッグス,Higgs,アインシュタイン,Einstein,ディラック,Dirac,ベルヌーイ,ファインマン,Feynman,ダイアグラム,シュレーディンガー,Schroedinger"
-	commufood = "うなぎ,蒲焼,ごはん,ご飯,お米,ラーメン,パン,らーめん,うどん,そば,サラダ,おにぎり,カレー,ハンバーガー,パスタ,ピザ,カップ麺,ペスカトーレ,焼肉,,焼き肉,やきにく,焼き鳥,やきとり,ごはん,丼,カロリーメイト,ハンバーグ,ステーキ,オムライス,餅,チャーハン"
-	commusweets = "ドライアプリコット,柘榴,シフォンケーキ,チーズケーキ,チョコレート,チョコ,シロノワール,シュークリーム,ヨーグルト,大福,ショートケーキ,モンブラン,ザッハトルテ,フロマージュ,キャラメル,マシュマロ,クッキー,リンゴ飴,ケーキ,スコーン,りんご,ざくろ,杏子,みかん,"
-	commulike = "好き,愛してる,愛しています,かわいい,可愛い,"
-	commusexual = "セックス,せっくす,性交,sex,Sex,おっぱい,胸を,胸揉,まんこ,マンコ,性器,抱き,パイズリ,フェラ,イラマ,アナル,股を,アソコ,ペニス,エッチ,ヘンタイ,オナニー,自慰,円光,援交,ラブホ,エロい"
-	commutired = "疲れた,つかれた,眠い,ねむい"
-	commuOK = "いいよ,良いよ,OK,もちろん,勿論,了解,りょうかい,yes,Yes,Yeah,いえす"
+  _commumath_hard ="ヤング図,D-brane,アイゼンシュタイン級数,楕円関数,シュティーフェル多様体,汎関数積分,複素多様体,ガロア理論,ポアンカレ予想,フェルマーの最終定理,リーマン予想,フルヴィッツゼータ,選択公理,ゼータ"
+	_commumath_easy = "微分,積分,方程式,線形,写像,足し算,割り算,暗算,テイラー展開,ローラン展開,ワイエルシュトラス,群,準同型写像,同型写像,ルベーグ積分,リー微分,多様体,余接空間,コンパクト,共形変換,楕円関数,ツォルンの補題,オイラーの定理,多様体,リー代数,積分測度,同相,ルジャンドル変換,ホモトピー,ホモロジー,トポロジー,パラコンパクト,微分形式,トポロジー,関数,次元,開集合,開被覆,ベクトル,テンソル,スカラー,基底,座標"
+	_commuphysics_hard = "SU(5)GUT,Yang-Mills理論,エルゴード仮説,修正重力,カシミール効果,Casimir効果,ストリング,String,string,ハドロン,ニュートリノ,ヒッグス,AdS/CFT,CFT,QFT,Higgs doublet model,Einstein方程式,String,くりこみ,繰り込み,正則化,余剰次元,超電導,超流動,マイスナー効果,クリストッフェル,アインシュタイン方程式,ガモフ因子,超弦,イジング模型,ハイゼンベルグ模型"
+	_commuphysics_easy = "バーテックス,量子,解析力学,分配関数,作用,プラズマ,電子,ミューオン,電流,波動関数,古典力学,マクスウェル,Maxwell,散乱,断面積,重力,電磁気,核力,粘性,流体,スピノル,湯川,ポテンシャル,スピンカレント,ポアンカレ不変性,有効作用,Effective Action,対称性,クォーク,レプトン,ゲージ,フェルミオン,ボソン,ヒッグス,Higgs,アインシュタイン,Einstein,ディラック,Dirac,ベルヌーイ,ファインマン,Feynman,ダイアグラム,シュレーディンガー,Schroedinger"
+	_commufood = "うなぎ,蒲焼,ごはん,ご飯,お米,ラーメン,パン,らーめん,うどん,そば,サラダ,おにぎり,カレー,ハンバーガー,パスタ,ピザ,カップ麺,ペスカトーレ,焼肉,,焼き肉,やきにく,焼き鳥,やきとり,ごはん,丼,カロリーメイト,ハンバーグ,ステーキ,オムライス,餅,チャーハン"
+	_commusweets = "ドライアプリコット,柘榴,シフォンケーキ,チーズケーキ,チョコレート,チョコ,シロノワール,シュークリーム,ヨーグルト,大福,ショートケーキ,モンブラン,ザッハトルテ,フロマージュ,キャラメル,マシュマロ,クッキー,リンゴ飴,ケーキ,スコーン,りんご,ざくろ,杏子,みかん"
+	_commulike = "好き,愛してる,愛しています,かわいい,可愛い"
+	_commusexual = "セックス,せっくす,性交,sex,Sex,おっぱい,胸を,胸揉,まんこ,マンコ,性器,抱き,パイズリ,フェラ,イラマ,アナル,股を,アソコ,ペニス,エッチ,ヘンタイ,オナニー,自慰,円光,援交,ラブホ,エロい"
+	_commutired = "疲れた,つかれた,眠い,ねむい"
+	_commuOK = "いいよ,良いよ,OK,もちろん,勿論,了解,りょうかい,yes,Yes,Yeah,いえす"
 
-	commuwords = (commuphysics_hard,commumath_hard,commuphysics_easy,commumath_easy,commufood,commusweets,commusexual,commulike,commutired,commuOK)
+	_commuwords = (_commuphysics_hard,_commumath_hard,_commuphysics_easy,_commumath_easy,_commufood,_commusweets,_commusexual,_commulike,_commutired,_commuOK)
 
 	_A1 = 0
 	_A2 = 0
 	_hit = 0//配列の文字と一致したかのフラグ
 	//for文の条件式は()でくくっちゃだめっぽい
-	for _A1 = 0; _A1 <= ARRAYSIZE(commuwords)-1 && _hit == 0; _A1++ {
-		for _A2 = 0; _A2 <= ARRAYSIZE(commuwords[_A1])-1 && _hit == 0; _A2++ {
-			if (RE_SEARCH(_argv[0], commuwords[_A1][_A2])) {
+	for _A1 = 0; _A1 <= ARRAYSIZE(_commuwords)-1 && _hit == 0; _A1++ {
+		for _A2 = 0; _A2 <= ARRAYSIZE(_commuwords[_A1])-1 && _hit == 0; _A2++ {
+			if (RE_SEARCH(_argv[0], _commuwords[_A1][_A2])) {
 				_hit = 1
 				break
 			}
@@ -73,20 +73,20 @@ Conversation_old:nonoverlap{
 	//とりあえずこれで動く
 
 	if (_hit == 1){
-		if (_A1 == ASEARCH(commumath_hard, commuwords)){
+		if (_A1 == ASEARCH(_commumath_hard, _commuwords)){
 			<<"
 			リサ６７：数学の話？
-			リサ１０２：%(commumath_hard[_A2])に興味があるの？いいね、ちょうど最近勉強したんだ。教えようか？
+			リサ１０２：%(_commumath_hard[_A2])に興味があるの？いいね、ちょうど最近勉強したんだ。教えようか？
 			">>
 
 			<<"
-			リサ６７：%(commumath_hard[_A2])...？
+			リサ６７：%(_commumath_hard[_A2])...？
 			リサ０２：ああ、それについての本なら持ってるよ、今度貸そうか？
 			">>
 
 			<<"
 			リサ６７：ああ、それはブルバキに書いてあった気がする...
-			リサ０６：でもあれ、%(commumath_hard[_A2])を勉強するにはちょっと分かりにくいんだよね...
+			リサ０６：でもあれ、%(_commumath_hard[_A2])を勉強するにはちょっと分かりにくいんだよね...
 			">>
 
 			<<"
@@ -99,15 +99,15 @@ Conversation_old:nonoverlap{
 			リサ０５：私も勉強してみようかな...
 			">>
 		}
-		elseif (_A1 == ASEARCH(commumath_easy, commuwords)){
+		elseif (_A1 == ASEARCH(_commumath_easy, _commuwords)){
 			<<"
 			リサ６７：数学の話？
 			リサ０２：たまには基礎を勉強するのもいいかもね。
 			">>
 		}
-		elseif (_A1 == ASEARCH(commuphysics_hard, commuwords)){
+		elseif (_A1 == ASEARCH(_commuphysics_hard, _commuwords)){
 			<<"
-			リサ６７：%(commuphysics_hard[_A2])......？
+			リサ６７：%(_commuphysics_hard[_A2])......？
 			リサ０２：それにはあんまり詳しくないんだ、色々教えてくれない？
 			">>
 
@@ -117,12 +117,12 @@ Conversation_old:nonoverlap{
 			">>
 
 			<<"
-			リサ６７：%(commuphysics_hard[_A2])...？
+			リサ６７：%(_commuphysics_hard[_A2])...？
 			リサ０２：ああ、それについての本なら持ってるよ、今度貸そうか？
 			">>
 
 			<<"
-			リサ０５：%(commuphysics_hard[_A2])、ね...
+			リサ０５：%(_commuphysics_hard[_A2])、ね...
 			リサ０５：確か、最近いいReviewがあったような...
 			リサ６４：見つけたら、また教えるよ。
 			">>
@@ -133,7 +133,7 @@ Conversation_old:nonoverlap{
 			">>
 
 		}
-		elseif (_A1 == ASEARCH(commuphysics_easy, commuwords)){
+		elseif (_A1 == ASEARCH(_commuphysics_easy, _commuwords)){
 			<<"
 			リサ６５：物理の話か、いいね、色々教えてくれない？
 			">>
@@ -143,7 +143,7 @@ Conversation_old:nonoverlap{
 			リサ０２：勉強、手伝おうか？
 			">>
 		}
-		elseif (_A1 == ASEARCH(commufood, commuwords)){
+		elseif (_A1 == ASEARCH(_commufood, _commuwords)){
 			<<"
 			リサ０７：うう...お腹すいた...
 			">>
@@ -152,7 +152,7 @@ Conversation_old:nonoverlap{
 			リサ０７：%(username)...お腹がすくようなこと言わないでよ...
 			">>
 		}
-		elseif (_A1 == ASEARCH(commusweets, commuwords)){
+		elseif (_A1 == ASEARCH(_commusweets, _commuwords)){
 			<<"
 			リサ０５：いいね...甘いもの、食べたいな。
 			">>
@@ -163,11 +163,11 @@ Conversation_old:nonoverlap{
 			">>
 
 			<<"
-			リサ５０：%(commusweets[_A2])......
+			リサ５０：%(_commusweets[_A2])......
 			リサ０５：最近食べてないな...
 			">>
 		}
-		elseif (_A1 == ASEARCH(commusexual, commuwords)){
+		elseif (_A1 == ASEARCH(_commusexual, _commuwords)){
 			//照れ
 			<<"
 			リサ２０：......
@@ -185,19 +185,19 @@ Conversation_old:nonoverlap{
 			">>
       Conversation_Sexual = 1
 		}
-		elseif (_A1 == ASEARCH(commulike, commuwords)){
-			//commulike単体or句読点である場合は自明に本人へ向けられた言葉と解釈
+		elseif (_A1 == ASEARCH(_commulike, _commuwords)){
+			//_commulike単体or句読点である場合は自明に本人へ向けられた言葉と解釈
 
-			//if (reference[0] == commulike[_A2] || reference[0] == commulike[_A2]+'。' || reference[0] == commulike[_A2]+'！' ||  reference[0] == commulike[_A2]+'!'){
-			//動作しなかったif (RE_SEARCH(reference[0], '^'+'commulike[_A2]'+'(だ|です|だよ)?'+'([。.！!])?'+'$')){
+			//if (reference[0] == _commulike[_A2] || reference[0] == _commulike[_A2]+'。' || reference[0] == _commulike[_A2]+'！' ||  reference[0] == _commulike[_A2]+'!'){
+			//動作しなかったif (RE_SEARCH(reference[0], '^'+'_commulike[_A2]'+'(だ|です|だよ)?'+'([。.！!])?'+'$')){
 			//上だと文字が連結されて
 			//とりあえずhit文字+2以内の長さならtrue
-			if (RE_SEARCH(reference[0], commulike[_A2]+'な') && RE_SEARCH(reference[0], '[は？\?]$')){
+			if (RE_SEARCH(reference[0], _commulike[_A2]+'な') && RE_SEARCH(reference[0], '[は？\?]$')){
 				<<"
 				リサ６５：なんだと思う？
 				">>
 			}
-			elseif (STRLEN(reference[0]) <= STRLEN(commulike[_A2])+2){
+			elseif (STRLEN(reference[0]) <= STRLEN(_commulike[_A2])+2){
 			//照れ
 				<<"
 				リサ３２：......
@@ -205,7 +205,7 @@ Conversation_old:nonoverlap{
 				">>
 			}
 
-			elseif (RE_SEARCH(reference[0], '(君|きみ|あなた|リサ|Lisa)') && RE_SEARCH(reference[0], commulike[_A2]+'$')){
+			elseif (RE_SEARCH(reference[0], '(君|きみ|あなた|リサ|Lisa)') && RE_SEARCH(reference[0], _commulike[_A2]+'$')){
 				<<"
 				リサ３２：......
 				リサ５２：あ、ありがとう。
@@ -218,14 +218,14 @@ Conversation_old:nonoverlap{
 				リサ６５：まあ、嫌いではないよ。
 				">>
 			}
-			//commulikeであるが意味が不明瞭な場合。...が好きなんだ。とか
+			//_commulikeであるが意味が不明瞭な場合。...が好きなんだ。とか
 			else{
 				<<"
 				リサ０１：私も嫌いじゃないよ、いい趣味をしてるね。
 				">>
 			}
 		}
-		elseif (_A1 == ASEARCH(commutired, commuwords)){
+		elseif (_A1 == ASEARCH(_commutired, _commuwords)){
 			<<"
 			リサ６７：大丈夫？
 			リサ０２：疲れているなら、少し仮眠をとったらどうかな。
@@ -233,10 +233,10 @@ Conversation_old:nonoverlap{
 
 			<<"
 			リサ６７：......大丈夫？
-			リサ０２：甘いものでも食べる？%(commusweets[RAND(ARRAYSIZE(commusweets))])とかいいんじゃないかな？
+			リサ０２：甘いものでも食べる？%(_commusweets[RAND(ARRAYSIZE(_commusweets))])とかいいんじゃないかな？
 			">>
 		}
-		elseif (_A1 == ASEARCH(commuOK, commuwords) || reference[0] == うん){
+		elseif (_A1 == ASEARCH(_commuOK, _commuwords) || reference[0] == うん){
 			<<"
 			リサ０２：本当？ありがとう！
 			">>

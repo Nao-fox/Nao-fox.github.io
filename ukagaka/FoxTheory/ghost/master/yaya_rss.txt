@@ -324,7 +324,6 @@ PhysicsCheck
   /*普通に正規表現で話題作ってやった方が楽な気がするのでそうする*/
   _num = RAND(ARRAYSIZE(_hitrss))
 //待ち無しの処理+スクロールしない処理追加して
-
   for _k = 0; _k < ARRAYSIZE(RSSTitle); _k++{
     if (JapaneseTalk == 1){
       if (RE_SEARCH(RSSTitle[_k], "CFT|(C|c)onformal") && (RE_SEARCH(RSSTitle[_k], "AdS") == 0)){

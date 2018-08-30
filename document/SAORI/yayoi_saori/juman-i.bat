@@ -1,0 +1,1 @@
+juman --enc cp932
