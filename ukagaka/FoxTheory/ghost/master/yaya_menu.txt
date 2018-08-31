@@ -66,20 +66,7 @@ OpenMenu
 	//ExTalkFlagInit
 	"\e%(TalkReading=0)"
 }
-Test1{
-	"\b[2]\![set,baloontimeout,-1]Induced. AdS. brabrabra\nbrabra.kokoko."
-}
 
-OnChoiceHover{
-	//選択肢上にカーソルを置くとreference0に選択肢名、reference1に実行する関数が入る
-	//カーソルを外してもOnChiceEnterは呼ばれるがreferenceは何も与えられない
-	if (reference0 == "AAA"){
-		"\_q\__q[OnTest]BBB\__q\_q"
-	}
-	elseif (reference ==""){
-		"\_q\__q[OnTest]AAA\__q\_q"
-	}
-}
 Test_Exp{
 	//"\![open,inputbox,OnScraping,-1,]"
 	//_adress = "https://ja.wikipedia.org/wiki/"+"量子力学"

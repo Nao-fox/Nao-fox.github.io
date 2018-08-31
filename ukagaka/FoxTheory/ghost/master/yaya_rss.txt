@@ -110,7 +110,7 @@ OnRSSView{
     PAGER.List = (PAGER.List,"\__q[OnRSSSummaryShow,%(_i)]%(RSSTitle[_i])\__q"+"　\__q[OnRSSBookmarkChange,%(_i)]%(ShowBookmarkMarker(_i))\__q")
   }
 		//PAGER.Listに表示したいリストを入れる。
-		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[SearchPapersInput]Search\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\__q\n'		//リストヘッダ
+		PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSRead]Update\f[name,default]\f[bold,0]\__q　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnArxivSearchInput]Search\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\__q\n'		//リストヘッダ
 		PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnShowBookmarkedPapers]Bookmark\__q\f[name,default]\f[bold,0]\n'		//ページヘッダ
 		PAGER.Footer='\n\![*]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\q[CLOSE,close]\f[bold,0]\_q'	//フッタ
 		PAGER.Marker='\![*]'					//項目マーカ
@@ -144,24 +144,49 @@ OnRSSSummaryShow{
 
 OnRSSBookmarkChange{
   _label = TOINT(reference0)//paperのラベル
-  _index = ASEARCH(RSSURL[_label], BookmarkedPaperURL)
-  if (_index == -1){
-    BookmarkedPaperTitle = (BookmarkedPaperTitle,RSSTitle[_label])
-    BookmarkedPaperURL = (BookmarkedPaperURL,RSSURL[_label])
-    BookmarkedPaperAbst = (BookmarkedPaperAbst,RSSSummary[_label])
+  //ArxivSearchから読んだときはreference1に1を渡す
+  if reference[1] == 1{
+    _index = ASEARCH(ArxivSearchURL[_label], BookmarkedPaperURL)
+    if (_index == -1){
+      BookmarkedPaperTitle = (BookmarkedPaperTitle,ArxivSearchTitle[_label])
+      BookmarkedPaperURL = (BookmarkedPaperURL,ArxivSearchURL[_label])
+      BookmarkedPaperAbst = (BookmarkedPaperAbst,ArxivSearchAbst[_label])
+    }
+    OnArxivSearchShow(_label)
   }
-  //  OnShowPage(_label)
-  OnRSSView(_label)
+  else{
+    _index = ASEARCH(RSSURL[_label], BookmarkedPaperURL)
+    if (_index == -1){
+      BookmarkedPaperTitle = (BookmarkedPaperTitle,RSSTitle[_label])
+      BookmarkedPaperURL = (BookmarkedPaperURL,RSSURL[_label])
+      BookmarkedPaperAbst = (BookmarkedPaperAbst,RSSSummary[_label])
+    }
+    //  OnShowPage(_label)
+    OnRSSView(_label)
+  }
 }
 
 ShowBookmarkMarker{
   _label = TOINT(_argv[0])
-  _PaperID = RSSURL[_label]
-  if (ASEARCH(_PaperID, BookmarkedPaperURL) != -1){
-    "\f[name,font\Aramis Italic.ttf]\f[bold,1]☆\f[name,font\averia-serif-libre.italic.ttf]\f[bold,0]"
+  if _argv[1]{
+    //これはArxivSearchから呼ぶ用
+    _PaperID = ArxivSearchURL[_label]
+    if (ASEARCH(_PaperID, BookmarkedPaperURL) != -1){
+      "\f[name,font\Aramis Italic.ttf]\f[bold,1]☆\f[name,font\averia-serif-libre.italic.ttf]\f[bold,0]"
+    }
+    else{
+      "\[+\]\f[bold,0]"
+    }
   }
   else{
-    "\[+\]\f[bold,0]"
+    //これはOnRSSから呼ぶ用
+    _PaperID = RSSURL[_label]
+    if (ASEARCH(_PaperID, BookmarkedPaperURL) != -1){
+      "\f[name,font\Aramis Italic.ttf]\f[bold,1]☆\f[name,font\averia-serif-libre.italic.ttf]\f[bold,0]"
+    }
+    else{
+      "\[+\]\f[bold,0]"
+    }
   }
 }
 OnRSSBookmarkSummaryShow{
@@ -748,6 +773,10 @@ DeleteALLKeyword{
   ShowKeywordlist
 }
 
+
+//////////////////////////////////////////
+//ここからは旧仕様。使ってない
+//////////////////////////////////////////
 SearchPapersInput{
   "\![open,inputbox,OnSearchPapers_Temp,60000]"
 }
@@ -787,4 +816,85 @@ SearchPapers{
     --
     SearchPapersInput
   }
+}
+/////////////////////
+//ここまで使ってない
+/////////////////////
+
+//Arxiv検索新規版
+OnArxivSearchInput{
+  "\![open,inputbox,OnArxivSearch,60000]"
+}
+/*
+OnArxivSearch_SortOption{
+  "\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Search option\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
+  SortBy...
+  \![*]\__q[Menu_AITALK]Tell me something\__q\n/
+  \![*]\__q[Conversation_Begin]Conversation\__q\n/"
+}
+*/
+OnArxivSearch{
+	_input = reference[0]
+	_Arxivget.Max = 50
+	_Arxivget.SortBy = "submittedDate"
+	_result = FUNCTIONEX("SAORI\\proxy_ex.dll","arxivget.exe",_input,_Arxivget.Max,_Arxivget.SortBy)
+	ArxivSearchResult = SPLIT(_result,";;end;;")
+  ArxivSearchURL = IARRAY
+  ArxivSearchTitle = IARRAY
+  ArxivSearchAbst = IARRAY
+	if ARRAYSIZE(_resultarray) == 1{
+		_idhitURL = ArxivSearchResult[0][0,";;;"]
+		_idhitTitle = _resultarray[0][1,";;;"]
+    _idhitAbst = _resultarray[0][2,";;;"]
+		FUNCTIONEX("SAORI\mciaudior.dll", "play")
+		--
+		"\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■/
+		　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[_idhitURL]Read this paper\__q/
+		\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\n/
+		%(_idhitAbst)\![set,balloontimeout,600000]\n/
+		\![*]\__q[OnRSSView]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\f[name,default]\f[bold,0]\__q\_q"
+	}
+	else{
+    OnArxivSearchShow
+  }
+}
+OnArxivSearchShow{
+  for _j = 0;_j < ARRAYSIZE(ArxivSearchResult);_j++{
+    //https://arxiv.org/abs/1808.04075
+    ArxivSearchURL = (ArxivSearchURL, ArxivSearchResult[_j][0,";;;"])
+    ArxivSearchTitle = (ArxivSearchTitle, ArxivSearchResult[_j][1,";;;"])
+    ArxivSearchAbst = (ArxivSearchAbst, ArxivSearchResult[_j][2,";;;"])
+  }
+  PAGER.List = IARRAY
+  for _i = 0; _i < ARRAYSIZE(ArxivSearchResult); _i++{
+    PAGER.List = (PAGER.List,"\__q[OnArxivSearchSummaryShow,%(_i)]%(ArxivSearchTitle[_i])\__q"+"　\__q[OnRSSBookmarkChange,%(_i),1]%(ShowBookmarkMarker(_i,1))\__q")
+  }
+    //PAGER.Listに表示したいリストを入れる。
+    PAGER.ShowHeader='\b[2]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Index\f[name,default]\f[bold,0]■　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnArxivSearchInput]Search\f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\__q\n'		//リストヘッダ
+    PAGER.PageHeader='■\f[name,font\Aramis Italic.ttf]\f[bold,1]page\f[bold,0]\f[name,default]■　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[ShowKeywordlist]KeywordList\f[name,default]\f[bold,0]\__q　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnShowBookmarkedPapers]Bookmark\__q\f[name,default]\f[bold,0]\n'		//ページヘッダ
+    PAGER.Footer='\n\![*]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[OnRSSView]Return\__q\f[bold,0]\_q'	//フッタ
+    PAGER.Marker='\![*]'					//項目マーカ
+    PAGER.Separator='|'						//項目名と選択肢名の区切り
+    PAGER.ShowNum=8			//リスト表示数
+    PAGER.PageNum=5							//ページ表示数（奇数で）
+    reference0=0							//初期表示時のおまじない
+    if (_argc == 1){
+      OnShowPage(_argv[0])
+    }
+    else{
+      OnShowPage //初期表示コール
+    }							//初期表示コール
+    //PAGE_INDEX = 0//初期表示用
+}
+OnArxivSearchSummaryShow{
+  _label = TOINT(reference0)
+  //_CurrentPage = TOINT(_label/PAGER.ShowNum)
+  //OnShowPageはindex*shownumで
+  FUNCTIONEX("SAORI\mciaudior.dll", "play")
+  --
+  "\0\b[2]\![set,autoscroll,disable]\_q■\f[name,font\Aramis Italic.ttf]\f[bold,1]Abstruct\f[name,default]\f[bold,0]■/
+  　　\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]\__q[%(ArxivSearchURL[_label])]Read this paper\__q/
+  \f[name,font\averia-serif-libre.italic.ttf]\f[height,13]\f[bold,0]\n/
+  %(ArxivSearchAbst[_label])\![set,balloontimeout,600000]\n/
+  \![*]\__q[OnShowPage, %(_label)]\f[name,font\averia-serif-libre.italic.ttf]\f[bold,1]Return\f[name,default]\f[bold,0]\__q\_q"
 }
