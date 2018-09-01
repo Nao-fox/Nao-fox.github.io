@@ -835,8 +835,8 @@ OnArxivSearch_SortOption{
 */
 OnArxivSearch{
 	_input = reference[0]
-	_Arxivget.Max = 50
-	_Arxivget.SortBy = "submittedDate"
+	_Arxivget.Max = 64
+	_Arxivget.SortBy = "relevance"
 	_result = FUNCTIONEX("SAORI\\proxy_ex.dll","arxivget.exe",_input,_Arxivget.Max,_Arxivget.SortBy)
 	ArxivSearchResult = SPLIT(_result,";;end;;")
   ArxivSearchURL = IARRAY
@@ -861,7 +861,8 @@ OnArxivSearch{
 OnArxivSearchShow{
   for _j = 0;_j < ARRAYSIZE(ArxivSearchResult);_j++{
     //https://arxiv.org/abs/1808.04075
-    ArxivSearchURL = (ArxivSearchURL, ArxivSearchResult[_j][0,";;;"])
+    //ERASE‚Ív1‚Æ‚©‚Ìíœ
+    ArxivSearchURL = (ArxivSearchURL, ERASE(ArxivSearchResult[_j][0,";;;"],-2,2))
     ArxivSearchTitle = (ArxivSearchTitle, ArxivSearchResult[_j][1,";;;"])
     ArxivSearchAbst = (ArxivSearchAbst, ArxivSearchResult[_j][2,";;;"])
   }
