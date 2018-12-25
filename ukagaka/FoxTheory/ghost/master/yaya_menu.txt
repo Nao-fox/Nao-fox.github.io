@@ -12,6 +12,7 @@
 OpenMenu
 {
 	"\![set,autoscroll,disable]"
+	_today = GETTIME()
 	--
 	//メニュー：で実行する関数は引数を渡せない。(実質\qタグ)
 
@@ -50,7 +51,7 @@ OpenMenu
 			"\s[53]……\n"
 		}
 		else{
-				"\s[0]"
+			"\s[0]"
 		}
 		--
 		"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Menu\f[name,font\cinecaption2.28.ttf]\f[bold,0]\n/
@@ -63,7 +64,12 @@ OpenMenu
 		\![*]\__q[Menu_CANCEL]なんでもない\__q\_q"
 	}
 	--
+	if (_today[1] == 12 && _today[2] == 25 && Flag_Christmas != 1){
+		//Christmas
+		"\n\_q\![*]\__q[EventChristmas]Event\__q\_q"
+	}
 	//ExTalkFlagInit
+	--
 	"\e%(TalkReading=0)"
 }
 

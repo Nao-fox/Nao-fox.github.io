@@ -57,7 +57,7 @@
 	\e%(TalkReading = 0)"
 }
 
-＊博士とクロウへ変更
+＊クロウへ変更
 {
 	FlagInit_Boot
 	--
