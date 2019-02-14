@@ -68,6 +68,10 @@ OpenMenu
 		//Christmas
 		"\n\_q\![*]\__q[EventChristmas]Event\__q\_q"
 	}
+	if (_today[1] == 2 && _today[2] == 14 && Flag_Valentine != 1){
+		//Valentine
+		"\n\_q\![*]\__q[EventValentine]Event\__q\_q"
+	}
 	//ExTalkFlagInit
 	--
 	"\e%(TalkReading=0)"
