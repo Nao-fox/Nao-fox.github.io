@@ -403,12 +403,13 @@ OnUpdateComplete
 	}
 	else
 	{
-		priorityCntJ = 1
+		priorityCntJ = 0
 		//priorityCntE = 0//新規ランダムトーク処理用
 		//---- 実際に更新が完了した
 		"\0\s[1]うまくいったみたい。\w9\n/
 		\1\b[2]\_q更新箇所(2019/2/14)\n/
-		1.バレンタインイベント追加"
+		1.ランダムトーク追加(2)\n/
+		2.Optionにユーザ性別設定を追加"
 	}
 }
 

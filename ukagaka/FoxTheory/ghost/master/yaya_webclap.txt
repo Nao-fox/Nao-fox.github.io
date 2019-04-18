@@ -1,0 +1,110 @@
+////////////////////////////////////////
+//ここから送信処理
+////////////////////////////////////////
+Menu_Webclap_Send{
+	<<"
+	リサ６７：何か質問？\w9\s[2]いいよ、どうしたの？\![open,inputbox,OnSendWebclap,-1,]
+	本００：(質問、感想、バグ報告等何でもどうぞ)
+	(お知らせ：分からない単語や解説の欲しいトピックがあればコメント送信で教えてくれると嬉しいです)
+	">>
+}
+OnSendWebclap
+{
+	_ghostprefix = 'FoxTheory:'
+	_cutoff = 1000
+	_msg = REPLACE( reference0, '[', '\[' )
+	_parameters = "%( _ghostprefix + SUBSTR(_msg,0,_cutoff) )"
+	if (STRLEN(_msg) > TOINT(_cutoff)){
+		"\![open,inputbox,OnSendWebclap,0,%(SUBSTR(_msg,0,_cutoff))]"
+		--
+		"\0\s[7]長すぎるよ……\w9もっと短く言ってくれる？\w9\e"
+	}elseif (reference0 != 'timeout'){
+		"\![execute,http-post,http://clap.webclap.com/clap.php?id=riddle24,--param=message_body=%(_parameters),--async=WEBCLAP]\e"
+	}else{
+		"\0\s[7]……なんだったの？\e"
+	}
+}
+
+OnExecuteHTTPComplete
+{
+	if (reference1 == 'WEBCLAP'){
+		<<"
+		本００：(送信成功)
+		">>
+	}
+}
+
+OnExecuteHTTPFailure
+{
+	if (reference1 == 'WEBCLAP'){
+		<<"
+		本００：(送信失敗…)
+		原因 %(reference4)
+		">>
+	}
+}
+/////////////////////////
+//ここまで送信処理
+/////////////////////////
+
+//エロ系質問はどうしようか……
+Menu_Webclap{
+	"\_q\f[name,font\Aramis Italic.ttf]\f[bold,1]Questions & Answers\f[name,font\cinecaption2.28.ttf]　　　　　\![*]\__q[Menu_Webclap_Send]Ask her!\f[bold,0]\__q\n/
+  \0\s[0]\b[2]\f[anchornotselectfontcolor,default.plain]\f[anchorvisitedfontcolor,default.plain]\f[anchorfontcolor,default.plain]\f[anchorpencolor,default.black]\n/
+  \![*]\_a[OnWebclap_Answers,1]好物と嫌いなものは？\_a\n/
+  \![*]\_a[OnWebclap_Answers,2]身長は？\_a\n/
+  \![*]\_a[OnWebclap_Answers,3]泳げる？それと、泳げるなら水着はどんなものを着る？\_a\n/
+  \![*]\_a[OnWebclap_Answers,4]Can I touch your tail?\_a\n/
+  \![*]\_a[OnWebclap_Answers,5]飲酒できる年齢？\_a\n/
+  \n/
+  \![*]\_a[OpenMenu]戻る\_a\_q"
+}
+OnWebclap_Answers{
+  _input = TOINT(reference[0])
+  case _input{
+    when 1 {
+      <<"
+      本００：\"リサさんの好物と嫌いなものは何ですか？\"
+      リサ０１：Lakritz……えーっと、リコリス菓子は結構好きだよ。実はいつもストックしてあるんだ、……ほら。
+      リサ００：苦手なもの？\s[5]……うーん、日本食のワサビは苦手かも。お寿司を注文するときはいつも抜いてもらうように頼んでる。
+      リサ６７：%(username)は平気？\n\n
+      \![*]\__q[Menu_Webclap]戻る\__q
+      ">>
+    }
+    when 2{
+      <<"
+      本００：\"リサちゃんの身長\"
+      155cmくらいだったような……あ、でもこれは耳を含めなかった場合ね。
+      何故かよく
+      \![*]\__q[Menu_Webclap]戻る\__q
+      ">>
+    }
+    when 3{
+      <<"
+      本００：\"リサちゃんは泳げますか？それと、泳げるなら水着はどんなの着てますか？\"
+      泳げるよ。水着？えーっと、前は白のスポーツ水着を持っていたけど……
+
+      \![*]\__q[Menu_Webclap]戻る\__q
+      ">>
+    }
+    when 4{
+      <<"
+      本００：\"Can I touch your fluffy tail? it looks so cute!\"
+      リサ５２：Ah……Thank you.
+      リサ５３：Wanna touch here? Well, fine, as you want…
+      リサ９９９９：(*fluff fluff*)
+      リサ３７：Are you satisfied? \s[27]whew…… \s[29]wait, again?\n\n
+
+      \![*]\__q[Menu_Webclap]Return\__q
+      ">>
+    }
+    when 5{
+      <<"
+      本００：\"性……ッサリーには……使用法……避……具……アルコール……（酔って書いたのか上手く読めない文字列が続く)……Lisachangは飲酒できる年齢なんです？\"
+      リサ０７：なんだかほとんどよく読めないけど……
+      リサ０１：生まれた国ではもう飲める年齢だよ。\s[50]ここだと……どうだったかな？\n\n
+      \![*]\__q[Menu_Webclap]戻る\__q
+      ">>
+    }
+  }
+}

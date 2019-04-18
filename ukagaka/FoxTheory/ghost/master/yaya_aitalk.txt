@@ -11,7 +11,7 @@ RandomTalk_AfterDo{
 //あー、nonoverlapは数が変わるとリセットされるんだっけ
 RandomTalk
 {
-	_numJ = 3
+	_numJ = 2
 	_numE = 0
 	if (JapaneseTalk && EnglishTalk){
 		if (priorityCntJ < _numJ){
@@ -50,15 +50,18 @@ RandomTalk
 //arrayからnonoverlapに変更
 PriorityRandomTalkJapanese : nonoverlap{
 	<<"
-	リサ３０５：SchneckenとSalmiakki、今日はどっちにしようかな……
-	リサ６７：あ、%(username)？これはリコリスのお菓子だよ
-	リサ３０７：ただ、リコリス菓子は友達からは不評なんだよね……
-	リサ３５１：美味しいと思うんだけどな……\s[67]%(username)も一つどう？
-	本００：Schneckenはドイツ語で"かたつむり(複数形)"、 Salmiakkiはラテン語の"sal ammoniac(塩化アンモニウム)"が名前の由来である。
-	前者はその形状から、後者は味付けに塩化アンモニウムを使用していることによる。
-	余談であるが、塩化アンモニウムは主に肥料として用いられる。
+	リサ０７：この前町中に行ったら何かイベントでもあったのか、人混みで揉みくちゃにされて大変だったよ……尻尾が引っ張られたりして痛かったし……
+	リサ６７：そういえば、人も地上ではS^1回転の自由度を持つ2次元系だから……渦度が定義できてコスタリッツ・サウレス転移が起きたりするのかな？
+	本００：\"コスタリッツ・サウレス相転移(Kosterlitz-Thouless phase transition)\"
+	2次元XY模型においてスピン配位の渦度によって記述される相転移。これはSO(2)とS^1が同相であり、winding number(first Chern class)が定義可能であることに由来する。
+	この研究により2016年にThouless, Haldane, Kosterlitzの三名はNobel賞を受賞した。
 	">>
 
+	<<"
+	リサ２００：\"After turning the switch off, the flasher \s[204]……became excited state. It enables us to see the hidden topological structure……\"	
+	リサ２０５：実験の報告書だよね……？ああ実験ってそういう……いや、なんでもない。
+	本００：\"flasher\"は光源のほかに\"露出狂\"という意味がある。また\"excited state\"は物理では励起状態を指すが、直訳では\"興奮した状態\"である。
+	">>
 }
 
 PriorityRandomTalkEnglish : nonoverlap{
@@ -484,7 +487,7 @@ RandomTalk_Main : nonoverlap
 			">>
 
 			<<"
-			リサ０１：1843年10月16日、ブルーム橋を歩いていたHamiltoaは複素数の拡張として四元数を思いついて、そのまま橋に数式を衝動的に刻み付けたと言われているね。
+			リサ０１：1843年10月16日、ブルーム橋を歩いていたHamiltonは複素数の拡張として四元数を思いついて、そのまま橋に数式を衝動的に刻み付けたと言われているね。
 			リサ０５：彼はこれが幾何学を記述する究極の代数だと信じて"quaternionists"と呼ばれる学派を作り、電磁気や力学を四元数を使って記述することに死ぬまで力を注いだ。
 			リサ５１：ただ、後のベクトル解析と比べると煩雑で物理的意味も分かりにくかったため、現代ではこの形で四元数が使われることはあまりないんだよね……
 			リサ０１：現代物理では幾何学的な応用より代数構造を使って、例えばシンプレクティック多様体やHyper-Kaeler多様体の構成に使われることの方が多いかな。
@@ -727,6 +730,14 @@ RandomTalk_Main : nonoverlap
 			本００：Schneckenはドイツ語で"かたつむり(複数形)"、 Salmiakkiはラテン語の"sal ammoniac(塩化アンモニウム)"が名前の由来である。
 			前者はその形状から、後者は味付けに塩化アンモニウムを使用していることによる。
 			余談であるが、塩化アンモニウムは主に肥料として用いられる。
+			">>
+
+			<<"
+			リサ０７：この前町中に行ったら何かイントでもあったのか、人混みで揉みくちにされて大変だったよ……尻尾が引っ張らたりして痛かったし……
+			リサ６７：そういえば、人も地上ではS^回転の自由度を持つ2次元系だから……渦が定義できてコスタリッツ・サウレス転が起きたりするのかな？
+			本００：\"コスタリッツ・サウレス相転(Kosterlitz-Thouless phasetransition)\"
+			2次元XY模型においてスピン配位の渦度よって記述される相転移。これはSO(2)S^1が同相であり、winding numbe(first Chern class)が定義可能であことに由来する。
+			この研究により2016年にThouless,Haldane, Kosterlitzの三名はNobel賞受賞した。
 			">>
 		}
 

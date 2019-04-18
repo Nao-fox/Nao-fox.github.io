@@ -34,7 +34,7 @@ dic, yaya_rss.txt
 //dic, yaya_useful.txt
 dic, yaya_conversation.dic
 dic, yaya_physics_notes.txt
-
+dic, yaya_webclap.txt
 //ˆÈ‰º‚Í“ÁêŒn
 dic, aya_pager.dic //ƒy[ƒWƒƒŠÖ”
 //dic, text_pager.dic
