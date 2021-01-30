@@ -1,0 +1,313 @@
+charset,Shift_JIS
+
+descript
+{
+	version,1
+}
+
+surface0-9,20-89
+{
+	element0,base,base.png,0,0
+}
+surface.append0-9,20-89
+{
+	//髪の処理用
+	animation301.interval,always
+	animation301.pattern0,overlay,5003,1,0,0
+}
+
+surface1500
+{
+	element0,base,目普通.png,0,0
+}
+
+surface1501
+{
+	element0,base,目眇め1.png,0,0
+}
+
+surface1502
+{
+	element0,base,目眇め2.png,0,0
+}
+
+surface1503
+{
+	element0,base,目驚き.png,0,0
+}
+
+surface1504
+{
+	element0,base,目とじ.png,0,0
+}
+
+////////////////////////////////////////////////////
+// あたり判定
+////////////////////////////////////////////////////
+surface.append0-9,20-89
+{
+	collisionex1,Bust,circle,510,471,27
+	collisionex2,Vagina,rect,320,715,345,782
+	collisionex3,Anal,rect,328,783,356,819
+}
+
+
+////////////////////////////////////////////////////
+//目
+////////////////////////////////////////////////////
+surface.append0-9,20-25
+{
+	//目普通
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1500,0,0,0
+	animation0.pattern1,overlay,1504,0-700,0,0
+	animation0.pattern2,overlay,1500,50,0,0
+}
+
+surface.append26-41
+{
+	//目眇め1
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1501,0,0,0
+	animation0.pattern1,overlay,1504,0-700,0,0
+	animation0.pattern2,overlay,1501,50,0,0
+}
+
+surface.append42-57
+{
+	//目眇め2
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1502,0,0,0
+	animation0.pattern1,overlay,1504,0-700,0,0
+	animation0.pattern2,overlay,1502,50,0,0
+}
+
+surface.append58-73
+{
+	//目驚き
+	animation0.interval,periodic,4
+	animation0.pattern0,overlay,1503,0,0,0
+	animation0.pattern1,overlay,1504,0-700,0,0
+	animation0.pattern2,overlay,1503,50,0,0
+}
+//////////////////////////////////////////////////////////////////////////
+//基本surfaceのelementは0:body, 1:服, 2:頬, 3：目, 4:眉 5:口, 6以下アクセサリー
+//今は1,2なし 6髪,7以降道具
+//////////////////////////////////////////////////////////////////////////
+surface.append74-89
+{
+	//目とじ
+	element3,overlay,目とじ.png,0,0
+}
+
+////////////////////////////////////////////////////////
+//目以外の表情
+////////////////////////////////////////////////////////
+
+surface.append0,26,42,58,74
+{
+	element4,overlay,眉普通.png,0,0
+	element5,overlay,口軽く結ぶ.png,0,0
+}
+
+surface.append1,27,43,59,75
+{
+	element4,overlay,眉普通.png,0,0
+	element5,overlay,口笑み.png,0,0
+}
+
+surface.append2,28,44,60,76
+{
+	element4,overlay,眉普通.png,0,0
+	element5,overlay,口開き.png,0,0
+}
+
+surface.append3,29,45,61,77
+{
+	element4,overlay,眉普通.png,0,0
+	element5,overlay,口舌出し.png,0,0
+}
+
+surface.append4,30,46,62,78
+{
+	element4,overlay,眉驚き.png,0,0
+	element5,overlay,口軽く結ぶ.png,0,0
+}
+
+surface.append5,31,47,63,79
+{
+	element4,overlay,眉驚き.png,0,0
+	element5,overlay,口笑み.png,0,0
+}
+
+surface.append6,32,48,64,80
+{
+	element4,overlay,眉驚き.png,0,0
+	element5,overlay,口開き.png,0,0
+}
+
+surface.append7,33,49,65,81
+{
+	element4,overlay,眉驚き.png,0,0
+	element5,overlay,口舌出し.png,0,0
+}
+
+surface.append8,34,50,66,82
+{
+	element4,overlay,眉悲しみ.png,0,0
+	element5,overlay,口軽く結ぶ.png,0,0
+}
+
+surface.append9,35,51,67,83
+{
+	element4,overlay,眉悲しみ.png,0,0
+	element5,overlay,口笑み.png,0,0
+}
+
+surface.append20,36,52,68,84
+{
+	element4,overlay,眉悲しみ.png,0,0
+	element5,overlay,口開き.png,0,0
+}
+
+surface.append21,37,53,69,85
+{
+	element4,overlay,眉悲しみ.png,0,0
+	element5,overlay,口舌出し.png,0,0
+}
+
+surface.append22,38,54,70,86
+{
+	element4,overlay,眉怒り.png,0,0
+	element5,overlay,口軽く結ぶ.png,0,0
+}
+
+surface.append23,39,55,71,87
+{
+	element4,overlay,眉怒り.png,0,0
+	element5,overlay,口笑み.png,0,0
+}
+
+surface.append24,40,56,72,88
+{
+	element4,overlay,眉怒り.png,0,0
+	element5,overlay,口開き.png,0,0
+}
+
+surface.append25,41,57,73,89
+{
+	element4,overlay,眉怒り.png,0,0
+	element5,overlay,口舌出し.png,0,0
+}
+
+///////////////////////////////////////////////////
+髪の毛
+///////////////////////////////////////////////////
+surface.append0-9,20-89
+{
+	element6,overlay,鼻.png,0,0
+	element7,overlay,hair.png,0,0
+}
+
+
+///////////////////////////////////////////////////
+//着せ替え用画像
+///////////////////////////////////////////////////
+surface5000
+{
+	element0,base,汗.png,0,0
+}
+
+surface5001
+{
+	element0,base,頬赤.png,0,0
+}
+
+surface5002
+{
+	element0,base,ニップルピアス.png,0,0
+}
+
+surface5003
+{
+	element0,base,hair.png,0,0
+}
+
+surface5004
+{
+	element1,base,pussy.png,0,0
+	element2,base,クリ勃起.png,0,0
+	element3,base,汁.png,0,0
+}
+
+
+surface6000
+{
+	element0,base,アナル1.png,0,0
+}
+
+surface6001
+{
+	element0,base,アナル2.png,0,0
+}
+
+surface6002
+{
+	element0,base,アナル3.png,0,0
+}
+
+surface6003
+{
+	element1,base,バルーン1.png,0,0
+	element2,base,バルーンコントローラー.png,0,0
+}
+
+surface6004
+{
+	element0,base,アナル2.png,0,0
+	element1,base,バルーン2.png,0,0
+	element2,base,バルーンコントローラー.png,0,0
+}
+
+surface6005
+{
+	element0,base,アナル3.png,0,0
+	element1,base,バルーン3.png,0,0
+	element2,base,バルーンコントローラー.png,0,0
+}
+
+surface6006
+{
+	element0,base,アナル2.png,0,0
+	element1,base,ボール.png,0,0
+}
+
+/////////////////////////////
+///着せ替えアニメーション設定
+////////////////////////////
+surface.append0-9,20-89
+{
+	animation100.interval,bind
+	animation100.pattern0,overlay,5000,0,0,0
+	animation101.interval,bind
+	animation101.pattern0,overlay,5001,0,0,0
+	animation102.interval,bind
+	animation102.pattern0,overlay,5002,0,0,0
+	animation103.interval,bind
+	animation103.pattern0,overlay,5004,0,0,0
+	
+	animation200.interval,bind
+	animation200.pattern0,overlay,6000,0,0,0
+	animation201.interval,bind
+	animation201.pattern0,overlay,6001,0,0,0
+	animation202.interval,bind
+	animation202.pattern0,overlay,6002,0,0,0
+	animation203.interval,bind
+	animation203.pattern0,overlay,6003,0,0,0
+	animation204.interval,bind
+	animation204.pattern0,overlay,6004,0,0,0
+	animation205.interval,bind
+	animation205.pattern0,overlay,6005,0,0,0
+	animation206.interval,bind
+	animation206.pattern0,overlay,6006,0,0,0
+}
