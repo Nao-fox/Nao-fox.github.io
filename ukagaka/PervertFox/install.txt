@@ -1,4 +1,0 @@
-charset, Shift_JIS
-type,ghost
-name,ƒŠƒT
-directory,PervertFox
